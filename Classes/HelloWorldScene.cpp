@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "ResourceManager/PListReader.h"
 
 USING_NS_CC;
 
@@ -71,6 +72,21 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
+    
+    /*
+    this->m_PlistReader = new PListReader();
+    this->m_PlistReader->autorelease();
+    
+    EnemyPlist *enemyPlist = this->m_PlistReader->createEnemyPlist(std::string("enemy/elves_bittering_rancor_enemies-hd.plist"));
+    
+    EnemyPlist::EnemySpriteInfo info = enemyPlist->getInfo(std::string("scourger_shadow_0037.png"));
+    CCLOG("spriteSize(%d, %d)\nspriteTrimmed(%d)\nspriteColorRect(%d, %d, %d, %d)\nspriteOffset(%d, %d)\ntextureRect(%d, %d, %d, %d)\ntextureRotated(%d)\nspriteSourceSize(%d, %d)\n", int(info.spriteSize.width), int(info.spriteSize.height),
+          info.spriteTrimmed, int(info.spriteColorRect.origin.x), int(info.spriteColorRect.origin.y),
+          int(info.spriteColorRect.size.width), int(info.spriteColorRect.size.height),
+          int(info.spriteOffet.x), int(info.spriteOffet.y), int(info.textureRect.origin.x),
+          int(info.textureRect.origin.y), int(info.textureRect.size.width), int(info.textureRect.size.height),
+          info.textureRotated, int(info.spriteSourceSize.width), int(info.spriteSourceSize.height));
+    */
     
     return true;
 }

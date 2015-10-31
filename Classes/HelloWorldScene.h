@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 
+class PListReader;
 class HelloWorld : public cocos2d::Layer
 {
 public:
@@ -17,6 +18,9 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+    
+private:
+    PListReader *m_PlistReader;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

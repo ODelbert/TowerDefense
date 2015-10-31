@@ -4,7 +4,7 @@
 #include "CommonDef.h"
 #include "cocos2d.h"
 
-class EnemyPlist
+class EnemyPlist : public cocos2d::Ref
 {
 public:
     struct EnemySpriteInfo
@@ -29,14 +29,14 @@ private:
     std::map<std::string, EnemySpriteInfo> m_infos;
 };
 
-class AnimationPlist
+class AnimationPlist : public cocos2d::Ref
 {
     
 };
 
-class WavePlist
+class WavePlist : public cocos2d::Ref
 {
-    
+public:
 };
 
 class PListReader : public cocos2d::Node
