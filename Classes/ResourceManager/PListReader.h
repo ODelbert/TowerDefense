@@ -39,7 +39,22 @@ class WavePlist : public cocos2d::Ref
 public:
 };
 
-class PListReader : public cocos2d::Node
+struct EnemyInfo
+{
+    char name[24];
+    int dmgMin;
+    int dmgMax;
+    int life;
+    int weapon;
+    int armor;
+    int resist;
+    int speed;
+    int food;
+    int flyable;
+};
+
+
+class PListReader : public cocos2d::Ref
 {
 public:
     static PListReader* getInstance();
@@ -50,7 +65,11 @@ public:
     AnimationPlist* createAnimationPlist(const std::string &plistname);
 
     WavePlist* createWavePlist(const std::string &plistname);
-
+    
+    void createAnimationWithPlist(const std::string &name);
+    std::vector<std::vector<std::vector<cocos2d::Vec2> > > readPathPlist(int level);
+    EnemyInfo readEnemyInfoPlist(const std::string& name);
+    
 private:
     static PListReader* s_instance;
 };

@@ -541,6 +541,12 @@
 		9A785D291BE5AA440040E98B /* waveflag_redcircle-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49121BE4DC6D00F48C86 /* waveflag_redcircle-ipadhd.png */; };
 		9A785D2A1BE5AA440040E98B /* waveflag_redcircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49131BE4DC6D00F48C86 /* waveflag_redcircle.png */; };
 		9A785D2B1BE5AA440040E98B /* woods_content-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49161BE4DC6D00F48C86 /* woods_content-hd.png */; };
+		9A785D321BE5B1D00040E98B /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A785D2D1BE5B1D00040E98B /* GameScene.cpp */; };
+		9A785D331BE5B1D00040E98B /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A785D2D1BE5B1D00040E98B /* GameScene.cpp */; };
+		9A785D341BE5B1D00040E98B /* TestLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A785D301BE5B1D00040E98B /* TestLayer.cpp */; };
+		9A785D351BE5B1D00040E98B /* TestLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A785D301BE5B1D00040E98B /* TestLayer.cpp */; };
+		9A785D361BE5B44D0040E98B /* PListReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA4A0D1BE4E13D00F48C86 /* PListReader.cpp */; };
+		9A785D371BE5B4F40040E98B /* CommonDef.h in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA4A0F1BE4E2D300F48C86 /* CommonDef.h */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -877,6 +883,10 @@
 		6BEA4A0D1BE4E13D00F48C86 /* PListReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PListReader.cpp; path = ResourceManager/PListReader.cpp; sourceTree = "<group>"; };
 		6BEA4A0F1BE4E2D300F48C86 /* CommonDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDef.h; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9A785D2D1BE5B1D00040E98B /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
+		9A785D2E1BE5B1D00040E98B /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		9A785D301BE5B1D00040E98B /* TestLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestLayer.cpp; sourceTree = "<group>"; };
+		9A785D311BE5B1D00040E98B /* TestLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLayer.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1255,6 +1265,8 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9A785D2C1BE5B1D00040E98B /* Scene */,
+				9A785D2F1BE5B1D00040E98B /* tests */,
 				6BEA4A0B1BE4E12300F48C86 /* ResourceManager */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
@@ -1320,6 +1332,24 @@
 				6BEA4A0C1BE4E13800F48C86 /* PListReader.h */,
 			);
 			name = ResourceManager;
+			sourceTree = "<group>";
+		};
+		9A785D2C1BE5B1D00040E98B /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				9A785D2D1BE5B1D00040E98B /* GameScene.cpp */,
+				9A785D2E1BE5B1D00040E98B /* GameScene.h */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		9A785D2F1BE5B1D00040E98B /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				9A785D301BE5B1D00040E98B /* TestLayer.cpp */,
+				9A785D311BE5B1D00040E98B /* TestLayer.h */,
+			);
+			path = tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1951,7 +1981,9 @@
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				6BEA4A0E1BE4E13D00F48C86 /* PListReader.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
+				9A785D341BE5B1D00040E98B /* TestLayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				9A785D321BE5B1D00040E98B /* GameScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
@@ -1961,8 +1993,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A785D371BE5B4F40040E98B /* CommonDef.h in Sources */,
+				9A785D361BE5B44D0040E98B /* PListReader.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				9A785D331BE5B1D00040E98B /* GameScene.cpp in Sources */,
+				9A785D351BE5B1D00040E98B /* TestLayer.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
