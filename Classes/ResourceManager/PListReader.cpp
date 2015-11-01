@@ -2,9 +2,6 @@
 #include "CommonDef.h"
 USING_NS_CC;
 
-
-
-
 static EnemyPlist::EnemySpriteInfo s_enemySpriteInfoNone;
 
 SINGLETON_IMPL(PListReader)
@@ -90,6 +87,11 @@ EnemyPlist* PListReader::createEnemyPlist(const std::string &plistname)
 void PListReader::createAnimationWithPlist(const std::string &name)
 {
     ValueMap root = FileUtils::getInstance()->getValueMapFromFile(name);
+    if (root.empty()) {
+        CCLOG("PListReader::createAnimationWithPlist failed to create with file [%s]", name.c_str());
+        return;
+    }
+    
     ValueMap animationDict = root["animations"].asValueMap();
     ValueMap::const_iterator iter = animationDict.begin();
     while (iter != animationDict.end()) {
@@ -112,7 +114,7 @@ void PListReader::createAnimationWithPlist(const std::string &name)
                 animFrames.pushBack(frame);
             }
         }
-        
+
         // FIXME::tune parameter
         float animateRate = 0.002f * animFrames.size() < 0.05f ? 0.05f : 0.002f * animFrames.size();
         AnimationCache::getInstance()->addAnimation(Animation::createWithSpriteFrames(animFrames, animateRate) , iter->first);
@@ -129,9 +131,7 @@ std::vector<std::vector<std::vector<Vec2> > > PListReader::readPathPlist(int lev
     std::vector<std::vector<std::vector<Vec2> > > paths;
     std::string file = String::createWithFormat("level%d_paths.plist", level)->getCString();
     ValueMap root = FileUtils::getInstance()->getValueMapFromFile(String::createWithFormat("level%d_paths.plist", level)->getCString());
-    
-    
-    ValueVector pathVec = root["path"].asValueVector();
+    ValueVector pathVec = root["paths"].asValueVector();
     for (int i = 0; i < pathVec.size(); ++i) {
         ValueMap subPathDict = pathVec[i].asValueMap();
         ValueVector subPathsVec = subPathDict["subpaths"].asValueVector();

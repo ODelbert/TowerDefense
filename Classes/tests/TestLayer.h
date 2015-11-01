@@ -22,10 +22,13 @@ public:
     
 private:
     void moveSprite(float dt);
+    void stopActions();
     
 private:
     Sprite* m_bkg;
     std::vector<Vec2> m_path;
+    Sprite* m_runningEnemy;
+    unsigned int m_pathIndex;
 };
 
 #endif /* defined(__TowerDefense__TestLayer__) */
