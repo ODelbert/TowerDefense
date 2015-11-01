@@ -21,6 +21,15 @@
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Scene\GameScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ResourceManager\PListReader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\tests\TestLayer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -30,6 +39,18 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\GameScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ResourceManager\PListReader.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\tests\TestLayer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CommonDef.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
