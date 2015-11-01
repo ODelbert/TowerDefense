@@ -301,6 +301,246 @@
 		6BEA4A081BE4DC6D00F48C86 /* woods_content-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49161BE4DC6D00F48C86 /* woods_content-hd.png */; };
 		6BEA4A0E1BE4E13D00F48C86 /* PListReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA4A0D1BE4E13D00F48C86 /* PListReader.cpp */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
+		9A785C3C1BE5AA430040E98B /* ally in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48261BE4DC6D00F48C86 /* ally */; };
+		9A785C3D1BE5AA430040E98B /* boss in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA482A1BE4DC6D00F48C86 /* boss */; };
+		9A785C3E1BE5AA430040E98B /* encyclopedia in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48561BE4DC6D00F48C86 /* encyclopedia */; };
+		9A785C3F1BE5AA430040E98B /* enemy in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48591BE4DC6D00F48C86 /* enemy */; };
+		9A785C401BE5AA430040E98B /* hero in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48721BE4DC6D00F48C86 /* hero */; };
+		9A785C411BE5AA430040E98B /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA487B1BE4DC6D00F48C86 /* iTunesArtwork */; };
+		9A785C421BE5AA430040E98B /* music in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48B11BE4DC6D00F48C86 /* music */; };
+		9A785C431BE5AA430040E98B /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48D61BE4DC6D00F48C86 /* sound */; };
+		9A785C441BE5AA430040E98B /* stage in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48DD1BE4DC6D00F48C86 /* stage */; };
+		9A785C451BE5AA430040E98B /* tower in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49031BE4DC6D00F48C86 /* tower */; };
+		9A785C461BE5AA430040E98B /* wave in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA490E1BE4DC6D00F48C86 /* wave */; };
+		9A785C471BE5AA430040E98B /* waypoints in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49141BE4DC6D00F48C86 /* waypoints */; };
+		9A785C481BE5AA430040E98B /* level2_specialTroll.conf in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA487F1BE4DC6D00F48C86 /* level2_specialTroll.conf */; };
+		9A785C491BE5AA430040E98B /* level3_specialLeprechaun.conf in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48801BE4DC6D00F48C86 /* level3_specialLeprechaun.conf */; };
+		9A785C4A1BE5AA430040E98B /* level4_specialShrekBird.conf in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48811BE4DC6D00F48C86 /* level4_specialShrekBird.conf */; };
+		9A785C4B1BE5AA430040E98B /* level6_spawnerController.conf in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48821BE4DC6D00F48C86 /* level6_spawnerController.conf */; };
+		9A785C4C1BE5AA430040E98B /* level10_spawnerController.conf in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48831BE4DC6D00F48C86 /* level10_spawnerController.conf */; };
+		9A785C4D1BE5AA430040E98B /* level11_spawnerController.conf in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48841BE4DC6D00F48C86 /* level11_spawnerController.conf */; };
+		9A785C4E1BE5AA430040E98B /* level13_spawnerController.conf in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48851BE4DC6D00F48C86 /* level13_spawnerController.conf */; };
+		9A785C4F1BE5AA430040E98B /* level14_spawnerController.conf in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48861BE4DC6D00F48C86 /* level14_spawnerController.conf */; };
+		9A785C501BE5AA430040E98B /* level15_spawnerController.conf in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48871BE4DC6D00F48C86 /* level15_spawnerController.conf */; };
+		9A785C511BE5AA430040E98B /* level16_spawnerController.conf in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48881BE4DC6D00F48C86 /* level16_spawnerController.conf */; };
+		9A785C521BE5AA430040E98B /* level17_spawnerController.conf in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48891BE4DC6D00F48C86 /* level17_spawnerController.conf */; };
+		9A785C531BE5AA430040E98B /* level18_spawnerController.conf in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA488A1BE4DC6D00F48C86 /* level18_spawnerController.conf */; };
+		9A785C541BE5AA430040E98B /* level20_spawnerController.conf in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA488B1BE4DC6D00F48C86 /* level20_spawnerController.conf */; };
+		9A785C551BE5AA430040E98B /* powersController.conf in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48CD1BE4DC6D00F48C86 /* powersController.conf */; };
+		9A785C561BE5AA430040E98B /* EnemyHalloweenAbomination.h in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA485A1BE4DC6D00F48C86 /* EnemyHalloweenAbomination.h */; };
+		9A785C571BE5AA430040E98B /* achievement_particle-ipadhd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48241BE4DC6D00F48C86 /* achievement_particle-ipadhd.plist */; };
+		9A785C581BE5AA430040E98B /* achievement_particle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48251BE4DC6D00F48C86 /* achievement_particle.plist */; };
+		9A785C591BE5AA430040E98B /* bittering_content-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48281BE4DC6D00F48C86 /* bittering_content-hd.plist */; };
+		9A785C5A1BE5AA430040E98B /* catapult_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA482F1BE4DC6D00F48C86 /* catapult_animations.plist */; };
+		9A785C5B1BE5AA430040E98B /* catapult_endless_explosions_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48301BE4DC6D00F48C86 /* catapult_endless_explosions_animations.plist */; };
+		9A785C5C1BE5AA430040E98B /* catapult_endless_layer_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48311BE4DC6D00F48C86 /* catapult_endless_layer_animations.plist */; };
+		9A785C5D1BE5AA430040E98B /* cinematics_comic1-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48321BE4DC6D00F48C86 /* cinematics_comic1-hd.plist */; };
+		9A785C5E1BE5AA430040E98B /* cinematics_comic2-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48341BE4DC6D00F48C86 /* cinematics_comic2-hd.plist */; };
+		9A785C5F1BE5AA430040E98B /* cinematics_comic3-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48361BE4DC6D00F48C86 /* cinematics_comic3-hd.plist */; };
+		9A785C601BE5AA430040E98B /* cinematics_comic4-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48381BE4DC6D00F48C86 /* cinematics_comic4-hd.plist */; };
+		9A785C611BE5AA430040E98B /* cinematics_comic5-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA483A1BE4DC6D00F48C86 /* cinematics_comic5-hd.plist */; };
+		9A785C621BE5AA430040E98B /* cinematics_comic6-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA483C1BE4DC6D00F48C86 /* cinematics_comic6-hd.plist */; };
+		9A785C631BE5AA430040E98B /* cinematics_comic7-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA483E1BE4DC6D00F48C86 /* cinematics_comic7-hd.plist */; };
+		9A785C641BE5AA430040E98B /* cinematics_comic8-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48401BE4DC6D00F48C86 /* cinematics_comic8-hd.plist */; };
+		9A785C651BE5AA430040E98B /* cinematics_comic9-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48421BE4DC6D00F48C86 /* cinematics_comic9-hd.plist */; };
+		9A785C661BE5AA430040E98B /* common_spritesheet_16_a_2-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48431BE4DC6D00F48C86 /* common_spritesheet_16_a_2-hd.plist */; };
+		9A785C671BE5AA430040E98B /* common_spritesheet_16_na_2_IPAD2_5-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48451BE4DC6D00F48C86 /* common_spritesheet_16_na_2_IPAD2_5-hd.plist */; };
+		9A785C681BE5AA430040E98B /* common_spritesheet_16_na_2_IPAD2-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48471BE4DC6D00F48C86 /* common_spritesheet_16_na_2_IPAD2-hd.plist */; };
+		9A785C691BE5AA430040E98B /* common_spritesheet_16_na-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48491BE4DC6D00F48C86 /* common_spritesheet_16_na-hd.plist */; };
+		9A785C6A1BE5AA430040E98B /* common_spritesheet_32-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA484B1BE4DC6D00F48C86 /* common_spritesheet_32-hd.plist */; };
+		9A785C6B1BE5AA430040E98B /* common_spritesheet_localized_32_cn-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA484D1BE4DC6D00F48C86 /* common_spritesheet_localized_32_cn-hd.plist */; };
+		9A785C6C1BE5AA430040E98B /* common_spritesheet_localized_32-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA484F1BE4DC6D00F48C86 /* common_spritesheet_localized_32-hd.plist */; };
+		9A785C6D1BE5AA430040E98B /* credits_scene-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48511BE4DC6D00F48C86 /* credits_scene-hd.plist */; };
+		9A785C6E1BE5AA430040E98B /* crystalArcane_extras_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48531BE4DC6D00F48C86 /* crystalArcane_extras_animations.plist */; };
+		9A785C6F1BE5AA430040E98B /* crystalSerpent_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48541BE4DC6D00F48C86 /* crystalSerpent_animations.plist */; };
+		9A785C701BE5AA430040E98B /* elves_inapps_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48551BE4DC6D00F48C86 /* elves_inapps_animations.plist */; };
+		9A785C711BE5AA430040E98B /* ending_scene-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48571BE4DC6D00F48C86 /* ending_scene-hd.plist */; };
+		9A785C721BE5AA430040E98B /* ewok_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA485B1BE4DC6D00F48C86 /* ewok_animations.plist */; };
+		9A785C731BE5AA430040E98B /* faerie_content_2-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA485C1BE4DC6D00F48C86 /* faerie_content_2-hd.plist */; };
+		9A785C741BE5AA430040E98B /* faerie_content-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA485E1BE4DC6D00F48C86 /* faerie_content-hd.plist */; };
+		9A785C751BE5AA430040E98B /* faerie_dragons_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48601BE4DC6D00F48C86 /* faerie_dragons_animations.plist */; };
+		9A785C761BE5AA430040E98B /* faerie_grove_content_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48611BE4DC6D00F48C86 /* faerie_grove_content_animations.plist */; };
+		9A785C771BE5AA430040E98B /* forgotten_content-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48631BE4DC6D00F48C86 /* forgotten_content-hd.plist */; };
+		9A785C781BE5AA430040E98B /* galahadriansBastion_layer_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48651BE4DC6D00F48C86 /* galahadriansBastion_layer_animations.plist */; };
+		9A785C791BE5AA430040E98B /* gameScene.assets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48661BE4DC6D00F48C86 /* gameScene.assets.plist */; };
+		9A785C7A1BE5AA430040E98B /* gameScene.common.assets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48671BE4DC6D00F48C86 /* gameScene.common.assets.plist */; };
+		9A785C7B1BE5AA430040E98B /* gui_menu_sprite_campaign_32-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48681BE4DC6D00F48C86 /* gui_menu_sprite_campaign_32-hd.plist */; };
+		9A785C7C1BE5AA430040E98B /* gui_menu_sprite_endless_32-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA486A1BE4DC6D00F48C86 /* gui_menu_sprite_endless_32-hd.plist */; };
+		9A785C7D1BE5AA430040E98B /* gui_menu_sprite_iron_32-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA486C1BE4DC6D00F48C86 /* gui_menu_sprite_iron_32-hd.plist */; };
+		9A785C7E1BE5AA430040E98B /* gui_notification_endless-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA486E1BE4DC6D00F48C86 /* gui_notification_endless-hd.plist */; };
+		9A785C7F1BE5AA430040E98B /* gui_notification_upgrade-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48701BE4DC6D00F48C86 /* gui_notification_upgrade-hd.plist */; };
+		9A785C801BE5AA430040E98B /* hulking_rage_content-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48731BE4DC6D00F48C86 /* hulking_rage_content-hd.plist */; };
+		9A785C811BE5AA430040E98B /* hyena_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48751BE4DC6D00F48C86 /* hyena_animations.plist */; };
+		9A785C821BE5AA430040E98B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48781BE4DC6D00F48C86 /* Info.plist */; };
+		9A785C831BE5AA430040E98B /* ingame_gui-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48791BE4DC6D00F48C86 /* ingame_gui-hd.plist */; };
+		9A785C841BE5AA430040E98B /* knocker_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA487C1BE4DC6D00F48C86 /* knocker_animations.plist */; };
+		9A785C851BE5AA430040E98B /* level_general_tips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA487D1BE4DC6D00F48C86 /* level_general_tips.plist */; };
+		9A785C861BE5AA430040E98B /* level1_tips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA487E1BE4DC6D00F48C86 /* level1_tips.plist */; };
+		9A785C871BE5AA430040E98B /* lynn_explosion_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA488F1BE4DC6D00F48C86 /* lynn_explosion_animations.plist */; };
+		9A785C881BE5AA430040E98B /* mactans_malicia_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48901BE4DC6D00F48C86 /* mactans_malicia_animations.plist */; };
+		9A785C891BE5AA430040E98B /* mainmenu_spritesheet_32_1-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48911BE4DC6D00F48C86 /* mainmenu_spritesheet_32_1-hd.plist */; };
+		9A785C8A1BE5AA430040E98B /* mainmenu_spritesheet_32_2-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48931BE4DC6D00F48C86 /* mainmenu_spritesheet_32_2-hd.plist */; };
+		9A785C8B1BE5AA430040E98B /* malicia_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48951BE4DC6D00F48C86 /* malicia_animations.plist */; };
+		9A785C8C1BE5AA430040E98B /* mantaray_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48961BE4DC6D00F48C86 /* mantaray_animations.plist */; };
+		9A785C8D1BE5AA430040E98B /* map_difficulty_spritesheet_32-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48971BE4DC6D00F48C86 /* map_difficulty_spritesheet_32-hd.plist */; };
+		9A785C8E1BE5AA430040E98B /* map_spritesheet_16_a_3-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48991BE4DC6D00F48C86 /* map_spritesheet_16_a_3-hd.plist */; };
+		9A785C8F1BE5AA430040E98B /* map_spritesheet_16_na_i4-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA489B1BE4DC6D00F48C86 /* map_spritesheet_16_na_i4-hd.plist */; };
+		9A785C901BE5AA430040E98B /* map_spritesheet_16_na_i5-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA489D1BE4DC6D00F48C86 /* map_spritesheet_16_na_i5-hd.plist */; };
+		9A785C911BE5AA430040E98B /* map_spritesheet_16_na-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA489F1BE4DC6D00F48C86 /* map_spritesheet_16_na-hd.plist */; };
+		9A785C921BE5AA430040E98B /* map_spritesheet_32_2-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48A11BE4DC6D00F48C86 /* map_spritesheet_32_2-hd.plist */; };
+		9A785C931BE5AA430040E98B /* map_spritesheet_32_3-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48A31BE4DC6D00F48C86 /* map_spritesheet_32_3-hd.plist */; };
+		9A785C941BE5AA430040E98B /* map_spritesheet_32-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48A51BE4DC6D00F48C86 /* map_spritesheet_32-hd.plist */; };
+		9A785C951BE5AA430040E98B /* mapScene.roads.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48A71BE4DC6D00F48C86 /* mapScene.roads.plist */; };
+		9A785C961BE5AA430040E98B /* mercenary_draw_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48A81BE4DC6D00F48C86 /* mercenary_draw_animations.plist */; };
+		9A785C971BE5AA430040E98B /* metropolis_content_2-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48A91BE4DC6D00F48C86 /* metropolis_content_2-hd.plist */; };
+		9A785C981BE5AA430040E98B /* metropolis_content_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48AB1BE4DC6D00F48C86 /* metropolis_content_animations.plist */; };
+		9A785C991BE5AA430040E98B /* metropolis_content-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48AC1BE4DC6D00F48C86 /* metropolis_content-hd.plist */; };
+		9A785C9A1BE5AA430040E98B /* metropolis_crystalUnstable_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48AE1BE4DC6D00F48C86 /* metropolis_crystalUnstable_animations.plist */; };
+		9A785C9B1BE5AA430040E98B /* metropolis_special_teleport_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48AF1BE4DC6D00F48C86 /* metropolis_special_teleport_animations.plist */; };
+		9A785C9C1BE5AA430040E98B /* mountedAvenger_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48B01BE4DC6D00F48C86 /* mountedAvenger_animations.plist */; };
+		9A785C9D1BE5AA430040E98B /* ogre_mage_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48B21BE4DC6D00F48C86 /* ogre_mage_animations.plist */; };
+		9A785C9E1BE5AA430040E98B /* ogre_mage_aura_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48B31BE4DC6D00F48C86 /* ogre_mage_aura_animations.plist */; };
+		9A785C9F1BE5AA430040E98B /* ogre_mage_proy_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48B41BE4DC6D00F48C86 /* ogre_mage_proy_animations.plist */; };
+		9A785CA01BE5AA430040E98B /* ogre_mage_shield_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48B51BE4DC6D00F48C86 /* ogre_mage_shield_animations.plist */; };
+		9A785CA11BE5AA430040E98B /* paralyzingTree_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48B61BE4DC6D00F48C86 /* paralyzingTree_animations.plist */; };
+		9A785CA21BE5AA430040E98B /* paralyzingTree_particle_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48B71BE4DC6D00F48C86 /* paralyzingTree_particle_animations.plist */; };
+		9A785CA31BE5AA430040E98B /* paralyzingTree_particle0_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48B81BE4DC6D00F48C86 /* paralyzingTree_particle0_animations.plist */; };
+		9A785CA41BE5AA430040E98B /* paralyzingTree_particle1_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48B91BE4DC6D00F48C86 /* paralyzingTree_particle1_animations.plist */; };
+		9A785CA51BE5AA430040E98B /* paralyzingTree_particle2_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48BA1BE4DC6D00F48C86 /* paralyzingTree_particle2_animations.plist */; };
+		9A785CA61BE5AA430040E98B /* paralyzingTree_stun_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48BB1BE4DC6D00F48C86 /* paralyzingTree_stun_animations.plist */; };
+		9A785CA71BE5AA430040E98B /* particle_gems-ipadhd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48BC1BE4DC6D00F48C86 /* particle_gems-ipadhd.plist */; };
+		9A785CA81BE5AA430040E98B /* particle_gems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48BD1BE4DC6D00F48C86 /* particle_gems.plist */; };
+		9A785CA91BE5AA430040E98B /* particle_inapp_heart-ipadhd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48BE1BE4DC6D00F48C86 /* particle_inapp_heart-ipadhd.plist */; };
+		9A785CAA1BE5AA430040E98B /* particle_inapp_heart.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48BF1BE4DC6D00F48C86 /* particle_inapp_heart.plist */; };
+		9A785CAB1BE5AA430040E98B /* particle_upgrade-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48C01BE4DC6D00F48C86 /* particle_upgrade-hd.plist */; };
+		9A785CAC1BE5AA430040E98B /* particle_upgrade.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48C11BE4DC6D00F48C86 /* particle_upgrade.plist */; };
+		9A785CAD1BE5AA430040E98B /* particle_victory-ipadhd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48C21BE4DC6D00F48C86 /* particle_victory-ipadhd.plist */; };
+		9A785CAE1BE5AA430040E98B /* particle_victory.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48C31BE4DC6D00F48C86 /* particle_victory.plist */; };
+		9A785CAF1BE5AA430040E98B /* perython_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48C61BE4DC6D00F48C86 /* perython_animations.plist */; };
+		9A785CB01BE5AA430040E98B /* perython_rockthrower_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48C71BE4DC6D00F48C86 /* perython_rockthrower_animations.plist */; };
+		9A785CB11BE5AA430040E98B /* pixie_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48C81BE4DC6D00F48C86 /* pixie_animations.plist */; };
+		9A785CB21BE5AA430040E98B /* plant_magic_blosom_proy.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48C91BE4DC6D00F48C86 /* plant_magic_blosom_proy.plist */; };
+		9A785CB31BE5AA430040E98B /* power_lightning_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48CA1BE4DC6D00F48C86 /* power_lightning_animations.plist */; };
+		9A785CB41BE5AA430040E98B /* rabbit_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48CE1BE4DC6D00F48C86 /* rabbit_animations.plist */; };
+		9A785CB51BE5AA430040E98B /* roadRunner_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48D01BE4DC6D00F48C86 /* roadRunner_animations.plist */; };
+		9A785CB61BE5AA430040E98B /* scenes.assets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48D11BE4DC6D00F48C86 /* scenes.assets.plist */; };
+		9A785CB71BE5AA430040E98B /* scenesCommon.assets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48D21BE4DC6D00F48C86 /* scenesCommon.assets.plist */; };
+		9A785CB81BE5AA430040E98B /* snare_endless_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48D31BE4DC6D00F48C86 /* snare_endless_animations.plist */; };
+		9A785CB91BE5AA430040E98B /* soldiers_blade_singer_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48D41BE4DC6D00F48C86 /* soldiers_blade_singer_animations.plist */; };
+		9A785CBA1BE5AA430040E98B /* soldiers_forest_keeper_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48D51BE4DC6D00F48C86 /* soldiers_forest_keeper_animations.plist */; };
+		9A785CBB1BE5AA430040E98B /* splash_spritesheet_32-ipadhd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48D71BE4DC6D00F48C86 /* splash_spritesheet_32-ipadhd.plist */; };
+		9A785CBC1BE5AA430040E98B /* splash_spritesheet_32.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48D91BE4DC6D00F48C86 /* splash_spritesheet_32.plist */; };
+		9A785CBD1BE5AA430040E98B /* splashScene.animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48DB1BE4DC6D00F48C86 /* splashScene.animations.plist */; };
+		9A785CBE1BE5AA430040E98B /* splashScene.assets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48DC1BE4DC6D00F48C86 /* splashScene.assets.plist */; };
+		9A785CBF1BE5AA430040E98B /* stage6_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48DE1BE4DC6D00F48C86 /* stage6_animations.plist */; };
+		9A785CC01BE5AA430040E98B /* stage8_pixie_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48DF1BE4DC6D00F48C86 /* stage8_pixie_animations.plist */; };
+		9A785CC11BE5AA430040E98B /* stage10_pork_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48E01BE4DC6D00F48C86 /* stage10_pork_animations.plist */; };
+		9A785CC21BE5AA430040E98B /* stage10_redRidingHood_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48E11BE4DC6D00F48C86 /* stage10_redRidingHood_animations.plist */; };
+		9A785CC31BE5AA430040E98B /* stage10_wolf_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48E21BE4DC6D00F48C86 /* stage10_wolf_animations.plist */; };
+		9A785CC41BE5AA430040E98B /* stage15_mactans_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48E31BE4DC6D00F48C86 /* stage15_mactans_animations.plist */; };
+		9A785CC51BE5AA430040E98B /* stage15_malicia_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48E41BE4DC6D00F48C86 /* stage15_malicia_animations.plist */; };
+		9A785CC61BE5AA430040E98B /* stage15_shield_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48E51BE4DC6D00F48C86 /* stage15_shield_animations.plist */; };
+		9A785CC71BE5AA430040E98B /* stage15_specials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48E61BE4DC6D00F48C86 /* stage15_specials.plist */; };
+		9A785CC81BE5AA430040E98B /* stage19_drizztdourden_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48E71BE4DC6D00F48C86 /* stage19_drizztdourden_animations.plist */; };
+		9A785CC91BE5AA430040E98B /* stage19_gnoll_drizztdourden_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48E81BE4DC6D00F48C86 /* stage19_gnoll_drizztdourden_animations.plist */; };
+		9A785CCA1BE5AA430040E98B /* tower_archer_arcane_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49041BE4DC6D00F48C86 /* tower_archer_arcane_animations.plist */; };
+		9A785CCB1BE5AA430040E98B /* tower_archer_silver_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49051BE4DC6D00F48C86 /* tower_archer_silver_animations.plist */; };
+		9A785CCC1BE5AA430040E98B /* tower_rock_thrower_entwood_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49061BE4DC6D00F48C86 /* tower_rock_thrower_entwood_animations.plist */; };
+		9A785CCD1BE5AA430040E98B /* wave_packs1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA490F1BE4DC6D00F48C86 /* wave_packs1.plist */; };
+		9A785CCE1BE5AA430040E98B /* wave_packs2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49101BE4DC6D00F48C86 /* wave_packs2.plist */; };
+		9A785CCF1BE5AA430040E98B /* woods_content-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49151BE4DC6D00F48C86 /* woods_content-hd.plist */; };
+		9A785CD01BE5AA430040E98B /* bittering_content-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48291BE4DC6D00F48C86 /* bittering_content-hd.png */; };
+		9A785CD11BE5AA430040E98B /* but_social0004-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA482B1BE4DC6D00F48C86 /* but_social0004-hd.png */; };
+		9A785CD21BE5AA430040E98B /* but_social0004.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA482C1BE4DC6D00F48C86 /* but_social0004.png */; };
+		9A785CD31BE5AA430040E98B /* but_social0005-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA482D1BE4DC6D00F48C86 /* but_social0005-hd.png */; };
+		9A785CD41BE5AA430040E98B /* but_social0005.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA482E1BE4DC6D00F48C86 /* but_social0005.png */; };
+		9A785CD51BE5AA430040E98B /* cinematics_comic1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48331BE4DC6D00F48C86 /* cinematics_comic1-hd.png */; };
+		9A785CD61BE5AA430040E98B /* cinematics_comic2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48351BE4DC6D00F48C86 /* cinematics_comic2-hd.png */; };
+		9A785CD71BE5AA430040E98B /* cinematics_comic3-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48371BE4DC6D00F48C86 /* cinematics_comic3-hd.png */; };
+		9A785CD81BE5AA430040E98B /* cinematics_comic4-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48391BE4DC6D00F48C86 /* cinematics_comic4-hd.png */; };
+		9A785CD91BE5AA430040E98B /* cinematics_comic5-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA483B1BE4DC6D00F48C86 /* cinematics_comic5-hd.png */; };
+		9A785CDA1BE5AA430040E98B /* cinematics_comic6-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA483D1BE4DC6D00F48C86 /* cinematics_comic6-hd.png */; };
+		9A785CDB1BE5AA430040E98B /* cinematics_comic7-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA483F1BE4DC6D00F48C86 /* cinematics_comic7-hd.png */; };
+		9A785CDC1BE5AA430040E98B /* cinematics_comic8-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48411BE4DC6D00F48C86 /* cinematics_comic8-hd.png */; };
+		9A785CDD1BE5AA430040E98B /* common_spritesheet_16_a_2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48441BE4DC6D00F48C86 /* common_spritesheet_16_a_2-hd.png */; };
+		9A785CDE1BE5AA430040E98B /* common_spritesheet_16_na_2_IPAD2_5-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48461BE4DC6D00F48C86 /* common_spritesheet_16_na_2_IPAD2_5-hd.png */; };
+		9A785CDF1BE5AA430040E98B /* common_spritesheet_16_na_2_IPAD2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48481BE4DC6D00F48C86 /* common_spritesheet_16_na_2_IPAD2-hd.png */; };
+		9A785CE01BE5AA430040E98B /* common_spritesheet_16_na-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA484A1BE4DC6D00F48C86 /* common_spritesheet_16_na-hd.png */; };
+		9A785CE11BE5AA430040E98B /* common_spritesheet_32-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA484C1BE4DC6D00F48C86 /* common_spritesheet_32-hd.png */; };
+		9A785CE21BE5AA430040E98B /* common_spritesheet_localized_32_cn-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA484E1BE4DC6D00F48C86 /* common_spritesheet_localized_32_cn-hd.png */; };
+		9A785CE31BE5AA430040E98B /* common_spritesheet_localized_32-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48501BE4DC6D00F48C86 /* common_spritesheet_localized_32-hd.png */; };
+		9A785CE41BE5AA430040E98B /* credits_scene-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48521BE4DC6D00F48C86 /* credits_scene-hd.png */; };
+		9A785CE51BE5AA430040E98B /* ending_scene-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48581BE4DC6D00F48C86 /* ending_scene-hd.png */; };
+		9A785CE61BE5AA430040E98B /* faerie_content_2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA485D1BE4DC6D00F48C86 /* faerie_content_2-hd.png */; };
+		9A785CE71BE5AA430040E98B /* faerie_content-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA485F1BE4DC6D00F48C86 /* faerie_content-hd.png */; };
+		9A785CE81BE5AA430040E98B /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48641BE4DC6D00F48C86 /* fps_images.png */; };
+		9A785CE91BE5AA430040E98B /* gui_menu_sprite_campaign_32-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48691BE4DC6D00F48C86 /* gui_menu_sprite_campaign_32-hd.png */; };
+		9A785CEA1BE5AA430040E98B /* gui_menu_sprite_endless_32-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA486B1BE4DC6D00F48C86 /* gui_menu_sprite_endless_32-hd.png */; };
+		9A785CEB1BE5AA430040E98B /* gui_menu_sprite_iron_32-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA486D1BE4DC6D00F48C86 /* gui_menu_sprite_iron_32-hd.png */; };
+		9A785CEC1BE5AA430040E98B /* gui_notification_endless-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA486F1BE4DC6D00F48C86 /* gui_notification_endless-hd.png */; };
+		9A785CED1BE5AA430040E98B /* gui_notification_upgrade-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48711BE4DC6D00F48C86 /* gui_notification_upgrade-hd.png */; };
+		9A785CEE1BE5AA430040E98B /* hulking_rage_content-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48741BE4DC6D00F48C86 /* hulking_rage_content-hd.png */; };
+		9A785CEF1BE5AA430040E98B /* inaps_gemParticle_0001-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48761BE4DC6D00F48C86 /* inaps_gemParticle_0001-ipadhd.png */; };
+		9A785CF01BE5AA430040E98B /* inaps_gemParticle_0001.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48771BE4DC6D00F48C86 /* inaps_gemParticle_0001.png */; };
+		9A785CF11BE5AA430040E98B /* ingame_gui-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA487A1BE4DC6D00F48C86 /* ingame_gui-hd.png */; };
+		9A785CF21BE5AA430040E98B /* lives_particle-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA488C1BE4DC6D00F48C86 /* lives_particle-ipadhd.png */; };
+		9A785CF31BE5AA430040E98B /* lives_particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA488D1BE4DC6D00F48C86 /* lives_particle.png */; };
+		9A785CF41BE5AA440040E98B /* LogoApportable.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA488E1BE4DC6D00F48C86 /* LogoApportable.png */; };
+		9A785CF51BE5AA440040E98B /* mainmenu_spritesheet_32_1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48921BE4DC6D00F48C86 /* mainmenu_spritesheet_32_1-hd.png */; };
+		9A785CF61BE5AA440040E98B /* mainmenu_spritesheet_32_2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48941BE4DC6D00F48C86 /* mainmenu_spritesheet_32_2-hd.png */; };
+		9A785CF71BE5AA440040E98B /* map_difficulty_spritesheet_32-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48981BE4DC6D00F48C86 /* map_difficulty_spritesheet_32-hd.png */; };
+		9A785CF81BE5AA440040E98B /* map_spritesheet_16_a_3-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA489A1BE4DC6D00F48C86 /* map_spritesheet_16_a_3-hd.png */; };
+		9A785CF91BE5AA440040E98B /* map_spritesheet_16_na_i4-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA489C1BE4DC6D00F48C86 /* map_spritesheet_16_na_i4-hd.png */; };
+		9A785CFA1BE5AA440040E98B /* map_spritesheet_16_na_i5-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA489E1BE4DC6D00F48C86 /* map_spritesheet_16_na_i5-hd.png */; };
+		9A785CFB1BE5AA440040E98B /* map_spritesheet_16_na-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48A01BE4DC6D00F48C86 /* map_spritesheet_16_na-hd.png */; };
+		9A785CFC1BE5AA440040E98B /* map_spritesheet_32_2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48A21BE4DC6D00F48C86 /* map_spritesheet_32_2-hd.png */; };
+		9A785CFD1BE5AA440040E98B /* map_spritesheet_32_3-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48A41BE4DC6D00F48C86 /* map_spritesheet_32_3-hd.png */; };
+		9A785CFE1BE5AA440040E98B /* map_spritesheet_32-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48A61BE4DC6D00F48C86 /* map_spritesheet_32-hd.png */; };
+		9A785CFF1BE5AA440040E98B /* metropolis_content_2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48AA1BE4DC6D00F48C86 /* metropolis_content_2-hd.png */; };
+		9A785D001BE5AA440040E98B /* metropolis_content-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48AD1BE4DC6D00F48C86 /* metropolis_content-hd.png */; };
+		9A785D011BE5AA440040E98B /* particleTexture-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48C41BE4DC6D00F48C86 /* particleTexture-ipadhd.png */; };
+		9A785D021BE5AA440040E98B /* particleTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48C51BE4DC6D00F48C86 /* particleTexture.png */; };
+		9A785D031BE5AA440040E98B /* power_loading-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48CB1BE4DC6D00F48C86 /* power_loading-hd.png */; };
+		9A785D041BE5AA440040E98B /* power_loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48CC1BE4DC6D00F48C86 /* power_loading.png */; };
+		9A785D051BE5AA440040E98B /* splash_spritesheet_32-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48D81BE4DC6D00F48C86 /* splash_spritesheet_32-ipadhd.png */; };
+		9A785D061BE5AA440040E98B /* splash_spritesheet_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48DA1BE4DC6D00F48C86 /* splash_spritesheet_32.png */; };
+		9A785D071BE5AA440040E98B /* thumb_stage_endless_1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48E91BE4DC6D00F48C86 /* thumb_stage_endless_1-hd.png */; };
+		9A785D081BE5AA440040E98B /* thumb_stage_endless_2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48EA1BE4DC6D00F48C86 /* thumb_stage_endless_2-hd.png */; };
+		9A785D091BE5AA440040E98B /* thumb_stage1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48EB1BE4DC6D00F48C86 /* thumb_stage1-hd.png */; };
+		9A785D0A1BE5AA440040E98B /* thumb_stage2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48EC1BE4DC6D00F48C86 /* thumb_stage2-hd.png */; };
+		9A785D0B1BE5AA440040E98B /* thumb_stage3-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48ED1BE4DC6D00F48C86 /* thumb_stage3-hd.png */; };
+		9A785D0C1BE5AA440040E98B /* thumb_stage4-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48EE1BE4DC6D00F48C86 /* thumb_stage4-hd.png */; };
+		9A785D0D1BE5AA440040E98B /* thumb_stage5-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48EF1BE4DC6D00F48C86 /* thumb_stage5-hd.png */; };
+		9A785D0E1BE5AA440040E98B /* thumb_stage6-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48F01BE4DC6D00F48C86 /* thumb_stage6-hd.png */; };
+		9A785D0F1BE5AA440040E98B /* thumb_stage7-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48F11BE4DC6D00F48C86 /* thumb_stage7-hd.png */; };
+		9A785D101BE5AA440040E98B /* thumb_stage8-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48F21BE4DC6D00F48C86 /* thumb_stage8-hd.png */; };
+		9A785D111BE5AA440040E98B /* thumb_stage9-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48F31BE4DC6D00F48C86 /* thumb_stage9-hd.png */; };
+		9A785D121BE5AA440040E98B /* thumb_stage10-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48F41BE4DC6D00F48C86 /* thumb_stage10-hd.png */; };
+		9A785D131BE5AA440040E98B /* thumb_stage11-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48F51BE4DC6D00F48C86 /* thumb_stage11-hd.png */; };
+		9A785D141BE5AA440040E98B /* thumb_stage12-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48F61BE4DC6D00F48C86 /* thumb_stage12-hd.png */; };
+		9A785D151BE5AA440040E98B /* thumb_stage13-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48F71BE4DC6D00F48C86 /* thumb_stage13-hd.png */; };
+		9A785D161BE5AA440040E98B /* thumb_stage14-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48F81BE4DC6D00F48C86 /* thumb_stage14-hd.png */; };
+		9A785D171BE5AA440040E98B /* thumb_stage15-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48F91BE4DC6D00F48C86 /* thumb_stage15-hd.png */; };
+		9A785D181BE5AA440040E98B /* thumb_stage16-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48FA1BE4DC6D00F48C86 /* thumb_stage16-hd.png */; };
+		9A785D191BE5AA440040E98B /* thumb_stage17-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48FB1BE4DC6D00F48C86 /* thumb_stage17-hd.png */; };
+		9A785D1A1BE5AA440040E98B /* thumb_stage18-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48FC1BE4DC6D00F48C86 /* thumb_stage18-hd.png */; };
+		9A785D1B1BE5AA440040E98B /* thumb_stage19-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48FD1BE4DC6D00F48C86 /* thumb_stage19-hd.png */; };
+		9A785D1C1BE5AA440040E98B /* thumb_stage20-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48FE1BE4DC6D00F48C86 /* thumb_stage20-hd.png */; };
+		9A785D1D1BE5AA440040E98B /* tooltip_bg_small-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA48FF1BE4DC6D00F48C86 /* tooltip_bg_small-hd.png */; };
+		9A785D1E1BE5AA440040E98B /* tooltip_bg_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49001BE4DC6D00F48C86 /* tooltip_bg_small.png */; };
+		9A785D1F1BE5AA440040E98B /* tooltip_bg-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49011BE4DC6D00F48C86 /* tooltip_bg-hd.png */; };
+		9A785D201BE5AA440040E98B /* tooltip_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49021BE4DC6D00F48C86 /* tooltip_bg.png */; };
+		9A785D211BE5AA440040E98B /* tutorial_powers_polaroids_0001-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49071BE4DC6D00F48C86 /* tutorial_powers_polaroids_0001-hd.png */; };
+		9A785D221BE5AA440040E98B /* tutorial_powers_polaroids_0002-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49081BE4DC6D00F48C86 /* tutorial_powers_polaroids_0002-hd.png */; };
+		9A785D231BE5AA440040E98B /* tutorial_powers_polaroids_0003-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49091BE4DC6D00F48C86 /* tutorial_powers_polaroids_0003-hd.png */; };
+		9A785D241BE5AA440040E98B /* tutorial_powers_polaroids_0004-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA490A1BE4DC6D00F48C86 /* tutorial_powers_polaroids_0004-hd.png */; };
+		9A785D251BE5AA440040E98B /* tutorial_powers_polaroids_0005-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA490B1BE4DC6D00F48C86 /* tutorial_powers_polaroids_0005-hd.png */; };
+		9A785D261BE5AA440040E98B /* tutorial_powers_polaroids_0006-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA490C1BE4DC6D00F48C86 /* tutorial_powers_polaroids_0006-hd.png */; };
+		9A785D271BE5AA440040E98B /* tutorial_powers_polaroids_0007-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA490D1BE4DC6D00F48C86 /* tutorial_powers_polaroids_0007-hd.png */; };
+		9A785D281BE5AA440040E98B /* waveflag_redcircle-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49111BE4DC6D00F48C86 /* waveflag_redcircle-hd.png */; };
+		9A785D291BE5AA440040E98B /* waveflag_redcircle-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49121BE4DC6D00F48C86 /* waveflag_redcircle-ipadhd.png */; };
+		9A785D2A1BE5AA440040E98B /* waveflag_redcircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49131BE4DC6D00F48C86 /* waveflag_redcircle.png */; };
+		9A785D2B1BE5AA440040E98B /* woods_content-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA49161BE4DC6D00F48C86 /* woods_content-hd.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -1452,6 +1692,246 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A785C3C1BE5AA430040E98B /* ally in Resources */,
+				9A785C3D1BE5AA430040E98B /* boss in Resources */,
+				9A785C3E1BE5AA430040E98B /* encyclopedia in Resources */,
+				9A785C3F1BE5AA430040E98B /* enemy in Resources */,
+				9A785C401BE5AA430040E98B /* hero in Resources */,
+				9A785C411BE5AA430040E98B /* iTunesArtwork in Resources */,
+				9A785C421BE5AA430040E98B /* music in Resources */,
+				9A785C431BE5AA430040E98B /* sound in Resources */,
+				9A785C441BE5AA430040E98B /* stage in Resources */,
+				9A785C451BE5AA430040E98B /* tower in Resources */,
+				9A785C461BE5AA430040E98B /* wave in Resources */,
+				9A785C471BE5AA430040E98B /* waypoints in Resources */,
+				9A785C481BE5AA430040E98B /* level2_specialTroll.conf in Resources */,
+				9A785C491BE5AA430040E98B /* level3_specialLeprechaun.conf in Resources */,
+				9A785C4A1BE5AA430040E98B /* level4_specialShrekBird.conf in Resources */,
+				9A785C4B1BE5AA430040E98B /* level6_spawnerController.conf in Resources */,
+				9A785C4C1BE5AA430040E98B /* level10_spawnerController.conf in Resources */,
+				9A785C4D1BE5AA430040E98B /* level11_spawnerController.conf in Resources */,
+				9A785C4E1BE5AA430040E98B /* level13_spawnerController.conf in Resources */,
+				9A785C4F1BE5AA430040E98B /* level14_spawnerController.conf in Resources */,
+				9A785C501BE5AA430040E98B /* level15_spawnerController.conf in Resources */,
+				9A785C511BE5AA430040E98B /* level16_spawnerController.conf in Resources */,
+				9A785C521BE5AA430040E98B /* level17_spawnerController.conf in Resources */,
+				9A785C531BE5AA430040E98B /* level18_spawnerController.conf in Resources */,
+				9A785C541BE5AA430040E98B /* level20_spawnerController.conf in Resources */,
+				9A785C551BE5AA430040E98B /* powersController.conf in Resources */,
+				9A785C561BE5AA430040E98B /* EnemyHalloweenAbomination.h in Resources */,
+				9A785C571BE5AA430040E98B /* achievement_particle-ipadhd.plist in Resources */,
+				9A785C581BE5AA430040E98B /* achievement_particle.plist in Resources */,
+				9A785C591BE5AA430040E98B /* bittering_content-hd.plist in Resources */,
+				9A785C5A1BE5AA430040E98B /* catapult_animations.plist in Resources */,
+				9A785C5B1BE5AA430040E98B /* catapult_endless_explosions_animations.plist in Resources */,
+				9A785C5C1BE5AA430040E98B /* catapult_endless_layer_animations.plist in Resources */,
+				9A785C5D1BE5AA430040E98B /* cinematics_comic1-hd.plist in Resources */,
+				9A785C5E1BE5AA430040E98B /* cinematics_comic2-hd.plist in Resources */,
+				9A785C5F1BE5AA430040E98B /* cinematics_comic3-hd.plist in Resources */,
+				9A785C601BE5AA430040E98B /* cinematics_comic4-hd.plist in Resources */,
+				9A785C611BE5AA430040E98B /* cinematics_comic5-hd.plist in Resources */,
+				9A785C621BE5AA430040E98B /* cinematics_comic6-hd.plist in Resources */,
+				9A785C631BE5AA430040E98B /* cinematics_comic7-hd.plist in Resources */,
+				9A785C641BE5AA430040E98B /* cinematics_comic8-hd.plist in Resources */,
+				9A785C651BE5AA430040E98B /* cinematics_comic9-hd.plist in Resources */,
+				9A785C661BE5AA430040E98B /* common_spritesheet_16_a_2-hd.plist in Resources */,
+				9A785C671BE5AA430040E98B /* common_spritesheet_16_na_2_IPAD2_5-hd.plist in Resources */,
+				9A785C681BE5AA430040E98B /* common_spritesheet_16_na_2_IPAD2-hd.plist in Resources */,
+				9A785C691BE5AA430040E98B /* common_spritesheet_16_na-hd.plist in Resources */,
+				9A785C6A1BE5AA430040E98B /* common_spritesheet_32-hd.plist in Resources */,
+				9A785C6B1BE5AA430040E98B /* common_spritesheet_localized_32_cn-hd.plist in Resources */,
+				9A785C6C1BE5AA430040E98B /* common_spritesheet_localized_32-hd.plist in Resources */,
+				9A785C6D1BE5AA430040E98B /* credits_scene-hd.plist in Resources */,
+				9A785C6E1BE5AA430040E98B /* crystalArcane_extras_animations.plist in Resources */,
+				9A785C6F1BE5AA430040E98B /* crystalSerpent_animations.plist in Resources */,
+				9A785C701BE5AA430040E98B /* elves_inapps_animations.plist in Resources */,
+				9A785C711BE5AA430040E98B /* ending_scene-hd.plist in Resources */,
+				9A785C721BE5AA430040E98B /* ewok_animations.plist in Resources */,
+				9A785C731BE5AA430040E98B /* faerie_content_2-hd.plist in Resources */,
+				9A785C741BE5AA430040E98B /* faerie_content-hd.plist in Resources */,
+				9A785C751BE5AA430040E98B /* faerie_dragons_animations.plist in Resources */,
+				9A785C761BE5AA430040E98B /* faerie_grove_content_animations.plist in Resources */,
+				9A785C771BE5AA430040E98B /* forgotten_content-hd.plist in Resources */,
+				9A785C781BE5AA430040E98B /* galahadriansBastion_layer_animations.plist in Resources */,
+				9A785C791BE5AA430040E98B /* gameScene.assets.plist in Resources */,
+				9A785C7A1BE5AA430040E98B /* gameScene.common.assets.plist in Resources */,
+				9A785C7B1BE5AA430040E98B /* gui_menu_sprite_campaign_32-hd.plist in Resources */,
+				9A785C7C1BE5AA430040E98B /* gui_menu_sprite_endless_32-hd.plist in Resources */,
+				9A785C7D1BE5AA430040E98B /* gui_menu_sprite_iron_32-hd.plist in Resources */,
+				9A785C7E1BE5AA430040E98B /* gui_notification_endless-hd.plist in Resources */,
+				9A785C7F1BE5AA430040E98B /* gui_notification_upgrade-hd.plist in Resources */,
+				9A785C801BE5AA430040E98B /* hulking_rage_content-hd.plist in Resources */,
+				9A785C811BE5AA430040E98B /* hyena_animations.plist in Resources */,
+				9A785C821BE5AA430040E98B /* Info.plist in Resources */,
+				9A785C831BE5AA430040E98B /* ingame_gui-hd.plist in Resources */,
+				9A785C841BE5AA430040E98B /* knocker_animations.plist in Resources */,
+				9A785C851BE5AA430040E98B /* level_general_tips.plist in Resources */,
+				9A785C861BE5AA430040E98B /* level1_tips.plist in Resources */,
+				9A785C871BE5AA430040E98B /* lynn_explosion_animations.plist in Resources */,
+				9A785C881BE5AA430040E98B /* mactans_malicia_animations.plist in Resources */,
+				9A785C891BE5AA430040E98B /* mainmenu_spritesheet_32_1-hd.plist in Resources */,
+				9A785C8A1BE5AA430040E98B /* mainmenu_spritesheet_32_2-hd.plist in Resources */,
+				9A785C8B1BE5AA430040E98B /* malicia_animations.plist in Resources */,
+				9A785C8C1BE5AA430040E98B /* mantaray_animations.plist in Resources */,
+				9A785C8D1BE5AA430040E98B /* map_difficulty_spritesheet_32-hd.plist in Resources */,
+				9A785C8E1BE5AA430040E98B /* map_spritesheet_16_a_3-hd.plist in Resources */,
+				9A785C8F1BE5AA430040E98B /* map_spritesheet_16_na_i4-hd.plist in Resources */,
+				9A785C901BE5AA430040E98B /* map_spritesheet_16_na_i5-hd.plist in Resources */,
+				9A785C911BE5AA430040E98B /* map_spritesheet_16_na-hd.plist in Resources */,
+				9A785C921BE5AA430040E98B /* map_spritesheet_32_2-hd.plist in Resources */,
+				9A785C931BE5AA430040E98B /* map_spritesheet_32_3-hd.plist in Resources */,
+				9A785C941BE5AA430040E98B /* map_spritesheet_32-hd.plist in Resources */,
+				9A785C951BE5AA430040E98B /* mapScene.roads.plist in Resources */,
+				9A785C961BE5AA430040E98B /* mercenary_draw_animations.plist in Resources */,
+				9A785C971BE5AA430040E98B /* metropolis_content_2-hd.plist in Resources */,
+				9A785C981BE5AA430040E98B /* metropolis_content_animations.plist in Resources */,
+				9A785C991BE5AA430040E98B /* metropolis_content-hd.plist in Resources */,
+				9A785C9A1BE5AA430040E98B /* metropolis_crystalUnstable_animations.plist in Resources */,
+				9A785C9B1BE5AA430040E98B /* metropolis_special_teleport_animations.plist in Resources */,
+				9A785C9C1BE5AA430040E98B /* mountedAvenger_animations.plist in Resources */,
+				9A785C9D1BE5AA430040E98B /* ogre_mage_animations.plist in Resources */,
+				9A785C9E1BE5AA430040E98B /* ogre_mage_aura_animations.plist in Resources */,
+				9A785C9F1BE5AA430040E98B /* ogre_mage_proy_animations.plist in Resources */,
+				9A785CA01BE5AA430040E98B /* ogre_mage_shield_animations.plist in Resources */,
+				9A785CA11BE5AA430040E98B /* paralyzingTree_animations.plist in Resources */,
+				9A785CA21BE5AA430040E98B /* paralyzingTree_particle_animations.plist in Resources */,
+				9A785CA31BE5AA430040E98B /* paralyzingTree_particle0_animations.plist in Resources */,
+				9A785CA41BE5AA430040E98B /* paralyzingTree_particle1_animations.plist in Resources */,
+				9A785CA51BE5AA430040E98B /* paralyzingTree_particle2_animations.plist in Resources */,
+				9A785CA61BE5AA430040E98B /* paralyzingTree_stun_animations.plist in Resources */,
+				9A785CA71BE5AA430040E98B /* particle_gems-ipadhd.plist in Resources */,
+				9A785CA81BE5AA430040E98B /* particle_gems.plist in Resources */,
+				9A785CA91BE5AA430040E98B /* particle_inapp_heart-ipadhd.plist in Resources */,
+				9A785CAA1BE5AA430040E98B /* particle_inapp_heart.plist in Resources */,
+				9A785CAB1BE5AA430040E98B /* particle_upgrade-hd.plist in Resources */,
+				9A785CAC1BE5AA430040E98B /* particle_upgrade.plist in Resources */,
+				9A785CAD1BE5AA430040E98B /* particle_victory-ipadhd.plist in Resources */,
+				9A785CAE1BE5AA430040E98B /* particle_victory.plist in Resources */,
+				9A785CAF1BE5AA430040E98B /* perython_animations.plist in Resources */,
+				9A785CB01BE5AA430040E98B /* perython_rockthrower_animations.plist in Resources */,
+				9A785CB11BE5AA430040E98B /* pixie_animations.plist in Resources */,
+				9A785CB21BE5AA430040E98B /* plant_magic_blosom_proy.plist in Resources */,
+				9A785CB31BE5AA430040E98B /* power_lightning_animations.plist in Resources */,
+				9A785CB41BE5AA430040E98B /* rabbit_animations.plist in Resources */,
+				9A785CB51BE5AA430040E98B /* roadRunner_animations.plist in Resources */,
+				9A785CB61BE5AA430040E98B /* scenes.assets.plist in Resources */,
+				9A785CB71BE5AA430040E98B /* scenesCommon.assets.plist in Resources */,
+				9A785CB81BE5AA430040E98B /* snare_endless_animations.plist in Resources */,
+				9A785CB91BE5AA430040E98B /* soldiers_blade_singer_animations.plist in Resources */,
+				9A785CBA1BE5AA430040E98B /* soldiers_forest_keeper_animations.plist in Resources */,
+				9A785CBB1BE5AA430040E98B /* splash_spritesheet_32-ipadhd.plist in Resources */,
+				9A785CBC1BE5AA430040E98B /* splash_spritesheet_32.plist in Resources */,
+				9A785CBD1BE5AA430040E98B /* splashScene.animations.plist in Resources */,
+				9A785CBE1BE5AA430040E98B /* splashScene.assets.plist in Resources */,
+				9A785CBF1BE5AA430040E98B /* stage6_animations.plist in Resources */,
+				9A785CC01BE5AA430040E98B /* stage8_pixie_animations.plist in Resources */,
+				9A785CC11BE5AA430040E98B /* stage10_pork_animations.plist in Resources */,
+				9A785CC21BE5AA430040E98B /* stage10_redRidingHood_animations.plist in Resources */,
+				9A785CC31BE5AA430040E98B /* stage10_wolf_animations.plist in Resources */,
+				9A785CC41BE5AA430040E98B /* stage15_mactans_animations.plist in Resources */,
+				9A785CC51BE5AA430040E98B /* stage15_malicia_animations.plist in Resources */,
+				9A785CC61BE5AA430040E98B /* stage15_shield_animations.plist in Resources */,
+				9A785CC71BE5AA430040E98B /* stage15_specials.plist in Resources */,
+				9A785CC81BE5AA430040E98B /* stage19_drizztdourden_animations.plist in Resources */,
+				9A785CC91BE5AA430040E98B /* stage19_gnoll_drizztdourden_animations.plist in Resources */,
+				9A785CCA1BE5AA430040E98B /* tower_archer_arcane_animations.plist in Resources */,
+				9A785CCB1BE5AA430040E98B /* tower_archer_silver_animations.plist in Resources */,
+				9A785CCC1BE5AA430040E98B /* tower_rock_thrower_entwood_animations.plist in Resources */,
+				9A785CCD1BE5AA430040E98B /* wave_packs1.plist in Resources */,
+				9A785CCE1BE5AA430040E98B /* wave_packs2.plist in Resources */,
+				9A785CCF1BE5AA430040E98B /* woods_content-hd.plist in Resources */,
+				9A785CD01BE5AA430040E98B /* bittering_content-hd.png in Resources */,
+				9A785CD11BE5AA430040E98B /* but_social0004-hd.png in Resources */,
+				9A785CD21BE5AA430040E98B /* but_social0004.png in Resources */,
+				9A785CD31BE5AA430040E98B /* but_social0005-hd.png in Resources */,
+				9A785CD41BE5AA430040E98B /* but_social0005.png in Resources */,
+				9A785CD51BE5AA430040E98B /* cinematics_comic1-hd.png in Resources */,
+				9A785CD61BE5AA430040E98B /* cinematics_comic2-hd.png in Resources */,
+				9A785CD71BE5AA430040E98B /* cinematics_comic3-hd.png in Resources */,
+				9A785CD81BE5AA430040E98B /* cinematics_comic4-hd.png in Resources */,
+				9A785CD91BE5AA430040E98B /* cinematics_comic5-hd.png in Resources */,
+				9A785CDA1BE5AA430040E98B /* cinematics_comic6-hd.png in Resources */,
+				9A785CDB1BE5AA430040E98B /* cinematics_comic7-hd.png in Resources */,
+				9A785CDC1BE5AA430040E98B /* cinematics_comic8-hd.png in Resources */,
+				9A785CDD1BE5AA430040E98B /* common_spritesheet_16_a_2-hd.png in Resources */,
+				9A785CDE1BE5AA430040E98B /* common_spritesheet_16_na_2_IPAD2_5-hd.png in Resources */,
+				9A785CDF1BE5AA430040E98B /* common_spritesheet_16_na_2_IPAD2-hd.png in Resources */,
+				9A785CE01BE5AA430040E98B /* common_spritesheet_16_na-hd.png in Resources */,
+				9A785CE11BE5AA430040E98B /* common_spritesheet_32-hd.png in Resources */,
+				9A785CE21BE5AA430040E98B /* common_spritesheet_localized_32_cn-hd.png in Resources */,
+				9A785CE31BE5AA430040E98B /* common_spritesheet_localized_32-hd.png in Resources */,
+				9A785CE41BE5AA430040E98B /* credits_scene-hd.png in Resources */,
+				9A785CE51BE5AA430040E98B /* ending_scene-hd.png in Resources */,
+				9A785CE61BE5AA430040E98B /* faerie_content_2-hd.png in Resources */,
+				9A785CE71BE5AA430040E98B /* faerie_content-hd.png in Resources */,
+				9A785CE81BE5AA430040E98B /* fps_images.png in Resources */,
+				9A785CE91BE5AA430040E98B /* gui_menu_sprite_campaign_32-hd.png in Resources */,
+				9A785CEA1BE5AA430040E98B /* gui_menu_sprite_endless_32-hd.png in Resources */,
+				9A785CEB1BE5AA430040E98B /* gui_menu_sprite_iron_32-hd.png in Resources */,
+				9A785CEC1BE5AA430040E98B /* gui_notification_endless-hd.png in Resources */,
+				9A785CED1BE5AA430040E98B /* gui_notification_upgrade-hd.png in Resources */,
+				9A785CEE1BE5AA430040E98B /* hulking_rage_content-hd.png in Resources */,
+				9A785CEF1BE5AA430040E98B /* inaps_gemParticle_0001-ipadhd.png in Resources */,
+				9A785CF01BE5AA430040E98B /* inaps_gemParticle_0001.png in Resources */,
+				9A785CF11BE5AA430040E98B /* ingame_gui-hd.png in Resources */,
+				9A785CF21BE5AA430040E98B /* lives_particle-ipadhd.png in Resources */,
+				9A785CF31BE5AA430040E98B /* lives_particle.png in Resources */,
+				9A785CF41BE5AA440040E98B /* LogoApportable.png in Resources */,
+				9A785CF51BE5AA440040E98B /* mainmenu_spritesheet_32_1-hd.png in Resources */,
+				9A785CF61BE5AA440040E98B /* mainmenu_spritesheet_32_2-hd.png in Resources */,
+				9A785CF71BE5AA440040E98B /* map_difficulty_spritesheet_32-hd.png in Resources */,
+				9A785CF81BE5AA440040E98B /* map_spritesheet_16_a_3-hd.png in Resources */,
+				9A785CF91BE5AA440040E98B /* map_spritesheet_16_na_i4-hd.png in Resources */,
+				9A785CFA1BE5AA440040E98B /* map_spritesheet_16_na_i5-hd.png in Resources */,
+				9A785CFB1BE5AA440040E98B /* map_spritesheet_16_na-hd.png in Resources */,
+				9A785CFC1BE5AA440040E98B /* map_spritesheet_32_2-hd.png in Resources */,
+				9A785CFD1BE5AA440040E98B /* map_spritesheet_32_3-hd.png in Resources */,
+				9A785CFE1BE5AA440040E98B /* map_spritesheet_32-hd.png in Resources */,
+				9A785CFF1BE5AA440040E98B /* metropolis_content_2-hd.png in Resources */,
+				9A785D001BE5AA440040E98B /* metropolis_content-hd.png in Resources */,
+				9A785D011BE5AA440040E98B /* particleTexture-ipadhd.png in Resources */,
+				9A785D021BE5AA440040E98B /* particleTexture.png in Resources */,
+				9A785D031BE5AA440040E98B /* power_loading-hd.png in Resources */,
+				9A785D041BE5AA440040E98B /* power_loading.png in Resources */,
+				9A785D051BE5AA440040E98B /* splash_spritesheet_32-ipadhd.png in Resources */,
+				9A785D061BE5AA440040E98B /* splash_spritesheet_32.png in Resources */,
+				9A785D071BE5AA440040E98B /* thumb_stage_endless_1-hd.png in Resources */,
+				9A785D081BE5AA440040E98B /* thumb_stage_endless_2-hd.png in Resources */,
+				9A785D091BE5AA440040E98B /* thumb_stage1-hd.png in Resources */,
+				9A785D0A1BE5AA440040E98B /* thumb_stage2-hd.png in Resources */,
+				9A785D0B1BE5AA440040E98B /* thumb_stage3-hd.png in Resources */,
+				9A785D0C1BE5AA440040E98B /* thumb_stage4-hd.png in Resources */,
+				9A785D0D1BE5AA440040E98B /* thumb_stage5-hd.png in Resources */,
+				9A785D0E1BE5AA440040E98B /* thumb_stage6-hd.png in Resources */,
+				9A785D0F1BE5AA440040E98B /* thumb_stage7-hd.png in Resources */,
+				9A785D101BE5AA440040E98B /* thumb_stage8-hd.png in Resources */,
+				9A785D111BE5AA440040E98B /* thumb_stage9-hd.png in Resources */,
+				9A785D121BE5AA440040E98B /* thumb_stage10-hd.png in Resources */,
+				9A785D131BE5AA440040E98B /* thumb_stage11-hd.png in Resources */,
+				9A785D141BE5AA440040E98B /* thumb_stage12-hd.png in Resources */,
+				9A785D151BE5AA440040E98B /* thumb_stage13-hd.png in Resources */,
+				9A785D161BE5AA440040E98B /* thumb_stage14-hd.png in Resources */,
+				9A785D171BE5AA440040E98B /* thumb_stage15-hd.png in Resources */,
+				9A785D181BE5AA440040E98B /* thumb_stage16-hd.png in Resources */,
+				9A785D191BE5AA440040E98B /* thumb_stage17-hd.png in Resources */,
+				9A785D1A1BE5AA440040E98B /* thumb_stage18-hd.png in Resources */,
+				9A785D1B1BE5AA440040E98B /* thumb_stage19-hd.png in Resources */,
+				9A785D1C1BE5AA440040E98B /* thumb_stage20-hd.png in Resources */,
+				9A785D1D1BE5AA440040E98B /* tooltip_bg_small-hd.png in Resources */,
+				9A785D1E1BE5AA440040E98B /* tooltip_bg_small.png in Resources */,
+				9A785D1F1BE5AA440040E98B /* tooltip_bg-hd.png in Resources */,
+				9A785D201BE5AA440040E98B /* tooltip_bg.png in Resources */,
+				9A785D211BE5AA440040E98B /* tutorial_powers_polaroids_0001-hd.png in Resources */,
+				9A785D221BE5AA440040E98B /* tutorial_powers_polaroids_0002-hd.png in Resources */,
+				9A785D231BE5AA440040E98B /* tutorial_powers_polaroids_0003-hd.png in Resources */,
+				9A785D241BE5AA440040E98B /* tutorial_powers_polaroids_0004-hd.png in Resources */,
+				9A785D251BE5AA440040E98B /* tutorial_powers_polaroids_0005-hd.png in Resources */,
+				9A785D261BE5AA440040E98B /* tutorial_powers_polaroids_0006-hd.png in Resources */,
+				9A785D271BE5AA440040E98B /* tutorial_powers_polaroids_0007-hd.png in Resources */,
+				9A785D281BE5AA440040E98B /* waveflag_redcircle-hd.png in Resources */,
+				9A785D291BE5AA440040E98B /* waveflag_redcircle-ipadhd.png in Resources */,
+				9A785D2A1BE5AA440040E98B /* waveflag_redcircle.png in Resources */,
+				9A785D2B1BE5AA440040E98B /* woods_content-hd.png in Resources */,
 				46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
@@ -1507,7 +1987,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Feng Hou (L27QTLH5K5)";
 				COMPRESS_PNG_FILES = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -1544,7 +2024,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Feng Hou (L27QTLH5K5)";
 				COMPRESS_PNG_FILES = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
