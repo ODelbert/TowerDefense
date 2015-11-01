@@ -60,7 +60,6 @@ struct EnemyInfo
     int flyable;
 };
 
-
 class PListReader : public cocos2d::Ref
 {
 public:
