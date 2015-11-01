@@ -31,7 +31,14 @@ private:
 
 class AnimationPlist : public cocos2d::Ref
 {
-    
+public:
+    struct AnimationSpriteInfo
+    {
+        std::string name;
+        std::string prefix;
+        int fromIndex;
+        int toIndex;
+    };
 };
 
 class WavePlist : public cocos2d::Ref
