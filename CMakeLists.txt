@@ -110,6 +110,9 @@ endif()
 include_directories(
   /usr/local/include/GLFW
   /usr/include/GLFW
+  Classes/ResourceManager
+  Classes/Scene
+  Classes/tests
   ${COCOS2D_ROOT}/cocos
   ${COCOS2D_ROOT}/cocos/platform
   ${COCOS2D_ROOT}/cocos/audio/include/
@@ -125,12 +128,19 @@ endif( WIN32 )
 set(GAME_SRC
   Classes/AppDelegate.cpp
   Classes/HelloWorldScene.cpp
+  Classes/ResourceManager/PListReader.cpp
+  Classes/Scene/GameScene.cpp
+  Classes/tests/TestLayer.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
 set(GAME_HEADERS
   Classes/AppDelegate.h
   Classes/HelloWorldScene.h
+  Classes/CommonDef.h
+  Classes/ResourceManager/PListReader.h
+  Classes/Scene/GameScene.h
+  Classes/tests/TestLayer.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 
