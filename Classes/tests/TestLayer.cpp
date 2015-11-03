@@ -216,7 +216,7 @@ void TestLayer::moveSprite(float dt)
 
 void TestLayer::stopActions()
 {
-    for (int i = 0; i <　static_cast<int>(ActionTag_Num); ++i) {
+    for (int i = 0; i < static_cast<int>(ActionTag_Num); ++i) {
         m_runningEnemy->stopActionByTag(i);
     }
 }
