@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <vector>
 #include "cocos2d.h"
+
 USING_NS_CC;
 
 class TestLayer : public Layer
@@ -22,7 +23,6 @@ public:
     
 private:
     void moveSprite(float dt);
-    void stopActions();
     
 private:
     Sprite* m_bkg;

@@ -11,7 +11,7 @@
 #include <stdio.h>
 
 #include "CommonDef.h"
-
+#include "AnimationManager.h"
 
 USING_NS_CC;
 
@@ -30,54 +30,6 @@ static void convertToCamelCase(std::string &str, const std::string prefix)
     tmp += str;
     str = tmp;
 }
-
-void TableIndexer::put(int id, int type, std::string str)
-{
-    for (int i = 0; i < m_table.size(); ++i) {
-        if (id == m_table[i].id) {
-            m_table[i].m_chains.push_back(TableData(type, str));
-            return;
-        }
-    }
-    
-    TableHeader head;
-    head.id = id;
-    head.m_chains.push_back(TableData(type, str));
-    m_table.push_back(head);
-}
-
-void TableIndexer::remove(int id, int type)
-{
-    std::vector<TableHeader>::iterator iter = m_table.begin();
-    for (; iter != m_table.end(); ++iter) {
-        if (id == iter->id) {
-            m_table.erase(iter);
-        }
-    }
-}
-
-std::string TableIndexer::find(int id, int type)
-{
-    for (int i = 0; i < m_table.size(); ++i) {
-        if (id == m_table[i].id) {
-            for (int j = 0; j < m_table[i].m_chains.size(); ++j) {
-                if (type == m_table[i].m_chains[j].type) {
-                    return m_table[i].m_chains[j].name;
-                }
-            }
-        }
-    }
-}
-
-void TableIndexer::show()
-{
-    for (int i = 0; i < m_table.size(); ++i) {
-        for (int j = 0; j < m_table[i].m_chains.size(); ++j) {
-            CCLOG("id %d type %d name %s", m_table[i].id, m_table[i].m_chains[j].type, m_table[i].m_chains[j].name.c_str());
-        }
-    }
-}
-
 
 static EnemyPlist::EnemySpriteInfo s_enemySpriteInfoNone;
 
@@ -159,20 +111,6 @@ EnemyPlist* PListReader::createEnemyPlist(const std::string &plistname)
     }
 
     return plist;
-}
-
-PListReader::PListReader()
-{
-    m_table = new TableIndexer;
-    
-}
-
-PListReader::~PListReader()
-{
-    if (m_table) {
-        delete m_table;
-        m_table = NULL;
-    }
 }
 
 void PListReader::createAnimationWithPlist(const std::string &name)
@@ -341,7 +279,7 @@ void PListReader::createEnemyAnimationTableIndexer()
         return false;
     };
     
-    auto addAnimation = [](TableIndexer* table, int id, const std::string& path) {
+    auto addAnimation = [](int id, const std::string& path) {
         ValueMap root = FileUtils::getInstance()->getValueMapFromFile(path);
         if (root.empty()) {
             CCLOG("PListReader::lookupActionTypes failed to create with file [%s]", path.c_str());
@@ -377,13 +315,15 @@ void PListReader::createEnemyAnimationTableIndexer()
                     // CCLog("%s exist", actionName.c_str());
                     actionId = (id << 16) | i;
                     normalAction = true;
-                    table->put(id, i, name);
+                    AnimationManager::getInstance()->addAnimationIndex(id, i, name);
+                    // table->put(id, i, name);
                     break;
                 }
             }
             
             if (!normalAction) {
-                 table->put(id, ++s_actionId_ht_counter, name);
+                AnimationManager::getInstance()->addAnimationIndex(id, ++s_actionId_ht_counter, name);
+                 // table->put(id, ++s_actionId_ht_counter, name);
             }
             
             convertToCamelCase(enumName, "EnemyAction_");
@@ -408,13 +348,13 @@ void PListReader::createEnemyAnimationTableIndexer()
                 std::string enmeyName = path.substr(0, path.find("_animations"));
                 convertToCamelCase(enmeyName, "EnemyID_");
                 ++s_enemyId_ht_counter;
-                addAnimation(m_table, s_enemyId_ht_counter, ptr->d_name);
+                addAnimation(s_enemyId_ht_counter, ptr->d_name);
             }
             
         }
     }
     closedir(dir);
-    m_table->show();
+    AnimationManager::getInstance()->showTable();
 #else
     // TODO:: add win32 file traverse impelement
 #endif

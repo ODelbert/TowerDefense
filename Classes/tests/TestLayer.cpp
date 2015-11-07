@@ -9,6 +9,9 @@
 #include <vector>
 #include "TestLayer.h"
 #include "PListReader.h"
+#include "AnimationManager.h"
+#include "Enemy.h"
+#include "ResourceId.h"
 
 static double s_rate = 1.0f;
 
@@ -120,6 +123,10 @@ static const std::string AnimationNamePlist[] =
 
 bool TestLayer::init()
 {
+    
+    PListReader::getInstance()->createEnemyAnimationTableIndexer();
+    
+    
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     // load resources
@@ -148,12 +155,13 @@ bool TestLayer::init()
     
     auto attacker = Sprite::createWithSpriteFrameName("redcap_0001.png");
     m_runningEnemy = Sprite::createWithSpriteFrameName("redcap_0001.png");
-    auto actionAttack = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation("redcap_attack")));
-    if (!attacker || !actionAttack) {
-        return false;
-    }
+//    auto actionAttack = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation("redcap_attack")));
+//    if (!attacker || !actionAttack) {
+//        return false;
+//    }
     
-    attacker->runAction(actionAttack);
+//    attacker->runAction(actionAttack);
+    AnimationManager::getInstance()->runAction(attacker, EnemyID_Redcap, EnemyAction_Redcap_Death);
     attacker->setPosition(Vec2(200, 200));
     m_bkg->addChild(attacker);
     m_bkg->addChild(m_runningEnemy);
@@ -162,61 +170,57 @@ bool TestLayer::init()
     std::vector<std::vector<std::vector<Vec2> > > paths = PListReader::getInstance()->readPathPlist(1);
     m_path = paths[0][0];
     m_pathIndex = 0;
+
     return true;
 }
 
 void TestLayer::moveSprite(float dt)
 {
+    static int s_lastDir = 0;
     if (m_pathIndex + 1 >= m_path.size()) {
         unschedule(schedule_selector(TestLayer::moveSprite));
         m_bkg->removeChild(m_runningEnemy, true);
         return;
     }
     
-    stopActions();
     Vec2 pos = m_path[m_pathIndex];
     Vec2 nextPos = m_path[m_pathIndex + 1];
-    float angle = atan2f(nextPos.y - pos.y, nextPos.x - pos.x) * 180 / 3.14;
-    CCLOG("angle =%f", angle);
-    if (angle > -45 && angle <= 45) {
-        // right
-        CCLOG("->");
-        auto action = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation("redcap_walkingRightLeft")));
-        action->setTag(ActionTag_WalkingRight);
-        m_runningEnemy->runAction(action);
-    }
-    else if (angle > 45 && angle <= 135) {
-        // up
-        auto action = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation("redcap_walkingUp")));
-        action->setTag(ActionTag_WalkingUp);
-        m_runningEnemy->runAction(action);
-        CCLOG("Up");
-    }
-    else if (angle >=135 && angle <=225) {
-        // left
-        auto action = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation("redcap_walkingRightLeft")));
-        action->setTag(ActionTag_WalkingLeft);
-        m_runningEnemy->runAction(action);
-        m_runningEnemy->setFlippedX(true);
-        CCLOG("<-");
-    }
-    else {
-        // down
-        auto action = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation("redcap_walkingDown")));
-        action->setTag(ActionTag_WalkingDown);
-        m_runningEnemy->runAction(action);
-        CCLOG("Down");
-    }
-
+    
     // 120, offset of path_x
     // 100, offset of path_y
     m_runningEnemy->setPosition(Vec2(s_rate * (nextPos.x + 120), s_rate * (nextPos.y + 100) + 59));
     ++m_pathIndex;
-}
-
-void TestLayer::stopActions()
-{
-    for (int i = 0; i < static_cast<int>(ActionTag_Num); ++i) {
-        m_runningEnemy->stopActionByTag(i);
+    
+    float angle = atan2f(nextPos.y - pos.y, nextPos.x - pos.x) * 180 / 3.14;
+    CCLOG("angle =%f", angle);
+    
+    if (angle > -45 && angle <= 45) {
+        // right
+        if (s_lastDir == ActionTag_WalkingRight) return;
+        s_lastDir = ActionTag_WalkingRight;
+        AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingRightLeft);
+    }
+    else if (angle > 45 && angle <= 135) {
+        // up
+        if (s_lastDir == ActionTag_WalkingUp) return;
+        s_lastDir = ActionTag_WalkingUp;
+        AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingUp);
+    }
+    else if (angle >=135 && angle <=225) {
+        // left
+        if (s_lastDir == ActionTag_WalkingLeft) return;
+        s_lastDir = ActionTag_WalkingLeft;
+        AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingRightLeft);
+        m_runningEnemy->setFlippedX(true);
+    }
+    else {
+        // down
+        if (s_lastDir == ActionTag_WalkingDown) return;
+        s_lastDir = ActionTag_WalkingDown;
+        AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingDown);
+        CCLOG("Down");
     }
 }
+
+
+
