@@ -3,6 +3,37 @@
 
 #include "CommonDef.h"
 #include "cocos2d.h"
+#include "uthash.h"
+#include <vector>
+
+
+
+class TableIndexer : public cocos2d::Ref
+{
+    class TableData
+    {
+    public:
+        TableData(int type, std::string name):type(type), name(name) {}
+        int type;
+        
+        std::string name;
+    };
+    
+    class TableHeader
+    {
+        friend class TableIndexer;
+        int id;
+        std::vector<TableData> m_chains;
+    };
+#define HASH(id, type) ((id) << 16 | (type))
+public:
+    void put(int id, int type, std::string str);
+    void remove(int id, int type);
+    std::string find(int id, int type);
+    void show();
+private:
+    std::vector<TableHeader> m_table;
+};
 
 class EnemyPlist : public cocos2d::Ref
 {
@@ -76,8 +107,17 @@ public:
     std::vector<std::vector<std::vector<cocos2d::Vec2> > > readPathPlist(int level);
     EnemyInfo readEnemyInfoPlist(const std::string& name);
     
+    void createEnemyAnimationTableIndexer();
+
+private:
+    PListReader();
+    virtual ~PListReader();
+    
 private:
     static PListReader* s_instance;
+    
+private:
+    TableIndexer* m_table;
 };
 
 

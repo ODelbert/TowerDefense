@@ -1,6 +1,83 @@
 #include "PListReader.h"
+
+#if (CC_PLATFORM_MAC == CC_TARGET_PLATFORM || CC_PLATFORM_IOS == CC_TARGET_PLATFORM || CC_PLATFORM_LINUX == CC_TARGET_PLATFORM)
+#   include <sys/types.h>
+#   include <dirent.h>
+#   include <unistd.h>
+#else
+// TODO:win32
+#endif
+
+#include <stdio.h>
+
 #include "CommonDef.h"
+
+
 USING_NS_CC;
+
+static void convertToCamelCase(std::string &str, const std::string prefix)
+{
+    if (str[0] >= 'a' && str[0] <= 'z')
+        str[0] -= 32;
+    int index = 0;
+    while ((index = str.find("_", index)) != std::string::npos) {
+        if (str[index + 1] >= 'a' && str[index + 1] <= 'z')
+            str[index + 1] -= 32;
+        ++index;
+    }
+    
+    std::string tmp = prefix;
+    tmp += str;
+    str = tmp;
+}
+
+void TableIndexer::put(int id, int type, std::string str)
+{
+    for (int i = 0; i < m_table.size(); ++i) {
+        if (id == m_table[i].id) {
+            m_table[i].m_chains.push_back(TableData(type, str));
+            return;
+        }
+    }
+    
+    TableHeader head;
+    head.id = id;
+    head.m_chains.push_back(TableData(type, str));
+    m_table.push_back(head);
+}
+
+void TableIndexer::remove(int id, int type)
+{
+    std::vector<TableHeader>::iterator iter = m_table.begin();
+    for (; iter != m_table.end(); ++iter) {
+        if (id == iter->id) {
+            m_table.erase(iter);
+        }
+    }
+}
+
+std::string TableIndexer::find(int id, int type)
+{
+    for (int i = 0; i < m_table.size(); ++i) {
+        if (id == m_table[i].id) {
+            for (int j = 0; j < m_table[i].m_chains.size(); ++j) {
+                if (type == m_table[i].m_chains[j].type) {
+                    return m_table[i].m_chains[j].name;
+                }
+            }
+        }
+    }
+}
+
+void TableIndexer::show()
+{
+    for (int i = 0; i < m_table.size(); ++i) {
+        for (int j = 0; j < m_table[i].m_chains.size(); ++j) {
+            CCLOG("id %d type %d name %s", m_table[i].id, m_table[i].m_chains[j].type, m_table[i].m_chains[j].name.c_str());
+        }
+    }
+}
+
 
 static EnemyPlist::EnemySpriteInfo s_enemySpriteInfoNone;
 
@@ -82,6 +159,20 @@ EnemyPlist* PListReader::createEnemyPlist(const std::string &plistname)
     }
 
     return plist;
+}
+
+PListReader::PListReader()
+{
+    m_table = new TableIndexer;
+    
+}
+
+PListReader::~PListReader()
+{
+    if (m_table) {
+        delete m_table;
+        m_table = NULL;
+    }
 }
 
 void PListReader::createAnimationWithPlist(const std::string &name)
@@ -200,3 +291,132 @@ EnemyInfo PListReader::readEnemyInfoPlist(const std::string& name)
     
     return info;
 }
+
+void PListReader::createEnemyAnimationTableIndexer()
+{
+    static const std::string s_actionType[] =
+    {
+        "attack",
+        "walkingDown",
+        "walkingRightLeft",
+        "idle",
+        "walkingUp",
+        "death",
+        "spawn",
+        "respawn",
+        "shoot",
+        "cast",
+        "special"
+    };
+    static int s_enemyId_ht_counter = 0;
+    static int s_actionId_ht_counter = 0;
+    
+    auto isEnemyPlistFile = [](const std::string& path)->bool {
+        ValueMap root = FileUtils::getInstance()->getValueMapFromFile(path);
+        if (root.empty()) {
+            CCLOG("PListReader::lookupActionTypes failed to create with file [%s]", path.c_str());
+            return false;
+        }
+        
+        ValueMap animationDict = root["animations"].asValueMap();
+        ValueMap::const_iterator iter = animationDict.begin();
+        while (iter != animationDict.end()) {
+            std::string name = iter->first;
+            if (name.find("boss") != std::string::npos) {
+                return false;
+            }
+            if (name.find("hero") != std::string::npos) {
+                return false;
+            }
+            
+            int idx = name.find_last_of('_');
+            //CCLOG("%s", name.substr(idx + 1).c_str());
+            if ("walkingRightLeft" == name.substr(idx + 1)) {
+                return true;
+            }
+            
+            ++iter;
+        }
+        
+        return false;
+    };
+    
+    auto addAnimation = [](TableIndexer* table, int id, const std::string& path) {
+        ValueMap root = FileUtils::getInstance()->getValueMapFromFile(path);
+        if (root.empty()) {
+            CCLOG("PListReader::lookupActionTypes failed to create with file [%s]", path.c_str());
+            return;
+        }
+        
+        ValueMap animationDict = root["animations"].asValueMap();
+        if (animationDict.empty()) {
+            return;
+        }
+        
+        ValueMap::const_iterator iter = animationDict.begin();
+        ValueMap firstEntry = iter->second.asValueMap();
+        std::string enemyName = firstEntry["prefix"].asString();
+        while (iter != animationDict.end()) {
+            std::string enumName = iter->first;
+
+            bool exist = false;
+            std::string name = iter->first;
+            std::string actionName;
+            if (name.find(enemyName) == std::string::npos) {
+                actionName = name.substr(name.find_last_of("_") + 1);
+            }
+            else {
+                actionName  = name.substr(enemyName.size() + 1);
+            }
+            
+            bool normalAction = false;
+            int actionId = 0;
+            int i = 0;
+            for (;i < sizeof(s_actionType) / sizeof(s_actionType[0]); ++i) {
+                if (s_actionType[i] == actionName) {
+                    // CCLog("%s exist", actionName.c_str());
+                    actionId = (id << 16) | i;
+                    normalAction = true;
+                    table->put(id, i, name);
+                    break;
+                }
+            }
+            
+            if (!normalAction) {
+                 table->put(id, ++s_actionId_ht_counter, name);
+            }
+            
+            convertToCamelCase(enumName, "EnemyAction_");
+//            CCLog("enemy action name %s -> enum name= %s actionID %d", iter->first.c_str(), enumName.c_str(), normalAction ? i : s_actionId_ht_counter);
+            CCLOG("#define %s %d", enumName.c_str(), normalAction ? i : s_actionId_ht_counter);
+            
+            ++iter;
+        }
+    };
+
+#if (CC_PLATFORM_MAC == CC_TARGET_PLATFORM || CC_PLATFORM_IOS == CC_TARGET_PLATFORM || CC_PLATFORM_LINUX == CC_TARGET_PLATFORM)
+    DIR *dir;
+    struct dirent *ptr;
+    dir = opendir(".");
+    
+    while (NULL != (ptr = readdir(dir)))
+    {
+        if (strstr(ptr->d_name, "animations.plist")) {
+            // CCLOG("d_name: %s\n", ptr->d_name);
+            if (isEnemyPlistFile(ptr->d_name)) {
+                std::string path(ptr->d_name);
+                std::string enmeyName = path.substr(0, path.find("_animations"));
+                convertToCamelCase(enmeyName, "EnemyID_");
+                ++s_enemyId_ht_counter;
+                addAnimation(m_table, s_enemyId_ht_counter, ptr->d_name);
+            }
+            
+        }
+    }
+    closedir(dir);
+    m_table->show();
+#else
+    // TODO:: add win32 file traverse impelement
+#endif
+}
+
