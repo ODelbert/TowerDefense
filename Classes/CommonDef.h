@@ -5,8 +5,11 @@
 #include <map>
 #include <stdio.h>
 
-#define TD_TEST
-#define TD_DEBUG
+//#define TD_TEST
+//#define TD_DEBUG
+
+#define TD_WIDTH 1136
+#define TD_HEIGHT 640
 
 #define SINGLETON_IMPL(class) \
 class* class::s_instance = nullptr; \

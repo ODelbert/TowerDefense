@@ -1,4 +1,5 @@
 #include "AppDelegate.h"
+#include "CommonDef.h"
 #include "GameScene.h"
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(480, 320);
@@ -48,7 +49,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     // Set the design resolution
-    glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
+    glview->setDesignResolutionSize(TD_WIDTH, TD_HEIGHT, ResolutionPolicy::NO_BORDER);
     Size frameSize = glview->getFrameSize();
     // if the frame's height is larger than the height of medium size.
     if (frameSize.height > mediumResolutionSize.height)
