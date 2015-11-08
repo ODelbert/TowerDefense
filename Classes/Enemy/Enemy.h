@@ -11,6 +11,41 @@
 
 #include <stdio.h>
 
+enum TowerType {
+    TowerType_Invalid = -1,
+    TowerType_Ancher = 0,
+    TowerType_Barracks = 1,
+    TowerType_Mage = 2,
+    TowerType_Cannon = 3
+};
+
+enum WeaponType {
+    WeaponType_Invalid = -1,
+    WeaponType_Normal = 0,
+    WeaponType_Archer = 1,
+    WeaponType_Mage = 2,
+    WeaponType_Bomb = 3,
+};
+
+enum ArmorType {
+    ArmorType_Invalid = -1,
+    ArmorType_Non = 0,
+    ArmorType_Small = 1,
+    ArmorType_Mid = 2,
+    ArmorType_Heavy = 3,
+    ArmorType_Stone = 4,
+    ArmorType_Hero = 5,
+    ArmorType_Holy = 6
+};
+
+enum SpeedType {
+    SpeedType_VerySlow = 0,
+    SpeedType_Slow,
+    SpeedType_Normal,
+    SpeedType_Fast,
+    SpeedType_VeryFast
+};
+
 enum EnemyID
 {
     EnemyID_Arachnomancer = 1,
@@ -26,7 +61,7 @@ enum EnemyID
     EnemyID_Ettin = 11,
     EnemyID_FungusRider = 12,
     EnemyID_FungusRider_Medium = 13,
-    EnemyID_FungusRider_Small = 14,
+    EnemyID_FungusRider_Small = 14, // err
     EnemyID_Gloomy = 15,
     EnemyID_Gnoll_Blighter = 16,
     EnemyID_Gnoll_Burner = 17,
@@ -60,7 +95,50 @@ enum EnemyID
     EnemyID_Twilight_Bannerbearer = 45,
     EnemyID_Twilight_Evoker = 46,
     EnemyID_Twilight_Heretic = 47,
-    EnemyID_WebspitterSpider = 48
+    EnemyID_WebspitterSpider = 48,
+    EnemyID_Num = EnemyID_WebspitterSpider,
+};
+
+enum EnemyState {
+    EnemyState_Invalid = -1,
+    EnemyState_AttackLeft,
+    EnemyState_AttackRight,
+    EnemyState_CastSpellLeft,
+    EnemyState_CastSpellRight,
+    EnemyState_Dead,
+    EnemyState_WalkLeft,
+    EnemyState_WalkRight,
+    EnemyState_WalkDown,
+    EnemyState_WalkUp,
+    EnemyState_ChargeDown,
+    EnemyState_ChargeLeft,
+    EnemyState_ChargeRight,
+    EnemyState_ChargeUp,
+    EnemyState_SpeicalAttackLeft,
+    EnemyState_SpeicalAttackRight,
+    EnemyState_Appear,
+    EnmeyState_Num
+};
+
+// debuff state last for seconds
+enum DeBuffState {
+    DeBuffState_Weak = 0x0001, // more damage is taken
+    DeBuffState_DisArm = 0x0002, // disable attack
+    DeBuffState_Blooding = 0x0004, // blooding
+    DeBuffState_Slow = 0x0008, // slow down move speed
+    DeBuffState_Freeze = 0x0010, // freeze,can not move
+    DeBuffState_Borning = 0x0020, // born, time lasting damage
+    DeBuffState_Posion = 0x0040, // posion, time lasting damage
+    DeBuffState_Stun = 0x0080, // stun, cannot move & attack
+    DeBuffState_Armor = 0x0100, // decreace armor
+};
+
+// buff state last for seconds
+enum BuffState {
+    BuffState_Hasten = 0x0001, // speed up
+    BuffState_Recover = 0x0002, // life recover
+    BuffState_Fury = 0x0004, // attack damage up
+    BuffState_EnegyShield = 0x0008 // protect shield
 };
 
 #endif /* defined(__TowerDefense__EnemyBase__) */
