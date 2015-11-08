@@ -180,7 +180,7 @@ std::vector<std::vector<std::vector<Vec2> > > PListReader::readPathPlist(int lev
         paths.push_back(subPaths);
     }
     
-#ifdef TD_TEST
+#ifdef TD_DEBUG
     for (int i = 0 ; i < paths.size(); ++i) {
         std::vector<std::vector<Vec2> > subpath = paths[i];
         for (int j = 0; j < subpath.size(); ++j) {
@@ -246,6 +246,7 @@ void PListReader::createEnemyAnimationTableIndexer()
         "cast",
         "special"
     };
+    
     static int s_enemyId_ht_counter = 0;
     static int s_actionId_ht_counter = 0;
     
@@ -260,10 +261,9 @@ void PListReader::createEnemyAnimationTableIndexer()
         ValueMap::const_iterator iter = animationDict.begin();
         while (iter != animationDict.end()) {
             std::string name = iter->first;
-            if (name.find("boss") != std::string::npos) {
-                return false;
-            }
-            if (name.find("hero") != std::string::npos) {
+            if (name.find("boss") != std::string::npos ||
+                name.find("hero") != std::string::npos ||
+                name.find("rabbit") != std::string::npos) {
                 return false;
             }
             
@@ -347,16 +347,62 @@ void PListReader::createEnemyAnimationTableIndexer()
                 std::string path(ptr->d_name);
                 std::string enmeyName = path.substr(0, path.find("_animations"));
                 convertToCamelCase(enmeyName, "EnemyID_");
+                CCLog("%s = %d", enmeyName.c_str(), s_enemyId_ht_counter++);
                 ++s_enemyId_ht_counter;
                 addAnimation(s_enemyId_ht_counter, ptr->d_name);
             }
-            
         }
     }
     closedir(dir);
+#ifdef TD_DEBUG
     AnimationManager::getInstance()->showTable();
+#endif
+
 #else
     // TODO:: add win32 file traverse impelement
 #endif
 }
 
+void PListReader::saveImageFromPlist(const std::string &plist)
+{
+    // force add sprite frame
+    Size winSize = Director::getInstance()->getWinSize();
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile(plist);
+    ValueMap root = FileUtils::getInstance()->getValueMapFromFile(plist);
+    ValueMap::const_iterator itr = root.begin();
+    while (itr != root.end()) {
+        ++itr;
+    }
+    
+    if (root.empty()) {
+        return;
+    }
+    
+    std::string folderName = plist.substr(0, plist.find_last_of("."));
+    FileUtils::getInstance()->createDirectory(FileUtils::getInstance()->getWritablePath() + folderName);
+    ValueMap frames = root["frames"].asValueMap();
+    ValueMap::const_iterator iter = frames.begin();
+    while (iter != frames.end()) {
+        Sprite* sprite = Sprite::createWithSpriteFrameName(iter->first);
+        if (!sprite) {
+            return;
+        }
+        
+        auto render = RenderTexture::create(winSize.width, winSize.height);
+        if (!render) {
+            return;
+        }
+        
+        sprite->setPosition(winSize.width / 2, winSize.height / 2);
+        render->begin();
+        sprite->visit();
+        render->end();
+#if 0 // 需要cocos2d-x保存路径方法， CCRenderTexture::saveImage
+        render->saveToFile(iter->first, folderName, Image::Format::PNG);
+#else
+        render->saveToFile(iter->first, Image::Format::PNG);
+#endif
+        CCLOG("save %s to %s", iter->first.c_str(), FileUtils::getInstance()->getWritablePath().c_str());
+        ++iter;
+    }
+}

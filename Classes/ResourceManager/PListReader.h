@@ -62,7 +62,7 @@ struct EnemyInfo
     int flyable;
 };
 
-class PListReader : public cocos2d::Ref
+class PListReader : public cocos2d::Node
 {
 public:
     static PListReader* getInstance();
@@ -79,9 +79,11 @@ public:
     EnemyInfo readEnemyInfoPlist(const std::string& name);
     
     void createEnemyAnimationTableIndexer();
-
+    void saveImageFromPlist(const std::string &plist);
+    
 private:
     static PListReader* s_instance;
+    
 };
 
 
