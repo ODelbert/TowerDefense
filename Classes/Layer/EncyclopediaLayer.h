@@ -21,6 +21,9 @@ class EncyclopediaLayer : public Layer
 public:
     CREATE_FUNC(EncyclopediaLayer);
     bool init();
+    
+    void close(Ref* sender);
+    
 private:
     EnemyBook* m_eBook;
     TowerBook* m_tBook;

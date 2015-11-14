@@ -5,11 +5,16 @@
 #include <map>
 #include <stdio.h>
 
+
 //#define TD_TEST
 //#define TD_DEBUG
 
 #define TD_WIDTH 1136
 #define TD_HEIGHT 640
+
+#define TD_FONT "Arial"
+
+#define TD_SIZE(x) CCLOG("%s size = %f %f", #x, x->getContentSize().width, x->getContentSize().height);
 
 #define SINGLETON_IMPL(class) \
 class* class::s_instance = nullptr; \

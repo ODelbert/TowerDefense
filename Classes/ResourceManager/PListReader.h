@@ -83,7 +83,6 @@ public:
     
 private:
     static PListReader* s_instance;
-    
 };
 
 

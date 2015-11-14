@@ -1,27 +1,15 @@
 //
-//  TestLayer.cpp
+//  ResourceManager.cpp
 //  TowerDefense
 //
-//  Created by jowu on 15/10/31.
+//  Created by jowu on 15/11/6.
 //
 //
 
-#include <vector>
-#include "TestLayer.h"
-#include "PListReader.h"
-#include "AnimationManager.h"
-#include "Enemy.h"
-#include "ResourceId.h"
+#include "ResourceManager.h"
+#include "CommonDef.h"
 
-static double s_rate = 1.0f;
 
-enum ActionTag {
-    ActionTag_WalkingLeft = 0,
-    ActionTag_WalkingRight,
-    ActionTag_WalkingDown,
-    ActionTag_WalkingUp,
-    ActionTag_Num,
-};
 
 
 static const std::string BigImagePlist[] =
@@ -148,114 +136,26 @@ static const std::string AnimationNamePlist[] =
     "twilight_bannerbearer_animations.plist",
     "twilight_bannerbearer_aura_animations.plist",
     "twilight_bannerbearer_enemy_aura_animations.plist",
-    "twilight_evoker_animations.plist", 
-    "twilight_heretic_animations.plist", 
-    "webspitterSpider_animations.plist", 
+    "twilight_evoker_animations.plist",
+    "twilight_heretic_animations.plist",
+    "webspitterSpider_animations.plist",
     "webspitterSpider_web_animations.plist"
 };
 
-bool TestLayer::init()
+
+
+
+SINGLETON_IMPL(ResourceManager);
+
+bool ResourceManager::initialize()
 {
+    for (int i = 0; i < sizeof(BigImagePlist)/sizeof(BigImagePlist[0]); ++i) {
+        SpriteFrameCache::getInstance()->addSpriteFramesWithFile(BigImagePlist[i]);
+    }
     
-    PListReader::getInstance()->createEnemyAnimationTableIndexer();
-    
-    
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-    // load resources
     for (int i = 0; i < sizeof(ImageAnimationPlist)/sizeof(ImageAnimationPlist[0]); ++i) {
         SpriteFrameCache::getInstance()->addSpriteFramesWithFile(ImageAnimationPlist[i]);
     }
     
-   
-    for (int i = 0; i < sizeof(AnimationNamePlist)/sizeof(AnimationNamePlist[0]); ++i) {
-        PListReader::getInstance()->createAnimationWithPlist(AnimationNamePlist[i]);
-    }
-    
-    
-    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sprite_level1_2-hd.plist");
-    m_bkg = Sprite::createWithSpriteFrameName("Stage_1.png");
-    if (m_bkg) {
-        CCLOG("map size = %f %f   game rect [%f %f]", m_bkg->getContentSize().width, m_bkg->getContentSize().height, visibleSize.width, visibleSize.height);
-        s_rate = visibleSize.width / 1200;
-        m_bkg->setScale(visibleSize.width/m_bkg->getContentSize().width);
-        m_bkg->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-        addChild(m_bkg);
-    }
-    else {
-        return false;
-    }
-    
-    auto attacker = Sprite::createWithSpriteFrameName("redcap_0001.png");
-    m_runningEnemy = Sprite::createWithSpriteFrameName("redcap_0001.png");
-//    auto actionAttack = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation("redcap_attack")));
-//    if (!attacker || !actionAttack) {
-//        return false;
-//    }
-    
-//    attacker->runAction(actionAttack);
-    AnimationManager::getInstance()->runAction(attacker, EnemyID_Redcap, EnemyAction_Redcap_Death);
-    attacker->setPosition(Vec2(200, 200));
-    m_bkg->addChild(attacker);
-    m_bkg->addChild(m_runningEnemy);
-    
-    schedule(schedule_selector(TestLayer::moveSprite), 0.1);
-    std::vector<std::vector<std::vector<Vec2> > > paths = PListReader::getInstance()->readPathPlist(1);
-    m_path = paths[0][0];
-    m_pathIndex = 0;
-    
     return true;
 }
-
-void TestLayer::moveSprite(float dt)
-{
-    for (int i = 0; i < sizeof(BigImagePlist) / sizeof(BigImagePlist[0]); ++i) {
-       // PListReader::getInstance()->saveImageFromPlist(BigImagePlist[i]);
-    }
-    static int s_lastDir = 0;
-    if (m_pathIndex + 1 >= m_path.size()) {
-        unschedule(schedule_selector(TestLayer::moveSprite));
-        m_bkg->removeChild(m_runningEnemy, true);
-        return;
-    }
-    
-    Vec2 pos = m_path[m_pathIndex];
-    Vec2 nextPos = m_path[m_pathIndex + 1];
-    
-    // 120, offset of path_x
-    // 100, offset of path_y
-    m_runningEnemy->setPosition(Vec2(s_rate * (nextPos.x + 120), s_rate * (nextPos.y + 100) + 59));
-    ++m_pathIndex;
-    
-    float angle = atan2f(nextPos.y - pos.y, nextPos.x - pos.x) * 180 / 3.14;
-    CCLOG("angle =%f", angle);
-    
-    if (angle > -45 && angle <= 45) {
-        // right
-        if (s_lastDir == ActionTag_WalkingRight) return;
-        s_lastDir = ActionTag_WalkingRight;
-        AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingRightLeft);
-    }
-    else if (angle > 45 && angle <= 135) {
-        // up
-        if (s_lastDir == ActionTag_WalkingUp) return;
-        s_lastDir = ActionTag_WalkingUp;
-        AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingUp);
-    }
-    else if (angle >=135 && angle <=225) {
-        // left
-        if (s_lastDir == ActionTag_WalkingLeft) return;
-        s_lastDir = ActionTag_WalkingLeft;
-        AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingRightLeft);
-        m_runningEnemy->setFlippedX(true);
-    }
-    else {
-        // down
-        if (s_lastDir == ActionTag_WalkingDown) return;
-        s_lastDir = ActionTag_WalkingDown;
-        AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingDown);
-    }
-}
-
-
-

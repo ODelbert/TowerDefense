@@ -12,6 +12,10 @@
 #   include "TestLayer.h"
 #endif
 #include "PListReader.h"
+#include "ResourceManager.h"
+#include "EncyclopediaLayer.h"
+#include "TouchLayer.h"
+
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -36,12 +40,13 @@ bool GameScene::init()
     auto layer = TestLayer::create();
     addChild(layer);
 #else
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
-    auto sprite = Sprite::create("HelloWorld.png");
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-    this->addChild(sprite, 0);
+    ResourceManager::getInstance()->initialize();
+    
+    auto layer = EncyclopediaLayer::create();
+    addChild(layer);
+    auto touchLayer = TouchLayer::create();
+    addChild(touchLayer, -1);
 #endif
     return true;
 }
