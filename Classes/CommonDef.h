@@ -1,11 +1,6 @@
 #ifndef COMMONDEF_H
 #define COMMONDEF_H
 
-#include <string>
-#include <map>
-#include <stdio.h>
-
-
 //#define TD_TEST
 //#define TD_DEBUG
 
@@ -13,6 +8,7 @@
 #define TD_HEIGHT 640
 
 #define TD_FONT "Arial"
+#define LOGF CCLOG(__PRETTY_FUNCTION__);
 
 #define TD_SIZE(x) CCLOG("%s size = %f %f", #x, x->getContentSize().width, x->getContentSize().height);
 
