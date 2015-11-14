@@ -13,16 +13,13 @@
 #include "cocos2d.h"
 USING_NS_CC;
 
-class GameButtons;
-class SoundButtons;
 class StartLayer : public Layer
 {
 public:
     CREATE_FUNC(StartLayer);
     bool init();
 private:
-    GameButtons* m_eBook;
-    SoundButtons* m_tBook;
     Sprite* m_bkg;
+    Sprite* m_logo;
 };
 #endif /* StartLayer_hpp */
