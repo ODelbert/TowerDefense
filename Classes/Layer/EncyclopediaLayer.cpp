@@ -273,8 +273,7 @@ bool EnemyBook::init()
     
     m_rightBook->addChild(closeMenu);
     closeMenu->setPosition(432, TD_HEIGHT - 80);
-    
-    
+
     m_statusBar = Sprite::createWithSpriteFrameName("encyclopedia_creep_infopanel.png");
     m_rightBook->addChild(m_statusBar);
     m_statusBar->setPosition(250, 150);
@@ -365,7 +364,6 @@ bool EncyclopediaLayer::init()
     auto towerMenu = Menu::create(MenuItemSprite::create(towerBtnNormal, towerBtnPressed, [&](Ref *sender) {
         if (m_tBook->isVisible() || m_eBook->isVisible()) return;
         m_tBook->setVisible(true);
-        CCLOG("tttt");
     }), nullptr);
     
     towerMenu->setPosition(Vec2(250, 300));

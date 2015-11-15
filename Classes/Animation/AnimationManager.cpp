@@ -98,20 +98,21 @@ void AnimationManager::runAction(Sprite* target, int key, int type, bool repeatF
     if (!target) {
         return;
     }
+    
     std::vector<unsigned int> hashes = m_table->find(key);
     for (int i = 0; i < hashes.size(); ++i) {
         target->stopActionByTag(hashes[i]);
     }
     
     std::string actionName = m_table->find(key, type);
-    m_table->show();
-    CCLOG("actionName = %s", actionName.c_str());
     if (actionName.empty()) {
+        CCLOG("AnimationManager::runAction cannot find animation by key %d type %d", key, type);
         return;
     }
     
     auto animation = AnimationCache::getInstance()->getAnimation(actionName);
     if (!animation) {
+        CCLOG("AnimationManager::runAction cannot find anmation with name %s", actionName.c_str());
         return;
     }
     

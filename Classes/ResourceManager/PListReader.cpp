@@ -144,8 +144,13 @@ void PListReader::createAnimationWithPlist(const std::string &name)
             }
         }
 
+        if (animFrames.empty()) {
+            CCLOG("PListReader::createAnimationWithPlist animation %s with empty frames", iter->first.c_str());
+        }
+        
         // FIXME::tune parameter
         float animateRate = 0.002f * animFrames.size() < 0.05f ? 0.05f : 0.002f * animFrames.size();
+        
         AnimationCache::getInstance()->addAnimation(Animation::createWithSpriteFrames(animFrames, animateRate) , iter->first);
         ++iter;
     }
@@ -197,38 +202,38 @@ std::vector<std::vector<std::vector<Vec2> > > PListReader::readPathPlist(int lev
     return paths;
 }
 
-EnemyInfo PListReader::readEnemyInfoPlist(const std::string& name)
-{
-    EnemyInfo info;
-    ValueMap root = FileUtils::getInstance()->getValueMapFromFile("enemy_KO_info.plist");
-    ValueMap enemyDict = root["enemies"].asValueMap();
-    
-    ValueMap::const_iterator iter = enemyDict.begin();
-    if (enemyDict.empty()) {
-        CCLOG("PlistReader::readEnemyInfo read invalid info by name [%s]", name.c_str());
-        return info;
-    }
-    
-    while(iter != enemyDict.end()) {
-        if ( name == iter->first) {
-            ValueMap infoEntry = iter->second.asValueMap();
-            strcpy(info.name, name.c_str());
-            info.dmgMax = infoEntry["dmgMax"].asInt();
-            info.dmgMin = infoEntry["dmgMin"].asInt();
-            info.food = infoEntry["food"].asInt();
-            info.life = infoEntry["life"].asInt();
-            info.armor = infoEntry["dmgMin"].asInt();
-            info.resist = infoEntry["resist"].asInt();
-            info.speed = infoEntry["speed"].asInt();
-            info.flyable = infoEntry["flyable"].asInt();
-            break;
-        }
-        
-        ++iter;
-    }
-    
-    return info;
-}
+//EnemyInfo PListReader::readEnemyInfoPlist(const std::string& name)
+//{
+//    EnemyInfo info;
+//    ValueMap root = FileUtils::getInstance()->getValueMapFromFile("enemy_KO_info.plist");
+//    ValueMap enemyDict = root["enemies"].asValueMap();
+//    
+//    ValueMap::const_iterator iter = enemyDict.begin();
+//    if (enemyDict.empty()) {
+//        CCLOG("PlistReader::readEnemyInfo read invalid info by name [%s]", name.c_str());
+//        return info;
+//    }
+//    
+//    while(iter != enemyDict.end()) {
+//        if ( name == iter->first) {
+//            ValueMap infoEntry = iter->second.asValueMap();
+//            strcpy(info.name, name.c_str());
+//            info.dmgMax = infoEntry["dmgMax"].asInt();
+//            info.dmgMin = infoEntry["dmgMin"].asInt();
+//            info.food = infoEntry["food"].asInt();
+//            info.life = infoEntry["life"].asInt();
+//            info.armor = infoEntry["dmgMin"].asInt();
+//            info.resist = infoEntry["resist"].asInt();
+//            info.speed = infoEntry["speed"].asInt();
+//            info.flyable = infoEntry["flyable"].asInt();
+//            break;
+//        }
+//        
+//        ++iter;
+//    }
+//    
+//    return info;
+//}
 
 void PListReader::createEnemyAnimationTableIndexer()
 {
@@ -262,6 +267,7 @@ void PListReader::createEnemyAnimationTableIndexer()
         while (iter != animationDict.end()) {
             std::string name = iter->first;
             if (name.find("boss") != std::string::npos ||
+                name.find("Boss") != std::string::npos ||
                 name.find("hero") != std::string::npos ||
                 name.find("rabbit") != std::string::npos) {
                 return false;
@@ -316,19 +322,18 @@ void PListReader::createEnemyAnimationTableIndexer()
                     actionId = (id << 16) | i;
                     normalAction = true;
                     AnimationManager::getInstance()->addAnimationIndex(id, i, name);
-                    // table->put(id, i, name);
                     break;
                 }
             }
             
             if (!normalAction) {
-                AnimationManager::getInstance()->addAnimationIndex(id, ++s_actionId_ht_counter, name);
-                 // table->put(id, ++s_actionId_ht_counter, name);
+                AnimationManager::getInstance()->addAnimationIndex(id, s_actionId_ht_counter, name);
             }
             
+#ifdef TD_TEST
             convertToCamelCase(enumName, "EnemyAction_");
-//            CCLog("enemy action name %s -> enum name= %s actionID %d", iter->first.c_str(), enumName.c_str(), normalAction ? i : s_actionId_ht_counter);
-            CCLOG("#define %s %d", enumName.c_str(), normalAction ? i : s_actionId_ht_counter);
+            //CCLOG("#define %s %d path %s", enumName.c_str(), normalAction ? i : s_actionId_ht_counter, path.c_str());
+#endif
             
             ++iter;
         }
@@ -347,14 +352,14 @@ void PListReader::createEnemyAnimationTableIndexer()
                 std::string path(ptr->d_name);
                 std::string enmeyName = path.substr(0, path.find("_animations"));
                 convertToCamelCase(enmeyName, "EnemyID_");
-                CCLog("%s = %d", enmeyName.c_str(), s_enemyId_ht_counter++);
                 ++s_enemyId_ht_counter;
+                CCLog("%s = %d", enmeyName.c_str(), s_enemyId_ht_counter);
                 addAnimation(s_enemyId_ht_counter, ptr->d_name);
             }
         }
     }
     closedir(dir);
-#ifdef TD_DEBUG
+#if 0
     AnimationManager::getInstance()->showTable();
 #endif
 
@@ -406,3 +411,69 @@ void PListReader::saveImageFromPlist(const std::string &plist)
         ++iter;
     }
 }
+
+#ifdef TD_DEBUG
+#include "GameData.h"
+void PListReader::generateEnemyPlist()
+{
+    auto root = Dictionary::create();
+    auto array = Array::create();
+    for (int i = 0; i < s_enemiesInfo / sizeof(s_enemiesInfo[0]); ++i) {
+        auto dictInArray = Dictionary::create();
+        
+    }
+}
+void generateTowerPlist()
+{
+    auto root = Dictionary::create();
+    auto string = String::create("string element value");
+    root->setObject(string, "string element key");
+    
+    auto array = Array::create();
+    
+    auto dictInArray = Dictionary::create();
+    dictInArray->setObject(String::create("string in dictInArray value 0"), "string in dictInArray key 0");
+    dictInArray->setObject(String::create("string in dictInArray value 1"), "string in dictInArray key 1");
+    array->addObject(dictInArray);
+    
+    array->addObject(String::create("string in array"));
+    
+    auto arrayInArray = Array::create();
+    arrayInArray->addObject(String::create("string 0 in arrayInArray"));
+    arrayInArray->addObject(String::create("string 1 in arrayInArray"));
+    array->addObject(arrayInArray);
+    
+    root->setObject(array, "array");
+    
+    auto dictInDict = Dictionary::create();
+    dictInDict->setObject(String::create("string in dictInDict value"), "string in dictInDict key");
+    
+    //add boolean to the plist
+    auto booleanObject = Bool::create(true);
+    dictInDict->setObject(booleanObject, "bool");
+    
+    //add interger to the plist
+    auto intObject = Integer::create(1024);
+    dictInDict->setObject(intObject, "integer");
+    
+    //add float to the plist
+    auto floatObject = Float::create(1024.1024f);
+    dictInDict->setObject(floatObject, "float");
+    
+    //add double to the plist
+    auto doubleObject = Double::create(1024.123);
+    dictInDict->setObject(doubleObject, "double");
+    
+    
+    
+    root->setObject(dictInDict, "dictInDict, Hello World");
+    
+    // end with /
+    std::string writablePath = FileUtils::getInstance()->getWritablePath();
+    std::string fullPath = writablePath + "text.plist";
+    if(root->writeToFile(fullPath.c_str()))
+        log("see the plist file at %s", fullPath.c_str());
+    else
+        log("write plist file failed");
+}
+#endif

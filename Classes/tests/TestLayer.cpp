@@ -12,6 +12,7 @@
 #include "AnimationManager.h"
 #include "Enemy.h"
 #include "ResourceId.h"
+#include "ResourceManager.h"
 
 static double s_rate = 1.0f;
 
@@ -151,28 +152,27 @@ static const std::string AnimationNamePlist[] =
     "twilight_evoker_animations.plist", 
     "twilight_heretic_animations.plist", 
     "webspitterSpider_animations.plist", 
-    "webspitterSpider_web_animations.plist"
+    "webspitterSpider_web_animations.plist",
+    "mountedAvenger_animations.plist",
+    "shadow_champion_animations.plist",
+    "shadow_spawn_animations.plist"
 };
 
 bool TestLayer::init()
 {
-    
+//    ResourceManager::getInstance()->initialize();
     PListReader::getInstance()->createEnemyAnimationTableIndexer();
-    
-    
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     // load resources
     for (int i = 0; i < sizeof(ImageAnimationPlist)/sizeof(ImageAnimationPlist[0]); ++i) {
         SpriteFrameCache::getInstance()->addSpriteFramesWithFile(ImageAnimationPlist[i]);
     }
-    
-   
+
     for (int i = 0; i < sizeof(AnimationNamePlist)/sizeof(AnimationNamePlist[0]); ++i) {
         PListReader::getInstance()->createAnimationWithPlist(AnimationNamePlist[i]);
     }
-    
-    
+
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sprite_level1_2-hd.plist");
     m_bkg = Sprite::createWithSpriteFrameName("Stage_1.png");
     if (m_bkg) {
@@ -194,7 +194,7 @@ bool TestLayer::init()
 //    }
     
 //    attacker->runAction(actionAttack);
-    AnimationManager::getInstance()->runAction(attacker, EnemyID_Redcap, EnemyAction_Redcap_Death);
+    AnimationManager::getInstance()->runAction(attacker, 2, 1);
     attacker->setPosition(Vec2(200, 200));
     m_bkg->addChild(attacker);
     m_bkg->addChild(m_runningEnemy);
@@ -204,6 +204,9 @@ bool TestLayer::init()
     m_path = paths[0][0];
     m_pathIndex = 0;
     
+    testEnemyAnimation();
+    
+
     return true;
 }
 
@@ -228,7 +231,6 @@ void TestLayer::moveSprite(float dt)
     ++m_pathIndex;
     
     float angle = atan2f(nextPos.y - pos.y, nextPos.x - pos.x) * 180 / 3.14;
-    CCLOG("angle =%f", angle);
     
     if (angle > -45 && angle <= 45) {
         // right
@@ -257,5 +259,30 @@ void TestLayer::moveSprite(float dt)
     }
 }
 
+void TestLayer::testEnemyAnimation()
+{
+    
+    PListReader::getInstance()->createAnimationWithPlist("shadow_spawn_animations.plist");
+    auto ani = AnimationCache::getInstance()->getAnimation("shadow_spawn_walkingDown");
+    auto spx = Sprite::createWithSpriteFrameName("redcap_0001.png");
+    spx->runAction(RepeatForever::create(Animate::create(ani)));
+    spx->setPosition(100,100);
+    addChild(spx);
+    
+//    return;
+    
+    
+    
+    Vec2 pos(100, 600);
+    int s = 3;
+    for (int i = s ; i < EnemyID_Num; ++i) {
+        for (int j = 0;j < 11; ++j) {
+            auto sp = Sprite::createWithSpriteFrameName("redcap_0001.png");
+            addChild(sp);
+            sp->setPosition(pos.x + (i-s) * 60, pos.y - j * 60);
+            AnimationManager::getInstance()->runAction(sp, i, j);
+        }
+    }
+}
 
 

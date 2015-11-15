@@ -139,10 +139,14 @@ static const std::string AnimationNamePlist[] =
     "twilight_evoker_animations.plist",
     "twilight_heretic_animations.plist",
     "webspitterSpider_animations.plist",
-    "webspitterSpider_web_animations.plist"
+    "webspitterSpider_web_animations.plist",
+    "mountedAvenger_animations.plist",
+    "shadow_champion_animations.plist",
+    "shadow_spawn_animations.plist",
+    "bandersnatch_spines_blood_animations.plist",
+    "bandersnatch_spines_animations.plist"
+    
 };
-
-
 
 
 SINGLETON_IMPL(ResourceManager);

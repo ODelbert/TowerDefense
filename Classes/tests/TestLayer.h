@@ -23,6 +23,7 @@ public:
     
 private:
     void moveSprite(float dt);
+    void testEnemyAnimation();
     
 private:
     Sprite* m_bkg;

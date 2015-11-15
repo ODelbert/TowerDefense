@@ -5,6 +5,7 @@
 #include "cocos2d.h"
 #include "uthash.h"
 #include <vector>
+#include "Enemy.h"
 
 class EnemyPlist : public cocos2d::Ref
 {
@@ -48,20 +49,6 @@ class WavePlist : public cocos2d::Ref
 public:
 };
 
-struct EnemyInfo
-{
-    char name[24];
-    int dmgMin;
-    int dmgMax;
-    int life;
-    int weapon;
-    int armor;
-    int resist;
-    int speed;
-    int food;
-    int flyable;
-};
-
 class PListReader : public cocos2d::Node
 {
 public:
@@ -76,10 +63,14 @@ public:
     
     void createAnimationWithPlist(const std::string &name);
     std::vector<std::vector<std::vector<cocos2d::Vec2> > > readPathPlist(int level);
-    EnemyInfo readEnemyInfoPlist(const std::string& name);
     
     void createEnemyAnimationTableIndexer();
     void saveImageFromPlist(const std::string &plist);
+    
+#ifdef TD_DEBUG
+    void generateEnemyPlist();
+    void generateTowerPlist();
+#endif
     
 private:
     static PListReader* s_instance;
