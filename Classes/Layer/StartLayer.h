@@ -18,8 +18,18 @@ class StartLayer : public Layer
 public:
     CREATE_FUNC(StartLayer);
     bool init();
+    
+private:
+    void onStartBtnClick();
+    void onCreditBtnClick();
+    void onKeySoundBtnClick();
+    void onBGMBtnClick();
+    
 private:
     Sprite* m_bkg;
     Sprite* m_logo;
+    
+    bool m_isKeySoundOn;
+    bool m_isBGMOn;
 };
 #endif /* StartLayer_hpp */
