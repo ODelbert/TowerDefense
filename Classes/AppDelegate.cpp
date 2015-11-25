@@ -7,6 +7,10 @@ static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);
 static cocos2d::Size mediumResolutionSize = cocos2d::Size(1024, 768);
 static cocos2d::Size largeResolutionSize = cocos2d::Size(2048, 1536);
 
+static Size iphone5ResolutionSize = cocos2d::Size(1136, 640);
+static Size iphone6ResolutionSize = cocos2d::Size(1344, 750);
+static Size iphone6PlusResolutionSize = cocos2d::Size(2208, 1242);
+
 AppDelegate::AppDelegate()
 {
 }
@@ -37,14 +41,18 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
+    Size ssss  = director->getWinSize();
+    CCLOG("%f %f !!!", director->getWinSize().width, director->getWinSize().height);
     if(!glview) {
 //        glview = GLViewImpl::create("TowerDefense", Rect(0, 0, 960, 640));
 //        director->setOpenGLView(glview);
-        glview = cocos2d::GLViewImpl::createWithRect("TowerDefense", Rect(0, 0, 960, 640));
-        glview->setFrameSize(1138,640);
+        glview = cocos2d::GLViewImpl::createWithRect("TowerDefense", Rect(0, 0, TD_WIDTH, TD_HEIGHT));
+
         director->setOpenGLView(glview);
     }
-
+    
+    Size frameSizex = director->getInstance()->getOpenGLView()->getFrameSize();
+    CCLOG("framesize %f %f", frameSizex.width, frameSizex.height);
     // turn on display FPS
     director->setDisplayStats(true);
 
@@ -52,28 +60,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
     
 //    glview->setFrameSize(TD_WIDTH, TD_HEIGHT);
-    // Set the design resolution
-//
-//    glview->setDesignResolutionSize(TD_WIDTH, TD_HEIGHT, ResolutionPolicy::NO_BORDER);
-//    Size frameSize = glview->getFrameSize();
-//    // if the frame's height is larger than the height of medium size.
-//    if (frameSize.height > mediumResolutionSize.height)
-//    {        
-//        director->setContentScaleFactor(MIN(largeResolutionSize.height/designResolutionSize.height, largeResolutionSize.width/designResolutionSize.width));
-//    }
-//    // if the frame's height is larger than the height of small size.
-//    else if (frameSize.height > smallResolutionSize.height)
-//    {        
-//        director->setContentScaleFactor(MIN(mediumResolutionSize.height/designResolutionSize.height, mediumResolutionSize.width/designResolutionSize.width));
-//    }
-//    // if the frame's height is smaller than the height of medium size.
-//    else
-//    {        
-//        director->setContentScaleFactor(MIN(smallResolutionSize.height/designResolutionSize.height, smallResolutionSize.width/designResolutionSize.width));
-//    }
-//
-//
-//    register_all_packages();
+
+    glview->setDesignResolutionSize(TD_WIDTH, TD_HEIGHT, ResolutionPolicy::EXACT_FIT);
+    Size frameSize = glview->getFrameSize();
+    //director->setContentScaleFactor(1334/TD_WIDTH);
+    register_all_packages();
 
     // create a scene. it's an autorelease object
     auto scene = GameScene::createScene();

@@ -177,9 +177,9 @@ bool TestLayer::init()
     m_bkg = Sprite::createWithSpriteFrameName("Stage_1.png");
     if (m_bkg) {
         CCLOG("map size = %f %f   game rect [%f %f]", m_bkg->getContentSize().width, m_bkg->getContentSize().height, visibleSize.width, visibleSize.height);
-        s_rate = visibleSize.width / 1200;
-        m_bkg->setScale(visibleSize.width/m_bkg->getContentSize().width);
-        m_bkg->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+        //s_rate = visibleSize.width / 1200;
+//        m_bkg->setScale(visibleSize.width/m_bkg->getContentSize().width);
+        m_bkg->setPosition(TD_WIDTH/2, TD_HEIGHT/2);
         addChild(m_bkg);
     }
     else {

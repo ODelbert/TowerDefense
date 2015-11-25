@@ -15,6 +15,7 @@
 #include "ResourceManager.h"
 #include "EncyclopediaLayer.h"
 #include "TouchLayer.h"
+#include "Stage1.h"
 
 USING_NS_CC;
 
@@ -36,8 +37,8 @@ bool GameScene::init()
         return false;
     }
     
-#ifdef TD_TEST
-    auto layer = TestLayer::create();
+#if 1//def TD_TEST
+    auto layer = Stage1::create();
     addChild(layer);
 #else
     

@@ -119,7 +119,8 @@ enum EnemyID
     EnemyID_Num = EnemyID_WebspitterSpider,
 };
 
-enum EnemyState {
+enum EnemyState
+{
     EnemyState_Invalid = -1,
     EnemyState_AttackLeft,
     EnemyState_AttackRight,
@@ -140,8 +141,18 @@ enum EnemyState {
     EnmeyState_Num
 };
 
+enum Direction
+{
+    Direction_Invalid = -1,
+    Direction_Left,
+    Direction_Right,
+    Direction_Down,
+    Direction_Up
+};
+
 // debuff state last for seconds
-enum DeBuffState {
+enum DeBuffState
+{
     DeBuffState_Weak = 0x0001, // more damage is taken
     DeBuffState_DisArm = 0x0002, // disable attack
     DeBuffState_Blooding = 0x0004, // blooding
@@ -165,6 +176,8 @@ class Enemy : public Sprite
 {
 public:
     void sendToBattle(const std::vector<Vec2>& waypoints);
+    void moveToNext(float dt);
+    
     
     virtual void attack();
     virtual void idle();
@@ -191,7 +204,13 @@ private:
     CC_SYNTHESIZE(WeaponType, m_weapon, weapon);
     CC_SYNTHESIZE(ArmorType, m_armor, armor);
     CC_SYNTHESIZE(SpeedType, m_speed, speed);
-        
+    
+    
+    CC_SYNTHESIZE_READONLY(uint, m_buffs, buffs);
+    CC_SYNTHESIZE_READONLY(uint, m_debuffs, debuffs);
+    CC_SYNTHESIZE_READONLY(EnemyState, m_state, state);
+    CC_SYNTHESIZE_READONLY(Direction, m_direction, direction);
+
 protected:
     bool initWithEnemyId(EnemyID id);
     
@@ -199,6 +218,8 @@ protected:
     Enemy();
     virtual ~Enemy();
     CC_DISALLOW_COPY_AND_ASSIGN(Enemy)
+    
+    std::vector<Vec2>& m_waypoints;
     
 };
 
