@@ -15,7 +15,7 @@ bool Stage1::init()
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sprite_level1_2-hd.plist");
     m_mapSprite = Sprite::createWithSpriteFrameName("Stage_1.png");
     
-    WaveManager::getInstance()->loadWave(1, 1);
+    loadLevel(1, 1);
     
     if (m_mapSprite) {
         m_mapSprite->setPosition(TD_WIDTH/2, TD_HEIGHT/2);
@@ -24,6 +24,8 @@ bool Stage1::init()
     else {
         return false;
     }
+    
+    schedule(schedule_selector(BattleField::start), 0.0f, 1, 5.0f);
     
     return true;
 }

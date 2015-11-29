@@ -7,6 +7,9 @@
 #define TD_WIDTH 1136
 #define TD_HEIGHT 640
 
+#define MAP_WIDTH 1200
+#define MAP_HEIGHT 1000
+
 #define TD_FONT "Arial"
 #define LOGF CCLOG(__PRETTY_FUNCTION__);
 

@@ -8,9 +8,8 @@
 
 #include "BattleField.h"
 #include "CommonDef.h"
-
-#define MAP_WIDTH 1200
-#define MAP_HEIGHT 1000
+#include "WaveManager.h"
+#include "Enemy.h"
 
 BattleField::BattleField()
 {
@@ -20,6 +19,20 @@ BattleField::BattleField()
     touchlistener->onTouchMoved = CC_CALLBACK_2(BattleField::onTouchMoved, this);
     touchlistener->setSwallowTouches(true);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(touchlistener,this);
+    
+    
+    
+    
+    
+    auto waveListener = EventListenerCustom::create("wave_add_enemy", [=](EventCustom* event){
+        SpawnInfo* info = static_cast<SpawnInfo*>(event->getUserData());
+        Enemy::create()
+    });
+    
+    
+    
+    
+    
 }
 
 bool BattleField::onTouchBegan(Touch* touch, Event* event)
@@ -59,4 +72,14 @@ void BattleField::onTouchMoved(Touch* touch, Event* event)
     //TD_POS(m_mapSprite)
     
     m_mapSprite->setPosition(newPos);
+}
+
+void BattleField::loadLevel(int stage, int difficult)
+{
+    WaveManager::getInstance()->initialize(stage, difficult);
+}
+
+void BattleField::start(float dt)
+{
+    WaveManager::getInstance()->start();
 }

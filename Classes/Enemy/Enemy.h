@@ -172,6 +172,23 @@ enum BuffState {
     BuffState_EnegyShield = 0x0008 // protect shield
 };
 
+
+
+
+class WayPoints : public Ref
+{
+public:
+    void setPoints(const std::vector<Vec2>& points);
+    Vec2 getcurPoint() const;
+    Direction getDirection() const;
+    bool moveToNextPoint();
+    
+private:
+    std::vector<Vec2> m_points;
+    uint m_pathIndex;
+    Direction m_dir;
+};
+
 class Enemy : public Sprite
 {
 public:
@@ -217,10 +234,9 @@ protected:
 protected:
     Enemy();
     virtual ~Enemy();
+
+    WayPoints m_wayPoints;
     CC_DISALLOW_COPY_AND_ASSIGN(Enemy)
-    
-    std::vector<Vec2>& m_waypoints;
-    
 };
 
 

@@ -175,7 +175,7 @@ std::vector<std::vector<std::vector<Vec2> > > PListReader::readPathPlist(int lev
             std::vector<Vec2> path;
             for (int k = 0; k < pathVec.size(); ++k) {
                 ValueMap pos = pathVec[k].asValueMap();
-                path.push_back(Vec2(pos["x"].asFloat(), pos["y"].asFloat()));
+                path.push_back(Vec2(pos["x"].asFloat() * MAP_WIDTH / TD_WIDTH, pos["y"].asFloat()));
             }
             
             subPaths.push_back(path);

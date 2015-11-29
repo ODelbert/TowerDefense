@@ -10,7 +10,6 @@
 #include "CommonDef.h"
 #include "Enemy.h"
 #include "AnimationManager.h"
-
 USING_NS_CC;
 
 enum ActionCommon
@@ -28,6 +27,53 @@ enum ActionCommon
     ActionCommon_Special,
 };
 
+void WayPoints::setPoints(const std::vector<Vec2>& points)
+{
+    if (m_points.empty()) {
+        m_points.clear();
+    }
+    
+    m_points = points;
+}
+
+Vec2 WayPoints::getcurPoint() const
+{
+    if (m_pathIndex >= m_points.size()) {
+        return Vec2();
+    }
+    
+    return m_points[m_pathIndex];
+}
+
+Direction WayPoints::getDirection() const
+{
+    return m_dir;
+}
+
+bool WayPoints::moveToNextPoint()
+{
+    if (m_pathIndex >= m_points.size()) {
+        return false;
+    }
+    
+    float angle = atan2f(m_points[m_pathIndex + 1].y - m_points[m_pathIndex].y, m_points[m_pathIndex + 1].x - m_points[m_pathIndex].x) * 180 / 3.14;
+    
+    if (angle > -45 && angle <= 45) {
+        m_dir = Direction_Right;
+    }
+    else if (angle > 45 && angle <= 135) {
+        m_dir = Direction_Up;
+    }
+    else if (angle >=135 && angle <=225) {
+        m_dir = Direction_Left;
+    }
+    else {
+        m_dir = Direction_Down;
+    }
+    
+    ++m_pathIndex;
+    return true;
+}
 
 bool Enemy::initWithEnemyId(EnemyID id)
 {
@@ -51,10 +97,8 @@ bool Enemy::initWithEnemyId(EnemyID id)
 
 void Enemy::sendToBattle(const std::vector<Vec2> &waypoints)
 {
-    if (waypoints.size() <= 1) return;
-    
-    m_waypoints = waypoints;
-    
+    m_wayPoints.setPoints(waypoints);
+    setPosition(m_wayPoints.getcurPoint());
     
 }
 
@@ -116,56 +160,39 @@ void Enemy::speicialAttack()
 
 void Enemy::moveToNext(float dt)
 {
-    switch (m_state) {
-        case EnemyState_WalkLeft:
-        case EnemyState_WalkRight:
-        case EnemyState_WalkDown:
-        case EnemyState_WalkUp:
+    Direction lastDir = m_wayPoints.getDirection();
+    if (!m_wayPoints.moveToNextPoint()) {
+        unschedule(schedule_selector(Enemy::moveToNext));
+        getParent()->removeChild(this);
+        return;
+    }
+    
+    if (lastDir == m_wayPoints.getDirection()) {
+        return;
+    }
+    
+    switch (m_wayPoints.getDirection()) {
+        case Direction_Down:
         {
-            if (m_waypoints.empty()) {
-                unschedule(schedule_selector(Enemy::moveToNext));
-                getParent()->removeChild(this);
-                return;
-            }
-//            
-//            Vec2 pos = m_path[m_pathIndex];
-//            Vec2 nextPos = m_path[m_pathIndex + 1];
-//            
-//            // 120, offset of path_x
-//            // 100, offset of path_y
-//            setPosition(Vec2(s_rate * (nextPos.x + 120), s_rate * (nextPos.y + 100) + 59));
-//            
-//            float angle = atan2f(nextPos.y - pos.y, nextPos.x - pos.x) * 180 / 3.14;
-//            
-//            if (angle > -45 && angle <= 45) {
-//                // right
-//                if (s_lastDir == ActionTag_WalkingRight) return;
-//                s_lastDir = ActionTag_WalkingRight;
-//                AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingRightLeft);
-//            }
-//            else if (angle > 45 && angle <= 135) {
-//                // up
-//                if (s_lastDir == ActionTag_WalkingUp) return;
-//                s_lastDir = ActionTag_WalkingUp;
-//                AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingUp);
-//            }
-//            else if (angle >=135 && angle <=225) {
-//                // left
-//                if (s_lastDir == ActionTag_WalkingLeft) return;
-//                s_lastDir = ActionTag_WalkingLeft;
-//                AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingRightLeft);
-//                m_runningEnemy->setFlippedX(true);
-//            }
-//            else {
-//                // down
-//                if (s_lastDir == ActionTag_WalkingDown) return;
-//                s_lastDir = ActionTag_WalkingDown;
-//                AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingDown);
-//            }
- 
+            walkingDown();
         }
-            break;
+        break;
+        case Direction_Up:
+        {
+            walkingUp();
+        }
+        break;
+        case Direction_Left:
+        {
+            walkingLeft();
+        }
+        break;
+        case Direction_Right:
+        {
+            walkingRight();
+        }
+        break;
         default:
-            break;
+        break;
     }
 }

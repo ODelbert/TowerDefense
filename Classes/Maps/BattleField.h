@@ -17,7 +17,8 @@ class BattleField : public Layer
 public:
     virtual void addTerrian() {}
     virtual void addOrnament() {}
-    void loadLevel(int stage);
+    void loadLevel(int stage, int difficult);
+    void start(float dt);
 
     virtual bool onTouchBegan(Touch* touch, Event* event) override;
     virtual void onTouchEnded(Touch* touch, Event* event) override;
