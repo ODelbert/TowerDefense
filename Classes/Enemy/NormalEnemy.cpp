@@ -8,6 +8,3 @@
 
 #include "NormalEnemy.h"
 #include "Enemy.h"
-
-EnemyID_
-class

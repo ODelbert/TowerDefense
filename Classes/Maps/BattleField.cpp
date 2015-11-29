@@ -24,10 +24,10 @@ BattleField::BattleField()
     
     
     
-    auto waveListener = EventListenerCustom::create("wave_add_enemy", [=](EventCustom* event){
-        SpawnInfo* info = static_cast<SpawnInfo*>(event->getUserData());
-        Enemy::create()
-    });
+//    auto waveListener = EventListenerCustom::create("wave_add_enemy", [=](EventCustom* event){
+//        SpawnInfo* info = static_cast<SpawnInfo*>(event->getUserData());
+//        Enemy::create()
+//    });
     
     
     

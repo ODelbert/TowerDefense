@@ -65,7 +65,6 @@ void WaveManager::initialize(int level, int difficulty)
                             char maxStr[10];
                             strncpy(maxStr, ee->GetText(), 10);
                             si.max = atoi(maxStr);
-                            int aaaa = 1;
                         }
                         else if (0 == strcmp(ee->Value(), "interval")) {
                             si.interval = atoi(ee->GetText());
