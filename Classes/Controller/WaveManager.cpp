@@ -75,7 +75,6 @@ void WaveManager::initialize(int level, int difficulty)
                         else {
 
                         }
-                        
                         ee = ee->NextSiblingElement();
                     }
                     
@@ -108,8 +107,6 @@ void WaveManager::start()
     scheduleWave->schedule(schedule_selector(WaveManager::nextEnemy), this, 0.0f, CC_REPEAT_FOREVER, 0.0f, false);
     m_waveIndex = 0;
     m_spawnIndex = 0;
-    
-    
 }
 
 void WaveManager::nextEnemy(float dt)

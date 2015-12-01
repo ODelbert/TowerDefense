@@ -6,5 +6,5 @@
 //
 //
 
-#include "NormalEnemy.h"
+#include "CommonEnemy.h"
 #include "Enemy.h"

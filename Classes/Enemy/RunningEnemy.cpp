@@ -1,9 +1,9 @@
 //
-//  SpellCastEnemy.cpp
+//  RunEnemy.cpp
 //  TowerDefense
 //
 //  Created by jowu on 15/11/30.
 //
 //
 
-#include "SpellCastEnemy.h"
+#include "RunningEnemy.h"
