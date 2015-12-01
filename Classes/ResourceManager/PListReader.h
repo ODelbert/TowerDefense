@@ -3,9 +3,8 @@
 
 #include "CommonDef.h"
 #include "cocos2d.h"
-#include "uthash.h"
 #include <vector>
-#include "Enemy.h"
+#include "Enemy/Enemy.h"
 
 class EnemyPlist : public cocos2d::Ref
 {

@@ -8,8 +8,8 @@
 
 #include "BattleField.h"
 #include "CommonDef.h"
-#include "WaveManager.h"
-#include "Enemy.h"
+#include "Controller/WaveManager.h"
+#include "Enemy/Enemy.h"
 
 BattleField::BattleField()
 {

@@ -8,11 +8,11 @@
 
 #include <vector>
 #include "TestLayer.h"
-#include "PListReader.h"
-#include "AnimationManager.h"
-#include "Enemy.h"
+#include "ResourceManager/PListReader.h"
+#include "Animation/AnimationManager.h"
+#include "Enemy/Enemy.h"
 #include "ResourceId.h"
-#include "ResourceManager.h"
+#include "ResourceManager/ResourceManager.h"
 
 static double s_rate = 1.0f;
 

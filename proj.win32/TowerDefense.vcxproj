@@ -32,6 +32,7 @@
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -144,18 +145,54 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Classes\Animation\AnimationManager.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="..\Classes\Configuration\GameConfig.cpp" />
+    <ClCompile Include="..\Classes\Controller\GameManager.cpp" />
+    <ClCompile Include="..\Classes\Controller\WaveManager.cpp" />
+    <ClCompile Include="..\Classes\Enemy\CommonEnemy.cpp" />
+    <ClCompile Include="..\Classes\Enemy\Enemy.cpp" />
+    <ClCompile Include="..\Classes\Enemy\EnemyFactory.cpp" />
+    <ClCompile Include="..\Classes\Enemy\FlyingEnemy.cpp" />
+    <ClCompile Include="..\Classes\Enemy\NormalEnemy.cpp" />
+    <ClCompile Include="..\Classes\Enemy\RunningEnemy.cpp" />
+    <ClCompile Include="..\Classes\Enemy\SpellCastEnemy.cpp" />
+    <ClCompile Include="..\Classes\Enemy\TalentedEnemy.cpp" />
+    <ClCompile Include="..\Classes\Layer\EncyclopediaLayer.cpp" />
+    <ClCompile Include="..\Classes\Layer\StartLayer.cpp" />
+    <ClCompile Include="..\Classes\Layer\TouchLayer.cpp" />
+    <ClCompile Include="..\Classes\Maps\BattleField.cpp" />
+    <ClCompile Include="..\Classes\Maps\Stage1.cpp" />
     <ClCompile Include="..\Classes\ResourceManager\PListReader.cpp" />
+    <ClCompile Include="..\Classes\ResourceManager\ResourceManager.cpp" />
     <ClCompile Include="..\Classes\Scene\GameScene.cpp" />
     <ClCompile Include="..\Classes\tests\TestLayer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Classes\Animation\AnimationManager.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\CommonDef.h" />
-    <ClInclude Include="..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="..\Classes\Configuration\GameConfig.h" />
+    <ClInclude Include="..\Classes\Configuration\GameData.h" />
+    <ClInclude Include="..\Classes\Controller\GameManager.h" />
+    <ClInclude Include="..\Classes\Controller\WaveManager.h" />
+    <ClInclude Include="..\Classes\Enemy\CommonEnemy.h" />
+    <ClInclude Include="..\Classes\Enemy\Enemy.h" />
+    <ClInclude Include="..\Classes\Enemy\EnemyFactory.h" />
+    <ClInclude Include="..\Classes\Enemy\FlyingEnemy.h" />
+    <ClInclude Include="..\Classes\Enemy\NormalEnemy.h" />
+    <ClInclude Include="..\Classes\Enemy\RunningEnemy.h" />
+    <ClInclude Include="..\Classes\Enemy\SpellCastEnemy.h" />
+    <ClInclude Include="..\Classes\Enemy\TalentedEnemy.h" />
+    <ClInclude Include="..\Classes\Layer\EncyclopediaLayer.h" />
+    <ClInclude Include="..\Classes\Layer\StartLayer.h" />
+    <ClInclude Include="..\Classes\Layer\TouchLayer.h" />
+    <ClInclude Include="..\Classes\Maps\BattleField.h" />
+    <ClInclude Include="..\Classes\Maps\Stage1.h" />
+    <ClInclude Include="..\Classes\ResourceId.h" />
     <ClInclude Include="..\Classes\ResourceManager\PListReader.h" />
+    <ClInclude Include="..\Classes\ResourceManager\ResourceManager.h" />
     <ClInclude Include="..\Classes\Scene\GameScene.h" />
     <ClInclude Include="..\Classes\tests\TestLayer.h" />
     <ClInclude Include="main.h" />

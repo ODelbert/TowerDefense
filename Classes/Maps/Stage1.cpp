@@ -8,7 +8,7 @@
 
 #include "Stage1.h"
 #include "CommonDef.h"
-#include "WaveManager.h"
+#include "Controller/WaveManager.h"
 bool Stage1::init()
 {
     //    ResourceManager::getInstance()->initialize();

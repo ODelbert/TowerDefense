@@ -12,6 +12,7 @@
 #include <vector>
 #include <stdio.h>
 #include "cocos2d.h"
+#include "CommonDef.h"
 
 USING_NS_CC;
 

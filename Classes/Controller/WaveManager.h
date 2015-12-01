@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "cocos2d.h"
+#include "CommonDef.h"
 USING_NS_CC;
 
 struct SpawnInfo
@@ -26,8 +27,8 @@ struct SpawnInfo
 class WaveInfo : public Ref
 {
 public:
-    CC_SYNTHESIZE(uint, m_waveInterval, WaveInterval)
-    CC_SYNTHESIZE(uint, m_pathIndex, PathIndex)
+    CC_SYNTHESIZE(uint, m_waveInterval, WaveInterval);
+    CC_SYNTHESIZE(uint, m_pathIndex, PathIndex);
     
     std::vector<SpawnInfo> spwans() { return m_spwans; }
     void addSpawn(const SpawnInfo& s) { m_spwans.push_back(s); }

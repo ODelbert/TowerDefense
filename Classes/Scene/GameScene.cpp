@@ -9,13 +9,13 @@
 #include "GameScene.h"
 #include "CommonDef.h"
 #ifdef TD_TEST
-#   include "TestLayer.h"
+#   include "tests/TestLayer.h"
 #endif
 #include "PListReader.h"
 #include "ResourceManager.h"
-#include "EncyclopediaLayer.h"
-#include "TouchLayer.h"
-#include "Stage1.h"
+#include "Layer/EncyclopediaLayer.h"
+#include "Layer/TouchLayer.h"
+#include "Maps/Stage1.h"
 
 USING_NS_CC;
 

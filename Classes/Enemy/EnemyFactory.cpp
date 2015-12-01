@@ -19,4 +19,6 @@ Enemy* EnemyFactory::create(EnemyID id)
         default:
             break;
     }
+
+	return NULL;
 }

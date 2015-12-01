@@ -8,7 +8,7 @@
 
 #include "EncyclopediaLayer.h"
 #include "CommonDef.h"
-#include "Enemy.h"
+#include "Enemy/Enemy.h"
 
 class EnemyBook : public Node
 {
@@ -78,8 +78,7 @@ bool TowerBook::init()
     m_rightBook = Sprite::createWithSpriteFrameName("encyclopedia_book_pg.png");
     addChild(m_rightBook);
     m_rightBook->setPosition(Vec2(0.75 * TD_WIDTH + origin.x, 0.5 * TD_HEIGHT + origin.y));
-    
-    auto titile = LabelTTF::create("防御塔", TD_FONT, 20);
+    LabelTTF* titile = LabelTTF::create("Tower", TD_FONT, 20);
     titile->setColor(Color3B(102, 51, 0));
     titile->setPosition(0.3 * TD_WIDTH, TD_HEIGHT - 80);
     m_leftBook->addChild(titile);

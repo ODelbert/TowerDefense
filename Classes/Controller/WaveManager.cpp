@@ -10,7 +10,7 @@
 #include "CommonDef.h"
 #include "tinyxml2/tinyxml2.h"
 #include "PListReader.h"
-#include "Enemy.h"
+#include "Enemy/Enemy.h"
 
 using namespace tinyxml2;
 
@@ -22,7 +22,7 @@ void WaveManager::initialize(int level, int difficulty)
     std::string path = FileUtils::getInstance()->getWritablePath();
     std::string file = "level1_waves_campaign.xml";
     path += file;
-    XMLDocument *pDoc = new XMLDocument();
+    tinyxml2::XMLDocument *pDoc = new tinyxml2::XMLDocument;
     XMLError errorId = pDoc->LoadFile("level1_waves_campaign.xml");
     
     if (errorId != 0) {

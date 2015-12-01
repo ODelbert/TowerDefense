@@ -8,7 +8,7 @@
 
 #include "CommonDef.h"
 #include "GameConfig.h"
-#include "PListReader.h"
+#include "ResourceManager/PListReader.h"
 
 
 SINGLETON_IMPL(GameConfig);

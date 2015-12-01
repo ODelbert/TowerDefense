@@ -11,12 +11,14 @@
 #define MAP_HEIGHT 1000
 
 #define TD_FONT "Arial"
-#define LOGF CCLOG(__PRETTY_FUNCTION__);
+
+#define LOGF CCLOG(__FUNCTION__); // __PRETTY_FUNCTION__
+
 
 #define TD_SIZE(x) CCLOG("%s size = %f %f", #x, x->getContentSize().width, x->getContentSize().height);
 #define TD_POS(x) CCLOG("%s pos = %f %f", #x, x->getPosition().x, x->getPosition().y);
 
-
+typedef unsigned int uint;
 #define SINGLETON_IMPL(class) \
 class* class::s_instance = nullptr; \
 class* class::getInstance() \

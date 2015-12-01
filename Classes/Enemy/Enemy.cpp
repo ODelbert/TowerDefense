@@ -9,7 +9,8 @@
 #include "cocos2d.h"
 #include "CommonDef.h"
 #include "Enemy.h"
-#include "AnimationManager.h"
+#include "Animation/AnimationManager.h"
+
 USING_NS_CC;
 
 enum ActionCommon

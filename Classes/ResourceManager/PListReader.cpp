@@ -11,7 +11,7 @@
 #include <stdio.h>
 
 #include "CommonDef.h"
-#include "AnimationManager.h"
+#include "Animation/AnimationManager.h"
 
 USING_NS_CC;
 
@@ -261,7 +261,7 @@ void PListReader::createEnemyAnimationTableIndexer()
             CCLOG("PListReader::lookupActionTypes failed to create with file [%s]", path.c_str());
             return false;
         }
-        
+
         ValueMap animationDict = root["animations"].asValueMap();
         ValueMap::const_iterator iter = animationDict.begin();
         while (iter != animationDict.end()) {
@@ -281,22 +281,22 @@ void PListReader::createEnemyAnimationTableIndexer()
             
             ++iter;
         }
-        
+
         return false;
     };
-    
+
     auto addAnimation = [](int id, const std::string& path) {
         ValueMap root = FileUtils::getInstance()->getValueMapFromFile(path);
         if (root.empty()) {
             CCLOG("PListReader::lookupActionTypes failed to create with file [%s]", path.c_str());
             return;
         }
-        
+
         ValueMap animationDict = root["animations"].asValueMap();
         if (animationDict.empty()) {
             return;
         }
-        
+
         ValueMap::const_iterator iter = animationDict.begin();
         ValueMap firstEntry = iter->second.asValueMap();
         std::string enemyName = firstEntry["prefix"].asString();
@@ -312,7 +312,7 @@ void PListReader::createEnemyAnimationTableIndexer()
             else {
                 actionName  = name.substr(enemyName.size() + 1);
             }
-            
+
             bool normalAction = false;
             int actionId = 0;
             int i = 0;
@@ -325,7 +325,7 @@ void PListReader::createEnemyAnimationTableIndexer()
                     break;
                 }
             }
-            
+
             if (!normalAction) {
                 AnimationManager::getInstance()->addAnimationIndex(id, s_actionId_ht_counter, name);
             }
