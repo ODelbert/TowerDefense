@@ -16,6 +16,63 @@ using namespace tinyxml2;
 
 SINGLETON_IMPL(WaveManager);
 
+struct EnemyName2ID
+{
+    char name[64];
+    int id;
+};
+
+static EnemyName2ID s_name2Id[] = 
+{
+    { "ElvesEnemyArachnomancer", EnemyID_Arachnomancer }, 
+    { "ElvesEnemyBandersnatch", EnemyID_Bandersnatch }, 
+    { "ElvesEnemyBloodServant", EnemyID_BloodServant },
+    { "ElvesEnemyBloodsydianWarlock", EnemyID_BloodsydianWarlock },
+    { "ElvesEnemyBoomshrooms", 10000 }, 
+    { "ElvesEnemyDarkSpitters", EnemyID_Dark_Spitters },
+    { "ElvesEnemyDrider", EnemyID_Drider },
+    { "ElvesEnemyEttin", EnemyID_Ettin },
+    { "ElvesEnemyGloomy", EnemyID_Gloomy },
+    { "ElvesEnemyGnollBlighter", EnemyID_Gnoll_Blighter },
+    { "ElvesEnemyGnollBloodsydian", EnemyID_BloodsydianGnoll },
+    { "ElvesEnemyGnollBurner", EnemyID_Gnoll_Burner },
+    { "ElvesEnemyGnollGnawer", EnemyID_Gnoll_Gnawer }, 
+    { "ElvesEnemyGnollReaver", EnemyID_Gnoll_Reaver },
+    { "ElvesEnemyGrimDevourers" , EnemyID_Grim_Devourers},
+    { "ElvesEnemyHyena", EnemyID_Hyena },
+    { "ElvesEnemyMantaRay", EnemyID_Mantaray }, 
+    { "ElvesEnemyMountedAvenger", 10000 },
+    { "ElvesEnemyMunchshrooms", 10000}, 
+    { "ElvesEnemyOgreMagi", EnemyID_Ogre_Mage },
+    { "ElvesEnemyOgreMagiCustodyEttin", 999999 },
+    { "ElvesEnemyOgreMagiCustodyGnollGnawer", 999999 },
+    { "ElvesEnemyOgreMagiCustodyWarlock", 999999 }, 
+    { "ElvesEnemyPerython", EnemyID_Perython }, 
+    { "ElvesEnemyPerythonGnollGnawer", 99999999 },
+    { "ElvesEnemyPerythonRockthrower", 99999999 },
+    { "ElvesEnemyRabbit", EnemyID_Rabbit },
+    { "ElvesEnemyRazorboar", EnemyID_Razorboar },
+    { "ElvesEnemyRedcap", EnemyID_Redcap },
+    { "ElvesEnemySatyrCutthroat", EnemyID_Satyr },
+    { "ElvesEnemySatyrHoplite", EnemyID_SatyrHoplite },
+    { "ElvesEnemyScreecherBat", EnemyID_Screecher_Bat }, 
+    { "ElvesEnemyShadowChampion", EnemyID_Shadow_Champion }, 
+    { "ElvesEnemyShadowsSpawns", EnemyID_Shadow_Spawn }, 
+    { "ElvesEnemyShroomBreeder", 10000 }, 
+    { "ElvesEnemySpiderArachnomancer", EnemyID_Arachnomancer_MiniSpider },
+    { "ElvesEnemySpiderSonOfMactans", EnemyID_Son_Of_Mactans },
+    { "ElvesEnemySwordSpider", EnemyID_Sword_Spider }, 
+    { "ElvesEnemyTwilightAvenger", EnemyID_Twilight_Avenger}, 
+    { "ElvesEnemyTwilightElfHarasser", EnemyID_Harraser }, 
+    { "ElvesEnemyTwilightEvoker", EnemyID_Twilight_Evoker},
+    { "ElvesEnemyTwilightGolem", EnemyID_Gollem},
+    { "ElvesEnemyTwilightHeretic", EnemyID_Twilight_Heretic },
+    { "ElvesEnemyTwilightScourger", EnemyID_Scourger }, 
+    { "ElvesEnemyWebspittingSpider", EnemyID_WebspitterSpider }, 
+    { "EnemyBouncer", 10000 }, 
+    { "EnemyDesertRaider", 10000 }
+};
+
 void WaveManager::initialize(int level, int difficulty)
 {
     //ValueMap root = FileUtils::getInstance()->getValueMapFromFile("level1_waves_campaign.xml");
