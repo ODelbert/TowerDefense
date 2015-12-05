@@ -8,3 +8,9 @@
 
 #include "CommonEnemy.h"
 #include "Enemy.h"
+
+bool GnollReaver::init()
+{
+    initWithEnemyId(EnemyID_Gnoll_Reaver);
+    return  true;
+}

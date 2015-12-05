@@ -37,12 +37,13 @@ bool GameScene::init()
         return false;
     }
     
+    ResourceManager::getInstance()->initialize();
+    
+    
 #if 1//def TD_TEST
     auto layer = Stage1::create();
     addChild(layer);
 #else
-    
-    ResourceManager::getInstance()->initialize();
     
     auto layer = EncyclopediaLayer::create();
     addChild(layer);

@@ -26,6 +26,11 @@ public:
     
 protected:
     explicit BattleField();
+
+    void updateEnemies();
+    void updateTowers();
+    void UpdateAllies();
+
     
 protected:
     Sprite* m_mapSprite;

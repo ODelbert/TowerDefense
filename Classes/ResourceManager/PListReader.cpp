@@ -173,9 +173,11 @@ std::vector<std::vector<std::vector<Vec2> > > PListReader::readPathPlist(int lev
         for (int j = 0; j < subPathsVec.size(); ++j) {
             ValueVector pathVec = subPathsVec[j].asValueVector();
             std::vector<Vec2> path;
+            float offsetX = 59.f;
+            float offsetY = 137.f;
             for (int k = 0; k < pathVec.size(); ++k) {
                 ValueMap pos = pathVec[k].asValueMap();
-                path.push_back(Vec2(pos["x"].asFloat() * MAP_WIDTH / TD_WIDTH, pos["y"].asFloat()));
+                path.push_back(Vec2(pos["x"].asFloat() * MAP_WIDTH / TD_WIDTH + offsetX, pos["y"].asFloat() + offsetY));
             }
             
             subPaths.push_back(path);
@@ -201,39 +203,6 @@ std::vector<std::vector<std::vector<Vec2> > > PListReader::readPathPlist(int lev
     
     return paths;
 }
-
-//EnemyInfo PListReader::readEnemyInfoPlist(const std::string& name)
-//{
-//    EnemyInfo info;
-//    ValueMap root = FileUtils::getInstance()->getValueMapFromFile("enemy_KO_info.plist");
-//    ValueMap enemyDict = root["enemies"].asValueMap();
-//    
-//    ValueMap::const_iterator iter = enemyDict.begin();
-//    if (enemyDict.empty()) {
-//        CCLOG("PlistReader::readEnemyInfo read invalid info by name [%s]", name.c_str());
-//        return info;
-//    }
-//    
-//    while(iter != enemyDict.end()) {
-//        if ( name == iter->first) {
-//            ValueMap infoEntry = iter->second.asValueMap();
-//            strcpy(info.name, name.c_str());
-//            info.dmgMax = infoEntry["dmgMax"].asInt();
-//            info.dmgMin = infoEntry["dmgMin"].asInt();
-//            info.food = infoEntry["food"].asInt();
-//            info.life = infoEntry["life"].asInt();
-//            info.armor = infoEntry["dmgMin"].asInt();
-//            info.resist = infoEntry["resist"].asInt();
-//            info.speed = infoEntry["speed"].asInt();
-//            info.flyable = infoEntry["flyable"].asInt();
-//            break;
-//        }
-//        
-//        ++iter;
-//    }
-//    
-//    return info;
-//}
 
 void PListReader::createEnemyAnimationTableIndexer()
 {

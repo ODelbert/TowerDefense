@@ -69,54 +69,53 @@ struct EnemyInfo
 
 enum EnemyID
 {
+    EnemyID_Invalid = 0,
     EnemyID_Arachnomancer = 1,
-    EnemyID_Arachnomancer_MiniSpider = 2,
-    EnemyID_Arachnomancer_Spider = 3,
-    EnemyID_Bandersnatch = 4,
-    EnemyID_BloodServant = 5,
-    EnemyID_BloodsydianGnoll = 6,
-    EnemyID_BloodsydianWarlock = 7,
-    EnemyID_Boss_Drow_Queen_Zealot = 8,
-    EnemyID_Dark_Spitters = 9, //ERR
-    EnemyID_Drider = 10,
-    EnemyID_Ettin = 11,
-    EnemyID_FungusRider = 12,
-    EnemyID_FungusRider_Medium = 13,
-    EnemyID_FungusRider_Small = 14, // err
-    EnemyID_Gloomy = 15,
-    EnemyID_Gnoll_Blighter = 16,
-    EnemyID_Gnoll_Burner = 17,
-    EnemyID_Gnoll_Gnawer = 18,
-    EnemyID_Gnoll_Reaver = 19,
-    EnemyID_Gollem = 20,
-    EnemyID_Grim_Devourers = 21, // E
-    EnemyID_Harraser = 22,
-    EnemyID_Hyena = 23,
-    EnemyID_Knocker = 24, // ?
-    EnemyID_Mantaray = 25,
-//    EnemyID_Miniboss_Gnoll = 26,
-//    EnemyID_MountedAvenger = 27,
-    EnemyID_Ogre_Mage = 28,
-    EnemyID_Perython = 29,
-    EnemyID_Rabbit = 30,
-    EnemyID_Razorboar = 31,
-    EnemyID_Redcap = 32,
-    EnemyID_Satyr = 33,
-    EnemyID_SatyrHoplite = 34,
-    EnemyID_Scourger = 35,
-    EnemyID_Scourger_Shadow = 36,
-    EnemyID_Screecher_Bat = 37,
-    EnemyID_Shadow_Champion = 38, // shadow_champion_animations
-    EnemyID_Shadow_Spawn = 39, // shadow_spawn_animations
-    EnemyID_Son_Of_Mactans = 40,
-    EnemyID_Sword_Spider = 41,
-    EnemyID_Tarantula = 42,
-    EnemyID_TheBeheader = 43,
-    EnemyID_Twilight_Avenger = 44,
-    EnemyID_Twilight_Bannerbearer = 45, //
-    EnemyID_Twilight_Evoker = 46,
-    EnemyID_Twilight_Heretic = 47,
-    EnemyID_WebspitterSpider = 48,
+    EnemyID_Arachnomancer_Spider = 2,
+    EnemyID_Bandersnatch = 3,
+    EnemyID_BloodServant = 4,
+    EnemyID_BloodsydianGnoll = 5,
+    EnemyID_BloodsydianWarlock = 6,
+    EnemyID_Boss_Drow_Queen_Zealot = 7,
+    EnemyID_Dark_Spitters = 8,
+    EnemyID_Drider = 9,
+    EnemyID_Ettin = 10,
+    EnemyID_FungusRider = 11,
+    EnemyID_FungusRider_Medium = 12,
+    EnemyID_FungusRider_Small = 13,
+    EnemyID_Gloomy = 14,
+    EnemyID_Gnoll_Blighter = 15,
+    EnemyID_Gnoll_Burner = 16,
+    EnemyID_Gnoll_Gnawer = 17,
+    EnemyID_Gnoll_Reaver = 18,
+    EnemyID_Gollem = 19,
+    EnemyID_Grim_Devourers = 20,
+    EnemyID_Harraser = 21,
+    EnemyID_Hyena = 22,
+    EnemyID_Knocker = 23,
+    EnemyID_Mantaray = 24,
+    EnemyID_Miniboss_Gnoll = 25,
+    EnemyID_MountedAvenger = 26,
+    EnemyID_Ogre_Mage = 27,
+    EnemyID_Perython = 28,
+    EnemyID_Razorboar = 29,
+    EnemyID_Redcap = 30,
+    EnemyID_Satyr = 31,
+    EnemyID_SatyrHoplite = 32,
+    EnemyID_Scourger = 33,
+    EnemyID_Scourger_Shadow = 34,
+    EnemyID_Screecher_Bat = 35,
+    EnemyID_Shadow_Champion = 36,
+    EnemyID_Shadow_Spawn = 37,
+    EnemyID_Son_Of_Mactans = 38,
+    EnemyID_Sword_Spider = 39,
+    EnemyID_Tarantula = 40,
+    EnemyID_TheBeheader = 41,
+    EnemyID_Twilight_Avenger = 42,
+    EnemyID_Twilight_Bannerbearer = 43,
+    EnemyID_Twilight_Evoker = 44,
+    EnemyID_Twilight_Heretic = 45,
+    EnemyID_WebspitterSpider = 46,
     EnemyID_Num = EnemyID_WebspitterSpider,
 };
 
@@ -183,21 +182,21 @@ public:
     Vec2 getcurPoint() const;
     Direction getDirection() const;
     bool moveToNextPoint();
-    
+
 private:
     std::vector<Vec2> m_points;
     uint m_pathIndex;
     Direction m_dir;
 };
 
-class Enemy : public Sprite
+class Enemy : public Node
 {
 public:
     void sendToBattle(const std::vector<Vec2>& waypoints);
     void moveToNext(float dt);
     
     
-    virtual void attack();
+    virtual void attack() {}
     virtual void idle();
     virtual void walkingLeft();
     virtual void walkingRight();
@@ -233,10 +232,11 @@ protected:
     bool initWithEnemyId(EnemyID id);
     
 protected:
-    Enemy();
-    virtual ~Enemy();
+    Enemy() {}
+    virtual ~Enemy() {}
 
     WayPoints m_wayPoints;
+    Sprite* m_texture;
     CC_DISALLOW_COPY_AND_ASSIGN(Enemy)
 };
 

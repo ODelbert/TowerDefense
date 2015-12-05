@@ -13,6 +13,8 @@
 
 USING_NS_CC;
 
+#define RADIAN_TO_DEGREE(x) (x) < 0 ? (360 + 57.2958*(x)) : (57.2958*(x))
+
 enum ActionCommon
 {
     ActionCommon_Attack = 0,
@@ -48,6 +50,10 @@ Vec2 WayPoints::getcurPoint() const
 
 Direction WayPoints::getDirection() const
 {
+    if (m_pathIndex == 0) {
+        return Direction_Invalid;
+    }
+    
     return m_dir;
 }
 
@@ -57,9 +63,8 @@ bool WayPoints::moveToNextPoint()
         return false;
     }
     
-    float angle = atan2f(m_points[m_pathIndex + 1].y - m_points[m_pathIndex].y, m_points[m_pathIndex + 1].x - m_points[m_pathIndex].x) * 180 / 3.14;
-    
-    if (angle > -45 && angle <= 45) {
+    float angle = RADIAN_TO_DEGREE(atan2f(m_points[m_pathIndex + 1].y - m_points[m_pathIndex].y, m_points[m_pathIndex + 1].x - m_points[m_pathIndex].x));
+    if (angle > 315 && angle <= 45) {
         m_dir = Direction_Right;
     }
     else if (angle > 45 && angle <= 135) {
@@ -93,82 +98,90 @@ bool Enemy::initWithEnemyId(EnemyID id)
     m_buffs = 0;
     m_debuffs = 0;
     m_direction = Direction_Invalid;
+    m_texture = Sprite::createWithSpriteFrameName("redcap_0001.png");
+    addChild(m_texture);
     return true;
 }
 
 void Enemy::sendToBattle(const std::vector<Vec2> &waypoints)
 {
+    if (waypoints.empty()) {
+        return;
+    }
+    
     m_wayPoints.setPoints(waypoints);
     setPosition(m_wayPoints.getcurPoint());
-    
+    schedule(schedule_selector(Enemy::moveToNext), 0.1);
 }
 
 void Enemy::idle()
 {
-    AnimationManager::getInstance()->runAction(this, static_cast<int>(m_id), ActionCommon_Idle);
+    AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_Idle);
 }
 
 void Enemy::walkingLeft()
 {
-    AnimationManager::getInstance()->runAction(this, static_cast<int>(m_id), ActionCommon_WalkingRightLeft);
+    m_texture->setFlippedX(true);
+    AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_WalkingRightLeft);
 }
 
 void Enemy::walkingRight()
 {
-    setFlippedX(true);
-    AnimationManager::getInstance()->runAction(this, static_cast<int>(m_id), ActionCommon_WalkingRightLeft);
+    AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_WalkingRightLeft);
 }
 
 void Enemy::walkingDown()
 {
-    AnimationManager::getInstance()->runAction(this, static_cast<int>(m_id), ActionCommon_WalkingDown);
+    AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_WalkingDown);
 }
 
 void Enemy::walkingUp()
 {
-    AnimationManager::getInstance()->runAction(this, static_cast<int>(m_id), ActionCommon_WalkingUp);
+    AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_WalkingUp);
 }
 
 void Enemy::death()
 {
-    AnimationManager::getInstance()->runAction(this, static_cast<int>(m_id), ActionCommon_Death);
+    AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_Death);
 }
 
 void Enemy::spawn()
 {
-    AnimationManager::getInstance()->runAction(this, static_cast<int>(m_id), ActionCommon_Spawn);
+    AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_Spawn);
 }
 
 void Enemy::respawn()
 {
-    AnimationManager::getInstance()->runAction(this, static_cast<int>(m_id), ActionCommon_Respawn);
+    AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_Respawn);
 }
 
 void Enemy::shoot()
 {
-    AnimationManager::getInstance()->runAction(this, static_cast<int>(m_id), ActionCommon_Shoot);
+    AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_Shoot);
 }
 
 void Enemy::cast()
 {
-    AnimationManager::getInstance()->runAction(this, static_cast<int>(m_id), ActionCommon_Cast);
+    AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_Cast);
 }
 
 void Enemy::speicialAttack()
 {
-    AnimationManager::getInstance()->runAction(this, static_cast<int>(m_id), ActionCommon_Special);
+    AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_Special);
 }
 
 void Enemy::moveToNext(float dt)
 {
-    Direction lastDir = m_wayPoints.getDirection();
+    Direction dir = m_wayPoints.getDirection();
     if (!m_wayPoints.moveToNextPoint()) {
         unschedule(schedule_selector(Enemy::moveToNext));
         getParent()->removeChild(this);
         return;
     }
     
-    if (lastDir == m_wayPoints.getDirection()) {
+    setPosition(m_wayPoints.getcurPoint());
+    
+    if (dir == m_wayPoints.getDirection()) {
         return;
     }
     

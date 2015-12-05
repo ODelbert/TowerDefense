@@ -24,7 +24,7 @@ struct EnemyName2ID
 
 static EnemyName2ID s_name2Id[] = 
 {
-    { "ElvesEnemyArachnomancer", EnemyID_Arachnomancer }, 
+    { "ElvesEnemyArachnomancer", EnemyID_Arachnomancer },
     { "ElvesEnemyBandersnatch", EnemyID_Bandersnatch }, 
     { "ElvesEnemyBloodServant", EnemyID_BloodServant },
     { "ElvesEnemyBloodsydianWarlock", EnemyID_BloodsydianWarlock },
@@ -50,7 +50,7 @@ static EnemyName2ID s_name2Id[] =
     { "ElvesEnemyPerython", EnemyID_Perython }, 
     { "ElvesEnemyPerythonGnollGnawer", 99999999 },
     { "ElvesEnemyPerythonRockthrower", 99999999 },
-    { "ElvesEnemyRabbit", EnemyID_Rabbit },
+    //  { "ElvesEnemyRabbit", EnemyID_Rabbit },
     { "ElvesEnemyRazorboar", EnemyID_Razorboar },
     { "ElvesEnemyRedcap", EnemyID_Redcap },
     { "ElvesEnemySatyrCutthroat", EnemyID_Satyr },
@@ -59,7 +59,7 @@ static EnemyName2ID s_name2Id[] =
     { "ElvesEnemyShadowChampion", EnemyID_Shadow_Champion }, 
     { "ElvesEnemyShadowsSpawns", EnemyID_Shadow_Spawn }, 
     { "ElvesEnemyShroomBreeder", 10000 }, 
-    { "ElvesEnemySpiderArachnomancer", EnemyID_Arachnomancer_MiniSpider },
+    { "ElvesEnemySpiderArachnomancer", EnemyID_Arachnomancer_Spider },
     { "ElvesEnemySpiderSonOfMactans", EnemyID_Son_Of_Mactans },
     { "ElvesEnemySwordSpider", EnemyID_Sword_Spider }, 
     { "ElvesEnemyTwilightAvenger", EnemyID_Twilight_Avenger}, 
@@ -72,6 +72,17 @@ static EnemyName2ID s_name2Id[] =
     { "EnemyBouncer", 10000 }, 
     { "EnemyDesertRaider", 10000 }
 };
+
+static EnemyID name2Id(const char* str)
+{
+    for (int i = 0; i < sizeof(s_name2Id)/sizeof(s_name2Id[0]); ++i) {
+        if (0 == strncmp(str, s_name2Id[i].name, 64)) {
+            return static_cast<EnemyID>(s_name2Id[i].id);
+        }
+    }
+    
+    return EnemyID_Invalid;
+}
 
 void WaveManager::initialize(int level, int difficulty)
 {
@@ -129,12 +140,20 @@ void WaveManager::initialize(int level, int difficulty)
                         else if (0 == strcmp(ee->Value(), "interval_next")) {
                             si.intervalNext = atoi(ee->GetText());
                         }
+                        else if (0 == strcmp(ee->Value(), "path")) {
+                            si.path = atoi(ee->GetText());
+                        }
                         else {
 
                         }
                         ee = ee->NextSiblingElement();
                     }
                     
+                    if (si.max >= 2 && si.interval > 0) {
+                        for (int i  = 0; i < si.max; ++i) {
+                            waveInfo.addSpawn(si);
+                        }
+                    }
                     waveInfo.addSpawn(si);
                     spawn = spawn->NextSiblingElement();
                 }
@@ -151,8 +170,7 @@ void WaveManager::initialize(int level, int difficulty)
     }
 
     delete pDoc;
-    
-    
+
     m_paths = PListReader::getInstance()->readPathPlist(level);
 }
 
@@ -161,22 +179,48 @@ void WaveManager::start()
     auto scheduleMain = Director::getInstance()->getScheduler();
     auto scheduleWave = new Scheduler();
     scheduleMain->scheduleUpdate(scheduleWave, 0, false);
-    scheduleWave->schedule(schedule_selector(WaveManager::nextEnemy), this, 0.0f, CC_REPEAT_FOREVER, 0.0f, false);
+    scheduleWave->schedule(schedule_selector(WaveManager::nextEnemy), this, 1.0f, CC_REPEAT_FOREVER, 0.0f, false);
     m_waveIndex = 0;
     m_spawnIndex = 0;
 }
 
+// FIXME:: 定时触发
 void WaveManager::nextEnemy(float dt)
 {
-    // TEST
-    return;
-    m_runningEnemy = Sprite::createWithSpriteFrameName("redcap_0001.png");
-    return;
     if (m_waveIndex >= m_waves.size()) {
         Director::getInstance()->getScheduler()->unschedule(schedule_selector(WaveManager::nextEnemy), this);
         return;
     }
+    
+    log("=========%d=============push enemy with name [%s] to battle, path %d, interval %d intervalNext %d, max %d, max_same %d", m_waveIndex,
+        m_waves[m_waveIndex].spwans()[m_spawnIndex].id,
+        m_waves[m_waveIndex].spwans()[m_spawnIndex].path,
+        m_waves[m_waveIndex].spwans()[m_spawnIndex].interval,
+        m_waves[m_waveIndex].spwans()[m_spawnIndex].intervalNext,
+        m_waves[m_waveIndex].spwans()[m_spawnIndex].max,
+        m_waves[m_waveIndex].spwans()[m_spawnIndex].maxSame);
 
+    
+    auto scheduleMain = Director::getInstance()->getScheduler();
+    auto scheduleWave = new Scheduler();
+    scheduleMain->scheduleUpdate(scheduleWave, 0, false);
+    
+    typedef struct _WaveEventData {
+        int id;
+        int path;
+        int subPath;
+    } WaveEventData;
+    
+    WaveEventData eventData;
+    eventData.id = name2Id(m_waves[m_waveIndex].spwans()[m_spawnIndex].id);
+    eventData.path = m_waves[m_waveIndex].getPathIndex();
+    eventData.subPath = m_waves[m_waveIndex].spwans()[m_spawnIndex].path;
+    
+    WaveEvent event;
+    event.setUserData(&eventData);
+    
+    Director::getInstance()->getEventDispatcher()->dispatchEvent(&event);
+    
     if (m_spawnIndex < m_waves[m_waveIndex].spwans().size() - 1) {
         ++m_spawnIndex;
     }
@@ -184,13 +228,14 @@ void WaveManager::nextEnemy(float dt)
         m_spawnIndex = 0;
         ++m_waveIndex;
     }
+}
+
+std::vector<Vec2> WaveManager::getPath(int path, int subPath)
+{
+    if (path >= m_paths.size() || subPath >= m_paths[path].size()) {
+        return std::vector<Vec2>();
+    }
     
-    if (m_waveIndex == m_waves.size()) return;
-    log("=========%d=============push enemy with name [%s] to battle, path %d, next %d, max %d, max_same %d", m_waveIndex,
-        m_waves[m_waveIndex].spwans()[m_spawnIndex].id,
-        m_waves[m_waveIndex].spwans()[m_spawnIndex].path,
-        m_waves[m_waveIndex].spwans()[m_spawnIndex].intervalNext,
-        m_waves[m_waveIndex].spwans()[m_spawnIndex].max,
-        m_waves[m_waveIndex].spwans()[m_spawnIndex].maxSame);
+    return m_paths[path][subPath];
 }
 

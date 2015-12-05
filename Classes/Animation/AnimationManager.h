@@ -52,12 +52,12 @@ public:
     
     void runAction(Sprite* target, int key, bool repeatForever = true);
     void runAction(Sprite* target, int key, int type, bool repeatForever = true);
-
+    void showTable();
 private:
     void addAnimationIndex(int key, int actionType, const std::string& name);
     void removeAnimationIndex(int key, int actionType);
     std::string findAnimation(int key, int actionType);
-    void showTable();
+
     
 private:
     static AnimationManager* s_instance;

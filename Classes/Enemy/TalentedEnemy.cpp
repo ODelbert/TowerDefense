@@ -14,3 +14,9 @@ bool RedCap::init()
     Enemy::initWithEnemyId(EnemyID_Redcap);
     return true;
 }
+
+bool GnollBurner::init()
+{
+    Enemy::initWithEnemyId(EnemyID_Gnoll_Burner);
+    return true;
+}

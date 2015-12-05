@@ -8,9 +8,7 @@
 
 #include "ResourceManager.h"
 #include "CommonDef.h"
-
-
-
+#include "PListReader.h"
 
 static const std::string BigImagePlist[] =
 {
@@ -160,6 +158,15 @@ bool ResourceManager::initialize()
     for (int i = 0; i < sizeof(ImageAnimationPlist)/sizeof(ImageAnimationPlist[0]); ++i) {
         SpriteFrameCache::getInstance()->addSpriteFramesWithFile(ImageAnimationPlist[i]);
     }
+    
+    for (int i = 0; i < sizeof(AnimationNamePlist)/sizeof(AnimationNamePlist[0]); ++i) {
+        PListReader::getInstance()->createAnimationWithPlist(AnimationNamePlist[i]);
+    }
+    
+    
+    // animnation
+    PListReader::getInstance()->createEnemyAnimationTableIndexer();
+    // TODO:add animations manually
     
     return true;
 }

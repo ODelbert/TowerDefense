@@ -20,4 +20,11 @@ public:
     virtual bool init();
 };
 
+class GnollBurner : public Enemy
+{
+public:
+    CREATE_FUNC(GnollBurner);
+    virtual bool init();
+};
+
 #endif /* defined(__TowerDefense__TalentEnemy__) */
