@@ -14,7 +14,7 @@
 
 #define LOGF CCLOG(__FUNCTION__); // __PRETTY_FUNCTION__
 
-
+#define SPEED_RATE(x) ((x) / 500)
 #define TD_SIZE(x) CCLOG("%s size = %f %f", #x, x->getContentSize().width, x->getContentSize().height);
 #define TD_POS(x) CCLOG("%s pos = %f %f", #x, x->getPosition().x, x->getPosition().y);
 

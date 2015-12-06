@@ -193,7 +193,7 @@ class Enemy : public Node
 {
 public:
     void sendToBattle(const std::vector<Vec2>& waypoints);
-    void moveToNext(float dt);
+    void moveToNext();
     
     
     virtual void attack() {}

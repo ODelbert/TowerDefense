@@ -111,7 +111,7 @@ void Enemy::sendToBattle(const std::vector<Vec2> &waypoints)
     
     m_wayPoints.setPoints(waypoints);
     setPosition(m_wayPoints.getcurPoint());
-    schedule(schedule_selector(Enemy::moveToNext), 0.1);
+    moveToNext();
 }
 
 void Enemy::idle()
@@ -170,21 +170,24 @@ void Enemy::speicialAttack()
     AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_Special);
 }
 
-void Enemy::moveToNext(float dt)
+void Enemy::moveToNext()
 {
     Direction dir = m_wayPoints.getDirection();
+    Vec2 pos = m_wayPoints.getcurPoint();
     if (!m_wayPoints.moveToNextPoint()) {
-        unschedule(schedule_selector(Enemy::moveToNext));
         getParent()->removeChild(this);
         return;
     }
+    log("time = %f", 2000* pos.getDistance(m_wayPoints.getcurPoint()) / m_speed);
+    runAction(Sequence::create(MoveTo::create(pos.getDistance(m_wayPoints.getcurPoint()) / SPEED_RATE(m_speed), m_wayPoints.getcurPoint())
+                               , CallFuncN::create(CC_CALLBACK_0(Enemy::moveToNext, this))
+                               , NULL));
     
-    setPosition(m_wayPoints.getcurPoint());
     
+//    return;
     if (dir == m_wayPoints.getDirection()) {
         return;
     }
-    
     switch (m_wayPoints.getDirection()) {
         case Direction_Down:
         {
