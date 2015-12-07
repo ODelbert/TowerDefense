@@ -8,6 +8,7 @@
 
 #include "StartLayer.h"
 #include "CommonDef.h"
+#include "Animation/AnimationManager.h"
 
 static const std::string ImageStartPlist[] =
 {
@@ -33,7 +34,7 @@ bool StartLayer::init()
     m_bkg->setPosition(Vec2(TD_WIDTH/2, TD_HEIGHT/2));
     m_logo->setPosition(Vec2(TD_WIDTH/2, 640-194));
     
-    
+    //创建菜单
     auto startBtnNormal = Sprite::createWithSpriteFrameName("menu_startchain_0001.png");
     auto startBtnPressed = Sprite::createWithSpriteFrameName("menu_startchain_0002.png");
     //startBtnPressed->setScale(0.8);
@@ -58,7 +59,9 @@ bool StartLayer::init()
     
     auto gameMenu = Menu::create(creditsItem, startBtnItem, nullptr);
     gameMenu->setPosition(Vec2(TD_WIDTH/2, TD_HEIGHT/2));
+    //end
    
+    //创建开关按钮
     m_isKeySoundOn = true;
     auto keySoundBtnOn = Sprite::createWithSpriteFrameName("options_overlay_buttons_0003.png");
     auto keySoundBtnOff = Sprite::createWithSpriteFrameName("options_overlay_buttons_0004.png");
@@ -67,7 +70,7 @@ bool StartLayer::init()
     auto BGMBtnOn = Sprite::createWithSpriteFrameName("options_overlay_buttons_0001.png");
     auto BGMBtnOff = Sprite::createWithSpriteFrameName("options_overlay_buttons_0002.png");
     
-    
+   
     auto keySoundItem = MenuItemSprite::create(keySoundBtnOn, keySoundBtnOff, [&](Ref *sender) {
         //start game
         MenuItemSprite* item = (MenuItemSprite*)sender;
@@ -110,12 +113,39 @@ bool StartLayer::init()
     
     auto soundMenu = Menu::create(keySoundItem, BGMItem, nullptr);
     soundMenu->setPosition(Vec2(0, TD_HEIGHT));
+    //end
+    
+    //animate
+   // Vector<cocos2d::SpriteFrame *> arrayOfSpriteFrameNames;
+    auto animation = Animation::create();
+    for (int i = 1; i <= 20; ++i)
+    {
+        std::string frameImgName = String::createWithFormat("logo_brillo_00%02d.png", i)->getCString();
+        SpriteFrame *frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frameImgName);
+       // arrayOfSpriteFrameNames.pushBack(frame);
+        animation->addSpriteFrame(frame);
+        
+    }
+    animation->setDelayPerUnit(1.5f / 20.0f);
+    animation->setRestoreOriginalFrame(true);
+    auto logoBrillo = Sprite::create();
+
+    auto brillo = CCRepeatForever::create(Animate::create(animation));
+    //auto brillo = Animate::create(animation);
+    if (!logoBrillo || !brillo) {
+        return false;
+    }
+    logoBrillo->runAction(brillo);
+    logoBrillo->setPosition(Vec2(TD_WIDTH/2, 640-194));
+
+    //end
     
     addChild(m_bkg);
-    addChild(gameMenu);
-    addChild(m_logo);
+    m_bkg->addChild(gameMenu);
+    m_bkg->addChild(m_logo);
     
-    addChild(soundMenu);
+    m_bkg->addChild(soundMenu);
+    m_bkg->addChild(logoBrillo);
     
     return true;
 }
