@@ -6,6 +6,7 @@
 //
 //
 
+#include "ResourceManager/PListReader.h"
 #include "StartLayer.h"
 #include "CommonDef.h"
 #include "Animation/AnimationManager.h"
@@ -117,7 +118,16 @@ bool StartLayer::init()
     
     //animate
    // Vector<cocos2d::SpriteFrame *> arrayOfSpriteFrameNames;
-    auto animation = Animation::create();
+    //创建动画plist
+    if (true) {
+        auto animateDict = Dictionary::create();
+        animateDict->setObject(PListReader::getInstance()->createAnimationPlist("logo_brillo", 1, 25), "logo_brillo");
+        PListReader::getInstance()->generateAnimationPlist("logo_animations", animateDict, NULL);
+    }
+    PListReader::getInstance()->createAnimationWithPlist("logo_animations.plist");
+    //end
+    
+    /*auto animation = Animation::create();
     for (int i = 1; i <= 20; ++i)
     {
         std::string frameImgName = String::createWithFormat("logo_brillo_00%02d.png", i)->getCString();
@@ -128,10 +138,11 @@ bool StartLayer::init()
     }
     animation->setDelayPerUnit(1.5f / 20.0f);
     animation->setRestoreOriginalFrame(true);
-    auto logoBrillo = Sprite::create();
-
-    auto brillo = CCRepeatForever::create(Animate::create(animation));
+    
+    auto brillo = CCRepeatForever::create(Animate::create(animation));*/
+    auto brillo = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation("logo_brillo")));
     //auto brillo = Animate::create(animation);
+    auto logoBrillo = Sprite::create();
     if (!logoBrillo || !brillo) {
         return false;
     }

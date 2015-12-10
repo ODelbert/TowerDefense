@@ -28,7 +28,7 @@ private:
 private:
     Sprite* m_bkg;
     Sprite* m_logo;
-    
+    Sprite* m_logoBrillo;
     bool m_isKeySoundOn;
     bool m_isBGMOn;
 };

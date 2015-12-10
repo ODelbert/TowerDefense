@@ -56,7 +56,8 @@ public:
 
     EnemyPlist* createEnemyPlist(const std::string &plistname);
 
-    AnimationPlist* createAnimationPlist(const std::string &plistname);
+    void generateAnimationPlist(const std::string &plistname, Dictionary* animationDict, Dictionary* includePlists);
+    Dictionary* createAnimationPlist(std::string prefix, int from, int to);
 
     WavePlist* createWavePlist(const std::string &plistname);
     

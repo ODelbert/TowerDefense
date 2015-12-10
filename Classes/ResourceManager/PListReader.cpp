@@ -381,18 +381,67 @@ void PListReader::saveImageFromPlist(const std::string &plist)
     }
 }
 
+void PListReader::generateAnimationPlist(const std::string &plistname, Dictionary* animationDict, Dictionary* includePlists)
+{
+    if (!animationDict) {
+        return;
+    }
+    auto root = Dictionary::create();
+    root->setObject(animationDict, "animations");
+    
+    if (includePlists == nullptr) {
+        root->setObject(Dictionary::create(), "includes");
+    }
+    else {
+        root->setObject(includePlists, "includes");
+    }
+    
+    // end with /
+    std::string writablePath = FileUtils::getInstance()->getWritablePath();
+    std::string fullPath = writablePath + plistname + ".plist";
+    if(root->writeToFile(fullPath.c_str()))
+        log("see the plist file at %s", fullPath.c_str());
+    else
+        log("write plist file failed");
+    
+}
+
+Dictionary* PListReader::createAnimationPlist(std::string prefix, int from, int to)
+{
+    //int lastSplit = animateName.find_last_of("_");
+    //std::string prefixName = animateName;
+    //if (lastSplit > 0) {
+    //    prefixName = animateName.substr(0, lastSplit);
+    //}
+    auto dictInDict = Dictionary::create();
+    
+    //add prefixName to the plist
+    auto prefixNameObj = String::create(prefix);
+    dictInDict->setObject(prefixNameObj, "prefix");
+    
+    //add toIndex to the plist
+    auto toIndexObj = Integer::create(to);
+    dictInDict->setObject(toIndexObj, "toIndex");
+    
+    //add toIndex to the plist
+    auto fromIndexObj = Integer::create(from);
+    dictInDict->setObject(fromIndexObj, "fromIndex");
+    return dictInDict;
+}
+
+
 #ifdef TD_DEBUG
 #include "GameData.h"
 void PListReader::generateEnemyPlist()
 {
     auto root = Dictionary::create();
-    auto array = Array::create();
-    for (int i = 0; i < s_enemiesInfo / sizeof(s_enemiesInfo[0]); ++i) {
-        auto dictInArray = Dictionary::create();
+    //auto array = Array::create();
+    //for (int i = 0; i < s_enemiesInfo / sizeof(s_enemiesInfo[0]); ++i) {
+    //    auto dictInArray = Dictionary::create();
         
-    }
+    //}
 }
-void generateTowerPlist()
+void PListReader::generateTowerPlist()
 {
     auto root = Dictionary::create();
     auto string = String::create("string element value");
