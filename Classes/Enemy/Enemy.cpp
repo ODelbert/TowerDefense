@@ -20,8 +20,11 @@ enum ActionCommon
     ActionCommon_Attack = 0,
     ActionCommon_WalkingDown,
     ActionCommon_WalkingRightLeft,
+	ActionCommon_WalkingUp,
     ActionCommon_Idle,
-    ActionCommon_WalkingUp,
+    ActionCommon_RunningDown,
+    ActionCommon_RunningRightLeft,
+	ActionCommon_RunningUp,
     ActionCommon_Death,
     ActionCommon_Spawn,
     ActionCommon_Respawn,
@@ -140,6 +143,27 @@ void Enemy::walkingUp()
     AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_WalkingUp);
 }
 
+void Enemy::runningLeft()
+{
+    m_texture->setFlippedX(true);
+    AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_WalkingRightLeft);
+}
+
+void Enemy::runningRight()
+{
+    AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_WalkingRightLeft);
+}
+
+void Enemy::runningDown()
+{
+    AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_WalkingDown);
+}
+
+void Enemy::runningUp()
+{
+    AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_WalkingUp);
+}
+
 void Enemy::death()
 {
     AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_Death);
@@ -170,46 +194,84 @@ void Enemy::speicialAttack()
     AnimationManager::getInstance()->runAction(m_texture, static_cast<int>(m_id), ActionCommon_Special);
 }
 
+void Enemy::update(float dt)
+{
+	switch (m_state) {
+	case EnemyState_Appear:
+		spawn();
+	break;
+	case EnemyState_WalkNext:
+	case EnemyState_RunningNext:
+		moveToNext();
+	break;
+	case EnemyState_Dead:
+		death();
+	break;
+	case EnemyState_AttackLeft:
+		m_texture->setFlippedX(true);
+	case EnemyState_AttackRight:
+		attack();
+	break;
+	case EnemyState_CastSpellLeft:
+		m_texture->setFlippedX(true);
+	case EnemyState_CastSpellRight:
+		cast();
+	break;
+	case EnemyState_SpeicalAttackLeft: {
+		m_texture->setFlippedX(true);
+		speicialAttack();
+	}
+	break;
+	case EnemyState_SpeicalAttackRight:
+		speicialAttack();
+	break;
+	case EnmeyState_Num:
+	break;
+	default:
+		break;
+	}
+}
+
 void Enemy::moveToNext()
 {
-    Direction dir = m_wayPoints.getDirection();
-    Vec2 pos = m_wayPoints.getcurPoint();
-    if (!m_wayPoints.moveToNextPoint()) {
-        getParent()->removeChild(this);
-        return;
-    }
-    log("time = %f", 2000* pos.getDistance(m_wayPoints.getcurPoint()) / m_speed);
-    runAction(Sequence::create(MoveTo::create(pos.getDistance(m_wayPoints.getcurPoint()) / SPEED_RATE(m_speed), m_wayPoints.getcurPoint())
-                               , CallFuncN::create(CC_CALLBACK_0(Enemy::moveToNext, this))
-                               , NULL));
-    
-    
-//    return;
-    if (dir == m_wayPoints.getDirection()) {
-        return;
-    }
-    switch (m_wayPoints.getDirection()) {
-        case Direction_Down:
-        {
-            walkingDown();
-        }
-        break;
-        case Direction_Up:
-        {
-            walkingUp();
-        }
-        break;
-        case Direction_Left:
-        {
-            walkingLeft();
-        }
-        break;
-        case Direction_Right:
-        {
-            walkingRight();
-        }
-        break;
-        default:
-        break;
-    }
+	if (EnemyState_WalkNext == m_state || EnemyState_RunningNext == m_state) {
+		Direction dir = m_wayPoints.getDirection();
+		Vec2 pos = m_wayPoints.getcurPoint();
+		if (!m_wayPoints.moveToNextPoint()) {
+			getParent()->removeChild(this);
+			return;
+		}
+
+		runAction(Sequence::create(MoveTo::create(pos.getDistance(m_wayPoints.getcurPoint()) / SPEED_RATE(m_speed), m_wayPoints.getcurPoint())
+								   , CallFuncN::create(CC_CALLBACK_0(Enemy::moveToNext, this))
+								   , NULL));
+
+		if (dir == m_wayPoints.getDirection()) {
+			return;
+		}
+		switch (m_wayPoints.getDirection()) {
+			case Direction_Down:
+			{
+				EnemyState_WalkNext == m_state ? walkingDown() : runningDown();
+			}
+			break;
+			case Direction_Up:
+			{
+				EnemyState_WalkNext == m_state ? walkingUp() : runningUp();
+			}
+			break;
+			case Direction_Left:
+			{
+				EnemyState_WalkNext == m_state ? walkingLeft() : runningLeft();
+			}
+			break;
+			case Direction_Right:
+			{
+				EnemyState_WalkNext == m_state ? walkingRight() : runningRight();
+			}
+			break;
+			default:
+			break;
+		}
+	}
 }

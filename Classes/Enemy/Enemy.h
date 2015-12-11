@@ -53,6 +53,7 @@ enum SpeedType {
 
 struct EnemyInfo
 {
+	int seq;
     int id;
     char name[24];
     int dmgMin;
@@ -122,22 +123,18 @@ enum EnemyID
 enum EnemyState
 {
     EnemyState_Invalid = -1,
-    EnemyState_AttackLeft,
+	EnemyState_Appear,
+	EnemyState_WalkNext,
+    EnemyState_RunningNext,
+	EnemyState_Dead,
+    
+	EnemyState_AttackLeft,
     EnemyState_AttackRight,
     EnemyState_CastSpellLeft,
     EnemyState_CastSpellRight,
-    EnemyState_Dead,
-    EnemyState_WalkLeft,
-    EnemyState_WalkRight,
-    EnemyState_WalkDown,
-    EnemyState_WalkUp,
-    EnemyState_ChargeDown,
-    EnemyState_ChargeLeft,
-    EnemyState_ChargeRight,
-    EnemyState_ChargeUp,
     EnemyState_SpeicalAttackLeft,
     EnemyState_SpeicalAttackRight,
-    EnemyState_Appear,
+
     EnmeyState_Num
 };
 
@@ -172,9 +169,6 @@ enum BuffState {
     BuffState_EnegyShield = 0x0008 // protect shield
 };
 
-
-
-
 class WayPoints : public Ref
 {
 public:
@@ -192,23 +186,27 @@ private:
 class Enemy : public Node
 {
 public:
-    void sendToBattle(const std::vector<Vec2>& waypoints);
-    void moveToNext();
-    
-    
+	virtual void update(float dt) override;
+
     virtual void attack() {}
     virtual void idle();
     virtual void walkingLeft();
     virtual void walkingRight();
     virtual void walkingDown();
     virtual void walkingUp();
-    
+    virtual void runningLeft();
+    virtual void runningRight();
+    virtual void runningDown();
+    virtual void runningUp();
     virtual void death();
     virtual void spawn();
     virtual void respawn();
     virtual void shoot();
     virtual void cast();
     virtual void speicialAttack();
+
+	void sendToBattle(const std::vector<Vec2>& waypoints);
+    void moveToNext();
     
 private:
     // properties
