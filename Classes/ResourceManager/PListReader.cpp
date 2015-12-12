@@ -31,88 +31,7 @@ static void convertToCamelCase(std::string &str, const std::string prefix)
     str = tmp;
 }
 
-static EnemyPlist::EnemySpriteInfo s_enemySpriteInfoNone;
-
 SINGLETON_IMPL(PListReader)
-
-EnemyPlist::EnemyPlist()
-{
-    m_infos.clear();
-}
-
-void EnemyPlist::addInfo(const EnemyPlist::EnemySpriteInfo &info)
-{
-    m_infos.insert(std::make_pair(info.spriteName, info));
-}
-
-const EnemyPlist::EnemySpriteInfo& EnemyPlist::getInfo(const std::string &name)
-{
-    std::map<std::string, EnemySpriteInfo>::iterator iter = m_infos.find(name);
-    return iter != m_infos.end() ? iter->second : s_enemySpriteInfoNone;
-}
-
-EnemyPlist* PListReader::createEnemyPlist(const std::string &plistname)
-{
-    CCLOG("PListReader::createEnemyPlist filename %s", plistname.c_str());
-    
-    EnemyPlist *plist = new EnemyPlist();
-    plist->autorelease();
-
-    EnemyPlist::EnemySpriteInfo info;
-
-    ValueMap plistDict = FileUtils::getInstance()->getValueMapFromFile(plistname);
-    ValueMap enemyDict = plistDict["frames"].asValueMap();
-
-    if (enemyDict.empty()) {
-        CCLOG("PListReader::createEnemyPlist enemyDict is empty");
-        return nullptr;
-    }
-    
-    ValueMap::const_iterator iter = enemyDict.begin();
-    
-    int a, b, c, d;
-    while (iter != enemyDict.end()) {
-        a = b = c = d = 0;
-        ValueMap infoEntry = iter->second.asValueMap();
-        info.spriteName = iter->first;
-        
-        std::string spriteSize = infoEntry["spriteSize"].asString();
-        sscanf(spriteSize.c_str(), "{%d, %d}", &a, &b);
-        info.spriteSize.setSize(a, b);
-        
-        info.spriteTrimmed = infoEntry["spriteTrimmed"].asBool();
-        
-        std::string spriteColorRect = infoEntry["spriteColorRect"].asString();
-        sscanf(spriteColorRect.c_str(), "{{%d, %d}, {%d, %d}}", &a, &b, &c, &d);
-        info.spriteColorRect.setRect(a, b, c, d);
-        
-        std::string spriteOffset = infoEntry["spriteOffset"].asString();
-        sscanf(spriteOffset.c_str(), "{%d, %d}", &a, &b);
-        info.spriteOffet.set(a, b);
-        
-        std::string textureRect = infoEntry["textureRect"].asString();
-        sscanf(textureRect.c_str(), "{{%d, %d}, {%d, %d}}", &a, &b, &c, &d);
-        info.textureRect.setRect(a, b, c, d);
-        
-        info.textureRotated = infoEntry["textureRotated"].asBool();
-        
-        std::string spriteSourceSize = infoEntry["spriteSourceSize"].asString();
-        sscanf(spriteSourceSize.c_str(), "{%d, %d}", &a, &b);
-        info.spriteSourceSize.setSize(a, b);
-        
-        // CCLOG("spriteName %s\nspriteSize %s\nspriteColorRect %s\nspriteOffset %s\ntextureRect %s\nspriteSourceSize %s\n", \
-              info.spriteName.c_str(), spriteSize.c_str(), \
-              spriteColorRect.c_str(), spriteOffset.c_str(), \
-              textureRect.c_str(), spriteSourceSize.c_str());
-        
-        plist->addInfo(info);
-        
-        iter++;
-    }
-
-    return plist;
-}
-
 void PListReader::createAnimationWithPlist(const std::string &name)
 {
     ValueMap root = FileUtils::getInstance()->getValueMapFromFile(name);
@@ -173,11 +92,20 @@ std::vector<std::vector<std::vector<Vec2> > > PListReader::readPathPlist(int lev
         for (int j = 0; j < subPathsVec.size(); ++j) {
             ValueVector pathVec = subPathsVec[j].asValueVector();
             std::vector<Vec2> path;
-            float offsetX = 59.f;
-            float offsetY = 137.f;
+            const float s_offsetX = 12.f; // 基于地图的偏移
+            const float s_offsetY = 73.f;
+            const float s_scaleX = 1.15f; // 横向纵向比率
+            const float s_scaleY = 1.13f;
+            const float s_rangeOut = 20.0f; // 超出范围的路径去除
             for (int k = 0; k < pathVec.size(); ++k) {
-                ValueMap pos = pathVec[k].asValueMap();
-                path.push_back(Vec2(pos["x"].asFloat() * MAP_WIDTH / TD_WIDTH + offsetX, pos["y"].asFloat() + offsetY));
+                ValueMap posMap = pathVec[k].asValueMap();
+                Vec2 pos;
+                pos.x = posMap["x"].asFloat() * s_scaleX + s_offsetX;
+                pos.y = posMap["y"].asFloat() * s_scaleY + s_offsetY;
+                if (pos.x < -s_rangeOut || pos.x >= MAP_WIDTH + s_rangeOut || pos.y < s_rangeOut || pos.y >= MAP_HEIGHT + s_rangeOut) {
+                    continue;
+                }
+                path.push_back(pos);
             }
             
             subPaths.push_back(path);
@@ -428,70 +356,3 @@ Dictionary* PListReader::createAnimationPlist(std::string prefix, int from, int 
     dictInDict->setObject(fromIndexObj, "fromIndex");
     return dictInDict;
 }
-
-
-#ifdef TD_DEBUG
-#include "GameData.h"
-void PListReader::generateEnemyPlist()
-{
-    auto root = Dictionary::create();
-    //auto array = Array::create();
-    //for (int i = 0; i < s_enemiesInfo / sizeof(s_enemiesInfo[0]); ++i) {
-    //    auto dictInArray = Dictionary::create();
-        
-    //}
-}
-void PListReader::generateTowerPlist()
-{
-    auto root = Dictionary::create();
-    auto string = String::create("string element value");
-    root->setObject(string, "string element key");
-    
-    auto array = Array::create();
-    
-    auto dictInArray = Dictionary::create();
-    dictInArray->setObject(String::create("string in dictInArray value 0"), "string in dictInArray key 0");
-    dictInArray->setObject(String::create("string in dictInArray value 1"), "string in dictInArray key 1");
-    array->addObject(dictInArray);
-    
-    array->addObject(String::create("string in array"));
-    
-    auto arrayInArray = Array::create();
-    arrayInArray->addObject(String::create("string 0 in arrayInArray"));
-    arrayInArray->addObject(String::create("string 1 in arrayInArray"));
-    array->addObject(arrayInArray);
-    
-    root->setObject(array, "array");
-    
-    auto dictInDict = Dictionary::create();
-    dictInDict->setObject(String::create("string in dictInDict value"), "string in dictInDict key");
-    
-    //add boolean to the plist
-    auto booleanObject = Bool::create(true);
-    dictInDict->setObject(booleanObject, "bool");
-    
-    //add interger to the plist
-    auto intObject = Integer::create(1024);
-    dictInDict->setObject(intObject, "integer");
-    
-    //add float to the plist
-    auto floatObject = Float::create(1024.1024f);
-    dictInDict->setObject(floatObject, "float");
-    
-    //add double to the plist
-    auto doubleObject = Double::create(1024.123);
-    dictInDict->setObject(doubleObject, "double");
-    
-    
-    
-    root->setObject(dictInDict, "dictInDict, Hello World");
-    
-    // end with /
-    std::string writablePath = FileUtils::getInstance()->getWritablePath();
-    std::string fullPath = writablePath + "text.plist";
-    if(root->writeToFile(fullPath.c_str()))
-        log("see the plist file at %s", fullPath.c_str());
-    else
-        log("write plist file failed");
-}
-#endif

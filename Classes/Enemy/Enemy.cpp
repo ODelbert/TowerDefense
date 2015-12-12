@@ -20,17 +20,20 @@ enum ActionCommon
     ActionCommon_Attack = 0,
     ActionCommon_WalkingDown,
     ActionCommon_WalkingRightLeft,
-	ActionCommon_WalkingUp,
     ActionCommon_Idle,
-    ActionCommon_RunningDown,
-    ActionCommon_RunningRightLeft,
-	ActionCommon_RunningUp,
+    ActionCommon_WalkingUp,
+    
     ActionCommon_Death,
     ActionCommon_Spawn,
     ActionCommon_Respawn,
+    
     ActionCommon_Shoot,
     ActionCommon_Cast,
     ActionCommon_Special,
+    
+    ActionCommon_RunningDown,
+    ActionCommon_RunningRightLeft,
+    ActionCommon_RunningUp,
 };
 
 void WayPoints::setPoints(const std::vector<Vec2>& points)
@@ -62,7 +65,7 @@ Direction WayPoints::getDirection() const
 
 bool WayPoints::moveToNextPoint()
 {
-    if (m_pathIndex >= m_points.size()) {
+    if (m_pathIndex >= m_points.size() - 1) {
         return false;
     }
     
@@ -112,6 +115,7 @@ void Enemy::sendToBattle(const std::vector<Vec2> &waypoints)
         return;
     }
     
+    m_state = EnemyState_WalkNext;
     m_wayPoints.setPoints(waypoints);
     setPosition(m_wayPoints.getcurPoint());
     moveToNext();

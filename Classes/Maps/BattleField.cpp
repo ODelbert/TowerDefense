@@ -11,7 +11,6 @@
 #include "Controller/WaveManager.h"
 #include "Enemy/EnemyFactory.h"
 
-static bool s_flag = false;
 BattleField::BattleField()
 {
     auto touchlistener = EventListenerTouchOneByOne::create();
@@ -19,7 +18,7 @@ BattleField::BattleField()
     touchlistener->onTouchEnded = CC_CALLBACK_2(BattleField::onTouchEnded, this);
     touchlistener->onTouchMoved = CC_CALLBACK_2(BattleField::onTouchMoved, this);
     touchlistener->setSwallowTouches(true);
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchlistener,this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchlistener, this);
 
     auto waveListener = EventListenerCustom::create("WaveEvent", [=](EventCustom* event){
         typedef struct _WaveEventData {
@@ -40,7 +39,7 @@ BattleField::BattleField()
 
 bool BattleField::onTouchBegan(Touch* touch, Event* event)
 {
-    CCLOG("touch at pos [%f %f]", touch->getStartLocation().x, touch->getStartLocation().y);
+    log("touch at pos [%f %f]", touch->getStartLocation().x, touch->getStartLocation().y);
     return true;
 }
 
