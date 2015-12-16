@@ -236,26 +236,26 @@ void TestLayer::moveSprite(float dt)
         // right
         if (s_lastDir == ActionTag_WalkingRight) return;
         s_lastDir = ActionTag_WalkingRight;
-        AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingRightLeft);
+        //AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingRightLeft);
     }
     else if (angle > 45 && angle <= 135) {
         // up
         if (s_lastDir == ActionTag_WalkingUp) return;
         s_lastDir = ActionTag_WalkingUp;
-        AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingUp);
+        //AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingUp);
     }
     else if (angle >=135 && angle <=225) {
         // left
         if (s_lastDir == ActionTag_WalkingLeft) return;
         s_lastDir = ActionTag_WalkingLeft;
-        AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingRightLeft);
+        //AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingRightLeft);
         m_runningEnemy->setFlippedX(true);
     }
     else {
         // down
         if (s_lastDir == ActionTag_WalkingDown) return;
         s_lastDir = ActionTag_WalkingDown;
-        AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingDown);
+        //AnimationManager::getInstance()->runAction(m_runningEnemy, EnemyID_Redcap, EnemyAction_Redcap_WalkingDown);
     }
 }
 

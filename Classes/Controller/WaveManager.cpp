@@ -54,7 +54,7 @@ static EnemyName2ID s_name2Id[] =
     { "ElvesEnemyRazorboar", EnemyID_Razorboar },
     { "ElvesEnemyRedcap", EnemyID_Redcap },
     { "ElvesEnemySatyrCutthroat", EnemyID_Satyr },
-    { "ElvesEnemySatyrHoplite", EnemyID_SatyrHoplite },
+    { "ElvesEnemySatyrHoplite", EnemyID_Satyr },
     { "ElvesEnemyScreecherBat", EnemyID_Screecher_Bat }, 
     { "ElvesEnemyShadowChampion", EnemyID_Shadow_Champion }, 
     { "ElvesEnemyShadowsSpawns", EnemyID_Shadow_Spawn }, 
@@ -220,7 +220,6 @@ void WaveManager::nextEnemy(float dt)
     event.setUserData(&eventData);
     
     Director::getInstance()->getEventDispatcher()->dispatchEvent(&event);
-    
     if (m_spawnIndex < m_waves[m_waveIndex].spwans().size() - 1) {
         ++m_spawnIndex;
     }
@@ -239,3 +238,7 @@ std::vector<Vec2> WaveManager::getPath(int path, int subPath)
     return m_paths[path][subPath];
 }
 
+int WaveManager::getPathCount()
+{
+    return m_paths.size();
+}

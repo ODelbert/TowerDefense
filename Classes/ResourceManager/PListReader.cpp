@@ -8,12 +8,125 @@
 // TODO:win32
 #endif
 
-#include <stdio.h>
-
+#include <algorithm>
 #include "CommonDef.h"
 #include "Animation/AnimationManager.h"
 
 USING_NS_CC;
+
+const std::string s_enemyName[] = {
+    "arachnomancer_miniSpider",
+    "arachnomancer_spider",
+    "arachnomancer",
+    "bandersnatch",
+    "bloodServant",
+    "bloodsydianGnoll",
+    "bloodsydianWarlock",
+    "zealot",
+    "dark_spitters",
+    "drider",
+    "ettin",
+    "fungusRider_medium",
+    "fungusRider_small",
+    "fungusRider",
+    "gloomy",
+    "gnoll_blighter",
+    "gnoll_burner",
+    "gnoll_gnawer",
+    "gnoll_reaver",
+    "gollem",
+    "grim_devourers",
+    "harraser",
+    "hyena",
+    "knocker",
+    "mantaray",
+    "gnollBerzerker",
+    "mountedAvenger",
+    "ogre_mage",
+    "perython",
+    "rabbit",
+    "razorboar",
+    "redcap",
+    "satyrHoplite",
+    "satyr",
+    
+    
+    "scourger",
+    "scourger_shadow",
+    "screecher_bat",
+    "shadow_champion",
+    "shadow_spawn",
+    "son_of_mactans",
+    "sword_spider",
+    "tarantula",
+    "theBeheader",
+    "twilight_avenger",
+    "twilight_bannerbearer",
+    "twilight_evoker",
+    "twilight_heretic",
+    "webspitterSpider"
+};
+
+const std::string s_allyName[] = {
+    "catapult",
+    "ewok",
+    "reinforce_A0",
+    "reinforce_A1",
+    "reinforce_A2",
+    "reinforce_A3",
+    "reinforce_B0",
+    "reinforce_B1",
+    "reinforce_B2",
+    "reinforce_B3",
+    "reinforce_C0",
+    "reinforce_C1",
+    "reinforce_C2",
+    "reinforce_C3",
+};
+
+const std::string s_bossName[] = {
+    "bajnimen",
+    "ainyl",
+    "boss_godieth",
+    "bossHiena",
+    "drow_queen",
+    "spiderQueen"
+};
+#define ddfdfaf 0x2323232
+const std::string s_heroName[] = {
+    "archer_hero", // 精灵游侠
+    "bravebark", // 远古树人
+    "alleria", // 精灵游侠实习生，有一只小黑猫
+    "arivan", // 元素魔导师
+    "bolverk", // ??? 未知英雄
+    "bruce", // 金刚狮
+    "denas", // 皇家战士
+    "durax", // 冰晶元素
+    "regson", // 恶魔猎手
+    "fallen_angel", // 堕天使
+    "faustus", // 蓝龙
+    "lynn", // 巫毒术士
+    "xin", // 熊猫
+    "phoenix", // 凤凰
+    "catha", // 精灵仙子
+    "razzAndRaggs", // 布偶术士
+    "veznan", // 黑暗术士
+    "wilburg", // 炸弹人
+    "malik", // 未知英雄，好像是吸血女荡妇
+};
+
+const std::string s_towerName[] = {
+    "archer_arcane",
+    "archer_silver",
+    "artillery_henge",
+    "artillery_thrower",
+    "artillery_tree",
+    "mage_highElven",
+    "mage_wild",
+    "mage_tower",
+    "forestKeeper",
+    "bladeSinger"
+};
 
 static void convertToCamelCase(std::string &str, const std::string prefix)
 {
@@ -132,6 +245,485 @@ std::vector<std::vector<std::vector<Vec2> > > PListReader::readPathPlist(int lev
     return paths;
 }
 
+void PListReader::extractAnimationFromResource()
+{
+    typedef struct _Tag
+    {
+        AnimationType type;
+        std::string prefix;
+        std::vector<std::string> actions;
+        
+        void show() {
+            std::string str = prefix;
+            str += "----";
+            for (int i = 0; i < actions.size(); ++i) {
+                str += actions[i];
+                str += "/";
+            }
+            
+            log("tag info : %s", str.c_str());
+        }
+    } Tag;
+    
+    std::vector<Tag> tags;
+    
+    std::vector<std::string> enemyTag;
+    std::vector<std::string> towerTag;
+    std::vector<std::string> heroTag;
+    std::vector<std::string> bossTag;
+    std::vector<std::string> allyTag;
+
+    static int s_enemyCounter = 0;
+    static int s_towerCounter = 0;
+    static int s_heroCounter = 0;
+    static int s_bossCounter = 0;
+    static int s_allyCounter = 0;
+    auto addBasicTowerAnimation = [&] {
+        AnimationType type = AnimationType_Num;
+        Tag archer;
+        Tag barrack;
+        Tag mage;
+        Tag stun;
+        archer.type = AnimationType_Tower;
+        archer.prefix = "archer";
+        barrack.type = AnimationType_Tower;
+        barrack.prefix = "barrack";
+        mage.type = AnimationType_Tower;
+        mage.prefix = "mage";
+        stun.type = AnimationType_Tower;
+        stun.prefix = "artillery";
+        ValueMap root = FileUtils::getInstance()->getValueMapFromFile("elves_towers_animations.plist");
+        if (root.empty()) {
+            return ;
+        }
+        
+        ValueMap animationDict = root["animations"].asValueMap();
+        if (animationDict.empty()) {
+            return;
+        }
+        
+        ValueMap::const_iterator iter = animationDict.begin();
+        while (iter != animationDict.end()) {
+            std::string animationName = iter->first;
+            if (std::string::npos != animationName.find("archer")) {
+                archer.actions.push_back(animationName);
+            }
+            else if (std::string::npos != animationName.find("barrack")) {
+                barrack.actions.push_back(animationName);
+            }
+            else if (std::string::npos != animationName.find("mage")) {
+                mage.actions.push_back(animationName);
+            }
+            else if (std::string::npos != animationName.find("stun")) {
+                stun.actions.push_back(animationName);
+            }
+            else {
+                
+            }
+            
+            ++iter;
+        }
+        
+        tags.push_back(archer);
+        tags.push_back(barrack);
+        tags.push_back(mage);
+        tags.push_back(stun);
+    };
+    
+    auto checkAnimationType = [&](const std::string& path) {
+        if (path == "arachnomancer_animations.plist") {
+            int a = 1;
+        }
+        AnimationType type = AnimationType_Num;
+        ValueMap root = FileUtils::getInstance()->getValueMapFromFile(path);
+        if (root.empty()) {
+            CCLOG("PListReader::extractAnimationFromResource failed to checkAnimationType with file [%s]", path.c_str());
+            return ;
+        }
+
+        ValueMap animationDict = root["animations"].asValueMap();
+        if (animationDict.empty()) {
+            log("animationDict size = 0");
+            return;
+        }
+        ValueMap::const_iterator iter = animationDict.begin();
+        
+        std::string animationName = iter->first;
+        ValueMap actionDict = iter->second.asValueMap();
+        std::string prefix = actionDict["prefix"].asString();
+        
+        
+        // 判断这个前缀是否已经存储过一次
+        Tag* pTag = nullptr;
+        bool exist = false;
+        
+        for (int i = 0; i < tags.size(); ++i) {
+            if (std::string::npos != prefix.find(tags[i].prefix)) {
+                exist = true;
+                pTag = &tags[i];
+                break;
+            }
+        }
+        
+        if (!exist) {
+            // 判断这个前缀属于哪个类别
+            do {
+                Tag newTag;
+                bool found = false;
+                for (int i = 0; i < TD_LEN(s_enemyName); ++i) {
+                    if (std::string::npos != prefix.find(s_enemyName[i])) {
+                        found = true;
+                        newTag.type = AnimationType_Enemy;
+                        newTag.prefix = s_enemyName[i];
+                        tags.push_back(newTag);
+                        break;
+                    }
+                }
+                
+                for (int i = 0; i < TD_LEN(s_towerName); ++i) {
+                    if (std::string::npos != prefix.find(s_towerName[i])) {
+                        found = true;
+                        newTag.type = AnimationType_Tower;
+                        newTag.prefix = s_towerName[i];
+                        tags.push_back(newTag);
+                        break;
+                    }
+                }
+                
+                for (int i = 0; i < TD_LEN(s_heroName); ++i) {
+                    if (std::string::npos != prefix.find(s_heroName[i])) {
+                        found = true;
+                        newTag.type = AnimationType_Hero;
+                        newTag.prefix = s_heroName[i];
+                        tags.push_back(newTag);
+                        break;
+                    }
+                }
+                
+                for (int i = 0; i < TD_LEN(s_bossName); ++i) {
+                    if (std::string::npos != prefix.find(s_bossName[i])) {
+                        found = true;
+                        newTag.type = AnimationType_Boss;
+                        newTag.prefix = s_bossName[i];
+                        tags.push_back(newTag);
+                        break;
+                    }
+                }
+                
+                for (int i = 0; i < TD_LEN(s_allyName); ++i) {
+                    if (std::string::npos != prefix.find(s_allyName[i])) {
+                        found = true;
+                        newTag.type = AnimationType_Ally;
+                        newTag.prefix = s_allyName[i];
+                        tags.push_back(newTag);
+                        break;
+                    }
+                }
+                
+                if (!found) {
+                    log("%s is not handle yet!!", path.c_str());
+                    return;
+                }
+                else {
+                    pTag = &tags[tags.size() - 1];
+                }
+
+            } while (0);
+        }
+
+        while (iter != animationDict.end()) {
+            std::string action = iter->first;
+            ValueMap actionDict = iter->second.asValueMap();
+            prefix = actionDict["prefix"].asString();
+            pTag->actions.push_back(action);
+#if 0 //  测试过滤字符
+            if (name.find("boss") != std::string::npos ||
+                name.find("Boss") != std::string::npos) {
+                retType = AnimationType_Boss;
+
+                bossTag.push_back(prefix);
+                break;
+            }
+            else if (name.find("hero") != std::string::npos) {
+                retType = AnimationType_Hero;
+
+                heroTag.push_back(prefix);
+                break;
+            }
+            else {
+                int idx = name.find_last_of('_');
+                if ("walkingRightLeft" == name.substr(idx + 1)) {
+                    retType = AnimationType_Enemy;
+                    enemyTag.push_back(prefix);
+                    break;
+                }
+                else if ("running" == name.substr(idx + 1)) {
+                    retType = AnimationType_Ally;
+
+                    allyTag.push_back(prefix);
+                    break;
+                    
+                }
+            }
+#endif
+            ++iter;
+            
+
+        }
+        
+    };
+    
+
+#if (CC_PLATFORM_MAC == CC_TARGET_PLATFORM || CC_PLATFORM_IOS == CC_TARGET_PLATFORM || CC_PLATFORM_LINUX == CC_TARGET_PLATFORM)
+    DIR *dir;
+    struct dirent *ptr;
+    dir = opendir(".");
+    
+    while (NULL != (ptr = readdir(dir)))
+    {
+        if (strstr(ptr->d_name, "animation")) {
+            checkAnimationType(ptr->d_name);
+        }
+    }
+    closedir(dir);
+    
+    // FIXME: 没有根据固定规则过滤出来的动画，如下Animation为Common/Manual级别
+    // FIXME: 增加这些动画的Demo
+    // FIXME: 可能需要增加一类动画： ActionEffect
+    /*
+     animation[babyAshbite_animations.plist] 未知生物动画
+     animation[boss_drow_queen_portals_animations.plist] 未知Layer动画
+     animation[boss_gnoll_animations.plist] // boss hita 相关Layer的动画
+     animation[crystalArcane_extras_animations.plist] 未知动画
+     animation[crystalSerpent_animations.plist] 未知动画
+     animation[elves_hero_malik_animations.plist] 未知动画
+     animation[elves_inapps_animations.plist] ＝＝＝＝＝＝＝＝＝＝ app内部的几个动画 ＝＝＝＝＝＝＝＝＝＝＝＝＝
+     animation[elves_towers_animations.plist] ＝＝＝＝＝＝＝＝＝＝ Tower基础元素动画 ＝＝＝＝＝＝＝＝＝＝＝＝＝
+     animation[faerie_dragons_animations.plist] 未知动画
+     animation[faerie_grove_content_animations.plist]  一种植物
+     animation[galahadriansBastion_layer_animations.plist] 未知
+     animation[gnollBush_animations.plist] // 场景中的元素，好像是奴隶，待测试验证
+     animation[mactans_malicia_animations.plist] 未知
+     animation[malicia_animations.plist] // 蛛网，待测试验证
+     animation[mercenary_draw_animations.plist] 未知动画
+     animation[metropolis_content_animations.plist] 未知动画
+     animation[metropolis_crystalUnstable_animations.plist] 未知动画
+     animation[metropolis_special_teleport_animations.plist] 未知动画
+     animation[paralyzingTree_animations.plist]  枯树
+     animation[paralyzingTree_particle0_animations.plist] 枯树
+     animation[paralyzingTree_particle1_animations.plist] 枯树
+     animation[paralyzingTree_particle2_animations.plist] 枯树
+     animation[paralyzingTree_particle_animations.plist] 枯树
+     animation[paralyzingTree_stun_animations.plist] 枯树
+     animation[pixie_animations.plist]  抢手，好像属于哪关的，可以当作ally
+     animation[power_lightning_animations.plist]   闪电特效，很重要的特效。
+     animation[roadRunner_animations.plist]  未知生物
+     animation[snare_endless_animations.plist] 未知动画
+     animation[splashScene.animations.plist] 未知动画
+     animation[stage10_pork_animations.plist]   暂时无视
+     animation[stage10_redRidingHood_animations.plist] 暂时无视
+     animation[stage10_wolf_animations.plist] 暂时无视
+     animation[stage15_bossDecal_demon_animations.plist] 暂时无视
+     animation[stage15_mactans_animations.plist] 暂时 无视
+     animation[stage15_malicia_animations.plist] 暂时无视
+     animation[stage15_shield_animations.plist] 暂时无视
+     animation[stage19_drizztdourden_animations.plist] 暂时无视
+     animation[stage19_gnoll_drizztdourden_animations.plist] 暂时无视
+     animation[stage6_animations.plist] 暂时无视
+     animation[stage8_pixie_animations.plist] 暂时无视
+     */
+    
+    // 有两类情况，强制拆开一下
+    do {
+        std::vector<_Tag>::iterator it = tags.begin();
+        Tag big, medium, small;
+        Tag arachnomancer, arachnomancer_mini, arachnomancer_spider;
+        big.type = AnimationType_Enemy;
+        big.prefix = "fungusRider";
+        medium.prefix = "fungusRider_medium";
+        medium.type = AnimationType_Enemy;
+        small.prefix = "fungusRider_small";
+        small.type = AnimationType_Enemy;
+        
+        arachnomancer.type = AnimationType_Enemy;
+        arachnomancer.prefix = "arachnomancer";
+        arachnomancer_mini.prefix = "arachnomancer_mini";
+        arachnomancer_mini.type = AnimationType_Enemy;
+        arachnomancer_spider.prefix = "arachnomancer_spider";
+        arachnomancer_spider.type = AnimationType_Enemy;
+        while (it != tags.end()) {
+            if (it->prefix == "fungusRider") {
+                for (int j = 0; j < it->actions.size(); ++j) {
+                    if (std::string::npos != it->actions[j].find("fungusRider_small")) {
+                        small.actions.push_back(it->actions[j]);
+                    }
+                    else if (std::string::npos != it->actions[j].find("fungusRider_medium")) {
+                        medium.actions.push_back(it->actions[j]);
+                    }
+                    else {
+                        big.actions.push_back(it->actions[j]);
+                    }
+                }
+                
+                tags.erase(it);
+            }
+            else if (it->prefix == "arachnomancer") {
+                for (int j = 0; j < it->actions.size(); ++j) {
+                    if (std::string::npos != it->actions[j].find("arachnomancer_miniSpider")) {
+                        arachnomancer_mini.actions.push_back(it->actions[j]);
+                    }
+                    else if (std::string::npos != it->actions[j].find("arachnomancer_spider")) {
+                        arachnomancer_spider.actions.push_back(it->actions[j]);
+                    }
+                    else {
+                        arachnomancer.actions.push_back(it->actions[j]);
+                    }
+                }
+                
+                tags.erase(it);
+            }
+            else {
+                ++it;
+            }
+            
+        }
+        
+        tags.push_back(big);
+        tags.push_back(medium);
+        tags.push_back(small);
+        tags.push_back(arachnomancer);
+        tags.push_back(arachnomancer_mini);
+        tags.push_back(arachnomancer_spider);
+    } while (0);
+    
+    // elves_towers_animations.plist 比较特别，这里单独处理
+    addBasicTowerAnimation();
+    
+    log("enemy");
+    for (int i = 0; i < enemyTag.size(); ++i) {
+        log("\"%s\", ", enemyTag[i].c_str());
+    }
+    log("tower");
+    for (int i = 0; i < towerTag.size(); ++i) {
+        log("\"%s\", ", towerTag[i].c_str());
+    }
+    log("ally");
+    for (int i = 0; i < allyTag.size(); ++i) {
+        log("\"%s\", ", allyTag[i].c_str());
+    }
+    log("boss");
+    for (int i = 0; i < bossTag.size(); ++i) {
+        log("\"%s\", ", bossTag[i].c_str());
+    }
+    log("hero");
+    for (int i = 0; i < heroTag.size(); ++i) {
+        log("\"%s\", ", heroTag[i].c_str());
+    }
+    
+    
+    for (int i = 0; i < tags.size(); ++i) {
+        Tag t = tags[i];
+        log("%s", t.prefix.c_str());
+        for (int j = 0; j < t.actions.size(); ++j)
+            log("       Action[%d]:[%s]", j , t.actions[j].c_str());
+    }
+    
+    // tower
+    int towerId = 0;
+    for (int i = 0; i < tags.size(); ++i) {
+        Tag t = tags[i];
+        if (t.type != AnimationType_Tower) continue;
+        std::string id = tags[i].prefix;
+        convertToCamelCase(id, "TowerID_");
+        log("%s = %d,", id.c_str(), towerId);
+        for (int j = 0; j < t.actions.size(); ++j) {
+            std::string str = t.actions[j];
+            convertToCamelCase(str, "#define AnimationTower_");
+            //log("towerID [%d] Action[%d]:[%s] , hash [%x]", towerId, j , t.actions[j].c_str(), ANIMATION_HASH(AnimationType_Tower, towerId, j));
+            log("%s 0x%x", str.c_str(), ANIMATION_HASH(AnimationType_Tower, towerId, j));
+            
+        }
+        ++towerId;
+    }
+    
+    // enemy
+    int enemyId = 0;
+    for (int i = 0; i < tags.size(); ++i) {
+        Tag t = tags[i];
+        if (t.type != AnimationType_Enemy) continue;
+        std::string id = tags[i].prefix;
+        convertToCamelCase(id, "EnemyID_");
+        log("%s = %d,", id.c_str(), enemyId);
+        for (int j = 0; j < t.actions.size(); ++j) {
+            std::string str = t.actions[j];
+            convertToCamelCase(str, "#define AnimationEnemy_");
+            //log("towerID [%d] Action[%d]:[%s] , hash [%x]", towerId, j , t.actions[j].c_str(), ANIMATION_HASH(AnimationType_Tower, towerId, j));
+            log("%s 0x%x", str.c_str(), ANIMATION_HASH(AnimationType_Enemy, enemyId, j));
+            
+        }
+        ++enemyId;
+    }
+    
+    // ally
+    int allyId = 0;
+    for (int i = 0; i < tags.size(); ++i) {
+        Tag t = tags[i];
+        if (t.type != AnimationType_Ally) continue;
+        std::string id = tags[i].prefix;
+        convertToCamelCase(id, "AllyID_");
+        log("%s = %d,", id.c_str(), allyId);
+        for (int j = 0; j < t.actions.size(); ++j) {
+            std::string str = t.actions[j];
+            convertToCamelCase(str, "#define AnimationAlly_");
+            //log("towerID [%d] Action[%d]:[%s] , hash [%x]", towerId, j , t.actions[j].c_str(), ANIMATION_HASH(AnimationType_Tower, towerId, j));
+            log("%s 0x%x", str.c_str(), ANIMATION_HASH(AnimationType_Ally, allyId, j));
+        }
+        ++allyId;
+    }
+    
+    // hero
+    int heroId = 0;
+    for (int i = 0; i < tags.size(); ++i) {
+        Tag t = tags[i];
+        if (t.type != AnimationType_Hero) continue;
+        std::string id = tags[i].prefix;
+        convertToCamelCase(id, "HeroID_");
+        log("%s = %d,", id.c_str(), heroId);
+        for (int j = 0; j < t.actions.size(); ++j) {
+            std::string str = t.actions[j];
+            convertToCamelCase(str, "#define AnimationHero_");
+            //log("towerID [%d] Action[%d]:[%s] , hash [%x]", towerId, j , t.actions[j].c_str(), ANIMATION_HASH(AnimationType_Tower, towerId, j));
+            log("%s 0x%x", str.c_str(), ANIMATION_HASH(AnimationType_Hero, heroId, j));
+        }
+        ++heroId;
+    }
+    
+    // boss
+    int bossId = 0;
+    for (int i = 0; i < tags.size(); ++i) {
+        Tag t = tags[i];
+        if (t.type != AnimationType_Boss) continue;
+        std::string id = tags[i].prefix;
+        convertToCamelCase(id, "BossID_");
+        log("%s = %d,", id.c_str(), bossId);
+        for (int j = 0; j < t.actions.size(); ++j) {
+            std::string str = t.actions[j];
+            convertToCamelCase(str, "#define AnimationBoss_");
+            //log("towerID [%d] Action[%d]:[%s] , hash [%x]", towerId, j , t.actions[j].c_str(), ANIMATION_HASH(AnimationType_Tower, towerId, j));
+            log("%s 0x%x", str.c_str(), ANIMATION_HASH(AnimationType_Boss, bossId, j));
+        }
+        
+        ++bossId;
+    }
+
+    int enemyID = 0;
+
+#else
+    // TODO:: add win32 file traverse impelement
+#endif
+
+}
+
 void PListReader::createEnemyAnimationTableIndexer()
 {
     static const std::string s_actionType[] =
@@ -218,13 +810,13 @@ void PListReader::createEnemyAnimationTableIndexer()
                     // CCLog("%s exist", actionName.c_str());
                     actionId = (id << 16) | i;
                     normalAction = true;
-                    AnimationManager::getInstance()->addAnimationIndex(id, i, name);
+                    //AnimationManager::getInstance()->addAnimationIndex(id, i, name);
                     break;
                 }
             }
 
             if (!normalAction) {
-                AnimationManager::getInstance()->addAnimationIndex(id, s_actionId_ht_counter, name);
+                //AnimationManager::getInstance()->addAnimationIndex(id, s_actionId_ht_counter, name);
             }
             
 #ifdef TD_TEST

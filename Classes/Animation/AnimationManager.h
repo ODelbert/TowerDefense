@@ -15,32 +15,21 @@
 
 USING_NS_CC;
 
-class TableIndexer : public Ref
+#define ANIMATION_HASH(type, key, act) (((type) << 20) | ((key) << 12) | (act))
+#define ANIMATION_TYPE(hash) (((hash) & 0x00F00000) << 20)
+#define ANIMATION_KEY(hash) (((hash) & 0x000FF000) << 12)
+#define ANIMATION_ACTION(hash) ((hash) & 0x00000FFF)
+
+enum AnimationType
 {
-    class TableData
-    {
-    public:
-        TableData(int type, std::string name):type(type), name(name) {}
-        int type;
-        
-        std::string name;
-    };
-    
-    class TableHeader
-    {
-        friend class TableIndexer;
-        int key;
-        std::vector<TableData> m_chains;
-    };
-#define HASH(key, type) ((key) << 16 | (type))
-public:
-    void put(int key, int type, std::string str);
-    void remove(int key, int type);
-    std::string find(int key, int type);
-    std::vector<unsigned int> find(int key);
-    void show();
-private:
-    std::vector<TableHeader> m_table;
+    AnimationType_Common            = 0,
+    AnimationType_Manual            = 1,
+    AnimationType_Enemy             = 2,
+    AnimationType_Tower             = 3,
+    AnimationType_Ally              = 4,
+    AnimationType_Hero              = 5,
+    AnimationType_Boss              = 6,
+    AnimationType_Num               = 7
 };
 
 class AnimationManager : public Ref
@@ -50,15 +39,11 @@ public:
     static AnimationManager* getInstance();
     static void destroy();
     
+    void addAnimation(int key, const std::string& name);
+    void removeAnimation(int key);
     void runAction(Sprite* target, int key, bool repeatForever = true);
-    void runAction(Sprite* target, int key, int type, bool repeatForever = true);
-    void showTable();
-private:
-    void addAnimationIndex(int key, int actionType, const std::string& name);
-    void removeAnimationIndex(int key, int actionType);
-    std::string findAnimation(int key, int actionType);
+    void runAction(Sprite* target, int key, int act, bool repeatForever = true);
 
-    
 private:
     static AnimationManager* s_instance;
     
@@ -67,7 +52,7 @@ private:
     virtual ~AnimationManager();
     
 private:
-    TableIndexer* m_table;
+    std::map<uint, std::string> m_key2Animate;
 };
 
 #endif /* defined(__TowerDefense__AnimationManager__) */

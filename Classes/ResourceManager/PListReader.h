@@ -1,9 +1,9 @@
 #ifndef PListReader_h
 #define PListReader_h
 
-#include "CommonDef.h"
-#include "cocos2d.h"
 #include <vector>
+#include "cocos2d.h"
+#include "CommonDef.h"
 #include "Enemy/Enemy.h"
 
 class AnimationPlist : public cocos2d::Ref
@@ -30,6 +30,7 @@ public:
     void createAnimationWithPlist(const std::string &name);
     std::vector<std::vector<std::vector<cocos2d::Vec2> > > readPathPlist(int level);
     
+    void extractAnimationFromResource();
     void createEnemyAnimationTableIndexer();
     void saveImageFromPlist(const std::string &plist);
     
