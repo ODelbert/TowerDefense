@@ -187,6 +187,7 @@ void WaveManager::start()
 // FIXME:: 定时触发
 void WaveManager::nextEnemy(float dt)
 {
+//    if (xxx)　return;
     if (m_waveIndex >= m_waves.size()) {
         Director::getInstance()->getScheduler()->unschedule(schedule_selector(WaveManager::nextEnemy), this);
         return;

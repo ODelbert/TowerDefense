@@ -78,10 +78,8 @@ static const std::string AnimationNamePlist[] =
     "ewok_animations.plist",
     "hyena_animations.plist",
     "knocker_animations.plist",
-    
     "mactans_malicia_animations.plist",
     "malicia_animations.plist",
-    
     "mantaray_animations.plist",
     "ogre_mage_animations.plist",
     "ogre_mage_aura_animations.plist",
@@ -161,7 +159,6 @@ static const std::string AnimationNamePlist[] =
 bool TestLayer::init()
 {
 //    ResourceManager::getInstance()->initialize();
-    PListReader::getInstance()->createEnemyAnimationTableIndexer();
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     // load resources

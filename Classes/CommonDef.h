@@ -1,7 +1,7 @@
 #ifndef COMMONDEF_H
 #define COMMONDEF_H
 
-//#define TD_TEST
+#define TD_TEST
 //#define TD_DEBUG
 
 #define TD_WIDTH 1136
@@ -15,7 +15,9 @@
 #define LOGF CCLOG(__FUNCTION__); // __PRETTY_FUNCTION__
 
 #define SPEED_RATE(x) ((x) / 500)
-#define TD_LEN(x) sizeof(x)/sizeof(x[0])
+
+#define TD_LEN(x) (sizeof(x)/sizeof(x[0]))
+
 #define TD_SIZE(x) CCLOG("%s size = %f %f", #x, x->getContentSize().width, x->getContentSize().height);
 #define TD_POS(x) CCLOG("%s pos = %f %f", #x, x->getPosition().x, x->getPosition().y);
 

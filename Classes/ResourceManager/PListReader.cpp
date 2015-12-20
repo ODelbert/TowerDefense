@@ -92,7 +92,7 @@ const std::string s_bossName[] = {
     "drow_queen",
     "spiderQueen"
 };
-#define ddfdfaf 0x2323232
+
 const std::string s_heroName[] = {
     "archer_hero", // 精灵游侠
     "bravebark", // 远古树人
@@ -175,14 +175,14 @@ void PListReader::createAnimationWithPlist(const std::string &name)
                 animFrames.pushBack(frame);
             }
         }
-
+        
         if (animFrames.empty()) {
-            CCLOG("PListReader::createAnimationWithPlist animation %s with empty frames", iter->first.c_str());
+            CCLOG("PListReader::createAnimationWithPlist animation %s with file %s, frame not load!", iter->first.c_str(), name.c_str());
         }
         
         // FIXME::tune parameter
         float animateRate = 0.002f * animFrames.size() < 0.05f ? 0.05f : 0.002f * animFrames.size();
-        
+        log("push animation : %s", iter->first.c_str());
         AnimationCache::getInstance()->addAnimation(Animation::createWithSpriteFrames(animFrames, animateRate) , iter->first);
         ++iter;
     }
@@ -272,7 +272,7 @@ void PListReader::extractAnimationFromResource()
     std::vector<std::string> heroTag;
     std::vector<std::string> bossTag;
     std::vector<std::string> allyTag;
-
+    
     static int s_enemyCounter = 0;
     static int s_towerCounter = 0;
     static int s_heroCounter = 0;
@@ -330,17 +330,25 @@ void PListReader::extractAnimationFromResource()
         tags.push_back(stun);
     };
     
-    auto checkAnimationType = [&](const std::string& path) {
-        if (path == "arachnomancer_animations.plist") {
-            int a = 1;
+    auto showAnimatons = [](const std::string& path) {
+        log("animation plist [%s]:", path.c_str());
+        ValueMap root = FileUtils::getInstance()->getValueMapFromFile(path);
+        ValueMap animationDict = root["animations"].asValueMap();
+        ValueMap::const_iterator iter = animationDict.begin();
+        while (iter != animationDict.end()) {
+            log("           %s", iter->first.c_str());
+            ++iter;
         }
+    };
+    
+    auto checkAnimationType = [&](const std::string& path) {
         AnimationType type = AnimationType_Num;
         ValueMap root = FileUtils::getInstance()->getValueMapFromFile(path);
         if (root.empty()) {
             CCLOG("PListReader::extractAnimationFromResource failed to checkAnimationType with file [%s]", path.c_str());
             return ;
         }
-
+        
         ValueMap animationDict = root["animations"].asValueMap();
         if (animationDict.empty()) {
             log("animationDict size = 0");
@@ -427,10 +435,10 @@ void PListReader::extractAnimationFromResource()
                 else {
                     pTag = &tags[tags.size() - 1];
                 }
-
+                
             } while (0);
         }
-
+        
         while (iter != animationDict.end()) {
             std::string action = iter->first;
             ValueMap actionDict = iter->second.asValueMap();
@@ -440,13 +448,13 @@ void PListReader::extractAnimationFromResource()
             if (name.find("boss") != std::string::npos ||
                 name.find("Boss") != std::string::npos) {
                 retType = AnimationType_Boss;
-
+                
                 bossTag.push_back(prefix);
                 break;
             }
             else if (name.find("hero") != std::string::npos) {
                 retType = AnimationType_Hero;
-
+                
                 heroTag.push_back(prefix);
                 break;
             }
@@ -459,7 +467,7 @@ void PListReader::extractAnimationFromResource()
                 }
                 else if ("running" == name.substr(idx + 1)) {
                     retType = AnimationType_Ally;
-
+                    
                     allyTag.push_back(prefix);
                     break;
                     
@@ -468,12 +476,12 @@ void PListReader::extractAnimationFromResource()
 #endif
             ++iter;
             
-
+            
         }
         
     };
     
-
+    
 #if (CC_PLATFORM_MAC == CC_TARGET_PLATFORM || CC_PLATFORM_IOS == CC_TARGET_PLATFORM || CC_PLATFORM_LINUX == CC_TARGET_PLATFORM)
     DIR *dir;
     struct dirent *ptr;
@@ -483,10 +491,12 @@ void PListReader::extractAnimationFromResource()
     {
         if (strstr(ptr->d_name, "animation")) {
             checkAnimationType(ptr->d_name);
+            // showAnimatons(ptr->d_name);
         }
     }
     closedir(dir);
     
+    // FIXME: 把动画键值对信息保存到静态文件中
     // FIXME: 没有根据固定规则过滤出来的动画，如下Animation为Common/Manual级别
     // FIXME: 增加这些动画的Demo
     // FIXME: 可能需要增加一类动画： ActionEffect
@@ -599,6 +609,25 @@ void PListReader::extractAnimationFromResource()
     // elves_towers_animations.plist 比较特别，这里单独处理
     addBasicTowerAnimation();
     
+    // enemy id 重新排列
+    static const std::string s_actionType[] =
+    {
+        "attack",
+        "walkingDown",
+        "walkingRightLeft",
+        "idle",
+        "walkingUp",
+        "death",
+        "spawn",
+        "respawn",
+        "shoot",
+        "cast",
+        "special",
+        "runningDown",
+        "runningRightLeft",
+        "runningUp"
+    };
+    
     log("enemy");
     for (int i = 0; i < enemyTag.size(); ++i) {
         log("\"%s\", ", enemyTag[i].c_str());
@@ -619,8 +648,7 @@ void PListReader::extractAnimationFromResource()
     for (int i = 0; i < heroTag.size(); ++i) {
         log("\"%s\", ", heroTag[i].c_str());
     }
-    
-    
+
     for (int i = 0; i < tags.size(); ++i) {
         Tag t = tags[i];
         log("%s", t.prefix.c_str());
@@ -628,233 +656,122 @@ void PListReader::extractAnimationFromResource()
             log("       Action[%d]:[%s]", j , t.actions[j].c_str());
     }
     
+    int typeIndex = 0;
     // tower
-    int towerId = 0;
     for (int i = 0; i < tags.size(); ++i) {
         Tag t = tags[i];
         if (t.type != AnimationType_Tower) continue;
+        
         std::string id = tags[i].prefix;
         convertToCamelCase(id, "TowerID_");
-        log("%s = %d,", id.c_str(), towerId);
+        ++typeIndex;
+        log("%s = %d,", id.c_str(), typeIndex);
         for (int j = 0; j < t.actions.size(); ++j) {
             std::string str = t.actions[j];
             convertToCamelCase(str, "#define AnimationTower_");
-            //log("towerID [%d] Action[%d]:[%s] , hash [%x]", towerId, j , t.actions[j].c_str(), ANIMATION_HASH(AnimationType_Tower, towerId, j));
-            log("%s 0x%x", str.c_str(), ANIMATION_HASH(AnimationType_Tower, towerId, j));
+            log("%s 0x%x", str.c_str(), ANIMATION_HASH(AnimationType_Tower, typeIndex, j));
+            log("KEY:%x [%s]", ANIMATION_HASH(AnimationType_Tower, typeIndex, j), t.actions[j].c_str());
+            AnimationManager::getInstance()->addAnimation(ANIMATION_HASH(AnimationType_Tower, typeIndex, j), t.actions[j]);
             
         }
-        ++towerId;
     }
     
     // enemy
-    int enemyId = 0;
+    typeIndex = 0;
     for (int i = 0; i < tags.size(); ++i) {
         Tag t = tags[i];
         if (t.type != AnimationType_Enemy) continue;
+        ++typeIndex;
         std::string id = tags[i].prefix;
         convertToCamelCase(id, "EnemyID_");
-        log("%s = %d,", id.c_str(), enemyId);
+        log("%s = %d,", id.c_str(), typeIndex);
+        int actionId = 1;
         for (int j = 0; j < t.actions.size(); ++j) {
             std::string str = t.actions[j];
+            std::string suffix = str.substr(str.find_last_of("_") + 1);
             convertToCamelCase(str, "#define AnimationEnemy_");
-            //log("towerID [%d] Action[%d]:[%s] , hash [%x]", towerId, j , t.actions[j].c_str(), ANIMATION_HASH(AnimationType_Tower, towerId, j));
-            log("%s 0x%x", str.c_str(), ANIMATION_HASH(AnimationType_Enemy, enemyId, j));
+            bool commType = false;
+            uint hashKey = 0;
+            for (int k = 0; k < TD_LEN(s_actionType); ++k) {
+                if (suffix == s_actionType[k]) {
+                    log("%s 0x%x", str.c_str(), ANIMATION_HASH(AnimationType_Enemy, typeIndex, k));
+                    hashKey = ANIMATION_HASH(AnimationType_Enemy, typeIndex, k);
+                    commType = true;
+                    break;
+                }
+            }
             
+            if (!commType) {
+                log("%s 0x%x", str.c_str(), ANIMATION_HASH(AnimationType_Enemy, typeIndex, actionId << 4), actionId);
+                hashKey = ANIMATION_HASH(AnimationType_Enemy, typeIndex, actionId << 4);
+                ++actionId;
+            }
+            
+            log("KEY:%x [%s]", hashKey, t.actions[j].c_str());
+            AnimationManager::getInstance()->addAnimation(hashKey, t.actions[j]);
         }
-        ++enemyId;
     }
-    
+
     // ally
-    int allyId = 0;
+    typeIndex = 0;
     for (int i = 0; i < tags.size(); ++i) {
         Tag t = tags[i];
         if (t.type != AnimationType_Ally) continue;
+        ++typeIndex;
         std::string id = tags[i].prefix;
         convertToCamelCase(id, "AllyID_");
-        log("%s = %d,", id.c_str(), allyId);
+        log("%s = %d,", id.c_str(), typeIndex);
         for (int j = 0; j < t.actions.size(); ++j) {
             std::string str = t.actions[j];
             convertToCamelCase(str, "#define AnimationAlly_");
             //log("towerID [%d] Action[%d]:[%s] , hash [%x]", towerId, j , t.actions[j].c_str(), ANIMATION_HASH(AnimationType_Tower, towerId, j));
-            log("%s 0x%x", str.c_str(), ANIMATION_HASH(AnimationType_Ally, allyId, j));
+            log("%s 0x%x", str.c_str(), ANIMATION_HASH(AnimationType_Ally, typeIndex, j));
+            log("KEY:%x [%s]", ANIMATION_HASH(AnimationType_Ally, typeIndex, j), t.actions[j].c_str());
+            AnimationManager::getInstance()->addAnimation(ANIMATION_HASH(AnimationType_Ally, typeIndex, j), t.actions[j]);
         }
-        ++allyId;
     }
     
     // hero
-    int heroId = 0;
+    typeIndex = 0;
     for (int i = 0; i < tags.size(); ++i) {
         Tag t = tags[i];
         if (t.type != AnimationType_Hero) continue;
+        ++typeIndex;
         std::string id = tags[i].prefix;
         convertToCamelCase(id, "HeroID_");
-        log("%s = %d,", id.c_str(), heroId);
+        log("%s = %d,", id.c_str(), typeIndex);
         for (int j = 0; j < t.actions.size(); ++j) {
             std::string str = t.actions[j];
             convertToCamelCase(str, "#define AnimationHero_");
-            //log("towerID [%d] Action[%d]:[%s] , hash [%x]", towerId, j , t.actions[j].c_str(), ANIMATION_HASH(AnimationType_Tower, towerId, j));
-            log("%s 0x%x", str.c_str(), ANIMATION_HASH(AnimationType_Hero, heroId, j));
+            log("%s 0x%x", str.c_str(), ANIMATION_HASH(AnimationType_Hero, typeIndex, j));
+            log("KEY:%x [%s]", ANIMATION_HASH(AnimationType_Hero, typeIndex, j), t.actions[j].c_str());
+            AnimationManager::getInstance()->addAnimation(ANIMATION_HASH(AnimationType_Hero, typeIndex, j), t.actions[j]);
         }
-        ++heroId;
     }
     
     // boss
-    int bossId = 0;
+    typeIndex = 0;
     for (int i = 0; i < tags.size(); ++i) {
         Tag t = tags[i];
         if (t.type != AnimationType_Boss) continue;
+        ++typeIndex;
         std::string id = tags[i].prefix;
         convertToCamelCase(id, "BossID_");
-        log("%s = %d,", id.c_str(), bossId);
+        log("%s = %d,", id.c_str(), typeIndex);
         for (int j = 0; j < t.actions.size(); ++j) {
             std::string str = t.actions[j];
             convertToCamelCase(str, "#define AnimationBoss_");
             //log("towerID [%d] Action[%d]:[%s] , hash [%x]", towerId, j , t.actions[j].c_str(), ANIMATION_HASH(AnimationType_Tower, towerId, j));
-            log("%s 0x%x", str.c_str(), ANIMATION_HASH(AnimationType_Boss, bossId, j));
+            log("%s 0x%x", str.c_str(), ANIMATION_HASH(AnimationType_Boss, typeIndex, j));
+            log("KEY:%x [%s]", ANIMATION_HASH(AnimationType_Boss, typeIndex, j), t.actions[j].c_str());
+            AnimationManager::getInstance()->addAnimation(ANIMATION_HASH(AnimationType_Boss, typeIndex, j), t.actions[j]);
         }
-        
-        ++bossId;
     }
-
-    int enemyID = 0;
-
+   
 #else
     // TODO:: add win32 file traverse impelement
 #endif
-
-}
-
-void PListReader::createEnemyAnimationTableIndexer()
-{
-    static const std::string s_actionType[] =
-    {
-        "attack",
-        "walkingDown",
-        "walkingRightLeft",
-        "idle",
-        "walkingUp",
-        "death",
-        "spawn",
-        "respawn",
-        "shoot",
-        "cast",
-        "special"
-    };
     
-    static int s_enemyId_ht_counter = 0;
-    static int s_actionId_ht_counter = 0;
-    
-    auto isEnemyPlistFile = [](const std::string& path)->bool {
-        ValueMap root = FileUtils::getInstance()->getValueMapFromFile(path);
-        if (root.empty()) {
-            CCLOG("PListReader::lookupActionTypes failed to create with file [%s]", path.c_str());
-            return false;
-        }
-
-        ValueMap animationDict = root["animations"].asValueMap();
-        ValueMap::const_iterator iter = animationDict.begin();
-        while (iter != animationDict.end()) {
-            std::string name = iter->first;
-            if (name.find("boss") != std::string::npos ||
-                name.find("Boss") != std::string::npos ||
-                name.find("hero") != std::string::npos ||
-                name.find("rabbit") != std::string::npos) {
-                return false;
-            }
-            
-            int idx = name.find_last_of('_');
-            //CCLOG("%s", name.substr(idx + 1).c_str());
-            if ("walkingRightLeft" == name.substr(idx + 1)) {
-                return true;
-            }
-            
-            ++iter;
-        }
-
-        return false;
-    };
-
-    auto addAnimation = [](int id, const std::string& path) {
-        ValueMap root = FileUtils::getInstance()->getValueMapFromFile(path);
-        if (root.empty()) {
-            CCLOG("PListReader::lookupActionTypes failed to create with file [%s]", path.c_str());
-            return;
-        }
-
-        ValueMap animationDict = root["animations"].asValueMap();
-        if (animationDict.empty()) {
-            return;
-        }
-
-        ValueMap::const_iterator iter = animationDict.begin();
-        ValueMap firstEntry = iter->second.asValueMap();
-        std::string enemyName = firstEntry["prefix"].asString();
-        while (iter != animationDict.end()) {
-            std::string enumName = iter->first;
-
-            bool exist = false;
-            std::string name = iter->first;
-            std::string actionName;
-            if (name.find(enemyName) == std::string::npos) {
-                actionName = name.substr(name.find_last_of("_") + 1);
-            }
-            else {
-                actionName  = name.substr(enemyName.size() + 1);
-            }
-
-            bool normalAction = false;
-            int actionId = 0;
-            int i = 0;
-            for (;i < sizeof(s_actionType) / sizeof(s_actionType[0]); ++i) {
-                if (s_actionType[i] == actionName) {
-                    // CCLog("%s exist", actionName.c_str());
-                    actionId = (id << 16) | i;
-                    normalAction = true;
-                    //AnimationManager::getInstance()->addAnimationIndex(id, i, name);
-                    break;
-                }
-            }
-
-            if (!normalAction) {
-                //AnimationManager::getInstance()->addAnimationIndex(id, s_actionId_ht_counter, name);
-            }
-            
-#ifdef TD_TEST
-            convertToCamelCase(enumName, "EnemyAction_");
-            //CCLOG("#define %s %d path %s", enumName.c_str(), normalAction ? i : s_actionId_ht_counter, path.c_str());
-#endif
-            
-            ++iter;
-        }
-    };
-
-#if (CC_PLATFORM_MAC == CC_TARGET_PLATFORM || CC_PLATFORM_IOS == CC_TARGET_PLATFORM || CC_PLATFORM_LINUX == CC_TARGET_PLATFORM)
-    DIR *dir;
-    struct dirent *ptr;
-    dir = opendir(".");
-    
-    while (NULL != (ptr = readdir(dir)))
-    {
-        if (strstr(ptr->d_name, "animations.plist")) {
-            // CCLOG("d_name: %s\n", ptr->d_name);
-            if (isEnemyPlistFile(ptr->d_name)) {
-                std::string path(ptr->d_name);
-                std::string enmeyName = path.substr(0, path.find("_animations"));
-                convertToCamelCase(enmeyName, "EnemyID_");
-                ++s_enemyId_ht_counter;
-                CCLog("%s = %d", enmeyName.c_str(), s_enemyId_ht_counter);
-                addAnimation(s_enemyId_ht_counter, ptr->d_name);
-            }
-        }
-    }
-    closedir(dir);
-#if 0
-    AnimationManager::getInstance()->showTable();
-#endif
-
-#else
-    // TODO:: add win32 file traverse impelement
-#endif
 }
 
 void PListReader::saveImageFromPlist(const std::string &plist)

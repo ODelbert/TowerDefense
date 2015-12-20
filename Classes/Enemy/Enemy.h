@@ -120,6 +120,23 @@ enum EnemyID
     EnemyID_Num = EnemyID_Arachnomancer_Spider,
 };
 
+enum ActionEnemy {
+    ActionEnemy_Attack = 0,
+    ActionEnemy_WalkingDown,
+    ActionEnemy_WalkingRightLeft,
+    ActionEnemy_Idle,
+    ActionEnemy_WalkingUp,
+    ActionEnemy_Death,
+    ActionEnemy_Spawn,
+    ActionEnemy_Respawn,
+    ActionEnemy_Shoot,
+    ActionEnemy_Cast,
+    ActionEnemy_Special,
+    ActionEnemy_RunningDown,
+    ActionEnemy_RunningRightLeft,
+    ActionEnemy_RunningUp,
+};
+
 enum EnemyState
 {
     EnemyState_Invalid = -1,

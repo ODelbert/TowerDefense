@@ -16,8 +16,8 @@
 USING_NS_CC;
 
 #define ANIMATION_HASH(type, key, act) (((type) << 20) | ((key) << 12) | (act))
-#define ANIMATION_TYPE(hash) (((hash) & 0x00F00000) << 20)
-#define ANIMATION_KEY(hash) (((hash) & 0x000FF000) << 12)
+#define ANIMATION_TYPE(hash) (((hash) & 0x00F00000) >> 20)
+#define ANIMATION_KEY(hash) (((hash) & 0x000FF000) >> 12)
 #define ANIMATION_ACTION(hash) ((hash) & 0x00000FFF)
 
 enum AnimationType
@@ -39,11 +39,11 @@ public:
     static AnimationManager* getInstance();
     static void destroy();
     
-    void addAnimation(int key, const std::string& name);
-    void removeAnimation(int key);
-    void runAction(Sprite* target, int key, bool repeatForever = true);
-    void runAction(Sprite* target, int key, int act, bool repeatForever = true);
-
+    void addAnimation(uint hash, const std::string& name);
+    void removeAnimation(uint hash);
+    void runAction(Sprite* target, uint hash, bool repeatForever = true);
+    void runAction(Sprite* target, int type, int key, int action, bool repeatForever = true);
+    
 private:
     static AnimationManager* s_instance;
     
