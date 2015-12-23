@@ -15,6 +15,5 @@ SINGLETON_IMPL(GameConfig);
 
 void GameConfig::initialize()
 {
-    
+
 }
-    

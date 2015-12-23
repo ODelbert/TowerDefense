@@ -9,72 +9,6 @@
 #ifndef TowerDefense_ResourceId_h
 #define TowerDefense_ResourceId_h
 
-enum TowerID {
-    TowerID_Archer_Arcane = 0,
-    TowerID_Archer_Silver = 1,
-    TowerID_Artillery_Henge = 2,
-    TowerID_Artillery_Thrower = 3,
-    TowerID_Artillery_Tree = 4,
-    TowerID_ForestKeeper = 5,
-    TowerID_Mage_HighElven = 6,
-    TowerID_Mage_Tower = 7,
-    TowerID_Mage_Wild = 8,
-    TowerID_BladeSinger = 9,
-    TowerID_Archer = 10,
-    TowerID_Barrack = 11,
-    TowerID_Mage = 12,
-    TowerID_Artillery = 13,
-};
-
-enum AllyID
-{
-    AllyID_Catapult = 0,
-    AllyID_Ewok = 1,
-    AllyID_Reinforce_A0 = 2,
-    AllyID_Reinforce_A1 = 3,
-    AllyID_Reinforce_A2 = 4,
-    AllyID_Reinforce_A3 = 5,
-    AllyID_Reinforce_B0 = 6,
-    AllyID_Reinforce_B1 = 7,
-    AllyID_Reinforce_B2 = 8,
-    AllyID_Reinforce_B3 = 9,
-    AllyID_Reinforce_C0 = 10,
-    AllyID_Reinforce_C1 = 11,
-    AllyID_Reinforce_C2 = 12,
-    AllyID_Reinforce_C3 = 13,
-};
-
-enum HeroID {
-    HeroID_Archer_Hero = 0,
-    HeroID_Bravebark = 1,
-    HeroID_Denas = 2,
-    HeroID_Alleria = 3,
-    HeroID_Arivan = 4,
-    HeroID_Bolverk = 5,
-    HeroID_Bruce = 6,
-    HeroID_Durax = 7,
-    HeroID_Regson = 8,
-    HeroID_Fallen_Angel = 9,
-    HeroID_Faustus = 10,
-    HeroID_Wilburg = 11,
-    HeroID_Lynn = 12,
-    HeroID_Malik = 13,
-    HeroID_Xin = 14,
-    HeroID_Phoenix = 15,
-    HeroID_Catha = 16,
-    HeroID_RazzAndRaggs = 17,
-    HeroID_Veznan = 18,
-};
-
-enum BossID
-{
-    BossID_Bajnimen = 0,
-    BossID_Ainyl = 1,
-    BossID_Boss_Godieth = 2,
-    BossID_SpiderQueen = 3,
-    BossID_BossHiena = 4,
-};
-
 #define AnimationTower_Archer_Arcane_Shooter_ShootUp 0x301000
 #define AnimationTower_Archer_Arcane_Shooter_ShootDown 0x301001
 #define AnimationTower_Archer_Arcane_Shooter_SpecialUp 0x301002
@@ -1124,7 +1058,5 @@ enum BossID
 #define AnimationBoss_BossHiena_Scream 0x605005
 #define AnimationBoss_BossHiena_Death 0x605006
 #define AnimationBoss_BossHiena_WalkingDown 0x605007
-
-
 
 #endif

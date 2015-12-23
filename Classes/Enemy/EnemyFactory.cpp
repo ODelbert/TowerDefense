@@ -16,10 +16,10 @@ Enemy* EnemyFactory::create(EnemyID id)
 {
     switch (id) {
         case EnemyID_Gnoll_Reaver:
-            return GnollReaver::create();
+            return Gnoll_Reaver::create();
             break;
         case EnemyID_Gnoll_Burner:
-            return GnollBurner::create();
+            return Gnoll_Burner::create();
         default:
             break;
     }

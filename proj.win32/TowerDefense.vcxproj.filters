@@ -21,6 +21,9 @@
     <ClCompile Include="..\Classes\Configuration\GameConfig.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Controller\EventManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\Controller\GameManager.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -39,13 +42,7 @@
     <ClCompile Include="..\Classes\Enemy\FlyingEnemy.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Enemy\NormalEnemy.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Enemy\RunningEnemy.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Enemy\SpellCastEnemy.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Enemy\TalentedEnemy.cpp">
@@ -75,7 +72,13 @@
     <ClCompile Include="..\Classes\Scene\GameScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\tests\TestAnimation.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\tests\TestLayer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\tests\TestMapLocation.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -93,6 +96,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Configuration\GameData.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Controller\EventManager.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Controller\GameManager.h">
@@ -113,13 +119,7 @@
     <ClInclude Include="..\Classes\Enemy\FlyingEnemy.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Enemy\NormalEnemy.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Enemy\RunningEnemy.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Enemy\SpellCastEnemy.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Enemy\TalentedEnemy.h">
@@ -149,7 +149,13 @@
     <ClInclude Include="..\Classes\Scene\GameScene.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\tests\TestAnimation.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\tests\TestLayer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\tests\TestMapLocation.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\AppDelegate.h">
