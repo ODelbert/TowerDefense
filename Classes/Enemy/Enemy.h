@@ -127,9 +127,9 @@ public:
     virtual void cast();
     virtual void speicialAttack();
 
-	void sendToBattle(const std::vector<Vec2>& waypoints);
+    void sendToBattle(const std::vector<Vec2>& waypoints);
     void moveToNext();
-    
+
 private:
     // properties
     CC_SYNTHESIZE_READONLY(EnemyID, m_id, Id);
@@ -141,8 +141,7 @@ private:
     CC_SYNTHESIZE(WeaponType, m_weapon, weapon);
     CC_SYNTHESIZE(ArmorType, m_armor, armor);
     CC_SYNTHESIZE(SpeedType, m_speed, speed);
-    
-    
+
     CC_SYNTHESIZE_READONLY(uint, m_buffs, buffs);
     CC_SYNTHESIZE_READONLY(uint, m_debuffs, debuffs);
     CC_SYNTHESIZE_READONLY(EnemyState, m_state, state);
@@ -160,7 +159,7 @@ protected:
     CC_DISALLOW_COPY_AND_ASSIGN(Enemy)
 };
 
-#define DeclareEnemy(monster) \
+#define DECLARE_ENEMY(monster) \
     class monster : public Enemy \
     { \
     public: \
@@ -168,24 +167,23 @@ protected:
         virtual bool init(); \
     }; \
 
-#define DeclareEnemy_Start(monster) \
+#define DECLARE_ENEMY_START(monster) \
     class monster : public Enemy \
     { \
     public: \
         CREATE_FUNC(monster); \
         virtual bool init(); \
 
-#define DeclareEnemy_End(monster) \
+#define DECLARE_ENEMY_END(monster) \
     }; \
 
-#define DefineEnemy(monster) \
+#define DEFINE_ENEMY(monster) \
     bool monster::init() \
     { \
         initWithEnemyId(EnemyID_##monster); \
         return true; \
     } \
 
-// cat CommonDef.h  | grep -Eo EnemyID_[a-zA-Z_]+  | sed 's/EnemyID_//g' | sed 's/^/DeclareEnemy(&/;s/$/&)/'
-
+// cat CommonDef.h  | grep -Eo EnemyID_[a-zA-Z_]+  | sed 's/EnemyID_//g' | sed 's/^/DECLARE_ENEMY(&/;s/$/&)/'
 
 #endif /* defined(__TowerDefense__EnemyBase__) */
