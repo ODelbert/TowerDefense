@@ -10,6 +10,9 @@
 #define __TowerDefense__BattleField__
 
 #include "cocos2d.h"
+#include "Enemy.h"
+#include "Tower.h"
+
 USING_NS_CC;
 
 class BattleField : public Layer
@@ -20,9 +23,13 @@ public:
     void loadLevel(int stage, int difficult);
     void start(float dt);
 
+    const std::vector<Enemy*> getEnemies();
+    const std::vector<Tower*> getTowers();
+    
     virtual bool onTouchBegan(Touch* touch, Event* event) override;
     virtual void onTouchEnded(Touch* touch, Event* event) override;
     virtual void onTouchMoved(Touch* touch, Event* event) override;
+    
     
 protected:
     explicit BattleField();
@@ -34,5 +41,7 @@ protected:
     
 protected:
     Sprite* m_mapSprite;
+    std::vector<Enemy*> m_enemies;
+    std::vector<Tower*> m_towers;
 };
 #endif /* defined(__TowerDefense__BattleField__) */

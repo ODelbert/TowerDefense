@@ -1,30 +1,14 @@
+#ifndef __TowerDefense__tower__
+#define __TowerDefense__tower__
 #include "cocos2d.h"
 #include "CommonDef.h"
 
-USING_NS_CC:
-
-enum TowerLevel
-{
-    TowerLevel_1 = 1,
-    TowerLevel_2 = 2,
-    TowerLevel_3 = 3,
-    TowerLevel_4 = 4,
-};
-
-class Shooter : public Node
-{
-public:
-   void createShooter(TowerID id);
-   virtual bool init();
-
-private:
-    Direction m_dir;
-    Sprite* m_texture;
-};
+USING_NS_CC;
 
 class TowerSlot;
+class Shooter;
 
-class Tower : public Sprite
+class Tower : public Node
 {
 public:
     struct TowerData
@@ -57,10 +41,14 @@ public:
 
     void initWithTowerId(TowerID id);
 
-    void isLimitTechnology() const;
+    bool isLimitTechnology() const;
     void setLimitTechnology(TowerLevel level);
 
 private:
-    TowerSlot* m_slot;
-    TowerLevel m_maxLevel;
+    Sprite* m_texture;
+    TowerLevel m_level;
+    TowerLevel m_limitLevel;
+    //std::vector<Shooter*> m_shooters;
 };
+
+#endif

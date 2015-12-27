@@ -206,4 +206,13 @@ enum Direction
     Direction_RightUp
 };
 
+enum TowerLevel
+{
+    TowerLevel_1 = 1,
+    TowerLevel_2 = 2,
+    TowerLevel_3 = 3,
+    TowerLevel_4 = 4,
+};
+
+
 #endif /* COMMONDEF_H */

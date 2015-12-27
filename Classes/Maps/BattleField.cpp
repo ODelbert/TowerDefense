@@ -10,6 +10,7 @@
 #include "CommonDef.h"
 #include "Controller/WaveManager.h"
 #include "Enemy/EnemyFactory.h"
+#include "PListReader.h"
 
 BattleField::BattleField()
 {
@@ -39,6 +40,8 @@ BattleField::BattleField()
 
 bool BattleField::onTouchBegan(Touch* touch, Event* event)
 {
+    PListReader::getInstance()->saveImageFromPlist("elves_towers-hd.plist");
+    PListReader::getInstance()->saveImageFromPlist("elves_towers_2-hd.plist");
     log("touch at pos [%f %f]", touch->getStartLocation().x, touch->getStartLocation().y);
     return true;
 }
@@ -91,6 +94,16 @@ void BattleField::loadLevel(int stage, int difficult)
 void BattleField::start(float dt)
 {
     WaveManager::getInstance()->start();
+}
+
+const std::vector<Enemy*> BattleField::getEnemies()
+{
+    return m_enemies;
+}
+
+const std::vector<Tower*> BattleField::getTowers()
+{
+    return m_towers;
 }
 
 void BattleField::updateEnemies()

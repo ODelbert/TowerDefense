@@ -98,6 +98,7 @@ public:
     Vec2 getcurPoint() const;
     Direction getDirection() const;
     bool moveToNextPoint();
+    float fulfilledPercent() const;
 
 private:
     std::vector<Vec2> m_points;
@@ -129,6 +130,7 @@ public:
 
     void sendToBattle(const std::vector<Vec2>& waypoints);
     void moveToNext();
+    float fulfilledPercent() const;
 
 private:
     // properties

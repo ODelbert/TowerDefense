@@ -86,6 +86,7 @@ static EnemyID name2Id(const char* str)
 
 void WaveManager::initialize(int level, int difficulty)
 {
+    return;
     //ValueMap root = FileUtils::getInstance()->getValueMapFromFile("level1_waves_campaign.xml");
     std::string path = FileUtils::getInstance()->getWritablePath();
     std::string file = "level1_waves_campaign.xml";

@@ -66,6 +66,12 @@ bool WayPoints::moveToNextPoint()
     return true;
 }
 
+float WayPoints::fulfilledPercent() const
+{
+    if (m_points.empty()) return 0;
+    return m_pathIndex / m_points.size();
+}
+
 bool Enemy::initWithEnemyId(EnemyID id)
 {
     EnemyInfo info ;//= EnemyData::getInstance()->qurey(id);
@@ -98,6 +104,11 @@ void Enemy::sendToBattle(const std::vector<Vec2> &waypoints)
     m_wayPoints.setPoints(waypoints);
     setPosition(m_wayPoints.getcurPoint());
     moveToNext();
+}
+
+float Enemy::fulfilledPercent() const
+{
+    return m_wayPoints.fulfilledPercent();
 }
 
 void Enemy::idle()
