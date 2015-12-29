@@ -39,7 +39,7 @@ public:
     virtual void showTowerInfo();
     virtual void detectNearBy();
 
-    void initWithTowerId(TowerID id);
+    void initWithTowerId(TowerID id, TowerLevel level);
 
     bool isLimitTechnology() const;
     void setLimitTechnology(TowerLevel level);

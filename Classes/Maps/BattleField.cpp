@@ -40,8 +40,6 @@ BattleField::BattleField()
 
 bool BattleField::onTouchBegan(Touch* touch, Event* event)
 {
-    PListReader::getInstance()->saveImageFromPlist("elves_towers-hd.plist");
-    PListReader::getInstance()->saveImageFromPlist("elves_towers_2-hd.plist");
     log("touch at pos [%f %f]", touch->getStartLocation().x, touch->getStartLocation().y);
     return true;
 }

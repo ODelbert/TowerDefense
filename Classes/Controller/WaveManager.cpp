@@ -86,90 +86,85 @@ static EnemyID name2Id(const char* str)
 
 void WaveManager::initialize(int level, int difficulty)
 {
-    return;
-    //ValueMap root = FileUtils::getInstance()->getValueMapFromFile("level1_waves_campaign.xml");
+    // FIXME:: 难度支持
     std::string path = FileUtils::getInstance()->getWritablePath();
     std::string file = "level1_waves_campaign.xml";
     path += file;
     tinyxml2::XMLDocument *pDoc = new tinyxml2::XMLDocument;
-    XMLError errorId = pDoc->LoadFile("level1_waves_campaign.xml");
+    XMLError errorId = pDoc->LoadFile(path.c_str());
     
     if (errorId != 0) {
          return;
     }
     
     XMLElement *rootEle = pDoc->RootElement();
-    const XMLAttribute *attribute = rootEle->FirstAttribute();
-    XMLElement *wavesEle = rootEle->FirstChildElement("waves");
-    XMLElement *cashEle = wavesEle->FirstChildElement("cash");
-    if (cashEle) {
-        m_cash = atoi(cashEle->GetText());
-    }
-    
-    XMLElement *waveEle = wavesEle->FirstChildElement("wave");
-    while (waveEle) {
-        WaveInfo waveInfo;
-        XMLElement *ele = waveEle->FirstChildElement("interval");
-        while (ele) {
-            if (0 == strcmp(ele->Value(), "interval")) {
-                waveInfo.setWaveInterval(atoi(ele->GetText()));
-            }
-            else if (0 == strcmp(ele->Value(), "path_index")) {
-                waveInfo.setPathIndex(atoi(ele->GetText()));
-            }
-            else if (0 == strcmp(ele->Value(), "spawns")) {
-                
-                XMLElement* spawn = ele->FirstChildElement("spawn");
-                while (spawn) {
-                    SpawnInfo si;
-                    XMLElement *ee = spawn->FirstChildElement("creep");
-                    while (ee) {
-                        if (0 == strcmp(ee->Value(), "creep")) {
-                            strncpy(si.id, ee->GetText(), 24);
-                        }
-                        else if (0 == strcmp(ee->Value(), "max_same")) {
-                            si.maxSame = atoi(ee->GetText());
-                        }
-                        else if (0 == strcmp(ee->Value(), "max")) {
-                            char maxStr[10];
-                            strncpy(maxStr, ee->GetText(), 10);
-                            si.max = atoi(maxStr);
-                        }
-                        else if (0 == strcmp(ee->Value(), "interval")) {
-                            si.interval = atoi(ee->GetText());
-                        }
-                        else if (0 == strcmp(ee->Value(), "interval_next")) {
-                            si.intervalNext = atoi(ee->GetText());
-                        }
-                        else if (0 == strcmp(ee->Value(), "path")) {
-                            si.path = atoi(ee->GetText());
-                        }
-                        else {
-
-                        }
-                        ee = ee->NextSiblingElement();
-                    }
-                    
-                    if (si.max >= 2 && si.interval > 0) {
-                        for (int i  = 0; i < si.max; ++i) {
-                            waveInfo.addSpawn(si);
-                        }
-                    }
-                    waveInfo.addSpawn(si);
-                    spawn = spawn->NextSiblingElement();
+    for (XMLElement* chd = rootEle->FirstChildElement(); chd; chd = chd->NextSiblingElement()) {
+        if (0 == strcmp(chd->Name(), "cash")) {
+            m_cash = atoi(chd->GetText());
+        }
+        else if (0 == strcmp(chd->Name(), "wave")){
+            WaveInfo waveInfo;
+            XMLElement *ele = chd->FirstChildElement("interval");
+            while (ele) {
+                if (0 == strcmp(ele->Value(), "interval")) {
+                    waveInfo.setWaveInterval(atoi(ele->GetText()));
                 }
-            }
-            else {
+                else if (0 == strcmp(ele->Value(), "path_index")) {
+                    waveInfo.setPathIndex(atoi(ele->GetText()));
+                }
+                else if (0 == strcmp(ele->Value(), "spawns")) {
+                    
+                    XMLElement* spawn = ele->FirstChildElement("spawn");
+                    while (spawn) {
+                        SpawnInfo si;
+                        XMLElement *ee = spawn->FirstChildElement("creep");
+                        while (ee) {
+                            if (0 == strcmp(ee->Value(), "creep")) {
+                                strncpy(si.id, ee->GetText(), 24);
+                            }
+                            else if (0 == strcmp(ee->Value(), "max_same")) {
+                                si.maxSame = atoi(ee->GetText());
+                            }
+                            else if (0 == strcmp(ee->Value(), "max")) {
+                                char maxStr[10];
+                                strncpy(maxStr, ee->GetText(), 10);
+                                si.max = atoi(maxStr);
+                            }
+                            else if (0 == strcmp(ee->Value(), "interval")) {
+                                si.interval = atoi(ee->GetText());
+                            }
+                            else if (0 == strcmp(ee->Value(), "interval_next")) {
+                                si.intervalNext = atoi(ee->GetText());
+                            }
+                            else if (0 == strcmp(ee->Value(), "path")) {
+                                si.path = atoi(ee->GetText());
+                            }
+                            else {
+                                
+                            }
+                            ee = ee->NextSiblingElement();
+                        }
+                        
+                        if (si.max >= 2 && si.interval > 0) {
+                            for (int i  = 0; i < si.max; ++i) {
+                                waveInfo.addSpawn(si);
+                            }
+                        }
+                        waveInfo.addSpawn(si);
+                        spawn = spawn->NextSiblingElement();
+                    }
+                }
+                else {
+                    
+                }
                 
+                ele = ele->NextSiblingElement();
             }
             
-            ele = ele->NextSiblingElement();
+            m_waves.push_back(waveInfo);
         }
-
-        m_waves.push_back(waveInfo);
-        waveEle = waveEle->NextSiblingElement();
     }
-
+    
     delete pDoc;
 
     m_paths = PListReader::getInstance()->readPathPlist(level);
