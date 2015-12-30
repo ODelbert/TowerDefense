@@ -20,19 +20,50 @@ protected:
 class Archer : public Tower
 {
 public:
-    static Archer* createArcherTower(TowerLevel level);
+    static Archer* create(TowerLevel level);
     virtual bool init();
     
     virtual void updateState();
 };
 
-//
+class ArcaneShooter : public Shooter
+{
+public:
+    CREATE_FUNC(ArcaneShooter);
+	virtual bool init();
+	virtual void shoot();
 
-//class ArcaneShooter : public Shooter
-//{
-//public:
-//    static
-//};
+protected:
+	explicit ArcaneShooter();		
+};
 
+class ArcaneTower : public Tower
+{
+public:
+    CREATE_FUNC(ArcaneTower);
+    virtual bool init();
+    
+    virtual void updateState();
+};
+
+class SliverShooter : public Shooter
+{
+public:
+    CREATE_FUNC(SliverShooter);
+	virtual bool init();
+	virtual void shoot();
+
+protected:
+	explicit ArcaneShooter();		
+};
+
+class SliverTower : public Tower
+{
+public:
+    CREATE_FUNC(SliverTower);
+    virtual bool init();
+    
+    virtual void updateState();
+};
 
 #endif

@@ -67,7 +67,30 @@ Shooter::~Shooter()
 
 void Shooter::shoot()
 {
-    
+    switch (m_id) {
+        case TowerID_Archer:
+            AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? AnimationTower_Archer_Shooter_Up : AnimationTower_Archer_Shooter_Down);
+            break;
+        case TowerID_Mage:
+            AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? AnimationTower_Mage_Tower_Shooter_ShootUp : AnimationTower_Mage_Tower_Shooter_ShootDown);
+            break;
+        case TowerID_Artillery:
+            switch (m_level) {
+                case TowerLevel_1:
+                    AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? AnimationTower_Artillery_Thrower_ShootUp : AnimationTower_Artillery_Thrower_ShootDown);
+                    break;
+                case TowerLevel_2:
+                    AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? AnimationTower_Artillery_Thrower_Lvl2_ShootUp : AnimationTower_Artillery_Thrower_Lvl2_ShootDown);
+                    break;
+                case TowerLevel_3:
+                    AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? AnimationTower_Artillery_Thrower_Lvl3_ShootUp : AnimationTower_Artillery_Thrower_Lvl3_ShootDown);
+                    break;
+                default:
+                    break;
+            }
+        default:
+            break;
+    }
 }
 
 ////void Shooter::shoot()

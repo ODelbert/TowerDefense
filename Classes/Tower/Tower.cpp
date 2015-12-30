@@ -95,5 +95,18 @@ void Tower::detectNearBy()
                 index = i;
             }
         }
+
+		for (int i = 0; i < m_shooters.size(); ++i) {
+			if (enmeies[index]->getPosition().y > m_shooters[i]->getPosition().y &&
+				Direction_Down == m_shooters[i]->getOriention()) {
+				m_shooters[i]->setOriention(Direction_Up);
+			}
+			else if (enmeies[index]->getPosition().y < m_shooters[i]->getPosition().y &&
+				Direction_Up == m_shooters[i]->getOriention()) {
+				m_shooters[i]->setOriention(Direction_Down);
+			}
+			else {
+			}
+		}
     }
 }

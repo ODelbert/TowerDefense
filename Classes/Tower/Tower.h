@@ -48,7 +48,7 @@ private:
     Sprite* m_texture;
     TowerLevel m_level;
     TowerLevel m_limitLevel;
-    //std::vector<Shooter*> m_shooters;
+    std::vector<Shooter*> m_shooters;
 };
 
 #endif
