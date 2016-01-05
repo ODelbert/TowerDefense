@@ -1,6 +1,7 @@
 
 #include "Tower.h"
 #include "BattleField.h"
+#include "Shooter.h"
 
 void Tower::initWithTowerId(TowerID id, TowerLevel level)
 {

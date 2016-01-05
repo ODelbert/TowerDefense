@@ -95,6 +95,8 @@
 		9A6629961C2ED71600BC9E5E /* Barrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A66298F1C2ED71600BC9E5E /* Barrack.cpp */; };
 		9A6629971C2ED71600BC9E5E /* Tower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A6629911C2ED71600BC9E5E /* Tower.cpp */; };
 		9A6629981C2ED71600BC9E5E /* Tower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A6629911C2ED71600BC9E5E /* Tower.cpp */; };
+		9A6DC04A1C3431AC00EF0529 /* TowerSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A6DC0481C3431AC00EF0529 /* TowerSlot.cpp */; };
+		9A6DC04B1C3431AC00EF0529 /* TowerSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A6DC0481C3431AC00EF0529 /* TowerSlot.cpp */; };
 		9A74910E1C2FDD2C00A96B80 /* Shooter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A74910C1C2FDD2C00A96B80 /* Shooter.cpp */; };
 		9A74910F1C2FDD2C00A96B80 /* Shooter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A74910C1C2FDD2C00A96B80 /* Shooter.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
@@ -229,6 +231,8 @@
 		9A6629901C2ED71600BC9E5E /* Barrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Barrack.h; sourceTree = "<group>"; };
 		9A6629911C2ED71600BC9E5E /* Tower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tower.cpp; sourceTree = "<group>"; };
 		9A6629921C2ED71600BC9E5E /* Tower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tower.h; sourceTree = "<group>"; };
+		9A6DC0481C3431AC00EF0529 /* TowerSlot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TowerSlot.cpp; sourceTree = "<group>"; };
+		9A6DC0491C3431AC00EF0529 /* TowerSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerSlot.h; sourceTree = "<group>"; };
 		9A74910C1C2FDD2C00A96B80 /* Shooter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shooter.cpp; sourceTree = "<group>"; };
 		9A74910D1C2FDD2C00A96B80 /* Shooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shooter.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -541,6 +545,8 @@
 				9A6629921C2ED71600BC9E5E /* Tower.h */,
 				9A74910C1C2FDD2C00A96B80 /* Shooter.cpp */,
 				9A74910D1C2FDD2C00A96B80 /* Shooter.h */,
+				9A6DC0481C3431AC00EF0529 /* TowerSlot.cpp */,
+				9A6DC0491C3431AC00EF0529 /* TowerSlot.h */,
 			);
 			path = Tower;
 			sourceTree = "<group>";
@@ -682,6 +688,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A6629931C2ED71600BC9E5E /* Archer.cpp in Sources */,
+				9A6DC04A1C3431AC00EF0529 /* TowerSlot.cpp in Sources */,
 				9A74910E1C2FDD2C00A96B80 /* Shooter.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				9A6629951C2ED71600BC9E5E /* Barrack.cpp in Sources */,
@@ -715,6 +722,7 @@
 				08D5DA1D1C0FB5C400674B54 /* Enemy.h in Sources */,
 				08D5DA1E1C0FB5C400674B54 /* EnemyFactory.cpp in Sources */,
 				08D5DA1F1C0FB5C400674B54 /* EnemyFactory.h in Sources */,
+				9A6DC04B1C3431AC00EF0529 /* TowerSlot.cpp in Sources */,
 				08D5DA201C0FB5C400674B54 /* FlyingEnemy.cpp in Sources */,
 				08D5DA211C0FB5C400674B54 /* FlyingEnemy.h in Sources */,
 				08D5DA221C0FB5C400674B54 /* RunningEnemy.cpp in Sources */,

@@ -54,7 +54,7 @@ public:
 	virtual void shoot();
 
 protected:
-	explicit ArcaneShooter();		
+	explicit SliverShooter();
 };
 
 class SliverTower : public Tower
