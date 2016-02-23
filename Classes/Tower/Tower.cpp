@@ -1,7 +1,8 @@
 
 #include "Tower.h"
-#include "BattleField.h"
+#include "Maps/BattleField.h"
 #include "Shooter.h"
+
 
 void Tower::initWithTowerId(TowerID id, TowerLevel level)
 {
@@ -14,34 +15,51 @@ void Tower::initWithTowerId(TowerID id, TowerLevel level)
     m_weapon = WeaponType_Invalid;
     
     switch (id) {
-        case TowerID_Archer:
-            switch (level) {
-                case TowerLevel_1:
-                    m_texture = Sprite::createWithSpriteFrameName("archer_towers_0001.png");
-                    break;
-                case TowerLevel_2:
-                    m_texture = Sprite::createWithSpriteFrameName("archer_towers_0002.png");
-                    break;
-                case TowerLevel_3:
-                    m_texture = Sprite::createWithSpriteFrameName("archer_towers_0003.png");
-                    break;
-                default:
-                    break;
-            }
-            break;
-        case TowerID_Archer_Arcane:
-            m_texture = Sprite::createWithSpriteFrameName("archer_towers_0004.png");
-            break;
-        case TowerID_Archer_Silver:
-            m_texture = Sprite::createWithSpriteFrameName("archer_towers_0005.png");
-            break;
-            
-        default:
-            break;
-            
-            
+    case TowerID_Archer:
+        m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("archer_towers_000%d.png", static_cast<int>(m_level))->getCString());
+        break;
+    case TowerID_Archer_Arcane:
+        m_texture = Sprite::createWithSpriteFrameName("archer_towers_0004.png");
+        break;
+    case TowerID_Archer_Silver:
+        m_texture = Sprite::createWithSpriteFrameName("archer_towers_0005.png");
+        break;
+    case TowerID_Mage:
+        {
+            auto ornaments = Sprite::createWithSpriteFrameName(String::createWithFormat("mage_towers_layer1_00%2d.png", static_cast<int>(m_level * 32 + 1))->getCString());
+            m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("mage_towers_layer2_00%2d.png", static_cast<int>(m_level * 32 + 1))->getCString());
+            m_texture->addChild(ornaments);
+        }
+        break;
+    case TowerID_Mage_Wild:
+        {
+            m_texture = Sprite::createWithSpriteFrameName("mage_towers_layer1_0097.png");
+            // mage_wild_stones_0001.png -> mage_wild_stones_00010.png 悬浮石子
+        }
+        break;
+    case TowerID_Mage_HighElven:
+        {
+            m_texture = Sprite::createWithSpriteFrameName("mage_towers_layer1_0098.png");
+        }
+        break;
+    case TowerID_Artillery:
+        m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("artillery_base_000%d.png", static_cast<int>(m_level))->getCString());
+        break;
+    case TowerID_Artillery_Henge:
+        m_texture = Sprite::createWithSpriteFrameName("archer_towers_0005.png");
+        break;
+    case TowerID_Artillery_Tree:
+        // m_texture = Sprite::createWithSpriteFrameName("archer_towers_0005.png");
+        break;
+    default:
+        break;
+    }
+
+    if (m_texture) {
+        addChild(m_texture);
+
             //TODO: mage
-            
+
             // mage_towers_layer1_0001.png lv1外围碎石子
             // mage_towers_layer1_0033.png lv2外围碎石子
             // mage_towers_layer1_0065.png lv3外围碎石子
@@ -71,15 +89,6 @@ void Tower::showTowerInfo()
 int Tower::sell()
 {
     return 0.7 * m_costGold;
-}
-
-bool Tower::isLimitTechnology() const
-{
-    return m_limitLevel < TowerLevel_4;
-}
-void Tower::setLimitTechnology(TowerLevel level)
-{
-    m_limitLevel = level;
 }
 
 void Tower::detectNearBy()

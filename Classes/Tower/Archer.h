@@ -21,9 +21,11 @@ class Archer : public Tower
 {
 public:
     static Archer* create(TowerLevel level);
-    virtual bool init();
+    virtual bool init(TowerLevel level);
     
-    virtual void updateState();
+    virtual void shoot();
+    virtual void choose();
+    virtual void upgrade(int tId);
 };
 
 class ArcaneShooter : public Shooter
@@ -31,7 +33,7 @@ class ArcaneShooter : public Shooter
 public:
     CREATE_FUNC(ArcaneShooter);
 	virtual bool init();
-	virtual void shoot();
+    virtual void shoot();
 
 protected:
 	explicit ArcaneShooter();		
@@ -40,18 +42,24 @@ protected:
 class ArcaneTower : public Tower
 {
 public:
-    CREATE_FUNC(ArcaneTower);
+    static ArcaneTower* create();
     virtual bool init();
-    
+
+    virtual void shoot();
+    virtual void choose();
+    virtual void upgrade(int tId);
     virtual void updateState();
 };
 
 class SliverShooter : public Shooter
 {
 public:
-    CREATE_FUNC(SliverShooter);
+    static SliverShooter* create();
 	virtual bool init();
 	virtual void shoot();
+    virtual void choose();
+    virtual void upgrade(int tId);
+    virtual void updateState();
 
 protected:
 	explicit SliverShooter();

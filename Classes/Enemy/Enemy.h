@@ -20,7 +20,7 @@ struct EnemyInfo
 {
 	int seq;
     int id;
-    char name[24];
+    char name[32];
     int dmgMin;
     int dmgMax;
     int life;

@@ -15,6 +15,7 @@
 USING_NS_CC;
 
 class SlotRing;
+class Icon;
 class TowerSlot : public Node
 {
     friend SlotRing;
@@ -27,6 +28,9 @@ public:
     
     Tower* getTower() const;
     
+private:
+    std::vector<Icon*> getTowerIcons(Tower* tower);
+
 private:
     Menu* m_terrian;
     SlotRing* m_slotRing;

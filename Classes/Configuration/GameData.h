@@ -8,26 +8,33 @@
 
 #ifndef __TowerDefense__GameData__
 #define __TowerDefense__GameData__
-
+#define TD_DEBUG
 #ifdef TD_DEBUG
 #include "Enemy.h"
+#include "Tower.h"
 static std::string s_enemiesIntroduction[] = {
     
 };
 
+static TowerInfo s_towersInfo[] = {
+    { 1, TowerID_Archer, 1, "ArcherLevel1", 0, 0, 0, 0, 0 },
+    { 2, TowerID_Archer, 2, "Archerevel2", 0, 0, 0, 0, 0 },
+    { 3, TowerID_Archer, 3, "ArcherLevel3", 0, 0, 0, 0, 0 },
+    { 4, TowerID_Mage, 1, "MageLevel1", 0, 0, 0, 0, 0 },
+    { 5, TowerID_Mage, 2, "MageLevel2", 0, 0, 0, 0, 0 },
+    { 6, TowerID_Mage, 3, "MageLevel3", 0, 0, 0, 0, 0 },
+    { 7, TowerID_Artillery, 1, "ArtilleryLevel1", 0, 0, 0, 0, 0 },
+    { 8, TowerID_Artillery, 2, "ArtilleryLevel2", 0, 0, 0, 0, 0 },
+    { 9, TowerID_Artillery, 3, "ArtilleryLevel3", 0, 0, 0, 0, 0 },
+    { 10, TowerID_Archer_Arcane, 4, "ArcherArcane", 0, 0, 0, 0, 0 },
+    { 11, TowerID_Archer_Silver, 4, "ArcherSilver", 0, 0, 0, 0, 0 },
+    { 12, TowerID_Mage_Wild, 4, "MageWild", 0, 0, 0, 0, 0 },
+    { 13, TowerID_Mage_HighElven, 4, "MageHighElven", 0, 0, 0, 0, 0 },
+    { 14, TowerID_Artillery_Henge, 4, "ArtilleryHenge", 0, 0, 0, 0, 0 },
+    { 15, TowerID_Artillery_Tree, 4, "ArtilleryTree", 0, 0, 0, 0, 0 }
+};
 
 static EnemyInfo s_enemiesInfo[] = {
-//    int id;
-//    char name[24];
-//    int dmgMin;
-//    int dmgMax;
-//    int life;
-//    int armor;
-//    int resist;
-//    int speed;
-//    int food;
-//    int flyable;
-//    int boss;
     { 1, EnemyID_Gnoll_Reaver, "gnoll_reaver", 3, 6, 50, 0, 0, 2, 1, 0, 0 },
     { 2, EnemyID_Gnoll_Burner, "gnoll_burner", 2, 4, 60, 0, 0, 2, 1, 0, 0 },
     { 3, EnemyID_Gnoll_Gnawer, "gnoll_gnawer", 10, 20, 250, 1, 0, 1, 1, 0, 0 },
@@ -40,7 +47,7 @@ static EnemyInfo s_enemiesInfo[] = {
     { 10, EnemyID_Invalid, "warleader", 50, 80, 2500, 0, 0, 1, 20, 0, 0 },
     { 11, EnemyID_Sword_Spider, "sword_spider", 8, 12, 130, 0, 3, 2, 1, 0, 0 },
     { 12, EnemyID_Satyr, "satyr", 6, 10, 150, 0, 0, 2, 1, 0, 0 },
-    { 13, EnemyID_SatyrHoplite, "satyr_hoplite", 25, 35, 600, 2, 0, 1, 1, 0, 0 },
+//    { 13, EnemyID_SatyrHoplite, "satyr_hoplite", 25, 35, 600, 2, 0, 1, 1, 0, 0 },
     { 14, EnemyID_WebspitterSpider, "webspitter", 10, 14, 550, 0, 2, 2, 1, 0, 0 },
     { 15, EnemyID_Gloomy, "gloomy", 0, 0, 35, 0, 0, 2, 1, 0, 1 },
     { 16, EnemyID_Scourger, "scourger", 15, 35, 400, 0, 2, 1, 1, 0, 0 },

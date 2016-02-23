@@ -15,7 +15,8 @@
 
 USING_NS_CC;
 
-//struct TowerInfo;
+struct EnemyInfo;
+struct TowerInfo;
 //enum TowerID;
 class GameConfig : public Ref
 {
@@ -24,8 +25,8 @@ public:
     static void destroy();
     
     void initialize();
-    EnemyInfo getEnemyInfo(EnemyID id);
-//    TowerInfo getTowerInfo(TowerID id);
+    static TowerInfo getTowerInfo(TowerID id, TowerLevel lv);
+    static EnemyInfo getEnemyInfo(EnemyID id);
     
 private:
     static GameConfig* s_instance;

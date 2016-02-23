@@ -50,7 +50,6 @@ const std::string s_enemyName[] = {
     "satyrHoplite",
     "satyr",
     
-    
     "scourger",
     "scourger_shadow",
     "screecher_bat",
@@ -237,7 +236,6 @@ std::vector<std::vector<std::vector<Vec2> > > PListReader::readPathPlist(int lev
                 CCLOG("PlistReader::readPath pathIndex[%d] subpathIndex [%d] at [%d] ====[%f %f]",
                       i, j, k, path[k].x, path[k].y);
             }
-            
         }
     }
 #endif
@@ -811,7 +809,7 @@ void PListReader::saveImageFromPlist(const std::string &plist)
 #if 0 // 需要cocos2d-x保存路径方法， CCRenderTexture::saveImage
         render->saveToFile(iter->first, folderName, Image::Format::PNG);
 #else
-        render->saveToFile(iter->first, Image::Format::PNG);
+        render->saveToFile(iter->first);
 #endif
         CCLOG("save %s to %s", iter->first.c_str(), FileUtils::getInstance()->getWritablePath().c_str());
         ++iter;
