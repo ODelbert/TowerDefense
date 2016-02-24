@@ -19,7 +19,12 @@ void GameConfig::initialize()
 
 }
 
-static TowerInfo getTowerInfo(TowerID id, TowerLevel level)
+int GameConfig::upgradeGold(TowerID id, TowerLevel lv)
+{
+    return getTowerInfo(id, lv).upgradeGold;
+}
+
+TowerInfo GameConfig::getTowerInfo(TowerID id, TowerLevel level)
 {
     for (int i = 0; i < TD_LEN(s_enemiesInfo); ++i) {
         if (s_towersInfo[i].id == id && s_towersInfo[i].level == level)
@@ -29,7 +34,7 @@ static TowerInfo getTowerInfo(TowerID id, TowerLevel level)
     return TowerInfo();
 }
 
-static EnemyInfo getEnemyInfo(EnemyID id)
+EnemyInfo GameConfig::getEnemyInfo(EnemyID id)
 {
     for (int i = 0; i < TD_LEN(s_enemiesInfo); ++i) {
         if (s_enemiesInfo[i].id == id)

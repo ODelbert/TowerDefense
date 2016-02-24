@@ -25,6 +25,7 @@ public:
     static void destroy();
     
     void initialize();
+    static int upgradeGold(TowerID id, TowerLevel lv);
     static TowerInfo getTowerInfo(TowerID id, TowerLevel lv);
     static EnemyInfo getEnemyInfo(EnemyID id);
     

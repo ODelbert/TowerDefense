@@ -19,7 +19,8 @@ struct TowerInfo
     int range; // pix
     int fireRate; // attack rate pre second
     int weapon;
-
+    int gold;
+    int upgradeGold;
 };
 
 class Tower : public Node

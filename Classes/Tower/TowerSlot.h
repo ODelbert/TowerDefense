@@ -27,6 +27,7 @@ public:
     void build();
     
     Tower* getTower() const;
+    void onTouchBegan(Touch* touch, Event* evt);
     
 private:
     std::vector<Icon*> getTowerIcons(Tower* tower);
