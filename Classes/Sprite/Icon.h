@@ -28,9 +28,11 @@ public:
     static upgradeIcon* create(const std::string& name);
     virtual bool init(const std::string& name);
     virtual bool onTouchBegan(Touch* touch, Event* event);
-    
+
+    CC_SYNTHESIZE(int, m_cost, Cost);
+    CC_SYNTHESIZE(State, m_state, State);
+
 private:
-    State m_state;
     Sprite* m_texture;
 };
 

@@ -40,12 +40,16 @@ bool upgradeIcon::onTouchBegan(Touch* touch, Event* event)
         auto tower = towerSlot->getParent();
         if (tower) {
             Tower* t = static_cast<Tower*>(tower);
-            if (Select == m_state) {
-//                t->upgrade();
+            if (Selected == m_state) {
+		m_state = Confrim;
+		m_texture->setTexture(ICON_CONFRIM);
+		// FIXME:: sound support
+            }
+            else if (Confrim == m_state) {
+                t->upgrade(m_tId);
             }
             else {
-                
-            }
+	    }
         }
     }
     
