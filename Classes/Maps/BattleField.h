@@ -10,8 +10,8 @@
 #define __TowerDefense__BattleField__
 
 #include "cocos2d.h"
-#include "Enemy.h"
-#include "Tower.h"
+#include "Enemy/Enemy.h"
+#include "Tower/Tower.h"
 
 USING_NS_CC;
 

@@ -10,11 +10,8 @@
 #define __TowerDefense__GameData__
 #define TD_DEBUG
 #ifdef TD_DEBUG
-#include "Enemy.h"
-#include "Tower.h"
-static std::string s_enemiesIntroduction[] = {
-    
-};
+#include "Enemy/Enemy.h"
+#include "Tower/Tower.h"
 
 static TowerInfo s_towersInfo[] = {
     { 1, TowerID_Archer, 1, "ArcherLevel1", 0, 0, 0, 0, 0 },

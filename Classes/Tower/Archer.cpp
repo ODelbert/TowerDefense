@@ -1,5 +1,5 @@
 #include "Archer.h"
-#include "AnimationManager.h"
+#include "Animation/AnimationManager.h"
 #include "ResourceId.h"
 
 ArcherShooter::ArcherShooter()
@@ -58,8 +58,6 @@ void Archer::upgrade(int tId)
 {
 //    if (m_level < 4)
 //        m_level++;
-	
-
 }
 
 

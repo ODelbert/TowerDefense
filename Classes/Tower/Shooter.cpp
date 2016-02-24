@@ -8,7 +8,7 @@
 
 #include "Shooter.h"
 
-#include "AnimationManager.h"
+#include "Animation/AnimationManager.h"
 #include "ResourceId.h"
 
 Shooter::Shooter(TowerID id, TowerLevel level)

@@ -19,7 +19,7 @@ USING_NS_CC;
 class upgradeIcon : public Node
 {
     enum State {
-        Select = 1,
+        Selected = 1,
         Confrim,
         Disabled
     };
@@ -31,6 +31,8 @@ public:
 
     CC_SYNTHESIZE(int, m_cost, Cost);
     CC_SYNTHESIZE(State, m_state, State);
+
+    CC_SYNTHESIZE_READONLY(int, m_tid, Tid);
 
 private:
     Sprite* m_texture;

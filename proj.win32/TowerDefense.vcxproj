@@ -165,12 +165,19 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\ResourceManager\PListReader.cpp" />
     <ClCompile Include="..\Classes\ResourceManager\ResourceManager.cpp" />
     <ClCompile Include="..\Classes\Scene\GameScene.cpp" />
+    <ClCompile Include="..\Classes\Sprite\Icon.cpp" />
     <ClCompile Include="..\Classes\tests\TestAnimation.cpp" />
     <ClCompile Include="..\Classes\tests\TestLayer.cpp" />
     <ClCompile Include="..\Classes\tests\TestMapLocation.cpp" />
+    <ClCompile Include="..\Classes\Tower\Archer.cpp" />
+    <ClCompile Include="..\Classes\Tower\Barrack.cpp" />
+    <ClCompile Include="..\Classes\Tower\Shooter.cpp" />
+    <ClCompile Include="..\Classes\Tower\Tower.cpp" />
+    <ClCompile Include="..\Classes\Tower\TowerSlot.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Classes\AnimationPlist.h" />
     <ClInclude Include="..\Classes\Animation\AnimationManager.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\CommonDef.h" />
@@ -194,9 +201,15 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\ResourceManager\PListReader.h" />
     <ClInclude Include="..\Classes\ResourceManager\ResourceManager.h" />
     <ClInclude Include="..\Classes\Scene\GameScene.h" />
+    <ClInclude Include="..\Classes\Sprite\Icon.h" />
     <ClInclude Include="..\Classes\tests\TestAnimation.h" />
     <ClInclude Include="..\Classes\tests\TestLayer.h" />
     <ClInclude Include="..\Classes\tests\TestMapLocation.h" />
+    <ClInclude Include="..\Classes\Tower\Archer.h" />
+    <ClInclude Include="..\Classes\Tower\Barrack.h" />
+    <ClInclude Include="..\Classes\Tower\Shooter.h" />
+    <ClInclude Include="..\Classes\Tower\Tower.h" />
+    <ClInclude Include="..\Classes\Tower\TowerSlot.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
