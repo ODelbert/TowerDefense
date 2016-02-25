@@ -197,11 +197,10 @@ void WaveManager::nextEnemy(float dt)
         m_waves[m_waveIndex].spwans()[m_spawnIndex].max,
         m_waves[m_waveIndex].spwans()[m_spawnIndex].maxSame);
 
-    
     auto scheduleMain = Director::getInstance()->getScheduler();
     auto scheduleWave = new Scheduler();
     scheduleMain->scheduleUpdate(scheduleWave, 0, false);
-    
+
     typedef struct _WaveEventData {
         int id;
         int path;

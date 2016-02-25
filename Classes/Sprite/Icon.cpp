@@ -19,14 +19,14 @@ bool upgradeIcon::init(const std::string& name)
     if (!m_texture) return false;
     
     addChild(m_texture);
-    
+
     auto touchListener = EventListenerTouchOneByOne::create();
     touchListener->setSwallowTouches(true);
-    
+
     touchListener->onTouchBegan = CC_CALLBACK_2(upgradeIcon::onTouchBegan, this);
-    
+
     _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
-    
+
     return true;
 }
 
@@ -51,6 +51,6 @@ bool upgradeIcon::onTouchBegan(Touch* touch, Event* event)
             }
         }
     }
-    
+
     return true;
 }
