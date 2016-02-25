@@ -8,7 +8,7 @@
 
 #include "BattleField.h"
 #include "CommonDef.h"
-#include "Controller/WaveManager.h"
+#include "Base/WaveManager.h"
 #include "Enemy/EnemyFactory.h"
 #include "PListReader.h"
 

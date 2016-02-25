@@ -1,5 +1,17 @@
+#ifndef __TowerDefense__Event__
+#define __TowerDefense__Event__
 
-    auto waveListener = EventListenerCustom::create("WaveEvent", [=](EventCustom* event){
+#include <stdio.h>
+#include "cocos2d.h"
+#include "CommonDef.h"
+USING_NS_CC;
+
+class TDEventListener : public EventListenerCustom
+{
+    
+};
+
+auto waveListener = EventListenerCustom::create("WaveEvent", [=](EventCustom* event){
         typedef struct _WaveEventData {
             int id;
             int path;
