@@ -208,7 +208,7 @@ std::vector<std::vector<std::vector<Vec2> > > PListReader::readPathPlist(int lev
             const float s_offsetY = 73.f;
             const float s_scaleX = 1.15f; // 横向纵向比率
             const float s_scaleY = 1.13f;
-            const float s_rangeOut = 20.0f; // 超出范围的路径去除
+            const float s_rangeOut = 20.0f; // 超出范mk围的路径去除
             for (int k = 0; k < pathVec.size(); ++k) {
                 ValueMap posMap = pathVec[k].asValueMap();
                 Vec2 pos;

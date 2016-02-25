@@ -22,9 +22,6 @@ class TowerSlot : public Node
 public:
     CREATE_FUNC(TowerSlot);
     virtual bool init();
-    void choose();
-    void look();
-    void build();
     
     Tower* getTower() const;
     void onTouchBegan(Touch* touch, Event* evt);
@@ -33,7 +30,7 @@ private:
     std::vector<Icon*> getTowerIcons(Tower* tower);
 
 private:
-    Menu* m_terrian;
+    Sprite* m_terrian;
     SlotRing* m_slotRing;
     Tower* m_tower;
     

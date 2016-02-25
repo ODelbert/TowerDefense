@@ -6,10 +6,8 @@
 //
 //
 
-
-
-
 #include "TowerSlot.h"
+#include "Sprite/Icon.h"
 
 // Tower upgrade icons
 #define ICON_UPGRADE "main_icons_0005.png"
@@ -36,8 +34,32 @@
 
 #define ICON_WEAPON_MAGIC "toptip_icons_0010.png"
 
-#define ALERT_CREEP "creepAlert.png"
+#define ICON_BLADESINGER_1 "main_icons_104.png"
+#define ICON_BLADESINGER_2 "main_icons_104.png"
+#define ICON_BLADESINGER_3 "main_icons_104.png"
+#define ICON_FORESTKEEPER_1 "main_icons_105.png"
+#define ICON_FORESTKEEPER_2 "main_icons_105.png"
+#define ICON_FORESTKEEPER_3 "main_icons_105.png"
+#define ICON_WILD_1 "main_icons_106.png"
+#define ICON_WILD_2 "main_icons_106.png"
+#define ICON_WILD_3 "main_icons_106.png"
+#define ICON_HIGHELF_1 "main_icons_107.png"
+#define ICON_HIGHELF_2 "main_icons_107.png"
+#define ICON_HIGHELF_3 "main_icons_107.png"
+#define ICON_ARCANE_1 "main_icons_108.png"
+#define ICON_ARCANE_2 "main_icons_108.png"
+#define ICON_ARCANE_3 "main_icons_108.png"
+#define ICON_SILVER_1 "main_icons_0109.png"
+#define ICON_SILVER_2 "main_icons_0109.png"
+#define ICON_SILVER_3 "main_icons_0109.png"
+#define ICON_HENGE_1 "main_icons_0110.png"
+#define ICON_HENGE_2 "main_icons_0110.png"
+#define ICON_HENGE_3 "main_icons_0110.png"
+#define ICON_TREE_1 "main_icons_0111.png"
+#define ICON_TREE_2 "main_icons_0111.png"
+#define ICON_TREE_3 "main_icons_0111.png"
 
+#define ALERT_CREEP "creepAlert.png"
 
 
 #define LBL_REBOREN_CD "icon_0001.png"
@@ -62,7 +84,7 @@ struct Location
 
 static Location s_location_1[1] =
 {
-    { 0, 1 }
+    { 0, 1 },
 };
 
 static Location s_location_2[2] =
@@ -86,9 +108,46 @@ static Location s_location_4[4] =
     { -0.707, -0.707 }
 };
 
-std::vector<std::string> getIcons(Tower* tower)
+class SlotRing : public Node
+{
+public:
+    static SlotRing* create(TowerSlot* owner);
+    bool init(TowerSlot* owner);
+    void onTouch();
+    
+private:
+    std::vector<std::string> getIcons();
+
+private:
+    TowerSlot* m_owner;
+    Sprite* m_texture;
+};
+
+SlotRing* SlotRing::create(TowerSlot* owner)
+{
+    auto ring = new SlotRing;
+    if (ring && ring->init(owner)) {
+        ring->autorelease();
+        return ring;
+    }
+    
+    CC_SAFE_DELETE(ring);
+    return nullptr;
+}
+
+bool SlotRing::init(TowerSlot *owner)
+{
+    m_owner = owner;
+    m_texture = Sprite::createWithSpriteFrameName("gui_ring.png");
+
+    addChild(m_texture);
+    return true;
+}
+
+std::vector<std::string> SlotRing::getIcons()
 {
     std::vector<std::string> ret;
+    Tower* tower = m_owner->getTower();
     if (!tower) {
         ret.push_back(ICON_ARCHER);
         ret.push_back(ICON_BARRACKS);
@@ -123,165 +182,95 @@ std::vector<std::string> getIcons(Tower* tower)
                 ret.push_back(ICON_TREE);
             }
                 break;
-                // level4 towers updrage icons
+
+            // level4 towers updrage icons
             case TowerID_Archer_Arcane:
-            {}
+            {
+                ret.push_back(ICON_ARCANE_1);
+                ret.push_back(ICON_ARCANE_2);
+                ret.push_back(ICON_ARCANE_3);
+            }
                 break;
             case TowerID_Archer_Silver:
-            {}
+            {
+                ret.push_back(ICON_SILVER_1);
+                ret.push_back(ICON_SILVER_2);
+                ret.push_back(ICON_SILVER_3);
+            }
                 break;
             case TowerID_BladeSinger:
-            {}
+            {
+                ret.push_back(ICON_BLADESINGER_1);
+                ret.push_back(ICON_BLADESINGER_2);
+                ret.push_back(ICON_BLADESINGER_3);
+            }
                 break;
             case TowerID_ForestKeeper:
-            {}
+            {
+                ret.push_back(ICON_FORESTKEEPER_1);
+                ret.push_back(ICON_FORESTKEEPER_2);
+                ret.push_back(ICON_FORESTKEEPER_3);
+            }
                 break;
             case TowerID_Mage_Wild:
-            {}
+            {
+                ret.push_back(ICON_WILD_1);
+                ret.push_back(ICON_WILD_2);
+                ret.push_back(ICON_WILD_3);
+            }
                 break;
             case TowerID_Mage_HighElven:
-            {}
+            {
+                ret.push_back(ICON_HIGHELF_1);
+                ret.push_back(ICON_HIGHELF_2);
+                ret.push_back(ICON_HIGHELF_3);
+            }
                 break;
             case TowerID_Artillery_Henge:
-            {}
+            {
+                ret.push_back(ICON_HENGE_1);
+                ret.push_back(ICON_HENGE_2);
+                ret.push_back(ICON_HENGE_3);
+            }
                 break;
             case TowerID_Artillery_Tree:
-            {}
+            {
+                ret.push_back(ICON_TREE_1);
+                ret.push_back(ICON_TREE_2);
+                ret.push_back(ICON_TREE_3);
+            }
                 break;
             default:
                 break;
         }
-        
-        ret.push_back(ICON_SELL);
     }
     else {
         ret.push_back(ICON_UPGRADE);
     }
 }
 
-
-class SlotRing : public Node
+void SlotRing::onTouch()
 {
-public:
-    static SlotRing* create(TowerSlot* owner);
-    bool init(TowerSlot* owner);
-    virtual void onEnter();
-    
-private:
-    
-private:
-    TowerSlot* m_owner;
-    Sprite* m_texture;
-};
-
-SlotRing* SlotRing::create(TowerSlot* owner)
-{
-    auto ring = new SlotRing;
-    if (ring && ring->init(owner)) {
-        ring->autorelease();
-        return ring;
-    }
-    
-    CC_SAFE_DELETE(ring);
-    return nullptr;
-}
-
-bool SlotRing::init(TowerSlot *owner)
-{
-    m_owner = owner;
-    m_texture = Sprite::createWithSpriteFrameName("gui_ring.png");
-
-    addChild(m_texture);
-    return true;
-}
-
-// price_tag.png
-// price_tag_disabled.png
-// price_tag_turnOff.png
-void SlotRing::onEnter()
-{
-    Node::onEnter();
-    if (m_owner) {
-        if (m_owner->getTower()) {
-            
-        }
-        else {
-            m_texture->removeAllChildrenWithCleanup(false);
-            //"main_icons_0100.png"
-            auto archerFrame = Sprite::createWithSpriteFrameName("main_icons_over.png");
-            auto archerIcon = Menu::create(MenuItemSprite::create(Sprite::createWithSpriteFrameName("main_icons_0100.png"), Sprite::createWithSpriteFrameName("main_icons_0100.png"), [&](Ref *sender) {
-            }), NULL);
-            addChild(archerFrame);
-            addChild(archerIcon);
-            archerFrame->setPosition(-0.3535 * m_texture->getContentSize().width, 0.3535 * m_texture->getContentSize().height);
-            archerIcon->setPosition(-0.3535 * m_texture->getContentSize().width, 0.3535 * m_texture->getContentSize().height);
-
-            auto barrackFrame = Sprite::createWithSpriteFrameName("main_icons_over.png");
-            auto barrackIcon = Menu::create(MenuItemSprite::create(Sprite::createWithSpriteFrameName("main_icons_0101.png"), Sprite::createWithSpriteFrameName("main_icons_0101.png"), [&](Ref *sender) {
-            }), NULL);
-            addChild(barrackFrame);
-            addChild(barrackIcon);
-            barrackFrame->setPosition(0.3535 * m_texture->getContentSize().width, 0.3535 * m_texture->getContentSize().height);
-            barrackIcon->setPosition(0.3535 * m_texture->getContentSize().width, 0.3535 * m_texture->getContentSize().height);
-            
-            auto artilleryFrame = Sprite::createWithSpriteFrameName("main_icons_over.png");
-            auto artilleryIcon = Menu::create(MenuItemSprite::create(Sprite::createWithSpriteFrameName("main_icons_0102.png"), Sprite::createWithSpriteFrameName("main_icons_0102.png"), [&](Ref *sender) {
-            }), NULL);
-            addChild(artilleryFrame);
-            addChild(artilleryIcon);
-            artilleryFrame->setPosition(0.3535 * m_texture->getContentSize().width, -0.3535 * m_texture->getContentSize().height);
-            artilleryIcon->setPosition(0.3535 * m_texture->getContentSize().width, -0.3535 * m_texture->getContentSize().height);
-            
-            auto mageFrame = Sprite::createWithSpriteFrameName("main_icons_over.png");
-            auto mageIcon = Menu::create(MenuItemSprite::create(Sprite::createWithSpriteFrameName("main_icons_0103.png"), Sprite::createWithSpriteFrameName("main_icons_0103.png"), [&](Ref *sender) {
-            }), NULL);
-            addChild(mageFrame);
-            addChild(mageIcon);
-            mageFrame->setPosition(-0.3535 * m_texture->getContentSize().width, -0.3535 * m_texture->getContentSize().height);
-            mageIcon->setPosition(-0.3535 * m_texture->getContentSize().width, -0.3535 * m_texture->getContentSize().height);
-        }
+    std::vector<std::string> icons = getIcons();
+    m_texture->removeAllChildrenWithCleanup(false);
+    for (int i = 0; i < icons.size(); ++i) {
+        auto towerFrame = Sprite::createWithSpriteFrameName("main_icons_over.png");
+        auto towerIcon = upgradeIcon::create(icons[i]);
+        addChild(towerFrame);
+        addChild(towerIcon);
+        Location locate = icons.size() == 1 ? s_location_1[i]: icons.size() == 2 ? s_location_2[i] : icons.size() == 3 ? s_location_3[i] : icons.size() == 4 ? s_location_4[i] : Location();
+        towerFrame->setPosition(locate.x * m_texture->getContentSize().width / 2, locate.y * m_texture->getContentSize().height / 2);
+        towerIcon->setPosition(locate.x * m_texture->getContentSize().width / 2, locate.y * m_texture->getContentSize().height / 2);
     }
 }
-
-// special_icons_0020.png   ok
-
-//  main_icons_turnOff.png
 
 bool TowerSlot::init()
 {
-    m_terrian = Menu::create(MenuItemSprite::create(Sprite::createWithSpriteFrameName("build_terrain_0001.png"), Sprite::createWithSpriteFrameName("build_terrain_0001.png"), [&](Ref *sender) {
-        if (m_slotRing->isVisible()) {
-            m_slotRing->setVisible(false);
-        }
-        else {
-            m_slotRing->removeAllChildren();
-            if (m_tower) {
-                
-            }
-            else {
-                
-            }
-            m_slotRing->setVisible(true);
-        }
-        
-        
-        
-        
-        
-        if (m_slotRing->isVisible()) {
-            m_slotRing->setVisible(false);
-        }
-        else {
-            m_slotRing->onEnter();
-            
-        }
-    }), NULL);
-    
+    m_terrian = Sprite::createWithSpriteFrameName("build_terrain_0001.png");
     m_terrian->setPosition(0, 0);
     addChild(m_terrian);
     
     m_slotRing = SlotRing::create(this);
-    //m_slotRing->setVisible(false);
     m_slotRing->setPosition(0, 0);
     addChild(m_slotRing);
     
@@ -293,13 +282,11 @@ Tower* TowerSlot::getTower() const
     return m_tower;
 }
 
-void TowerSlot::choose()
+void TowerSlot::onTouchBegan(Touch* touch, Event* event)
 {
-    if (!m_tower) {
-        
-    }
-    else {
-        
-        
-    }
+    if (!m_slotRing) return;
+    if (!m_slotRing->isVisible())
+        m_slotRing->onTouch();
+    else
+        m_slotRing->setVisible(false);
 }
