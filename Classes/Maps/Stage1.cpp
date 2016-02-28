@@ -8,7 +8,7 @@
 
 #include "Stage1.h"
 #include "CommonDef.h"
-#include "Controller/WaveManager.h"
+#include "Base/WaveManager.h"
 bool Stage1::init()
 {
     loadLevel(1, 1);

@@ -46,6 +46,7 @@
 		521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6319F0C34300D177D7 /* Default-736h@3x.png */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
+		9A06DA391C82DDE10017B1D5 /* EventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A06DA371C82DDE10017B1D5 /* EventHandler.cpp */; };
 		9ACEE7061C7F489C005AEF3F /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6BB1C7F489C005AEF3F /* Event.cpp */; };
 		9ACEE7071C7F489C005AEF3F /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6BB1C7F489C005AEF3F /* Event.cpp */; };
 		9ACEE7081C7F489C005AEF3F /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6BD1C7F489C005AEF3F /* EventListener.cpp */; };
@@ -2999,6 +3000,8 @@
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9A06DA371C82DDE10017B1D5 /* EventHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventHandler.cpp; sourceTree = "<group>"; };
+		9A06DA381C82DDE10017B1D5 /* EventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventHandler.h; sourceTree = "<group>"; };
 		9ACEE6BB1C7F489C005AEF3F /* Event.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Event.cpp; sourceTree = "<group>"; };
 		9ACEE6BC1C7F489C005AEF3F /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		9ACEE6BD1C7F489C005AEF3F /* EventListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventListener.cpp; sourceTree = "<group>"; };
@@ -6084,6 +6087,8 @@
 				9ACEE6C21C7F489C005AEF3F /* GameManager.h */,
 				9ACEE6C31C7F489C005AEF3F /* WaveManager.cpp */,
 				9ACEE6C41C7F489C005AEF3F /* WaveManager.h */,
+				9A06DA371C82DDE10017B1D5 /* EventHandler.cpp */,
+				9A06DA381C82DDE10017B1D5 /* EventHandler.h */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -9187,6 +9192,7 @@
 				9ACEE72E1C7F489C005AEF3F /* PListReader.cpp in Sources */,
 				9ACEE73A1C7F489C005AEF3F /* Archer.cpp in Sources */,
 				9ACEE7221C7F489C005AEF3F /* TalentedEnemy.cpp in Sources */,
+				9A06DA391C82DDE10017B1D5 /* EventHandler.cpp in Sources */,
 				9ACEE7381C7F489C005AEF3F /* TestMapLocation.cpp in Sources */,
 				9ACEE7161C7F489C005AEF3F /* GameConfig.cpp in Sources */,
 				9ACEE7061C7F489C005AEF3F /* Event.cpp in Sources */,

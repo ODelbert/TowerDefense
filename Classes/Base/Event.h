@@ -4,90 +4,93 @@
 #include <stdio.h>
 #include "cocos2d.h"
 #include "CommonDef.h"
+
 USING_NS_CC;
 
+class Tower;
+class Enemy;
+class Ally;
 class Bullet;
 
-enum TDEventType
-{
-    EventType_Wave,
-    EventType_Bullet_Miss,
-    EventType_Bullet_Fire,
-    EventType_Bullet_Strike,
-    EventType_Build,
-    EventType_Sell,
-    EventType_Upgrade,
-    EventType_Death,
-    EventType_Reborn,
-    EventType_LevelUp,
-    EventType_Action,
-    EventType_Assemble,
-    EventType_Reinforcement,
-    EventType_Lighting,
-    EventType_HeroSpell
-};
+#define EVENT_WAVE "WAVE"
+#define EVENT_BULLET "BULLET"
+#define EVENT_TOWER "TOWER"
+#define EVENT_HERO "HERO"
+#define EVENT_ENEMY "ENEMY"
+#define EVENT_ALLY "ALLY"
+#define EVENT_SPELLS "OPTION"
 
+enum EventActionType
+{
+    EventActionType_INVALID = -1,
+    // WAVE
+    EventActionType_Wave,
+    // BULLET
+    EventActionType_Bullet_Miss,
+    EventActionType_Bullet_Fire,
+    EventActionType_Bullet_Strike,
+    // TOWER
+    EventActionType_Build,
+    EventActionType_Sell,
+    EventActionType_Upgrade,
+    // HERO / ALLY / ENEMY
+    EventActionType_Death,
+    EventActionType_Reborn,
+    EventActionType_LevelUp,
+    EventActionType_Action,
+    EventActionType_Assemble,
+    // OPTION
+    EventActionType_Reinforcement,
+    EventActionType_Lighting,
+    EventActionType_HeroSpell
+};
 
 class TDEvent : public EventCustom
 {
 public:
-    TDEvent(TDEventType type, const std::string& listnerId);
-    
-    inline TDEventType getEventType() const { return m_type; }
-    void setPriority(int priority) { m_priority = priority; }
-    inline int getPriority() const { return m_priority; }
+    TDEvent(const std::string& listnerId, EventActionType action);
+    EventActionType getEventActionType();
+    void setEventAction(EventActionType type);
+
 private:
-    TDEventType m_type;
-    int m_priority;
+    EventActionType m_action;
 };
-
-
-auto waveListener = EventListenerCustom::create("WaveEvent", [=](EventCustom* event){
-    typedef struct _WaveEventData {
-        int id;
-        int path;
-        int subPath;
-    } WaveEventData;
-    
-    WaveEventData* info = static_cast<WaveEventData*>(event->getUserData());
-    
-    auto enmey = EnemyFactory::create(static_cast<EnemyID>(info->id));
-    enmey->sendToBattle(WaveManager::getInstance()->getPath(info->path, info->subPath));
-    m_mapSprite->addChild(enmey);
-});
-
-typedef struct _WaveEventData {
-    int id;
-    int path;
-    int subPath;
-} WaveEventData;
-
-WaveEventData eventData;
-eventData.id = name2Id(m_waves[m_waveIndex].spwans()[m_spawnIndex].id);
-eventData.path = m_waves[m_waveIndex].getPathIndex();
-eventData.subPath = m_waves[m_waveIndex].spwans()[m_spawnIndex].path;
-
-WaveEvent event;
-event.setUserData(&eventData);
 
 class WaveEvent : public TDEvent
 {
-    struct WaveEventData {
-        int id;
-        int path;
-        int subPath;
-    };
 public:
-    WaveEvent()
-    : EventCustom("WaveEvent") {}
-    
+    WaveEvent();
+    int getEnemyId() const;
+    int getPathIndex() const;
+    int getSubPathIndex() const;
     void setWaveData(int id, int path, int subpath);
+    
+private:
+    int m_eId;
+    int m_path;
+    int m_subPath;
 };
 
-class BulletMissEvent : public EventCustom
+class BulletEvent : public TDEvent
 {
 public:
-    BulletMissEvent(Bullet* bullet);
+    BulletEvent(Bullet* bullet);
+    
+private:
+    Bullet* m_bullet;
+};
+
+class TowerEvent : public TDEvent
+{
+public:
+    TowerEvent(Tower* tower, int slotId);
+    Tower* getTower() const;
+    int getSlotId() const;
+
+private:
+    Tower* m_tower;
+    int m_slotId;
+    
 };
 
 

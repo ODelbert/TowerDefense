@@ -8,9 +8,9 @@
 
 #include "TestMapLocation.h"
 #include "CommonDef.h"
-#include "Controller/WaveManager.h"
+#include "Base/WaveManager.h"
 #include "Enemy/EnemyFactory.h"
-#include "Controller/WaveManager.h"
+#include "Base/WaveManager.h"
 #include "Enemy/EnemyFactory.h"
 
 static bool s_flag = false;
