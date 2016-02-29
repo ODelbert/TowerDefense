@@ -48,9 +48,9 @@ enum EventActionType
 class TDEvent : public EventCustom
 {
 public:
-    TDEvent(const std::string& listnerId, EventActionType action);
+    TDEvent(EventActionType action = EventActionType_INVALID);
     EventActionType getEventActionType();
-    void setEventAction(EventActionType type);
+    void setEventAction(EventActionType action);
 
 private:
     EventActionType m_action;
@@ -71,26 +71,25 @@ private:
     int m_subPath;
 };
 
-class BulletEvent : public TDEvent
-{
-public:
-    BulletEvent(Bullet* bullet);
-    
-private:
-    Bullet* m_bullet;
-};
-
 class TowerEvent : public TDEvent
 {
 public:
-    TowerEvent(Tower* tower, int slotId);
+    TowerEvent(Tower* tower, int slotId, EventActionType action);
     Tower* getTower() const;
     int getSlotId() const;
 
 private:
     Tower* m_tower;
     int m_slotId;
+};
+
+class BulletEvent : public TDEvent
+{
+public:
+    BulletEvent(Bullet* bullet, EventActionType action);
     
+private:
+    Bullet* m_bullet;
 };
 
 

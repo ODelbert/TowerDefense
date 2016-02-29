@@ -24,3 +24,21 @@ void EventHandler::onEvent(TDEvent* event)
             break;
     }
 }
+
+EventHandler* EventHandler::create(BattleField *map)
+{
+    EventHandler* ret = new EventHandler(map);
+    if (ret && ret->init()) {
+        ret->autorelease();
+        return ret;
+    }
+    
+    CC_SAFE_DELETE(ret);
+    return nullptr;
+}
+
+bool EventHandler::init()
+{
+    auto listener = TDEventListener::create();
+    listener->on
+}

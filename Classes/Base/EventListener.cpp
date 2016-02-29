@@ -1,10 +1,10 @@
 #include "EventListener.h"
-#inlcude "EventHandler.h"
+
 
 TDEventListener* TDEventListener::create()
 {
     TDEventListener* ret = new TDEventListener;
-    if (ret && ret->init(EventListener::Type::CUSTOM, EventHandler::onEvent))
+    if (ret && ret->init(EventListener::Type::CUSTOM, "TDEvent", nullptr))
     {
         ret->autorelease();
         return ret;
@@ -13,4 +13,20 @@ TDEventListener* TDEventListener::create()
         CC_SAFE_DELETE(ret);
         return nullptr;
     }
+}
+
+TDEventListener::TDEventListener()
+    : onWaveEvent(nullptr),
+    onTowerEvent(nullptr),
+    onBulletEvent(nullptr)
+{}
+
+bool TDEventListener::checkAvailable()
+{
+    return true;
+}
+
+EventListener* TDEventListener::clone()
+{
+    return nullptr;
 }

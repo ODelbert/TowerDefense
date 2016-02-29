@@ -24,8 +24,16 @@ class BattleField;
 class EventHandler : public Ref
 {
 public:
-    void onEvent(TDEvent* event);
+    static EventHandler* create(BattleField* map);
+    bool init();
+    EventHandler(BattleField* map);
     
+    void onWaveEvent(WaveEvent* event);
+    void onTowerEvent(TowerEvent* event);
+    void onBulletEvent(BulletEvent* event);
+    
+private:
+    BattleField* m_map;
 };
 //
 //auto waveListener = EventListenerCustom::create(Event, [=](EventCustom* event){
@@ -45,4 +53,4 @@ public:
 //
 //
 //
-#endif /* EventHandler_hpp */
+#endif /* EventHandler_h */
