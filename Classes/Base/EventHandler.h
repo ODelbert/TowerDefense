@@ -26,11 +26,13 @@ class EventHandler : public Ref
 public:
     static EventHandler* create(BattleField* map);
     bool init();
-    EventHandler(BattleField* map);
-    
+
     void onWaveEvent(WaveEvent* event);
     void onTowerEvent(TowerEvent* event);
     void onBulletEvent(BulletEvent* event);
+    
+private:
+    EventHandler(BattleField* map);
     
 private:
     BattleField* m_map;

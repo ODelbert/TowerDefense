@@ -24,12 +24,12 @@ struct SpawnInfo
     uint path;
 };
 
-class WaveEvent : public EventCustom
-{
-public:
-    WaveEvent()
-    : EventCustom("WaveEvent") {}
-};
+//class WaveEvent : public EventCustom
+//{
+//public:
+//    WaveEvent()
+//    : EventCustom("WaveEvent") {}
+//};
 
 class WaveInfo : public Ref
 {

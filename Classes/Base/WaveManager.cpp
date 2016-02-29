@@ -11,6 +11,7 @@
 #include "tinyxml2/tinyxml2.h"
 #include "PListReader.h"
 #include "Enemy/Enemy.h"
+#include "Base/Event.h"
 
 using namespace tinyxml2;
 
@@ -197,24 +198,9 @@ void WaveManager::nextEnemy(float dt)
         m_waves[m_waveIndex].spwans()[m_spawnIndex].max,
         m_waves[m_waveIndex].spwans()[m_spawnIndex].maxSame);
 
-//    auto scheduleMain = Director::getInstance()->getScheduler();
-//    auto scheduleWave = new Scheduler();
-//    scheduleMain->scheduleUpdate(scheduleWave, 0, false);
-
-    typedef struct _WaveEventData {
-        int id;
-        int path;
-        int subPath;
-    } WaveEventData;
-    
-    WaveEventData eventData;
-    eventData.id = name2Id(m_waves[m_waveIndex].spwans()[m_spawnIndex].id);
-    eventData.path = m_waves[m_waveIndex].getPathIndex();
-    eventData.subPath = m_waves[m_waveIndex].spwans()[m_spawnIndex].path;
-    
     WaveEvent event;
-    event.setUserData(&eventData);
-    
+    event.setWaveData(name2Id(m_waves[m_waveIndex].spwans()[m_spawnIndex].id), m_waves[m_waveIndex].getPathIndex(), m_waves[m_waveIndex].spwans()[m_spawnIndex].path);
+
     Director::getInstance()->getEventDispatcher()->dispatchEvent(&event);
     if (m_spawnIndex < m_waves[m_waveIndex].spwans().size() - 1) {
         ++m_spawnIndex;

@@ -11,8 +11,15 @@
 #include "Base/WaveManager.h"
 #include "Enemy/EnemyFactory.h"
 #include "PListReader.h"
+#include "Base/EventHandler.h"
 
 BattleField::BattleField()
+: m_eventHandler(nullptr)
+{
+
+}
+
+bool BattleField::init()
 {
     auto touchlistener = EventListenerTouchOneByOne::create();
     touchlistener->onTouchBegan = CC_CALLBACK_2(BattleField::onTouchBegan, this);
@@ -20,22 +27,8 @@ BattleField::BattleField()
     touchlistener->onTouchMoved = CC_CALLBACK_2(BattleField::onTouchMoved, this);
     touchlistener->setSwallowTouches(true);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(touchlistener, this);
-
-    auto waveListener = EventListenerCustom::create("WaveEvent", [=](EventCustom* event){
-        typedef struct _WaveEventData {
-            int id;
-            int path;
-            int subPath;
-        } WaveEventData;
-        
-        WaveEventData* info = static_cast<WaveEventData*>(event->getUserData());
-
-        auto enmey = EnemyFactory::create(static_cast<EnemyID>(info->id));
-        enmey->sendToBattle(WaveManager::getInstance()->getPath(info->path, info->subPath));
-        m_mapSprite->addChild(enmey);
-    });
-    
-    _eventDispatcher->addEventListenerWithFixedPriority(waveListener, 1);
+    m_eventHandler = EventHandler::create(this);
+    return true;
 }
 
 bool BattleField::onTouchBegan(Touch* touch, Event* event)
@@ -74,6 +67,34 @@ void BattleField::onTouchMoved(Touch* touch, Event* event)
     
     m_mapSprite->setPosition(newPos);
 }
+
+void BattleField::addEnemy(Enemy* enemy)
+{
+    // TODO:: GameManager adds
+    m_mapSprite->addChild(enemy);
+}
+
+void BattleField::removeEnemy(Enemy* enemy)
+{
+    // TODO:: GameManager removes
+    m_mapSprite->removeChild(enemy, false);
+}
+
+void BattleField::addTower(Tower* tower)
+{
+    // TODO:: GameManager adds
+    m_mapSprite->addChild(tower);
+}
+
+void BattleField::removeTower(Tower* tower)
+{
+    // TODO:: GameManager removes
+    m_mapSprite->removeChild(tower, false);
+}
+
+void removeEnemy(Enemy* enemy);
+void addTower(Tower* enemy);
+void removeTower(Tower* tower);
 
 void BattleField::loadLevel(int stage, int difficult)
 {

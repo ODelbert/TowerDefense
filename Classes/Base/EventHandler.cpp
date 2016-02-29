@@ -8,23 +8,6 @@
 
 #include "EventHandler.h"
 
-void EventHandler::onEvent(TDEvent* event)
-{
-    switch (event->getType()) {
-        case EventActionType_Wave:
-        {
-            WaveEvent* waveEvent = static_cast<WaveEvent*>(event);
-            auto enmey = EnemyFactory::create(static_cast<EnemyID>(waveEvent->getEnemyId()));
-            enmey->sendToBattle(WaveManager::getInstance()->getPath(waveEvent->getPathIndex(), waveEvent->getSubPathIndex()));
-            m_mapSprite->addChild(enmey);
-        }
-            break;
-            
-        default:
-            break;
-    }
-}
-
 EventHandler* EventHandler::create(BattleField *map)
 {
     EventHandler* ret = new EventHandler(map);
@@ -40,5 +23,20 @@ EventHandler* EventHandler::create(BattleField *map)
 bool EventHandler::init()
 {
     auto listener = TDEventListener::create();
-    listener->on
+    listener->onWaveEvent = CC_CALLBACK_1(EventHandler::onWaveEvent, this);
+    listener->onTowerEvent = CC_CALLBACK_1(EventHandler::onTowerEvent, this);
+    listener->BulletEvent = CC_CALLBACK_1(EventHandler::BulletEvent, this);
+    _eventDispatcher->addEventListenerWithFixedPriority(listener, 1);
+    return true;
+}
+
+EventHandler::EventHandler(BattleField* map)
+    : m_map(map)
+{}
+
+void EventHandler::onWaveEvent(WaveEvent* waveEvent)
+{
+    auto enmey = EnemyFactory::create(static_cast<EnemyID>(waveEvent->getEnemyId()));
+    enmey->sendToBattle(WaveManager::getInstance()->getPath(waveEvent->getPathIndex(), waveEvent->getSubPathIndex()));
+    m_map->addEnemy(enmey);
 }

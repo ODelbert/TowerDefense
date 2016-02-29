@@ -15,9 +15,11 @@
 
 USING_NS_CC;
 
+class EventHandler;
 class BattleField : public Layer
 {
 public:
+    virtual bool init();
     virtual void addTerrian() {}
     virtual void addOrnament() {}
     void loadLevel(int stage, int difficult);
@@ -30,6 +32,10 @@ public:
     virtual void onTouchEnded(Touch* touch, Event* event) override;
     virtual void onTouchMoved(Touch* touch, Event* event) override;
     
+    void addEnemy(Enemy* enemy);
+    void removeEnemy(Enemy* enemy);
+    void addTower(Tower* enemy);
+    void removeTower(Tower* tower);
     
 protected:
     explicit BattleField();
@@ -38,8 +44,8 @@ protected:
     void updateTowers();
     void UpdateAllies();
 
-    
 protected:
+    EventHandler* m_eventHandler;
     Sprite* m_mapSprite;
     std::vector<Enemy*> m_enemies;
     std::vector<Tower*> m_towers;
