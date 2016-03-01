@@ -25,10 +25,8 @@ EventHandler* EventHandler::create(BattleField *map)
 
 bool EventHandler::init()
 {
-    auto listener = TDEventListener::create();
-    listener->onWaveEvent = CC_CALLBACK_1(EventHandler::onWaveEvent, this);
-    listener->onTowerEvent = CC_CALLBACK_1(EventHandler::onTowerEvent, this);
-    listener->onBulletEvent = CC_CALLBACK_1(EventHandler::onBulletEvent, this);
+    auto listener = TDEventListener::create(CC_CALLBACK_1(EventHandler::onEvent, this));
+    
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 1);
 
     return true;
@@ -37,6 +35,11 @@ bool EventHandler::init()
 EventHandler::EventHandler(BattleField* map)
     : m_map(map)
 {}
+
+void EventHandler::onEvent(TDEvent* event)
+{
+    log("EventHandler::onEvent");
+}
 
 void EventHandler::onWaveEvent(WaveEvent* waveEvent)
 {

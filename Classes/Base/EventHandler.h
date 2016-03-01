@@ -27,6 +27,9 @@ public:
     static EventHandler* create(BattleField* map);
     bool init();
 
+    void onEvent(TDEvent* event);
+    
+private:
     void onWaveEvent(WaveEvent* event);
     void onTowerEvent(TowerEvent* event);
     void onBulletEvent(BulletEvent* event);

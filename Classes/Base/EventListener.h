@@ -11,7 +11,7 @@ USING_NS_CC;
 class TDEventListener : public EventListener
 {
 public:
-    static TDEventListener* create();
+    static TDEventListener* create(const std::function<void(TDEvent*)>& callback);
     
 public:
     std::function<void(WaveEvent*)> onWaveEvent;
@@ -19,12 +19,15 @@ public:
     std::function<void(BulletEvent*)> onBulletEvent;
     
     virtual bool checkAvailable();
-
     virtual EventListener* clone();
 
-    
 private:
     TDEventListener();
+    
+    bool init(const ListenerID& listenerId, const std::function<void(TDEvent*)>& callback);
+    
+private:
+    std::function<void(TDEvent*)> _onTDEvent;
 };
 
 #endif
