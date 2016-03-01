@@ -19,12 +19,9 @@ public:
     };
 };
 
-class PListReader : public cocos2d::Node, public WeakSingleton<PListReader>
+class PListReader : public cocos2d::Node, public Singleton<PListReader>
 {
 public:
-    static PListReader* getInstance();
-    static void destroy();
-    
     void generateAnimationPlist(const std::string &plistname, Dictionary* animationDict, Dictionary* includePlists);
     Dictionary* createAnimationPlist(std::string prefix, int from, int to);
     

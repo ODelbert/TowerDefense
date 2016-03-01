@@ -303,8 +303,10 @@ static const std::string AnimationNamePlist[] =
     
 };
 
-
-SINGLETON_IMPL(ResourceManager);
+ResourceManager::ResourceManager()
+{
+    
+}
 
 bool ResourceManager::initialize()
 {

@@ -3,43 +3,67 @@
 
 #include "assert.h"
 
+template<typename T>
+class Singleton
+{
+public:
+    static T* getInstance()
+    {
+        if (!s_instance) {
+            s_instance = new T;
+        }
+        
+        return s_instance;
+    }
+    
+protected:
+    Singleton() {}
+    Singleton(const Singleton&);
+    Singleton& operator=(const Singleton&);
+    
+private:
+    static T* s_instance;
+};
+
+template<typename T> T* Singleton<T>::s_instance = NULL;
+
 template <typename T>
 class WeakSingleton
 {
 public:
     static T& inst()
     {
-        assert(NULL != instance);
+        assert(NULL != s_instance);
 
-        return *instance;
+        return *s_instance;
     }
 
     static T* getInstance()
     {
-        assert(NULL != instance);
+        assert(NULL != s_instance);
 
-        return instance;
+        return s_instance;
     }
 
 protected:
     WeakSingleton()
     {
-         assert(NULL != instance);
+         assert(NULL != s_instance);
 
-         instance = reinterpret_cast<T*>(this);
+         s_instance = reinterpret_cast<T*>(this);
     }
 
     ~WeakSingleton()
     {
-        assert(NULL != instance);
-        instance = NULL;
+        assert(NULL != s_instance);
+        s_instance = NULL;
     }
 
 private:
-    static T* instance;
+    static T* s_instance;
 };
 
-template<typename T> T* WeakSingleton<T>::instance = NULL;
+template<typename T> T* WeakSingleton<T>::s_instance = NULL;
 
 #endif
 

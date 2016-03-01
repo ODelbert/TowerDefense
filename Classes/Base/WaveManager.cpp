@@ -15,8 +15,6 @@
 
 using namespace tinyxml2;
 
-SINGLETON_IMPL(WaveManager);
-
 struct EnemyName2ID
 {
     char name[64];

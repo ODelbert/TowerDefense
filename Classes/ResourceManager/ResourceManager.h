@@ -9,19 +9,16 @@
 #ifndef __TowerDefense__ResourceManager__
 #define __TowerDefense__ResourceManager__
 
-#include <stdio.h>
-
 #include "cocos2d.h"
+#include "Base/Singleton.h"
+
 USING_NS_CC;
 
-class ResourceManager : public Ref
+class ResourceManager : public Ref, public Singleton<ResourceManager>
 {
 public:
-    static ResourceManager* getInstance();
-    static void destroy();
+    ResourceManager();
     bool initialize();
-private:
-    static ResourceManager* s_instance;
 };
 
 #endif /* defined(__TowerDefense__ResourceManager__) */

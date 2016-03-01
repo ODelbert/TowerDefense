@@ -11,8 +11,10 @@
 #include "GameData.h"
 #include "ResourceManager/PListReader.h"
 
-
-SINGLETON_IMPL(GameConfig);
+GameConfig::GameConfig()
+{
+    
+}
 
 void GameConfig::initialize()
 {

@@ -44,12 +44,9 @@ private:
     std::vector<SpawnInfo> m_spwans;
 };
 
-class WaveManager : public Ref
+class WaveManager : public Ref, public Singleton<WaveManager>
 {
 public:
-    static WaveManager* getInstance();
-    static void destroy();
-    
     void start();
     void initialize(int level, int difficulty);
     std::vector<Vec2> getPath(int path, int subPath);
@@ -59,8 +56,6 @@ public:
 private:
     void nextEnemy(float dt);
     
-private:
-    static WaveManager* s_instance;
     
 private:
     std::vector<WaveInfo> m_waves;

@@ -22,22 +22,22 @@
 #define TD_POS(x) CCLOG("%s pos = %f %f", #x, x->getPosition().x, x->getPosition().y);
 
 typedef unsigned int uint;
-#define SINGLETON_IMPL(class) \
-class* class::s_instance = nullptr; \
-class* class::getInstance() \
-{ \
-    if (!s_instance) { \
-        s_instance = new class; \
-    } \
-    return s_instance; \
-} \
-void class::destroy() \
-{ \
-    if (s_instance) { \
-        delete s_instance; \
-        s_instance = nullptr; \
-    } \
-} \
+//#define SINGLETON_IMPL(class) \
+//class* class::s_instance = nullptr; \
+//class* class::getInstance() \
+//{ \
+//    if (!s_instance) { \
+//        s_instance = new class; \
+//    } \
+//    return s_instance; \
+//} \
+//void class::destroy() \
+//{ \
+//    if (s_instance) { \
+//        delete s_instance; \
+//        s_instance = nullptr; \
+//    } \
+//} \
 
 enum TowerType {
     TowerType_Invalid = -1,

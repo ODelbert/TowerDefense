@@ -9,9 +9,9 @@
 #ifndef __TowerDefense__AnimationManager__
 #define __TowerDefense__AnimationManager__
 
-#include <stdio.h>
-#include "PListReader.h"
 #include "cocos2d.h"
+#include "PListReader.h"
+#include "Base/Singleton.h"
 
 USING_NS_CC;
 
@@ -32,22 +32,15 @@ enum AnimationType
     AnimationType_Num               = 7
 };
 
-class AnimationManager : public Ref
+class AnimationManager : public Ref, public Singleton<AnimationManager>
 {
     friend class PListReader;
 public:
-    static AnimationManager* getInstance();
-    static void destroy();
-    
     void addAnimation(uint hash, const std::string& name);
     void removeAnimation(uint hash);
     void runAction(Sprite* target, uint hash, bool repeatForever = true);
     void runAction(Sprite* target, int type, int key, int action, bool repeatForever = true);
     
-private:
-    static AnimationManager* s_instance;
-    
-private:
     AnimationManager();
     virtual ~AnimationManager();
     

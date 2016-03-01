@@ -9,8 +9,6 @@
 #include "AnimationManager.h"
 #include "CommonDef.h"
 
-SINGLETON_IMPL(AnimationManager)
-
 AnimationManager::AnimationManager()
 {}
 

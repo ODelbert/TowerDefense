@@ -143,7 +143,7 @@ static void convertToCamelCase(std::string &str, const std::string prefix)
     str = tmp;
 }
 
-SINGLETON_IMPL(PListReader)
+
 void PListReader::createAnimationWithPlist(const std::string &name)
 {
     ValueMap root = FileUtils::getInstance()->getValueMapFromFile(name);
