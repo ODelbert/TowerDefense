@@ -147,10 +147,13 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ClCompile Include="..\Classes\Animation\AnimationManager.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\Base\Event.cpp" />
+    <ClCompile Include="..\Classes\Base\EventHandler.cpp" />
+    <ClCompile Include="..\Classes\Base\EventListener.cpp" />
+    <ClCompile Include="..\Classes\Base\EventManager.cpp" />
+    <ClCompile Include="..\Classes\Base\GameManager.cpp" />
+    <ClCompile Include="..\Classes\Base\WaveManager.cpp" />
     <ClCompile Include="..\Classes\Configuration\GameConfig.cpp" />
-    <ClCompile Include="..\Classes\Controller\EventManager.cpp" />
-    <ClCompile Include="..\Classes\Controller\GameManager.cpp" />
-    <ClCompile Include="..\Classes\Controller\WaveManager.cpp" />
     <ClCompile Include="..\Classes\Enemy\CommonEnemy.cpp" />
     <ClCompile Include="..\Classes\Enemy\Enemy.cpp" />
     <ClCompile Include="..\Classes\Enemy\EnemyFactory.cpp" />
@@ -177,15 +180,18 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Classes\AnimationPlist.h" />
     <ClInclude Include="..\Classes\Animation\AnimationManager.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\Base\Event.h" />
+    <ClInclude Include="..\Classes\Base\EventHandler.h" />
+    <ClInclude Include="..\Classes\Base\EventListener.h" />
+    <ClInclude Include="..\Classes\Base\EventManager.h" />
+    <ClInclude Include="..\Classes\Base\GameManager.h" />
+    <ClInclude Include="..\Classes\Base\Singleton.h" />
+    <ClInclude Include="..\Classes\Base\WaveManager.h" />
     <ClInclude Include="..\Classes\CommonDef.h" />
     <ClInclude Include="..\Classes\Configuration\GameConfig.h" />
     <ClInclude Include="..\Classes\Configuration\GameData.h" />
-    <ClInclude Include="..\Classes\Controller\EventManager.h" />
-    <ClInclude Include="..\Classes\Controller\GameManager.h" />
-    <ClInclude Include="..\Classes\Controller\WaveManager.h" />
     <ClInclude Include="..\Classes\Enemy\CommonEnemy.h" />
     <ClInclude Include="..\Classes\Enemy\Enemy.h" />
     <ClInclude Include="..\Classes\Enemy\EnemyFactory.h" />

@@ -7,6 +7,9 @@
 //
 
 #include "EventHandler.h"
+#include "Enemy/EnemyFactory.h"
+#include "Maps/BattleField.h"
+#include "Base/WaveManager.h"
 
 EventHandler* EventHandler::create(BattleField *map)
 {
@@ -25,8 +28,9 @@ bool EventHandler::init()
     auto listener = TDEventListener::create();
     listener->onWaveEvent = CC_CALLBACK_1(EventHandler::onWaveEvent, this);
     listener->onTowerEvent = CC_CALLBACK_1(EventHandler::onTowerEvent, this);
-    listener->BulletEvent = CC_CALLBACK_1(EventHandler::BulletEvent, this);
-    _eventDispatcher->addEventListenerWithFixedPriority(listener, 1);
+    listener->onBulletEvent = CC_CALLBACK_1(EventHandler::onBulletEvent, this);
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 1);
+
     return true;
 }
 
@@ -39,4 +43,13 @@ void EventHandler::onWaveEvent(WaveEvent* waveEvent)
     auto enmey = EnemyFactory::create(static_cast<EnemyID>(waveEvent->getEnemyId()));
     enmey->sendToBattle(WaveManager::getInstance()->getPath(waveEvent->getPathIndex(), waveEvent->getSubPathIndex()));
     m_map->addEnemy(enmey);
+}
+
+
+void EventHandler::onTowerEvent(TowerEvent* event)
+{
+}
+
+void EventHandler::onBulletEvent(BulletEvent* event)
+{
 }

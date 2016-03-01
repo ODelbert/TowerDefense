@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "cocos2d.h"
 #include "CommonDef.h"
+#include "Base/Singleton.h"
 USING_NS_CC;
 
 struct SpawnInfo

@@ -5,6 +5,7 @@
 #include "cocos2d.h"
 #include <vector>
 #include "Enemy/Enemy.h"
+#include "Base/Singleton.h"
 
 class AnimationPlist : public cocos2d::Ref
 {
@@ -18,7 +19,7 @@ public:
     };
 };
 
-class PListReader : public cocos2d::Node
+class PListReader : public cocos2d::Node, public WeakSingleton<PListReader>
 {
 public:
     static PListReader* getInstance();
