@@ -9,6 +9,12 @@
 #ifndef __TowerDefense__GameManager__
 #define __TowerDefense__GameManager__
 
-#include <stdio.h>
+#include "GameManager.h"
+
+GameManager::GameManager()
+: m_gold(0)
+{
+    
+}
 
 #endif /* defined(__TowerDefense__GameManager__) */
