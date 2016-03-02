@@ -20,7 +20,7 @@ class BattleField : public Layer
 {
 public:
     virtual bool init();
-    virtual void addTerrian() {}
+    virtual void addTowerSlots() {}
     virtual void addOrnament() {}
     void loadLevel(int stage, int difficult);
     void start(float dt);
@@ -49,5 +49,6 @@ protected:
     Sprite* m_mapSprite;
     std::vector<Enemy*> m_enemies;
     std::vector<Tower*> m_towers;
+    std::vector<TowerSlot*> m_towerSlots;
 };
 #endif /* defined(__TowerDefense__BattleField__) */

@@ -38,7 +38,15 @@ EventHandler::EventHandler(BattleField* map)
 
 void EventHandler::onEvent(TDEvent* event)
 {
-    log("EventHandler::onEvent");
+    switch (event->getEventType()) {
+        case TDEventType_Wave:
+            onWaveEvent(static_cast<WaveEvent*>(event));
+            break;
+        case TDEventType_Tower:
+            onTowerEvent(static_cast<TowerEvent*>(event));
+        default:
+            break;
+    }
 }
 
 void EventHandler::onWaveEvent(WaveEvent* waveEvent)

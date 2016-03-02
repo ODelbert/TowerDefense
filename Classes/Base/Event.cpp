@@ -2,19 +2,10 @@
 #include "Tower/Tower.h"
 #include "Enemy/Enemy.h"
 
-TDEvent::TDEvent(TDEventType action)
+TDEvent::TDEvent(TDEventType type)
     : EventCustom("TDEvent"),
-    m_action(action) {}
-
-TDEventType TDEvent::getTDEventType()
-{
-    return m_action;
-}
-
-void TDEvent::setEventAction(TDEventType action)
-{
-    m_action = action;
-}
+    m_eventType(type)
+{}
 
 WaveEvent::WaveEvent()
     : TDEvent(TDEventType_Wave) {}
@@ -41,20 +32,9 @@ void WaveEvent::setWaveData(int eId, int path, int subpath)
     m_subPath = subpath;
 }
 
-TowerEvent::TowerEvent(Tower* tower, int slotId, TDEventType action)
-   : TDEvent(action),
-    m_tower(tower),
+TowerEvent::TowerEvent(int slotId, Command cmd)
+   : TDEvent(TDEventType_Tower),
     m_slotId(slotId) {}
-
-Tower* TowerEvent::getTower() const
-{
-    return m_tower;
-}
-
-int TowerEvent::getSlotId() const
-{
-    return m_slotId;
-}
 
 BulletEvent::BulletEvent(Bullet* bullet, TDEventType action)
     : TDEvent(action),

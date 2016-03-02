@@ -41,12 +41,8 @@ enum TDEventType
 class TDEvent : public EventCustom
 {
 public:
-    TDEvent(TDEventType action = TDEventType_Invaild);
-    TDEventType getTDEventType();
-    void setEventAction(TDEventType action);
-
-private:
-    TDEventType m_action;
+    TDEvent(TDEventType type = TDEventType_Invaild);
+    CC_SYNTHESIZE_READONLY(TDEventType, m_eventType, EventType);
 };
 
 class WaveEvent : public TDEvent
@@ -80,7 +76,7 @@ class TowerEvent : public TDEvent
     };
 
 public:
-    TowerEvent(Tower* tower, int slotId, Command cmd);
+    TowerEvent(int slotId, Command cmd);
     CC_SYNTHESIZE(int, m_slotId, SlotId);
     CC_SYNTHESIZE(int, m_technologyId, TechnologyId);
     CC_SYNTHESIZE(Command, m_command, Command);

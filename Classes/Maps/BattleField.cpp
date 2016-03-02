@@ -28,6 +28,7 @@ bool BattleField::init()
     touchlistener->setSwallowTouches(true);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(touchlistener, this);
     m_eventHandler = EventHandler::create(this);
+    m_eventHandler->retain();
     return true;
 }
 
@@ -91,10 +92,6 @@ void BattleField::removeTower(Tower* tower)
     // TODO:: GameManager removes
     m_mapSprite->removeChild(tower, false);
 }
-
-void removeEnemy(Enemy* enemy);
-void addTower(Tower* enemy);
-void removeTower(Tower* tower);
 
 void BattleField::loadLevel(int stage, int difficult)
 {
