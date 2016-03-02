@@ -48,7 +48,6 @@ void EventHandler::onWaveEvent(WaveEvent* waveEvent)
     m_map->addEnemy(enmey);
 }
 
-
 void EventHandler::onTowerEvent(TowerEvent* event)
 {
 }

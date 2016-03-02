@@ -20,40 +20,33 @@ class Bullet;
 #define EVENT_ALLY "ALLY"
 #define EVENT_SPELLS "OPTION"
 
-enum EventActionType
+enum TDEventType
 {
-    EventActionType_INVALID = -1,
+    TDEventType_Invaild = -1,
     // WAVE
-    EventActionType_Wave,
+    TDEventType_Wave,
     // BULLET
-    EventActionType_Bullet_Miss,
-    EventActionType_Bullet_Fire,
-    EventActionType_Bullet_Strike,
+    TDEventType_Bullet,
     // TOWER
-    EventActionType_Build,
-    EventActionType_Sell,
-    EventActionType_Upgrade,
+    TDEventType_Tower,
+    // ENEMY
+    TDEventType_Enemy,
+    // HERO
+    TDEventType_Hero,
+    // ALLY
+    TDEventType_Ally
     // HERO / ALLY / ENEMY
-    EventActionType_Death,
-    EventActionType_Reborn,
-    EventActionType_LevelUp,
-    EventActionType_Action,
-    EventActionType_Assemble,
-    // OPTION
-    EventActionType_Reinforcement,
-    EventActionType_Lighting,
-    EventActionType_HeroSpell
 };
 
 class TDEvent : public EventCustom
 {
 public:
-    TDEvent(EventActionType action = EventActionType_INVALID);
-    EventActionType getEventActionType();
-    void setEventAction(EventActionType action);
+    TDEvent(TDEventType action = TDEventType_Invaild);
+    TDEventType getTDEventType();
+    void setEventAction(TDEventType action);
 
 private:
-    EventActionType m_action;
+    TDEventType m_action;
 };
 
 class WaveEvent : public TDEvent
@@ -64,7 +57,7 @@ public:
     int getPathIndex() const;
     int getSubPathIndex() const;
     void setWaveData(int id, int path, int subpath);
-    
+
 private:
     int m_eId;
     int m_path;
@@ -73,26 +66,36 @@ private:
 
 class TowerEvent : public TDEvent
 {
-public:
-    TowerEvent(Tower* tower, int slotId, EventActionType action);
-    Tower* getTower() const;
-    int getSlotId() const;
+    enum Command
+    {
+        Invaild,
+        Build,
+        Upgrade,
+        Sell,
+        Disabled,
+        Flag,
+        Assemble,
+        Technology,
+        Demonstrate
+    };
 
-private:
-    Tower* m_tower;
-    int m_slotId;
+public:
+    TowerEvent(Tower* tower, int slotId, Command cmd);
+    CC_SYNTHESIZE(int, m_slotId, SlotId);
+    CC_SYNTHESIZE(int, m_technologyId, TechnologyId);
+    CC_SYNTHESIZE(Command, m_command, Command);
+
 };
 
 class BulletEvent : public TDEvent
 {
 public:
-    BulletEvent(Bullet* bullet, EventActionType action);
+    BulletEvent(Bullet* bullet, TDEventType action);
+    //CC_SYNTHESIZE(Node*, m_sender, Sender);
+    //CC_SYNTHESIZE(Node*, m_receiver, Receiver);
     
 private:
     Bullet* m_bullet;
 };
-
-
-
 
 #endif
