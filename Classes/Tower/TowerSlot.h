@@ -24,7 +24,7 @@ public:
     virtual bool init();
     
     Tower* getTower() const;
-    void onTouchBegan(Touch* touch, Event* evt);
+    bool onTouchBegan(Touch* touch, Event* evt);
     
 private:
     std::vector<Icon*> getTowerIcons(Tower* tower);

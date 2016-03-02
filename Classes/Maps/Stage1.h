@@ -16,7 +16,7 @@ class Stage1 : public BattleField
 public:
     CREATE_FUNC(Stage1);
     virtual bool init();
-    
+    virtual void addTowerSlots();
 };
 
 #endif /* defined(__TowerDefense__Level1__) */

@@ -12,18 +12,18 @@
 // Tower upgrade icons
 #define ICON_UPGRADE "main_icons_0005.png"
 #define ICON_LOCK "main_icons_0005.png"
-#define ICON_UPGRADE "main_icons_00014.png"
-#define ICON_HARMMER "main_icons_00015.png"
+#define ICON_UPGRADE "main_icons_0014.png"
+#define ICON_HARMMER "main_icons_0015.png"
 #define ICON_CONFRIM "main_icons_0019.png"
 #define ICON_ARCHER "main_icons_0100.png"
 #define ICON_BARRACKS "main_icons_0101.png"
 #define ICON_MAGE "main_icons_0102.png"
-#define ICON_ARTILLERY "main_icons_103.png"
-#define ICON_BLADESINGER "main_icons_104.png"
-#define ICON_FORESTKEEPER "main_icons_105.png"
-#define ICON_WILD "main_icons_106.png"
-#define ICON_HIGHELF "main_icons_107.png"
-#define ICON_ARCANE "main_icons_108.png"
+#define ICON_ARTILLERY "main_icons_0103.png"
+#define ICON_BLADESINGER "main_icons_0104.png"
+#define ICON_FORESTKEEPER "main_icons_0105.png"
+#define ICON_WILD "main_icons_0106.png"
+#define ICON_HIGHELF "main_icons_0107.png"
+#define ICON_ARCANE "main_icons_0108.png"
 #define ICON_SILVER "main_icons_0109.png"
 #define ICON_HENGE "main_icons_0110.png"
 #define ICON_TREE "main_icons_0111.png"
@@ -34,21 +34,21 @@
 
 #define ICON_WEAPON_MAGIC "toptip_icons_0010.png"
 
-#define ICON_BLADESINGER_1 "main_icons_104.png"
-#define ICON_BLADESINGER_2 "main_icons_104.png"
-#define ICON_BLADESINGER_3 "main_icons_104.png"
-#define ICON_FORESTKEEPER_1 "main_icons_105.png"
-#define ICON_FORESTKEEPER_2 "main_icons_105.png"
-#define ICON_FORESTKEEPER_3 "main_icons_105.png"
-#define ICON_WILD_1 "main_icons_106.png"
-#define ICON_WILD_2 "main_icons_106.png"
-#define ICON_WILD_3 "main_icons_106.png"
-#define ICON_HIGHELF_1 "main_icons_107.png"
-#define ICON_HIGHELF_2 "main_icons_107.png"
-#define ICON_HIGHELF_3 "main_icons_107.png"
-#define ICON_ARCANE_1 "main_icons_108.png"
-#define ICON_ARCANE_2 "main_icons_108.png"
-#define ICON_ARCANE_3 "main_icons_108.png"
+#define ICON_BLADESINGER_1 "main_icons_0104.png"
+#define ICON_BLADESINGER_2 "main_icons_0104.png"
+#define ICON_BLADESINGER_3 "main_icons_0104.png"
+#define ICON_FORESTKEEPER_1 "main_icons_0105.png"
+#define ICON_FORESTKEEPER_2 "main_icons_0105.png"
+#define ICON_FORESTKEEPER_3 "main_icons_0105.png"
+#define ICON_WILD_1 "main_icons_0106.png"
+#define ICON_WILD_2 "main_icons_0106.png"
+#define ICON_WILD_3 "main_icons_0106.png"
+#define ICON_HIGHELF_1 "main_icons_0107.png"
+#define ICON_HIGHELF_2 "main_icons_0107.png"
+#define ICON_HIGHELF_3 "main_icons_0107.png"
+#define ICON_ARCANE_1 "main_icons_0108.png"
+#define ICON_ARCANE_2 "main_icons_0108.png"
+#define ICON_ARCANE_3 "main_icons_0108.png"
 #define ICON_SILVER_1 "main_icons_0109.png"
 #define ICON_SILVER_2 "main_icons_0109.png"
 #define ICON_SILVER_3 "main_icons_0109.png"
@@ -274,6 +274,9 @@ bool TowerSlot::init()
     m_slotRing->setPosition(0, 0);
     addChild(m_slotRing);
     
+    auto listener = EventListenerTouchOneByOne::create();
+    listener->onTouchBegan = CC_CALLBACK_2(TowerSlot::onTouchBegan, this);
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     return true;
 }
 
@@ -282,11 +285,15 @@ Tower* TowerSlot::getTower() const
     return m_tower;
 }
 
-void TowerSlot::onTouchBegan(Touch* touch, Event* event)
+bool TowerSlot::onTouchBegan(Touch* touch, Event* event)
 {
-    if (!m_slotRing) return;
-    if (!m_slotRing->isVisible())
+    if (!m_slotRing) return false;
+    if (!m_slotRing->isVisible()) {
         m_slotRing->onTouch();
+        m_slotRing->setVisible(true);
+    }
     else
         m_slotRing->setVisible(false);
+    
+    return true;
 }

@@ -53,7 +53,6 @@
 		9ACEE7081C7F489C005AEF3F /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6BD1C7F489C005AEF3F /* EventListener.cpp */; };
 		9ACEE7091C7F489C005AEF3F /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6BD1C7F489C005AEF3F /* EventListener.cpp */; };
 		9ACEE70A1C7F489C005AEF3F /* EventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6BF1C7F489C005AEF3F /* EventManager.cpp */; };
-		9ACEE70B1C7F489C005AEF3F /* EventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6BF1C7F489C005AEF3F /* EventManager.cpp */; };
 		9ACEE70C1C7F489C005AEF3F /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6C11C7F489C005AEF3F /* GameManager.cpp */; };
 		9ACEE70D1C7F489C005AEF3F /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6C11C7F489C005AEF3F /* GameManager.cpp */; };
 		9ACEE70E1C7F489C005AEF3F /* WaveManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6C31C7F489C005AEF3F /* WaveManager.cpp */; };
@@ -9246,7 +9245,6 @@
 				9ACEE7311C7F489C005AEF3F /* ResourceManager.cpp in Sources */,
 				9ACEE73F1C7F489C005AEF3F /* Shooter.cpp in Sources */,
 				9ACEE72D1C7F489C005AEF3F /* Stage1.cpp in Sources */,
-				9ACEE70B1C7F489C005AEF3F /* EventManager.cpp in Sources */,
 				9ACEE7171C7F489C005AEF3F /* GameConfig.cpp in Sources */,
 				9ACEE7211C7F489C005AEF3F /* RunningEnemy.cpp in Sources */,
 				9ACEE70F1C7F489C005AEF3F /* WaveManager.cpp in Sources */,

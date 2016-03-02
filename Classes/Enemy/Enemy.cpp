@@ -89,7 +89,7 @@ bool Enemy::initWithEnemyId(EnemyID id)
     m_buffs = 0;
     m_debuffs = 0;
     m_direction = Direction_Invalid;
-    m_texture = Sprite::createWithSpriteFrameName("redcap_0001.png");
+    m_texture = Sprite::createWithSpriteFrameName("creepAlert.png");
     addChild(m_texture);
     return true;
 }
