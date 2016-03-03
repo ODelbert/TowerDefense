@@ -1,6 +1,8 @@
 #ifndef COMMONDEF_H
 #define COMMONDEF_H
 
+#include "Base/GameManager.h"
+
 #define TD_TEST
 //#define TD_DEBUG
 

@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __TowerDefense__upgradeIcon__
-#define __TowerDefense__upgradeIcon__
+#ifndef __TowerDefense__UpgradeIcon__
+#define __TowerDefense__UpgradeIcon__
 
 #include <vector>
 #include <stdio.h>
@@ -16,16 +16,17 @@
 
 USING_NS_CC;
 
-class upgradeIcon : public Node
+class UpgradeIcon : public Node
 {
     enum State {
-        Selected = 1,
+        Enabled = 0,
+        Selected,
         Confrim,
         Disabled
     };
     
 public:
-    static upgradeIcon* create(const std::string& name);
+    static UpgradeIcon* create(const std::string& name, int tid = -1);
     virtual bool init(const std::string& name);
     virtual bool onTouchBegan(Touch* touch, Event* event);
 
@@ -33,6 +34,9 @@ public:
     CC_SYNTHESIZE(State, m_state, State);
 
     CC_SYNTHESIZE_READONLY(int, m_tid, Tid);
+
+private:
+    UpgradeIcon(int tid);
 
 private:
     Sprite* m_texture;

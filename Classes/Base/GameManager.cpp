@@ -1,28 +1,25 @@
 //
-//  GameManager.cpp
+//  GameManager.h
 //  TowerDefense
 //
 //  Created by jowu on 15/11/22.
 //
 //
 
-#include "cocos2d.h"
+
+
 #include "GameManager.h"
-#include "Singleton.h"
 
-
-USING_NS_CC;
-
-
-class Technology;
-class DamageSystem;
-class GameManager : public Ref, public Singleton<GameManager>
+GameManager::GameManager()
+: m_gold(0)
 {
-public:
-    GameManager();
     
-    CC_SYNTHESIZE(int, m_gold, Gold);
-    
-private:
-    
-};
+}
+
+void GameManager::dispatchEvent(TDEvent* event)
+{
+    Director::getInstance()->getEventDispatcher()->dispatchEvent(event);
+}
+
+
+

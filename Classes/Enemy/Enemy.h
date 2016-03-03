@@ -135,19 +135,19 @@ public:
 private:
     // properties
     CC_SYNTHESIZE_READONLY(EnemyID, m_id, Id);
-    CC_SYNTHESIZE(std::string, m_name, name);
-    CC_SYNTHESIZE(int, m_damageMin, damageMin);
-    CC_SYNTHESIZE(int, m_damageMax, damageMax);
-    CC_SYNTHESIZE(int, m_maxLife, maxLife);
-    CC_SYNTHESIZE(int, m_life, life);
-    CC_SYNTHESIZE(WeaponType, m_weapon, weapon);
-    CC_SYNTHESIZE(ArmorType, m_armor, armor);
-    CC_SYNTHESIZE(SpeedType, m_speed, speed);
+    CC_SYNTHESIZE(std::string, m_name, Name);
+    CC_SYNTHESIZE(int, m_damageMin, DamageMin);
+    CC_SYNTHESIZE(int, m_damageMax, DamageMax);
+    CC_SYNTHESIZE(int, m_maxLife, MaxLife);
+    CC_SYNTHESIZE(int, m_life, Life);
+    CC_SYNTHESIZE(WeaponType, m_weapon, Weapon);
+    CC_SYNTHESIZE(ArmorType, m_armor, Armor);
+    CC_SYNTHESIZE(SpeedType, m_speed, Speed);
 
-    CC_SYNTHESIZE_READONLY(uint, m_buffs, buffs);
-    CC_SYNTHESIZE_READONLY(uint, m_debuffs, debuffs);
-    CC_SYNTHESIZE_READONLY(EnemyState, m_state, state);
-    CC_SYNTHESIZE_READONLY(Direction, m_direction, direction);
+    CC_SYNTHESIZE_READONLY(uint, m_buffs, Buffs);
+    CC_SYNTHESIZE_READONLY(uint, m_debuffs, Debuffs);
+    CC_SYNTHESIZE_READONLY(EnemyState, m_state, State);
+    CC_SYNTHESIZE_READONLY(Direction, m_direction, Direction);
 
 protected:
     bool initWithEnemyId(EnemyID id);

@@ -59,6 +59,8 @@
 #define ICON_TREE_2 "main_icons_0111.png"
 #define ICON_TREE_3 "main_icons_0111.png"
 
+#define ICON_CONFRIM "main_icons_0111.png"
+
 #define ALERT_CREEP "creepAlert.png"
 
 
@@ -255,7 +257,7 @@ void SlotRing::onTouch()
     m_texture->removeAllChildrenWithCleanup(false);
     for (int i = 0; i < icons.size(); ++i) {
         auto towerFrame = Sprite::createWithSpriteFrameName("main_icons_over.png");
-        auto towerIcon = upgradeIcon::create(icons[i]);
+        auto towerIcon = UpgradeIcon::create(icons[i]);
         addChild(towerFrame);
         addChild(towerIcon);
         Location locate = icons.size() == 1 ? s_location_1[i]: icons.size() == 2 ? s_location_2[i] : icons.size() == 3 ? s_location_3[i] : icons.size() == 4 ? s_location_4[i] : Location();

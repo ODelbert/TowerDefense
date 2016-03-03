@@ -25,7 +25,7 @@ public:
     
     virtual void shoot();
     virtual void choose();
-    virtual void upgrade(int tId);
+    virtual void upgrade(int tId = -1);
 };
 
 class ArcaneShooter : public Shooter

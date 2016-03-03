@@ -56,6 +56,18 @@ void Archer::choose()
 
 void Archer::upgrade(int tId)
 {
+
+	// TODO::
+	// remove from parent
+	// event
+
+	if (TowerLevel_4 == m_level) {
+		// upgrade technology
+		// change cost for tower slot
+
+
+	}
+
 //    if (m_level < 4)
 //        m_level++;
 }

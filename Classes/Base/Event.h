@@ -62,6 +62,7 @@ private:
 
 class TowerEvent : public TDEvent
 {
+public:
     enum Command
     {
         Invaild,

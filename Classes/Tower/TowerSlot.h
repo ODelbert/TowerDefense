@@ -15,7 +15,6 @@
 USING_NS_CC;
 
 class SlotRing;
-class Icon;
 class TowerSlot : public Node
 {
     friend SlotRing;
@@ -25,9 +24,7 @@ public:
     
     Tower* getTower() const;
     bool onTouchBegan(Touch* touch, Event* evt);
-    
-private:
-    std::vector<Icon*> getTowerIcons(Tower* tower);
+    CC_SYNTHESIZE(int, m_slotId, SlotId);
 
 private:
     Sprite* m_terrian;

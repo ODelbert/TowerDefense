@@ -30,9 +30,6 @@
     <ClCompile Include="..\Classes\Base\EventListener.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Base\EventManager.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Base\GameManager.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -87,12 +84,6 @@
     <ClCompile Include="..\Classes\Sprite\Icon.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\tests\TestAnimation.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\tests\TestLayer.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\tests\TestMapLocation.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -135,9 +126,6 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Base\EventListener.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Base\EventManager.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Base\GameManager.h">
@@ -200,12 +188,6 @@
     <ClInclude Include="..\Classes\Sprite\Icon.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\tests\TestAnimation.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\tests\TestLayer.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\tests\TestMapLocation.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -224,10 +206,4007 @@
     <ClInclude Include="..\Classes\Tower\TowerSlot.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Resources\EnemyHalloweenAbomination.h">
+      <Filter>resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
       <Filter>resource</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\.DS_Store">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\achievement_particle.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\achievement_particle-ipadhd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\arachnomancer_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\arachnomancer_miniSpider_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\arachnomancer_spider_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\ArcaneArcher_BurstArrow-01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\ArcaneArcher_Ready-01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\ArcaneArcher_SleepArrow-01c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\archer_arcane_shooter_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\archer_hero_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\archer_silver_shooter_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Archers_Taunt-01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Archers_Taunt-02a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Archers_Taunt-03e.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Arivan_Confirm-01b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Arivan_Confirm-02c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Arivan_Confirm-03a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Arivan_Confirm04-01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Arivan_Death-01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\artillery_henge_bear_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\artillery_henge_druid1_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\artillery_henge_effects_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\artillery_thrower_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\artillery_thrower_lvl2_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\artillery_thrower_lvl3_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\artillery_tree_scorched_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Awok_01b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Awok_02c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\babyAshbite_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\bajnimen_boss_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\bandersnatch_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\bandersnatch_spines_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\bandersnatch_spines_blood_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Barrack_Taunt[2]-01c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Barrack_Taunt[2]-02c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Barrack_Taunt[2]-03c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Barrack_Taunt[2]-04e.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\bittering_content-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Bladesinger_BladeDance[2]-01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Bladesinger_PerfectParry[2]-01d.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Bladesinger_Ready[2]-01b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Bladesinger_SwirlingEdge[2]-01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\bloodServant_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\bloodsydianGnoll_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\bloodsydianWarlock_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\boss_ainyl_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\boss_ainyl_block_decal_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\boss_ainyl_block_end_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\boss_ainyl_block_fx_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\boss_ainyl_shield_big_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\boss_ainyl_shield_small_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\boss_drow_queen_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\boss_drow_queen_portals_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\boss_drow_queen_zealot_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\boss_gnoll_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\boss_godieth_acidPool_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\boss_godieth_acidPool_bubble_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\boss_godieth_acidPool_splash_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\boss_godieth_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\boss_godieth_spit_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\boss_spider_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\boss_spider_net_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\bossHiena_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\bravebark_hero_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\bravebark_hero_effects_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\bravebark_hero_mignon_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Bravebark-confirm_01c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Bravebark-confirm_02b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Bravebark-confirm_03d.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Bravebark-confirm_04d.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Bravebark-death_01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Bruce_confirm[2]-01b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Bruce_confirm[2]-02c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Bruce_confirm[2]-04c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Bruce_confirm_03d.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Bruce_death[2]-01g.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\catapult_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\catapult_endless_explosions_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\catapult_endless_layer_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Catha_Confirm-01c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Catha_Confirm-02a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Catha_Confirm-03c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Catha_Confirm-04d.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Catha_Death-01c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\cinematics_comic1-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\cinematics_comic2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\cinematics_comic3-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\cinematics_comic4-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\cinematics_comic5-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\cinematics_comic6-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\cinematics_comic7-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\cinematics_comic8-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\cinematics_comic9-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\common_spritesheet_16_a_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\common_spritesheet_16_na_2_IPAD2_5-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\common_spritesheet_16_na_2_IPAD2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\common_spritesheet_16_na-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\common_spritesheet_32-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\common_spritesheet_localized_32_cn-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\common_spritesheet_localized_32-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\credits_scene-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\crystalArcane_extras_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\crystalSerpent_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\dark_spitters_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\dark_spitters_proy_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\denas_hero_guard_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\drider_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Drow_01c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Drow_02c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Drow_03b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\DruidHenge_Ready-01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\DruidHenge_Sylvan[2]-01b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Durax_01a[wet].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Durax_02a[wet].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Durax_03a[wet].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Durax_04c[wet].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_bittering_rancor_2_enemies.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_bittering_rancor_2_enemies-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_bittering_rancor_2_enemies-ipadhd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_bittering_rancor_enemies-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_enemies_bittering_rancor_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_enemies_endless_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_enemies_endless2_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_enemies_faerie_grove_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_enemies_forgotten_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_enemies_hulking_rage_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_enemies_metropolis_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_enemies_woods_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_faerie_grove_enemies_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_faerie_grove_enemies-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_forgotten_enemies-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_alleria_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_alleria_wildcat_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_alleria-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_archer-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_arivan_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_arivan_lightning_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_bolverk_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_bolverk-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_bravebark_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_bravebark-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_bruce_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_bruce_ultimate_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_bruce_ultimate_twister_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_bruce-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_denas_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_denas-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_durax_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_durax-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_eldritch_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_eldritch-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_elementalist-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_fallen_angel_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_fallenangel_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_fallenangel-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_faustus_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_faustus_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_faustus_extra_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_faustus-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_gyro_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_gyro_3-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_gyro_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_gyro-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_lynn_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_lynn-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_malik_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_panda_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_panda_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_panda_shadow_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_panda_teleport_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_panda-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_phoenix_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_phoenix_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_phoenix-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_pixie_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_pixie_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_pixie-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_rag_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_rag_polymorph_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_rag-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_veznan_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_veznan_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_veznan_shackles_big_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_veznan_shackles_small_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_veznan_soulBurn_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_veznan_soulBurn_big_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_veznan_soulBurn_small_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hero_veznan-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hulking_rage_2_enemies-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_hulking_rage_enemies-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_inapps_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_metropolis_enemies_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_metropolis_enemies-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_towers_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_towers_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_towers-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_woods_2_enemies-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\elves_woods_enemies-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\ending_scene-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Eridan_Confirm-01d.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Eridan_Confirm03-01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Eridan_Confirm-03b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Eridan_confirmextra-01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Eridan_Death-01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\ettin_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\ewok_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\faerie_content_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\faerie_content-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\faerie_dragons_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\faerie_grove_content_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\fallen_angel_hero_infernal_base_decal_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\fallen_angel_hero_infernal_base_fireIn_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\fallen_angel_hero_infernal_decal_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\fallen_angel_hero_infernal_fx_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\fallen_angel_hero_reapers_harvest_decal_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\fallen_angel_hero_soul_eater_ball_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\fallen_angel_hero_soul_eater_decal_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\fallen_angel_hero_soul_eater_explosion_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\fallen_angel_hero_ultimate_angel_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Faustus-confirm_01b2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Faustus-confirm_02b2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Faustus-confirm_03a2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Faustus-confirm_04b2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Faustus-death_01e2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Female-Elven-Archer-01c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Female-Elven-Archer-02c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Female-Elven-Archer-03a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Female-Elven-Archer-04b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Female-Elven-Archer-Death_a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\forestKeeper_roots_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\forestKeeper_roots2_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\ForestProtector_Ancient[2]-01c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\ForestProtector_Circle[2]-01g.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\ForestProtector_Eerie[2]-01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\ForestProtector_Ready[2]-01c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\forgotten_content-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\fungusRider_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\fungusRider_medium_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\fungusRider_small_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\galahadriansBastion_layer_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gameScene.assets.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gameScene.common.assets.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gloomy_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gnoll_blighter_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gnoll_blighter_energy_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gnoll_blighter_proy_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gnoll_burner_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gnoll_burner_proy_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gnoll_gnawer_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gnoll_reaver_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gnollBush_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Gnome_01d.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Gnome_02a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gold_coin.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\GoldenBows_Crimson-01b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\GoldenBows_Mark-01b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\GoldenBows_Ready[2]-01d.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gollem_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\grim_devourers_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gryphon_proy.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gui_menu_sprite_campaign_32-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gui_menu_sprite_endless_32-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gui_menu_sprite_heroic_32-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gui_menu_sprite_iron_32-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gui_notification_endless-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\gui_notification_upgrade-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\GUITransitionClose.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\GUITransitionOpen.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\harraser_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\hero_dragon_birth.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\hero_dragon_death.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\hero_dragon_fireball_explode.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\hero_dragon_flamethrower.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\hero_dragon_smoke.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\hero_dragon_spit.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\HighMage_ArcaneSentinel-01c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\HighMage_Ready-01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\HighMage_Timelapse-01c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\hulking_rage_content-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\hyena_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\inapp_cash.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\inapp_chin.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\inapp_gems.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\inapp_gnome.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Info.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\ingame_gui-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\iTunesArtwork">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Kingsguard_01d.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Kingsguard_02c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\knocker_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr_yellow_submarine_custom.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_arcanearcher_sleepingarrow-op1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_arcanearcher_waterenergyblast-op1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_archanearcher_arcaneexplotion_v3.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_basicarcher_arrow.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_basicbarracks_fight.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_basicwizard_doublebolt-op1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_bladesinger_bladedance_v2-op2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_bladesinger_perfectparry_v2-op2-faded.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_druidhenge_bearattack_v4-op1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_druidhenge_beardeath_v3_op1-condesplome.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_druidhenge_bearsummon_v3-op2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_druidhenge_bouldersummon.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_druidhenge_rockthrow_v2-op2-medio.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_druidhenge_sylvancursecast_v4-op2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_elvenhighmage_boltcast-op1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_elvenhighmage_sentinelactivate.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_elvenhighmage_sentinelshot_v2-op1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_forestkeeper_ancientoakspear_LOW_v1+3db.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_forestkeeper_circleofhealing-CONGAITA_HI.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_forestkeeper_eeriegarden_SINPOPS.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_forestkeeper_normalspear_v2-op1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_goldenbow_arrowshot.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_goldenbow_flarehit_v2.5.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_goldenbow_flareshot_v2-convoz.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_goldenbow_instakill_v2_conchime.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_goldenbow_instakillarrowshot_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_highmage_preload_and_travel.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_highmage_shot.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_highmage_timecast.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_highmage_timecastend.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_lightning_op1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_lightning_op2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_lightning_op3.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_mactans_touch.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_stonedruid_boulderexplosion.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_stonedruid_bouldersummon.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_stonedruid_boulderthrow-op2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_tree_clobber_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_tree_cocoexplosion[explofuerte].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_tree_cocothrow.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_tree_fierynutexplotion.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_tree_fierynutthrow.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_tree_leaves.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_tree_path_explosion.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_wildmagus_boltcast_v2-op1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_wildmagus_disruptioncast_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_wildmagus_doomcast_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_wildmagus_doomexplotion_v3-op1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kr3_sfx_wildmagus_doomloop_v2-op1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_achievement_mario.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_achievement_scissorfingers_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_ambience_singlebirdandstream.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_arivan_elementalstorm_v2_op3.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_arivan_fireballhit_v3.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_arivan_fireballshot_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_arivan_fireballsummon[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_arivan_icebolt[hit].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_arivan_iceboltshot_v2[contono].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_arivan_lightningbolt_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_arivan_normal_ray.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_arivan_stonesummon_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_catha_fairydust.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_catha_fairyfury[hit]_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_catha_fairyfury[summon].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_catha_fairysoul_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_catha_fairytale[death].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_catha_fairytale[summon].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_eridan_doublestrike_v2[mid].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_eridan_nimblefencing.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_gryphon_land_v3[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_gryphon_shot_v2[end].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_gryphon_shot_v2[op3].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_gryphon_shot_v2[start].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_gryphon_takeoff_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_hyena_ambience_v4[op1_heavysnors].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_hyena_ambience_v4[op2_consnors].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_hyena_death.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_hyena_howl[op1_singrowl].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_hyena_specialstomp.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_hyena_wagonexplosion.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_hyena_wagonloop[concadenas].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_hyena_wagonloop[ending].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_plant_magicmissile.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_plant_ready_conchime.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_scourger_death.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_waterfall_mid.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_waterfall_mid_old.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kre_sfx_waterfall_strong.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_ainyl_disable.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_ainyl_shield.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_ainyl_teleport[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_ambience_branchesandfaery1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_ambience_branchesandfaery2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_ambience_spiders_v2[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_ambience_wardrums[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_ambience_wardrums[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_ambience_wardrums[op3].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_ambience_windandowls1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_ambience_winds[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_ambience_winds[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_angrygnome_objectspawn[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_arachnomancer_spiderspawn[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_ashbite_confirm_v1[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_ashbite_confirm_v1[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_avenger_lastservice_v2[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bannerbearer_death[op1-SD].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_barezad_firebreath_v2[end].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_barezad_firebreath_v2[loop].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_barezad_firebreath_v2[starter].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_barezad_fly[loop-op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bastion_shot[op1]_modif.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bean.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bean_loop.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_boss-death[conriser].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_boss-heal.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_boss-rangedattack[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_boss-shadowstorm[cast].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_boss-shadowstorm[impact].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_boss-shadowstorm[travel].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_boss-tailwhip.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_drizzt_growl.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_drizzt_unsheathe.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_lynn-curseofdispair[conprecarga].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_lynn-fatesealed.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_lynn-hexfury[op3].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_lynn-weakeningcurse[sincrackle].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_mountedavanger-death[conexplo].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_screecher-death.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_screecher-scream[op5].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_servant-death[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_whitetree-activate.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bitteringrancor_whitetree-tap.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bram_death[conexplo].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bram_fistcharge.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bram_groundstomp.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bram_sopapo[conwhoosh].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bravebark_branchball_v1[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bravebark_healing_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bravebark_oakseeds_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bravebark_rootspikes_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bravebark_teleport-in_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bravebark_teleport-out_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bravebark_v2[spikesbajos].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bruce_griveousbites.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bruce_guardianlions[loop-v2-op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bruce_guardianlions[spell+roar].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bruce_guardianlions-hit[loop-end].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bruce_guardianlions-hit[loop-start].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_bruce_kingsroar[op1-conimpacto].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_creep_death[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_creep_doublesword[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_crystalbuff.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_crystalice.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_crystallizedgnoll_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_crystalray[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_crystalserpent_crystalshatter.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_crystalserpent_emerge.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_crystalserpent_passby[sinsublows]_B.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_crystalserpent_scream[op4_pocodelay].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_crystalserpent_serpentsattack.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_crystalserpent_submerge_B.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_crystalskull_touch[conrisa].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_durax_armblade.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_durax_crystallites.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_durax_death[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_durax_lethalprism_shot_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_durax_movement[loop_end].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_durax_movement[loop_op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_durax_movement[loop_op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_durax_shardspear[impact].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_durax_shardspear[throw].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_durax_ultimate.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_dwarfdeath[barrel].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_elemental_areaattack.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_elemental_death.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_evoker_heal[sinshaker].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_faerydragon_attack[solocristalizacion].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_faerydragon_buydragon[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_faerydragon_extraability[solochimes].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_faerydragon_sfx_attack[op2][soloattack]_B.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_faustus_activate[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_faustus_enervation_v2_[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_faustus_fireloop_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_faustus_liquidfire_v2_sinchimes.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_faustus_normalattack_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_faustus_teleport_v1[sinarpa].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_finalboss_jump.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_gemcrystalbreak[solo]_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_georgefall_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_gnoll_outofbush_modif.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_gnome_death[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_gnome_death[op4].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_gnome_death[op7].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_gnome_desintegrate_v2[comic].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_gnome_kamihare[sinpops].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_gnome_poison_v2[confrasco].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_gnome_polymorf[conchimes].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_gnome_shot[op1_conchime].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_hammertime[op1_12bits].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_hammertime[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_hanselandgretel_escape[arpayrisas].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_heehaw_call[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_heehaw_netfalling_v2[op3].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_heehaw_nethitsfloor.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_hoplite_summon_v3[singrowl].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_hulkingrage_mining_v2[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_hulkingrage_mining_v2[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_inapp_hornofheroism[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_inapp-handofmidas[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_inapp-handofmidas-active[op3]B.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_inapp-handofmidas-active[op3]C.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_inapp-tearofelynie_v2[conlacrimosa].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_inapp-teleportgem_v2[enemiesin].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_inapp-teleportgem_v2[enemiesout].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_inapp-teleportscroll_v2[sinslam].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_lilith_infernalwheel.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_lilith_reaperharvest.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_lilith_resurrection[op2-conchime].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_lilith_soulreaper[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_lilith_ultimate[darkangels-cast].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_lilith_ultimate[darkangels-hit].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_lilith_ultimate[meteors-impact-op1_singlehit].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_mactans_gemattack[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_mactans_webground[conhissing].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_mactans_webspin[towers].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_malicia_comet-end_v3.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_malicia_comet-start_v3[sinfuego].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_malicia_death.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_malicia_gemattack_v1B.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_malicia_shieldbreak[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_malicia_spellcast_[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_malicia_spiderin.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_malicia_spiderout.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_maliciazealot_summon[wololo_op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_malik_hammer[concaida].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_obelix_feed[comic].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_peekaboo_v2[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_phoenix_basicattack.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_phoenix_blazingoffspring_hit_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_phoenix_blazingoffspring_shot[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_phoenix_call1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_phoenix_call2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_phoenix_call3.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_phoenix_eggexplosion.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_phoenix_fireegg_activate_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_phoenix_fireegg_v3.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_phoenix_immolation_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_phoenix_ringoffire_explode_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_phoenix_ringoffire_spawn[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_poisonplant_discharge[conacido]_B.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_poisonplant_ready_v2B.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_princedenas_celebrity_v1[severalshots].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_princedenas_mighty_v3[convoz_op3].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_princedenas_sybarite_v1[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_princedenas_wealthy_v1[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_raggified_attack.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_raggified_groundstomp[medium].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_raggified_transform[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_razorboar_charge[sinpisadas].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_regson_bladescast_v3[conenergia].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_regson_bladescast_v3[sinenergia].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_regson_slash_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_regson_vindicator_v3.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_roadrunner_meepmeep_modif.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_simon_activate_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_simon_blue_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_simon_green_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_simon_red_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_simon_wrong_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_simon_yellow_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_sonofmactans[sinlanding].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_sorcapprentice_book[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_sorcapprentice_broom.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_sorcapprentice_hat[sinexplo].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_spidereggs[huevo+aranias].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_spidergoddess_castspell.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_spidergoddess_castspellwithlaughter.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_spidergoddess_death[human+inhuman].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_spidergoddess_death_v2[larga].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_spidergoddess_fall_v2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_spidergoddess_killray[conprecarga].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_spidergoddess_morph_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_spidergoddess_superray_v3[descarga].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_spidergoddess_superray_v4[carga].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_twlightinvasionambience-2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_twlightinvasionambience-3.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_unstablecrystal_crystallize[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_unstablecrystal_healing_modif.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_unstablecrystal_ready[op4]_modif.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_veznan_arcanenova_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_veznan_darkpact_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_veznan_demondeath_v3.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_veznan_demonfireball_hit_v3.1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_veznan_demonfireball_throw_v3.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_veznan_faustus_killray_v3.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_veznan_magicshackles_v1[op2]-01.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_veznan_range_shoot_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_veznan_soulburn_v8[sinimpacto].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_veznan_teleport_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_wilson[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_witch_outsidecurse[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_witch_touch[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_witchdeath_v1[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_xin_daringstrikehit_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_xin_inspire_v3[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_xin_mindoverbody.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_xin_pandamonium_[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_xin_pandamonium-hit1_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_xin_pandamonium-hit2_v1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_xin_pandastyle_v3[op2].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_xin_polehit1_v3[conhoo].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_xin_polehit2_v3[conhoo].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_xin_tele-in_v3[op1].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\kro_sfx_xin_tele-out_v3.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level_general_tips.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Level_up.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level1_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level1_endless_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level1_endless_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level1_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level1_tips.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level2_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level2_endless_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level2_endless_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level2_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level2_specialTroll.conf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level3_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level3_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level3_specialLeprechaun.conf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level4_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level4_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level4_specialShrekBird.conf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level5_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level5_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level6_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level6_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level6_spawnerController.conf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level7_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level7_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level8_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level8_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level9_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level9_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level10_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level10_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level10_spawnerController.conf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level11_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level11_bossConfig.conf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level11_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level11_spawnerController.conf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level12_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level12_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level13_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level13_dragon_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level13_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level13_spawnerController.conf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level14_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level14_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level14_spawnerController.conf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level15_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level15_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level15_spawnerController.conf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level16_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level16_gnoll_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level16_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level16_spawnerController.conf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level17_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level17_gnoll_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level17_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level17_spawnerController.conf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level18_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level18_gnoll_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level18_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level18_spawnerController.conf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level19_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level19_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level20_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level20_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level20_spawnerController.conf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level21_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level21_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level22_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level22_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level101_astar.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level101_paths.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Lilith_confirm-01d[wet].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Lilith_confirm-02d[wet].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Lilith_confirm-03f[wet].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Lilith_confirm-04a[wet].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Lilith_death-01a[wet].caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Lynn_confirm_01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Lynn_confirm_02c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Lynn_confirm_03a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Lynn_confirm_04d.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Lynn_death_01b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\lynn_explosion_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\lynn_hero_despair_fx_above_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\lynn_hero_despair_fx_decal_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\lynn_hero_ultimate_fx_above_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\lynn_hero_ultimate_fx_decal_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\lynn_hero_ultimate_fx_over_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\lynn_hero_weakening_fx_above_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\lynn_hero_weakening_fx_decal_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mactans_malicia_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mage_highElven_balls_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mage_highElven_balls_proy_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mage_highElven_energyBall_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mage_highElven_proy_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mage_highElven_proyBig_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mage_highElven_shooter_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Mage_Taunt[2]-02a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Mage_Taunt-01e.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Mage_Taunt-03d.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mage_tower_shooter_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mage_towers_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mage_wild_creepFx_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mage_wild_explosion_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mage_wild_proy_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mage_wild_ray_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mage_wild_shooter_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mainmenu_spritesheet_32_1-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mainmenu_spritesheet_32_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\malicia_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mantaray_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\map_difficulty_spritesheet_32-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\map_spritesheet_16_a_3-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\map_spritesheet_16_na_i4-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\map_spritesheet_16_na_i5-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\map_spritesheet_16_na-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\map_spritesheet_32_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\map_spritesheet_32_3-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\map_spritesheet_32-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mapDeco_eaglePath.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mapDeco_eagleShadowPath.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mapScene.roads.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mercenary_draw_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\metropolis_content_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\metropolis_content_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\metropolis_content-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\metropolis_crystalUnstable_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\metropolis_special_teleport_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\miniboss_gnoll_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Motumbo_charge_special.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Motumbo_hit.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Motumbo_jump_special.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\mountedAvenger_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\ogre_mage_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\ogre_mage_aura_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\ogre_mage_proy_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\ogre_mage_shield_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\PapaTree_Clobberin[2]-01e.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\PapaTree_Fiery[2]-01d.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\PapaTree_Ready[2]-01d.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\paralyzingTree_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\paralyzingTree_particle_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\paralyzingTree_particle0_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\paralyzingTree_particle1_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\paralyzingTree_particle2_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\paralyzingTree_stun_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\particle_gems.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\particle_gems-ipadhd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\particle_inapp_heart.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\particle_inapp_heart-ipadhd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\particle_upgrade.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\particle_upgrade-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\particle_victory.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\particle_victory-ipadhd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\perython_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\perython_rockthrower_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Phoenix2-death_01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Phoenix2-death_01b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\pixie_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\plant_magic_blosom_proy.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\power_lightning_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\powersController.conf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\PrinceDenas-confirm_01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\PrinceDenas-confirm_02c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\PrinceDenas-confirm_03b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\PrinceDenas-confirm_04a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\PrinceDenas-death_01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\rabbit_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\razorboar_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\RazzAndRags_01b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\RazzAndRags_02b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\RazzAndRags_03d.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\RazzAndRags_04c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\RazzAndRags-death_01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\redcap_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Reg%27son-confirm_01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Reg%27son-confirm_02c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Reg%27son-confirm_03d.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Reg%27son-confirm_04a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Reg%27son-death_01c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\reinforce_A0_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\reinforce_A1_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\reinforce_A2_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\reinforce_A3_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\reinforce_B0_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\reinforce_B1_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\reinforce_B2_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\reinforce_B3_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\reinforce_C0_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\reinforce_C1_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\reinforce_C2_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\reinforce_C3_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Reinforcement-01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Reinforcement-02c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Reinforcement-03c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Reinforcement-04b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Reinforcement-Death_c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\reinforcements.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Reinforcements_01b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Reinforcements_02a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Reinforcements_03c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\roadRunner_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\satyr_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\satyrHoplite_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\scenes.assets.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\scenesCommon.assets.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\scourger_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\scourger_shadow_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\screecher_bat_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\screecher_bat_stun_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\shadow_champion_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\shadow_spawn_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\snare_endless_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\soldiers_blade_singer_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\soldiers_forest_keeper_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\son_of_mactans_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\son_of_mactans_particles_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_AchievementWin.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_ArrowHit2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_ArrowHit3.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_ArrowRelease2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_ArrowRelease3.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_BattleAxe.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_Bomb1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_Coins.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_CommonAreaHit.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_EnemyBigDead.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_EnemyExplode1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_EnemyGoblinDead.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_EnemyHealing.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_EnemyOrcDead.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_EnemyPuffDead.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_EnemySkeletonBreak2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_EnemyTrollDead.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_EngineerShot.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_FireballHit.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_FireballUnleash.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_GUIButtonCommon.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_GUIBuyUpgrade.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_GUIMouseOverTowerIcon.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_GUIOpenTowerMenu.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_HumanDead1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_HumanDead2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_HumanDead3.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_HumanDead4.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_LooseLife.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_MageShot.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_MapNewFlag.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_MapRoad.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_NextWaveReady.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_NotificationClose.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_NotificationOpen.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_NotificationPaperOver.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_NotificationPaperOver2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_NotificationSecondLevel.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_Polimorph.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_QuestCompleted.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_QuestFailed.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_RallyPointPlaced.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_RocketLaunt.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_Shootgun.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_Shrapnel.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_Sniper.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_SoldiersFighting.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_Sorcerer.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_SpellRefresh.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_SpellSelect.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_SpellTowerHold_Cast.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_SpellTowerHold_Dissipate.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_SpiderAttack.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_SpiderAttack2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_Tesla_attack_1.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_Tesla_attack_2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_TowerBuilding.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_TowerOpenDoor.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_TowerSell.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_TowerUpgrade.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_VictoryCheer.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_WaveIncoming.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_WinStars.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_WolfAttack.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Sound_WolfAttack2.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\spiderQueen_layer_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\splash_spritesheet_32.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\splash_spritesheet_32-ipadhd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\splashScene.animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\splashScene.assets.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level_endless1_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level_endless1-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level_endless2_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level_endless2_3-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level_endless2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level1_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level1-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level2_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level3_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level3_3-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level3-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level4_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level4-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level5_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level5-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level6_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level6-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level7_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level7-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level8_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level8-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level9_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level9_3-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level9-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level10_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level10-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level11_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level11_3-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level11_4-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level11-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level12_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level12-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level13_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level13-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level14_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level14-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level15_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level15_3-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level15-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level16_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level16-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level17_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level17-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level18_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level18_3-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level18-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level19_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level19-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level20_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level20-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level21_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level21-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level22_2-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level22_3-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sprite_level22-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\stage6_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\stage8_pixie_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\stage10_pork_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\stage10_redRidingHood_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\stage10_wolf_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\stage15_bossDecal_demon_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\stage15_mactans_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\stage15_malicia_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\stage15_shield_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\stage15_specials.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\stage19_drizztdourden_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\stage19_gnoll_drizztdourden_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\StoneDruid_Taunt-01b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\StoneDruid_Taunt-02b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\StoneDruid_Taunt-03a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\sword_spider_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\tarantula_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\theBeheader_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\tower_archer_arcane_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\tower_archer_silver_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\tower_rock_thrower_entwood_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\twilight_avenger_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\twilight_avenger_effect_big_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\twilight_avenger_effect_small_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\twilight_avenger_explosion_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\twilight_bannerbearer_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\twilight_bannerbearer_aura_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\twilight_bannerbearer_enemy_aura_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\twilight_evoker_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\twilight_heretic_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Veznan_death-[new]01b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Veznan-confirm_01e.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Veznan-confirm_02f.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Veznan-confirm_03_custom_fb.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Veznan-confirm_04_custom_ec.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Viking_Transform.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\wave_packs1.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\wave_packs2.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\webspitterSpider_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\webspitterSpider_web_animations.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\WildMagus_Doom[2]-01b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\WildMagus_Ready-01a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\WildMagus_Silence-01c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\woods_content-hd.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Xin-confirm_01c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Xin-confirm_02b.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Xin-confirm_03a.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Xin-confirm_04c.caf">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Xin-death_01a.caf">
+      <Filter>resource</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Resources\api_key.txt">
+      <Filter>resource</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\bittering_content-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\but_social0004.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\but_social0004-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\but_social0005.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\but_social0005-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\cinematics_comic1-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\cinematics_comic2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\cinematics_comic3-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\cinematics_comic4-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\cinematics_comic5-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\cinematics_comic6-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\cinematics_comic7-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\cinematics_comic8-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\CloseNormal.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\CloseSelected.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\common_spritesheet_16_a_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\common_spritesheet_16_na_2_IPAD2_5-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\common_spritesheet_16_na_2_IPAD2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\common_spritesheet_16_na-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\common_spritesheet_32-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\common_spritesheet_localized_32_cn-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\common_spritesheet_localized_32-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\credits_scene-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_bittering_rancor_2_enemies.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_bittering_rancor_2_enemies-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_bittering_rancor_2_enemies-ipadhd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_bittering_rancor_enemies-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_faerie_grove_enemies_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_faerie_grove_enemies-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_alleria-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_archer-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_bravebark_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_bravebark-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_bruce-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_denas-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_durax-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_eldritch-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_elementalist-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_fallenangel_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_fallenangel-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_faustus_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_faustus-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_lynn-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_panda_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_panda-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_phoenix_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_phoenix-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_pixie_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_pixie-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_rag-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_veznan_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hero_veznan-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hulking_rage_2_enemies-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_hulking_rage_enemies-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_metropolis_enemies_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_metropolis_enemies-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_towers_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_towers-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_woods_2_enemies-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\elves_woods_enemies-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0001-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0002-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0003-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0004-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0005-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0006-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0007-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0008-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0009-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0010-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0011-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0012-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0013-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0014-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0015-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0016-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0017-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0018-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0019-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0020-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0021-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0022-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0023-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0024-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0025-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0026-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0027-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0028-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0029-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0030-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0031-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0032-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0033-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0034-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0035-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0036-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0037-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0038-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0039-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0040-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0041-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0042-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_creeps_0043-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0001-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0002-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0003-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0004-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0005-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0006-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0007-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0008-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0009-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0010-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0011-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0012-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0013-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0014-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0015-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0016-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0017-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0018-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0019-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\encyclopedia_towers_0020-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\ending_scene-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\faerie_content_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\faerie_content-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\fps_images.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\gui_menu_sprite_campaign_32-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\gui_menu_sprite_endless_32-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\gui_menu_sprite_heroic_32-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\gui_menu_sprite_iron_32-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\gui_notification_endless-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\gui_notification_upgrade-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\HelloWorld.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\hulking_rage_content-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\inaps_gemParticle_0001.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\inaps_gemParticle_0001-ipadhd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\ingame_gui-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\lives_particle.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\lives_particle-ipadhd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\LogoApportable.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\mainmenu_spritesheet_32_1-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\mainmenu_spritesheet_32_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\map_difficulty_spritesheet_32-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\map_spritesheet_16_a_3-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\map_spritesheet_16_na_i4-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\map_spritesheet_16_na_i5-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\map_spritesheet_16_na-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\map_spritesheet_32_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\map_spritesheet_32_3-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\map_spritesheet_32-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\metropolis_content_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\metropolis_content-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\particleTexture.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\particleTexture-ipadhd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\power_loading.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\power_loading-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\splash_spritesheet_32.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\splash_spritesheet_32-ipadhd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level_endless1_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level_endless1-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level_endless2_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level_endless2_3-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level_endless2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level1_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level1-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level2_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level3_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level3_3-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level3-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level4_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level4-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level5_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level5-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level6_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level6-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level7_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level7-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level8_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level8-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level9_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level9_3-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level9-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level10_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level10-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level11_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level11_3-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level11_4-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level11-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level12_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level12-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level13_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level13-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level14_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level14-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level15_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level15_3-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level15-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level16_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level16-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level17_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level17-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level18_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level18_3-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level18-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level19_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level19-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level20_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sprite_level20-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage_endless_1-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage_endless_2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage1-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage2-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage3-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage4-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage5-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage6-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage7-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage8-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage9-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage10-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage11-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage12-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage13-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage14-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage15-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage16-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage17-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage18-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage19-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\thumb_stage20-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\tooltip_bg.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\tooltip_bg_small.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\tooltip_bg_small-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\tooltip_bg-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\tutorial_powers_polaroids_0001-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\tutorial_powers_polaroids_0002-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\tutorial_powers_polaroids_0003-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\tutorial_powers_polaroids_0004-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\tutorial_powers_polaroids_0005-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\tutorial_powers_polaroids_0006-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\tutorial_powers_polaroids_0007-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\waveflag_redcircle.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\waveflag_redcircle-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\waveflag_redcircle-ipadhd.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\woods_content-hd.png">
+      <Filter>resource</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\Resources\kre_bgmusic_map[master_25-08].mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_bossfight[master].mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_bossfight_prebattle_v2[master_03-11].mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_creditos[master].mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_maintheme[master_25-08].mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_t1_battle1.mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_t1_battle1_v4[master_03-11].mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_t1_battle2[master_25-08].mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_t1_prebattle1_[master_25-08].mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_t1_prebattle2[master_30-09].mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_t2_battle1.mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_t2_battle2[master_03-09].mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_t2_prebattle1[master_30-09].mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_t2_prebattle2[master_25-08].mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_t3_battle1[master_03-11].mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_t3_battle2[master_30-10].mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_t3_prebattle1[master_01-11].mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_t3_prebattle2[master_25-08].mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\kro_bgmusic_victory[master_03-11].mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\logo_shimmer.mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\MusicSuspense.mp3">
+      <Filter>resource</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\Resources\level1_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level1_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level1_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level2_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level2_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level2_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level3_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level3_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level3_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level4_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level4_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level4_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level5_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level5_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level5_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level6_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level6_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level6_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level7_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level7_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level7_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level8_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level8_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level8_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level9_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level9_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level9_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level10_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level10_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level10_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level11_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level11_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level11_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level12_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level12_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level12_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level13_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level13_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level13_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level14_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level14_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level14_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level15_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level15_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level15_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level16_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level16_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level16_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level17_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level17_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level17_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level18_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level18_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level18_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level19_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level19_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level19_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level20_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level20_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level20_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level101_waves_campaign.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level101_waves_heroic.xml">
+      <Filter>resource</Filter>
+    </Xml>
+    <Xml Include="..\Resources\level101_waves_iron.xml">
+      <Filter>resource</Filter>
+    </Xml>
   </ItemGroup>
 </Project>
