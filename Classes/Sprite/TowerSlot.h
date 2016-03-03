@@ -11,11 +11,12 @@
 
 #include "cocos2d.h"
 #include "Tower.h"
+#include "TouchNode.h"
 
 USING_NS_CC;
 
 class SlotRing;
-class TowerSlot : public Node
+class TowerSlot : public TouchNode
 {
     friend SlotRing;
 public:

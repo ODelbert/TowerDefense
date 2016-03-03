@@ -9,7 +9,7 @@
 #include "Stage1.h"
 #include "CommonDef.h"
 #include "Base/WaveManager.h"
-#include "Tower/TowerSlot.h"
+#include "Sprite/TowerSlot.h"
 
 bool Stage1::init()
 {

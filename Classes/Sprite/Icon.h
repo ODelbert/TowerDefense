@@ -13,10 +13,11 @@
 #include <stdio.h>
 #include "cocos2d.h"
 #include "CommonDef.h"
+#include "TouchNode.h"
 
 USING_NS_CC;
 
-class UpgradeIcon : public Node
+class UpgradeIcon : public TouchNode
 {
     enum State {
         Enabled = 0,

@@ -21,7 +21,8 @@ class GameManager : public Ref, public Singleton<GameManager>
 public:
     GameManager();
     void dispatchEvent(TDEvent* event);
-
+    void addEventListenerWithFixedPriority(EventListener* listener, int priority);
+    void addEventListenerWithSceneGraphPriority(EventListener* listener, Node* node);
     CC_SYNTHESIZE(int, m_gold, Gold);
 };
 

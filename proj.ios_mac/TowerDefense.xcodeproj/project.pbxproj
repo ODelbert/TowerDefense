@@ -48,11 +48,14 @@
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		9A06DA391C82DDE10017B1D5 /* EventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A06DA371C82DDE10017B1D5 /* EventHandler.cpp */; };
 		9A06DA3A1C85E3660017B1D5 /* EventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A06DA371C82DDE10017B1D5 /* EventHandler.cpp */; };
+		9A9FC75C1C88A0A300C21E25 /* TouchNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FC75A1C88A0A300C21E25 /* TouchNode.cpp */; };
+		9A9FC75D1C88A0A300C21E25 /* TouchNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FC75A1C88A0A300C21E25 /* TouchNode.cpp */; };
+		9A9FC7641C88A63E00C21E25 /* TowerSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FC7621C88A63E00C21E25 /* TowerSlot.cpp */; };
+		9A9FC7651C88A63E00C21E25 /* TowerSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FC7621C88A63E00C21E25 /* TowerSlot.cpp */; };
 		9ACEE7061C7F489C005AEF3F /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6BB1C7F489C005AEF3F /* Event.cpp */; };
 		9ACEE7071C7F489C005AEF3F /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6BB1C7F489C005AEF3F /* Event.cpp */; };
 		9ACEE7081C7F489C005AEF3F /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6BD1C7F489C005AEF3F /* EventListener.cpp */; };
 		9ACEE7091C7F489C005AEF3F /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6BD1C7F489C005AEF3F /* EventListener.cpp */; };
-		9ACEE70A1C7F489C005AEF3F /* EventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6BF1C7F489C005AEF3F /* EventManager.cpp */; };
 		9ACEE70C1C7F489C005AEF3F /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6C11C7F489C005AEF3F /* GameManager.cpp */; };
 		9ACEE70D1C7F489C005AEF3F /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6C11C7F489C005AEF3F /* GameManager.cpp */; };
 		9ACEE70E1C7F489C005AEF3F /* WaveManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE6C31C7F489C005AEF3F /* WaveManager.cpp */; };
@@ -107,8 +110,6 @@
 		9ACEE73F1C7F489C005AEF3F /* Shooter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE7001C7F489C005AEF3F /* Shooter.cpp */; };
 		9ACEE7401C7F489C005AEF3F /* Tower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE7021C7F489C005AEF3F /* Tower.cpp */; };
 		9ACEE7411C7F489C005AEF3F /* Tower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE7021C7F489C005AEF3F /* Tower.cpp */; };
-		9ACEE7421C7F489C005AEF3F /* TowerSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE7041C7F489C005AEF3F /* TowerSlot.cpp */; };
-		9ACEE7431C7F489C005AEF3F /* TowerSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEE7041C7F489C005AEF3F /* TowerSlot.cpp */; };
 		9AD58D061C7624C6004DC630 /* achievement_particle-ipadhd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AD587871C7624AC004DC630 /* achievement_particle-ipadhd.plist */; };
 		9AD58D071C7624C6004DC630 /* achievement_particle-ipadhd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AD587871C7624AC004DC630 /* achievement_particle-ipadhd.plist */; };
 		9AD58D081C7624C6004DC630 /* achievement_particle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AD587881C7624AC004DC630 /* achievement_particle.plist */; };
@@ -3003,12 +3004,14 @@
 		9A06DA371C82DDE10017B1D5 /* EventHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventHandler.cpp; sourceTree = "<group>"; };
 		9A06DA381C82DDE10017B1D5 /* EventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventHandler.h; sourceTree = "<group>"; };
 		9A06DA3B1C85F4B80017B1D5 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		9A9FC75A1C88A0A300C21E25 /* TouchNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TouchNode.cpp; sourceTree = "<group>"; };
+		9A9FC75B1C88A0A300C21E25 /* TouchNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchNode.h; sourceTree = "<group>"; };
+		9A9FC7621C88A63E00C21E25 /* TowerSlot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TowerSlot.cpp; sourceTree = "<group>"; };
+		9A9FC7631C88A63E00C21E25 /* TowerSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerSlot.h; sourceTree = "<group>"; };
 		9ACEE6BB1C7F489C005AEF3F /* Event.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Event.cpp; sourceTree = "<group>"; };
 		9ACEE6BC1C7F489C005AEF3F /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		9ACEE6BD1C7F489C005AEF3F /* EventListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventListener.cpp; sourceTree = "<group>"; };
 		9ACEE6BE1C7F489C005AEF3F /* EventListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListener.h; sourceTree = "<group>"; };
-		9ACEE6BF1C7F489C005AEF3F /* EventManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventManager.cpp; sourceTree = "<group>"; };
-		9ACEE6C01C7F489C005AEF3F /* EventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventManager.h; sourceTree = "<group>"; };
 		9ACEE6C11C7F489C005AEF3F /* GameManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
 		9ACEE6C21C7F489C005AEF3F /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		9ACEE6C31C7F489C005AEF3F /* WaveManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaveManager.cpp; sourceTree = "<group>"; };
@@ -3066,8 +3069,6 @@
 		9ACEE7011C7F489C005AEF3F /* Shooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shooter.h; sourceTree = "<group>"; };
 		9ACEE7021C7F489C005AEF3F /* Tower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tower.cpp; sourceTree = "<group>"; };
 		9ACEE7031C7F489C005AEF3F /* Tower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tower.h; sourceTree = "<group>"; };
-		9ACEE7041C7F489C005AEF3F /* TowerSlot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TowerSlot.cpp; sourceTree = "<group>"; };
-		9ACEE7051C7F489C005AEF3F /* TowerSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerSlot.h; sourceTree = "<group>"; };
 		9AD587871C7624AC004DC630 /* achievement_particle-ipadhd.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = "achievement_particle-ipadhd.plist"; path = "../../Resources/achievement_particle-ipadhd.plist"; sourceTree = "<group>"; };
 		9AD587881C7624AC004DC630 /* achievement_particle.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = achievement_particle.plist; path = ../../Resources/achievement_particle.plist; sourceTree = "<group>"; };
 		9AD587891C7624AC004DC630 /* api_key.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = api_key.txt; path = ../../Resources/api_key.txt; sourceTree = "<group>"; };
@@ -6083,8 +6084,6 @@
 				9ACEE6BC1C7F489C005AEF3F /* Event.h */,
 				9ACEE6BD1C7F489C005AEF3F /* EventListener.cpp */,
 				9ACEE6BE1C7F489C005AEF3F /* EventListener.h */,
-				9ACEE6BF1C7F489C005AEF3F /* EventManager.cpp */,
-				9ACEE6C01C7F489C005AEF3F /* EventManager.h */,
 				9ACEE6C11C7F489C005AEF3F /* GameManager.cpp */,
 				9ACEE6C21C7F489C005AEF3F /* GameManager.h */,
 				9ACEE6C31C7F489C005AEF3F /* WaveManager.cpp */,
@@ -6098,8 +6097,12 @@
 		9ACEE6C51C7F489C005AEF3F /* Sprite */ = {
 			isa = PBXGroup;
 			children = (
+				9A9FC7621C88A63E00C21E25 /* TowerSlot.cpp */,
+				9A9FC7631C88A63E00C21E25 /* TowerSlot.h */,
 				9ACEE6C61C7F489C005AEF3F /* Icon.cpp */,
 				9ACEE6C71C7F489C005AEF3F /* Icon.h */,
+				9A9FC75A1C88A0A300C21E25 /* TouchNode.cpp */,
+				9A9FC75B1C88A0A300C21E25 /* TouchNode.h */,
 			);
 			path = Sprite;
 			sourceTree = "<group>";
@@ -6210,8 +6213,6 @@
 				9ACEE7011C7F489C005AEF3F /* Shooter.h */,
 				9ACEE7021C7F489C005AEF3F /* Tower.cpp */,
 				9ACEE7031C7F489C005AEF3F /* Tower.h */,
-				9ACEE7041C7F489C005AEF3F /* TowerSlot.cpp */,
-				9ACEE7051C7F489C005AEF3F /* TowerSlot.h */,
 			);
 			path = Tower;
 			sourceTree = "<group>";
@@ -9182,7 +9183,6 @@
 				9ACEE73E1C7F489C005AEF3F /* Shooter.cpp in Sources */,
 				9ACEE72A1C7F489C005AEF3F /* BattleField.cpp in Sources */,
 				9ACEE7181C7F489C005AEF3F /* CommonEnemy.cpp in Sources */,
-				9ACEE7421C7F489C005AEF3F /* TowerSlot.cpp in Sources */,
 				9ACEE7401C7F489C005AEF3F /* Tower.cpp in Sources */,
 				9ACEE7101C7F489C005AEF3F /* Icon.cpp in Sources */,
 				9ACEE71A1C7F489C005AEF3F /* Enemy.cpp in Sources */,
@@ -9190,7 +9190,6 @@
 				9ACEE7301C7F489C005AEF3F /* ResourceManager.cpp in Sources */,
 				9ACEE7321C7F489C005AEF3F /* GameScene.cpp in Sources */,
 				9ACEE70C1C7F489C005AEF3F /* GameManager.cpp in Sources */,
-				9ACEE70A1C7F489C005AEF3F /* EventManager.cpp in Sources */,
 				9ACEE72E1C7F489C005AEF3F /* PListReader.cpp in Sources */,
 				9ACEE73A1C7F489C005AEF3F /* Archer.cpp in Sources */,
 				9ACEE7221C7F489C005AEF3F /* TalentedEnemy.cpp in Sources */,
@@ -9199,6 +9198,7 @@
 				9ACEE7161C7F489C005AEF3F /* GameConfig.cpp in Sources */,
 				9ACEE7061C7F489C005AEF3F /* Event.cpp in Sources */,
 				9ACEE7341C7F489C005AEF3F /* TestAnimation.cpp in Sources */,
+				9A9FC75C1C88A0A300C21E25 /* TouchNode.cpp in Sources */,
 				9ACEE71E1C7F489C005AEF3F /* FlyingEnemy.cpp in Sources */,
 				9ACEE7261C7F489C005AEF3F /* StartLayer.cpp in Sources */,
 				9ACEE7121C7F489C005AEF3F /* AnimationManager.cpp in Sources */,
@@ -9207,6 +9207,7 @@
 				9ACEE7281C7F489C005AEF3F /* TouchLayer.cpp in Sources */,
 				9ACEE7141C7F489C005AEF3F /* AppDelegate.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				9A9FC7641C88A63E00C21E25 /* TowerSlot.cpp in Sources */,
 				9ACEE7201C7F489C005AEF3F /* RunningEnemy.cpp in Sources */,
 				9ACEE71C1C7F489C005AEF3F /* EnemyFactory.cpp in Sources */,
 				9ACEE73C1C7F489C005AEF3F /* Barrack.cpp in Sources */,
@@ -9233,13 +9234,14 @@
 				9ACEE7091C7F489C005AEF3F /* EventListener.cpp in Sources */,
 				9ACEE7151C7F489C005AEF3F /* AppDelegate.cpp in Sources */,
 				9ACEE71D1C7F489C005AEF3F /* EnemyFactory.cpp in Sources */,
+				9A9FC75D1C88A0A300C21E25 /* TouchNode.cpp in Sources */,
 				9ACEE7111C7F489C005AEF3F /* Icon.cpp in Sources */,
+				9A9FC7651C88A63E00C21E25 /* TowerSlot.cpp in Sources */,
 				9ACEE7391C7F489C005AEF3F /* TestMapLocation.cpp in Sources */,
 				9ACEE70D1C7F489C005AEF3F /* GameManager.cpp in Sources */,
 				9ACEE7351C7F489C005AEF3F /* TestAnimation.cpp in Sources */,
 				9ACEE71F1C7F489C005AEF3F /* FlyingEnemy.cpp in Sources */,
 				9ACEE7071C7F489C005AEF3F /* Event.cpp in Sources */,
-				9ACEE7431C7F489C005AEF3F /* TowerSlot.cpp in Sources */,
 				9ACEE7191C7F489C005AEF3F /* CommonEnemy.cpp in Sources */,
 				9ACEE7251C7F489C005AEF3F /* EncyclopediaLayer.cpp in Sources */,
 				9ACEE7311C7F489C005AEF3F /* ResourceManager.cpp in Sources */,

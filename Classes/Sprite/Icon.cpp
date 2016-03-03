@@ -1,7 +1,7 @@
 #include "Icon.h"
 #include "Tower/Tower.h"
 #include "Base/Event.h"
-#include "Tower/TowerSlot.h"
+#include "Sprite/TowerSlot.h"
 
 UpgradeIcon* UpgradeIcon::create(const std::string& name, int tid)
 {
@@ -26,7 +26,7 @@ bool UpgradeIcon::init(const std::string& name)
 
     touchListener->onTouchBegan = CC_CALLBACK_2(UpgradeIcon::onTouchBegan, this);
 
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
+    GM->addEventListenerWithSceneGraphPriority(touchListener, this);
 
     return true;
 }
@@ -39,10 +39,11 @@ UpgradeIcon::UpgradeIcon(int tid)
 
 bool UpgradeIcon::onTouchBegan(Touch* touch, Event* event)
 {
-    switch (m_state) {
-    case Disabled:
+    if (!isTouched(touch)) {
         return false;
-    break;
+    }
+    
+    switch (m_state) {
     case Enabled:
         {
             m_state = Selected;
@@ -52,20 +53,29 @@ bool UpgradeIcon::onTouchBegan(Touch* touch, Event* event)
         break;
     case Selected:
         {
-            TowerSlot* towerSlot = static_cast<TowerSlot*>(getParent());
+            if (!getParent() || !getParent()->getParent()) return false;
+            TowerSlot* towerSlot = static_cast<TowerSlot*>(getParent()->getParent());
             if (towerSlot != nullptr) {
-                auto tower = towerSlot->getParent();
+                auto tower = towerSlot->getTower();
                 if (tower) {
                     Tower* t = static_cast<Tower*>(tower);
                     TowerEvent evt(towerSlot->getSlotId(), TowerEvent::Command::Upgrade);
                     GM->dispatchEvent(&evt);
-                    t->removeFromParent();
+                    
                     // sound
                     GM->setGold(GM->getGold() + t->getUpgradeGold());
                     // add new tower
+                    
+                    t->removeFromParent();
                 }
             }
         }
         break;
+    case Disabled:
+    default:
+        {}
+        break;
     }
+    
+    return true;
 }

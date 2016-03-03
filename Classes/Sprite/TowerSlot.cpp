@@ -63,7 +63,6 @@
 
 #define ALERT_CREEP "creepAlert.png"
 
-
 #define LBL_REBOREN_CD "icon_0001.png"
 #define LBL_MOVESPEED "icon_0002.png"
 #define LBL_COSTFOOD "icon_0003.png"
@@ -289,6 +288,7 @@ Tower* TowerSlot::getTower() const
 
 bool TowerSlot::onTouchBegan(Touch* touch, Event* event)
 {
+    if (isTouched(touch)) return false;
     if (!m_slotRing) return false;
     if (!m_slotRing->isVisible()) {
         m_slotRing->onTouch();
