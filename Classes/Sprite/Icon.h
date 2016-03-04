@@ -31,9 +31,9 @@ public:
     virtual bool init(const std::string& name);
     virtual bool onTouchBegan(Touch* touch, Event* event);
 
+
     CC_SYNTHESIZE(int, m_cost, Cost);
     CC_SYNTHESIZE(State, m_state, State);
-
     CC_SYNTHESIZE_READONLY(int, m_tid, Tid);
 
 private:

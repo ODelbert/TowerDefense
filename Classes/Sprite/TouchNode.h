@@ -19,14 +19,21 @@ USING_NS_CC;
 class TouchNode : public Node
 {
 public:
-    CREATE_FUNC(TouchNode);
-    virtual bool init();
-    
-    virtual bool onTouchBegan(Touch* touch, Event* event);
+    static TouchNode* create(const std::string& name);
+    virtual bool init(const std::string& name);
+
+    // void setTouchCallback(onTouchBegan begin, onTouchMoved move, onTouchEnded end);
     
 protected:
-    bool isTouched(Touch* touch);
-};
+	virtual bool handleEvent(Event* touch);
 
+private:
+	virtual bool onTouchBegan(Touch* touch, Event* event);
+    virtual void onTouchMoved(Touch* touch, Event* event);
+    virtual void onTouchEnded(Touch* touch, Event* event);
+
+private:
+	Sprite* m_texture;
+};
 
 #endif /* TouchNode_hpp */
