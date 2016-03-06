@@ -19,28 +19,39 @@ USING_NS_CC;
 
 class UpgradeIcon : public TouchNode
 {
-    enum State {
-        Enabled = 0,
-        Selected,
-        Confrim,
-        Disabled
-    };
-    
 public:
-    static UpgradeIcon* create(const std::string& name, int tid = -1);
-    virtual bool init(const std::string& name);
-    virtual bool onTouchBegan(Touch* touch, Event* event);
+    static UpgradeIcon* create(TowerType type);
+    virtual bool init(TowerType type);
+    void onTouchEvent();
+    
+private:
+    Sprite* m_selectedImage;
+    Sprite* m_disabledImage;
+};
 
-
-    CC_SYNTHESIZE(int, m_cost, Cost);
-    CC_SYNTHESIZE(State, m_state, State);
+class TechnologyIcon : public TouchNode
+{
+public:
+    static TechnologyIcon* create(TowerType type, int tid);
+    virtual bool init(TowerType type, int tid);
+    void onTouchEvent();
+    
     CC_SYNTHESIZE_READONLY(int, m_tid, Tid);
-
+    
 private:
-    UpgradeIcon(int tid);
+    Sprite* m_selectedImage;
+    Sprite* m_disabledImage;
+};
 
+class SellIcon : public TouchNode
+{
+public:
+    static SellIcon* create();
+    virtual bool init();
+    void onTouchEvent();
+    
 private:
-    Sprite* m_texture;
+    Sprite* m_selectedImage;
 };
 
 #endif

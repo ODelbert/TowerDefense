@@ -18,22 +18,33 @@ USING_NS_CC;
 
 class TouchNode : public Node
 {
+    typedef std::function<void()> TouchCallBack;
+public:
+    enum State {
+        Enabled = 0,
+        Selected,
+        Disabled
+    };
+    
 public:
     static TouchNode* create(const std::string& name);
     virtual bool init(const std::string& name);
 
-    // void setTouchCallback(onTouchBegan begin, onTouchMoved move, onTouchEnded end);
+    void setTouchCallback(TouchCallBack callBack);
+    bool inTouchRegion(Touch* touch);
+
+    CC_SYNTHESIZE(State, m_state, State);
     
 protected:
-	virtual bool handleEvent(Event* touch);
-
-private:
+    TouchNode();
 	virtual bool onTouchBegan(Touch* touch, Event* event);
     virtual void onTouchMoved(Touch* touch, Event* event);
     virtual void onTouchEnded(Touch* touch, Event* event);
 
-private:
+protected:
 	Sprite* m_texture;
+    bool m_isTouchBegan;
+    TouchCallBack m_callback;
 };
 
 #endif /* TouchNode_hpp */

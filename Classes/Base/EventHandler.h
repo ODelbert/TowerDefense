@@ -9,13 +9,11 @@
 #ifndef EventHandler_h
 #define EventHandler_h
 
-
 #include <stdio.h>
 #include "cocos2d.h"
 #include "CommonDef.h"
 #include "Event.h"
 #include "EventListener.h"
-
 
 USING_NS_CC;
 

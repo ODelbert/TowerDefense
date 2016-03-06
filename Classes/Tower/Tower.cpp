@@ -1,8 +1,6 @@
-
 #include "Tower.h"
 #include "Maps/BattleField.h"
 #include "Shooter.h"
-
 
 void Tower::initWithTowerId(TowerID id, TowerLevel level)
 {
@@ -13,6 +11,7 @@ void Tower::initWithTowerId(TowerID id, TowerLevel level)
     m_fireRate = 0;
     m_range = 0;
     m_weapon = WeaponType_Invalid;
+    
     
     switch (id) {
     case TowerID_Archer:

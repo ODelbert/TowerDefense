@@ -62,8 +62,6 @@ private:
     std::vector<std::vector<std::vector<Vec2> > > m_paths;
     int m_waveIndex;
     int m_spawnIndex;
-    
-    
     Sprite* m_runningEnemy;
 };
 

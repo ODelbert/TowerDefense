@@ -9,58 +9,6 @@
 #include "TowerSlot.h"
 #include "Sprite/Icon.h"
 
-// Tower upgrade icons
-#define ICON_UPGRADE "main_icons_0005.png"
-#define ICON_LOCK "main_icons_0005.png"
-#define ICON_UPGRADE "main_icons_0014.png"
-#define ICON_HARMMER "main_icons_0015.png"
-#define ICON_CONFRIM "main_icons_0019.png"
-#define ICON_ARCHER "main_icons_0100.png"
-#define ICON_BARRACKS "main_icons_0101.png"
-#define ICON_MAGE "main_icons_0102.png"
-#define ICON_ARTILLERY "main_icons_0103.png"
-#define ICON_BLADESINGER "main_icons_0104.png"
-#define ICON_FORESTKEEPER "main_icons_0105.png"
-#define ICON_WILD "main_icons_0106.png"
-#define ICON_HIGHELF "main_icons_0107.png"
-#define ICON_ARCANE "main_icons_0108.png"
-#define ICON_SILVER "main_icons_0109.png"
-#define ICON_HENGE "main_icons_0110.png"
-#define ICON_TREE "main_icons_0111.png"
-
-#define ICON_SELL "ico_sell_0001.png"
-#define ICON_SELL_CONFIRM "ico_sell_0002.png"
-#define ICON_CANNOT_SELL "ico_sell_disabled_0001.png"
-
-#define ICON_WEAPON_MAGIC "toptip_icons_0010.png"
-
-#define ICON_BLADESINGER_1 "main_icons_0104.png"
-#define ICON_BLADESINGER_2 "main_icons_0104.png"
-#define ICON_BLADESINGER_3 "main_icons_0104.png"
-#define ICON_FORESTKEEPER_1 "main_icons_0105.png"
-#define ICON_FORESTKEEPER_2 "main_icons_0105.png"
-#define ICON_FORESTKEEPER_3 "main_icons_0105.png"
-#define ICON_WILD_1 "main_icons_0106.png"
-#define ICON_WILD_2 "main_icons_0106.png"
-#define ICON_WILD_3 "main_icons_0106.png"
-#define ICON_HIGHELF_1 "main_icons_0107.png"
-#define ICON_HIGHELF_2 "main_icons_0107.png"
-#define ICON_HIGHELF_3 "main_icons_0107.png"
-#define ICON_ARCANE_1 "main_icons_0108.png"
-#define ICON_ARCANE_2 "main_icons_0108.png"
-#define ICON_ARCANE_3 "main_icons_0108.png"
-#define ICON_SILVER_1 "main_icons_0109.png"
-#define ICON_SILVER_2 "main_icons_0109.png"
-#define ICON_SILVER_3 "main_icons_0109.png"
-#define ICON_HENGE_1 "main_icons_0110.png"
-#define ICON_HENGE_2 "main_icons_0110.png"
-#define ICON_HENGE_3 "main_icons_0110.png"
-#define ICON_TREE_1 "main_icons_0111.png"
-#define ICON_TREE_2 "main_icons_0111.png"
-#define ICON_TREE_3 "main_icons_0111.png"
-
-#define ICON_CONFRIM "main_icons_0111.png"
-
 #define ALERT_CREEP "creepAlert.png"
 
 #define LBL_REBOREN_CD "icon_0001.png"
@@ -76,6 +24,18 @@
 #define LBL_BOWDAMAGE "icon_00011.png"
 #define LBL_GUNDAMAGE "icon_00012.png"
 
+// 默认图标/禁用图标
+struct IconEntry
+{
+    IconEntry(const std::string& nor, const std::string& dis)
+    {
+        normal = nor;
+        disabled = dis;
+    }
+    
+    std::string normal;
+    std::string disabled;
+};
 
 struct Location
 {
@@ -145,15 +105,15 @@ bool SlotRing::init(TowerSlot *owner)
     return true;
 }
 
-std::vector<std::string> SlotRing::getIcons()
+std::vector<IconEntry> SlotRing::getIcons()
 {
-    std::vector<std::string> ret;
+    std::vector<IconEntry> ret;
     Tower* tower = m_owner->getTower();
     if (!tower) {
-        ret.push_back(ICON_ARCHER);
-        ret.push_back(ICON_BARRACKS);
-        ret.push_back(ICON_MAGE);
-        ret.push_back(ICON_ARTILLERY);
+        ret.push_back(IconEntry(ICON_ARCHER, ICON_DISABLED_ARCHER));
+        ret.push_back(IconEntry(ICON_BARRACKS, ICON_DISABLED_BARRACKS));
+        ret.push_back(IconEntry(ICON_MAGE, ICON_DISABLED_));
+        ret.push_back(IconEntry(ICON_ARTILLERY, ICON_DISABLED_));
         return ret;
     }
     
@@ -161,84 +121,84 @@ std::vector<std::string> SlotRing::getIcons()
         switch (tower->getId()) {
             case TowerID_Archer:
             {
-                ret.push_back(ICON_ARCANE);
-                ret.push_back(ICON_SILVER);
+                ret.push_back(IconEntry(ICON_ARCANE, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_SILVER, ICON_DISABLED_));
             }
                 break;
             case TowerID_Barrack:
             {
-                ret.push_back(ICON_BLADESINGER);
-                ret.push_back(ICON_FORESTKEEPER);
+                ret.push_back(IconEntry(ICON_BLADESINGER, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_FORESTKEEPER, ICON_DISABLED_));
             }
                 break;
             case TowerID_Mage:
             {
-                ret.push_back(ICON_WILD);
-                ret.push_back(ICON_HIGHELF);
+                ret.push_back(IconEntry(ICON_WILD, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_HIGHELF, ICON_DISABLED_));
             }
                 break;
             case TowerID_Artillery:
             {
-                ret.push_back(ICON_HENGE);
-                ret.push_back(ICON_TREE);
+                ret.push_back(IconEntry(ICON_HENGE, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_TREE, ICON_DISABLED_));
             }
                 break;
 
             // level4 towers updrage icons
             case TowerID_Archer_Arcane:
             {
-                ret.push_back(ICON_ARCANE_1);
-                ret.push_back(ICON_ARCANE_2);
-                ret.push_back(ICON_ARCANE_3);
+                ret.push_back(IconEntry(ICON_ARCANE_1, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_ARCANE_2, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_ARCANE_3, ICON_DISABLED_));
             }
                 break;
             case TowerID_Archer_Silver:
             {
-                ret.push_back(ICON_SILVER_1);
-                ret.push_back(ICON_SILVER_2);
-                ret.push_back(ICON_SILVER_3);
+                ret.push_back(IconEntry(ICON_SILVER_1, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_SILVER_2, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_SILVER_3, ICON_DISABLED_));
             }
                 break;
             case TowerID_BladeSinger:
             {
-                ret.push_back(ICON_BLADESINGER_1);
-                ret.push_back(ICON_BLADESINGER_2);
-                ret.push_back(ICON_BLADESINGER_3);
+                ret.push_back(IconEntry(ICON_BLADESINGER_1, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_BLADESINGER_2, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_BLADESINGER_3, ICON_DISABLED_));
             }
                 break;
             case TowerID_ForestKeeper:
             {
-                ret.push_back(ICON_FORESTKEEPER_1);
-                ret.push_back(ICON_FORESTKEEPER_2);
-                ret.push_back(ICON_FORESTKEEPER_3);
+                ret.push_back(IconEntry(ICON_FORESTKEEPER_1, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_FORESTKEEPER_2, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_FORESTKEEPER_3, ICON_DISABLED_));
             }
                 break;
             case TowerID_Mage_Wild:
             {
-                ret.push_back(ICON_WILD_1);
-                ret.push_back(ICON_WILD_2);
-                ret.push_back(ICON_WILD_3);
+                ret.push_back(IconEntry(ICON_WILD_1, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_WILD_2, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_WILD_3, ICON_DISABLED_));
             }
                 break;
             case TowerID_Mage_HighElven:
             {
-                ret.push_back(ICON_HIGHELF_1);
-                ret.push_back(ICON_HIGHELF_2);
-                ret.push_back(ICON_HIGHELF_3);
+                ret.push_back(IconEntry(ICON_HIGHELF_1, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_HIGHELF_2, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_HIGHELF_3, ICON_DISABLED_));
             }
                 break;
             case TowerID_Artillery_Henge:
             {
-                ret.push_back(ICON_HENGE_1);
-                ret.push_back(ICON_HENGE_2);
-                ret.push_back(ICON_HENGE_3);
+                ret.push_back(IconEntry(ICON_HENGE_1, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_HENGE_2, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_HENGE_3, ICON_DISABLED_));
             }
                 break;
             case TowerID_Artillery_Tree:
             {
-                ret.push_back(ICON_TREE_1);
-                ret.push_back(ICON_TREE_2);
-                ret.push_back(ICON_TREE_3);
+                ret.push_back(IconEntry(ICON_TREE_1, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_TREE_2, ICON_DISABLED_));
+                ret.push_back(IconEntry(ICON_TREE_3, ICON_DISABLED_));
             }
                 break;
             default:
@@ -253,7 +213,7 @@ std::vector<std::string> SlotRing::getIcons()
 void SlotRing::onTouch()
 {
     std::vector<std::string> icons = getIcons();
-    m_texture->removeAllChildrenWithCleanup(false);
+    m_texture->removeAllChildrenWithCleanup(true);
     for (int i = 0; i < icons.size(); ++i) {
         auto towerFrame = Sprite::createWithSpriteFrameName("main_icons_over.png");
         auto towerIcon = UpgradeIcon::create(icons[i]);
@@ -267,35 +227,25 @@ void SlotRing::onTouch()
 
 bool TowerSlot::init()
 {
-    m_terrian = Sprite::createWithSpriteFrameName("build_terrain_0001.png");
-    m_terrian->setPosition(0, 0);
-    addChild(m_terrian);
+    TouchNode::init("build_terrain_0001.png");
     
-    m_slotRing = SlotRing::create(this);
-    m_slotRing->setPosition(0, 0);
-    addChild(m_slotRing);
+    m_ring = SlotRing::create(this);
+    if (!m_ring) return false;
+    m_ring->setPosition(0, 0);
+    addChild(m_ring);
     
-    auto listener = EventListenerTouchOneByOne::create();
-    listener->onTouchBegan = CC_CALLBACK_2(TowerSlot::onTouchBegan, this);
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+    setTouchCallback(CC_CALLBACK_0(TowerSlot::onTouchEvent, this));
     return true;
 }
 
-Tower* TowerSlot::getTower() const
+void TowerSlot::onTouchEvent()
 {
-    return m_tower;
-}
-
-bool TowerSlot::onTouchBegan(Touch* touch, Event* event)
-{
-    if (isTouched(touch)) return false;
-    if (!m_slotRing) return false;
-    if (!m_slotRing->isVisible()) {
-        m_slotRing->onTouch();
-        m_slotRing->setVisible(true);
+    if (!m_ring) return;
+    if (!m_ring->isVisible()) {
+        m_ring->onTouch();
+        m_ring->setVisible(true);
     }
     else
-        m_slotRing->setVisible(false);
-    
-    return true;
+        m_ring->setVisible(false);
 }
+

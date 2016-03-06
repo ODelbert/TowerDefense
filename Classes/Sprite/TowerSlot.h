@@ -22,16 +22,12 @@ class TowerSlot : public TouchNode
 public:
     CREATE_FUNC(TowerSlot);
     virtual bool init();
-    
-    Tower* getTower() const;
-    bool onTouchBegan(Touch* touch, Event* evt);
-    CC_SYNTHESIZE(int, m_slotId, SlotId);
 
-private:
-    Sprite* m_terrian;
-    SlotRing* m_slotRing;
-    Tower* m_tower;
+    virtual void onTouchEvent();
+    CC_SYNTHESIZE(int, m_slotId, SlotId);
     
+    CC_SYNTHESIZE_READONLY(Tower*, m_tower, Tower);
+    CC_SYNTHESIZE_READONLY(SlotRing*, m_ring, ring)
 };
 
 #endif /* defined(__TowerDefense__TowerSlot__) */
