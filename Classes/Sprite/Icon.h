@@ -25,7 +25,7 @@ public:
     void onTouchEvent();
 
     CC_SYNTHESIZE(TowerID, m_id, Id)
-    
+    TD_SYNTHESIZE_CHECK(bool, m_enabled, Enabled);
 private:
     Sprite* m_selectedImage;
     Sprite* m_disabledImage;

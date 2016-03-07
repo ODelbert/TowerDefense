@@ -112,7 +112,7 @@ void SlotRing::onTouch()
         if (tower) {
             if (tower->getLevel() < TowerLevel_3) {
                 // upgrade & sell ----> 2
-                auto upgrader = UpgradeIcon::create(TowerID_Invaild,GM->enoughGold(tower->getUpgradeGold()));
+                auto upgrader = UpgradeIcon::create(TowerID_Invaild, GM->enoughGold(tower->getUpgradeGold()));
                 icons.push_back(upgrader);
             }
             else if (3 == tower->getLevel()) {
@@ -166,7 +166,7 @@ void SlotRing::onTouch()
         }
         else {
             // 4 basic icon  ----> 4
-            auto u1 = UpgradeIcon::create(TowerID_Archer_Arcane, GM->enoughGold(TowerID_Archer_Arcane));
+            auto u1 = UpgradeIcon::create(TowerID_Archer, GM->enoughGold(TowerID_Archer_Arcane));
             auto u2 = UpgradeIcon::create(TowerID_Barrack, GM->enoughGold(TowerID_Barrack));
             auto u3 = UpgradeIcon::create(TowerID_Mage, GM->enoughGold(TowerID_Mage));
             auto u4 = UpgradeIcon::create(TowerID_Artillery, GM->enoughGold(TowerID_Artillery));

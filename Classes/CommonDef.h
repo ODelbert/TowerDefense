@@ -22,6 +22,11 @@
 #define TD_SIZE(x) CCLOG("%s size = %f %f", #x, x->getContentSize().width, x->getContentSize().height);
 #define TD_POS(x) CCLOG("%s pos = %f %f", #x, x->getPosition().x, x->getPosition().y);
 
+#define TD_SYNTHESIZE_CHECK(varType, varName, funName)\
+protected: varType varName;\
+public: virtual varType is##funName(void) const { return varName; }\
+public: virtual void set##funName(varType var){ varName = var; }
+
 typedef unsigned int uint;
 //#define SINGLETON_IMPL(class) \
 //class* class::s_instance = nullptr; \

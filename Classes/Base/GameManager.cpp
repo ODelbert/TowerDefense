@@ -33,7 +33,7 @@ void GameManager::addEventListenerWithSceneGraphPriority(EventListener* listener
 
 bool GameManager::enoughGold(int gold)
 {
-    return m_gold >= gold;
+    return true;
 }
 
 

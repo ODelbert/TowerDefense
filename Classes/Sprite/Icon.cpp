@@ -309,9 +309,12 @@ UpgradeIcon* UpgradeIcon::create(TowerID id, bool enabled)
 bool UpgradeIcon::init(TowerID id, bool enabled)
 {
     m_id = id;
+    m_enabled = enabled;
     std::string name = GetUpgradeIcon(id, enabled);
     TouchNode::init(name);
     setTouchCallback(CC_CALLBACK_0(UpgradeIcon::onTouchEvent, this));
+    auto towerFrame = Sprite::createWithSpriteFrameName("main_icons_over.png");
+    addChild(towerFrame);
     return true;
 }
 
@@ -342,6 +345,9 @@ void UpgradeIcon::onTouchEvent()
                     // add new tower
                     
                     t->removeFromParent();
+                }
+                else {
+                    
                 }
             }
         }
