@@ -308,6 +308,7 @@ UpgradeIcon* UpgradeIcon::create(TowerID id, bool enabled)
 
 bool UpgradeIcon::init(TowerID id, bool enabled)
 {
+    m_id = id;
     std::string name = GetUpgradeIcon(id, enabled);
     TouchNode::init(name);
     setTouchCallback(CC_CALLBACK_0(UpgradeIcon::onTouchEvent, this));

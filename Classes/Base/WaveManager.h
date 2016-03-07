@@ -35,8 +35,8 @@ struct SpawnInfo
 class WaveInfo : public Ref
 {
 public:
-    CC_SYNTHESIZE(uint, m_waveInterval, WaveInterval);
-    CC_SYNTHESIZE(uint, m_pathIndex, PathIndex);
+    CC_SYNTHESIZE(uint, m_waveInterval, WaveInterval)
+    CC_SYNTHESIZE(uint, m_pathIndex, PathIndex)
     
     std::vector<SpawnInfo> spwans() { return m_spwans; }
     void addSpawn(const SpawnInfo& s) { m_spwans.push_back(s); }
@@ -51,7 +51,7 @@ public:
     void initialize(int level, int difficulty);
     std::vector<Vec2> getPath(int path, int subPath);
     int getPathCount();
-    CC_SYNTHESIZE(uint, m_cash, Cash);
+    CC_SYNTHESIZE(uint, m_cash, Cash)
     
 private:
     void nextEnemy(float dt);

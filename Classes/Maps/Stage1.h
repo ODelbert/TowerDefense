@@ -14,7 +14,7 @@
 class Stage1 : public BattleField
 {
 public:
-    CREATE_FUNC(Stage1);
+    CREATE_FUNC(Stage1)
     virtual bool init();
     virtual void addTowerSlots();
 };

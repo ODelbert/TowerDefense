@@ -167,13 +167,20 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\ResourceManager\PListReader.cpp" />
     <ClCompile Include="..\Classes\ResourceManager\ResourceManager.cpp" />
     <ClCompile Include="..\Classes\Scene\GameScene.cpp" />
+    <ClCompile Include="..\Classes\Sprite\Assembly.cpp" />
     <ClCompile Include="..\Classes\Sprite\Icon.cpp" />
+    <ClCompile Include="..\Classes\Sprite\RangeCircle.cpp" />
+    <ClCompile Include="..\Classes\Sprite\TouchNode.cpp" />
+    <ClCompile Include="..\Classes\Sprite\TowerSlot.cpp" />
+    <ClCompile Include="..\Classes\Sprite\WaveFalg.cpp" />
+    <ClCompile Include="..\Classes\tests\TestAnimation.cpp" />
+    <ClCompile Include="..\Classes\tests\TestLayer.cpp" />
     <ClCompile Include="..\Classes\tests\TestMapLocation.cpp" />
     <ClCompile Include="..\Classes\Tower\Archer.cpp" />
     <ClCompile Include="..\Classes\Tower\Barrack.cpp" />
     <ClCompile Include="..\Classes\Tower\Shooter.cpp" />
     <ClCompile Include="..\Classes\Tower\Tower.cpp" />
-    <ClCompile Include="..\Classes\Tower\TowerSlot.cpp" />
+    <ClCompile Include="..\Classes\Tower\TowerFactory.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -203,13 +210,20 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\ResourceManager\PListReader.h" />
     <ClInclude Include="..\Classes\ResourceManager\ResourceManager.h" />
     <ClInclude Include="..\Classes\Scene\GameScene.h" />
+    <ClInclude Include="..\Classes\Sprite\Assembly.h" />
     <ClInclude Include="..\Classes\Sprite\Icon.h" />
+    <ClInclude Include="..\Classes\Sprite\RangeCircle.h" />
+    <ClInclude Include="..\Classes\Sprite\TouchNode.h" />
+    <ClInclude Include="..\Classes\Sprite\TowerSlot.h" />
+    <ClInclude Include="..\Classes\Sprite\WaveFalg.h" />
+    <ClInclude Include="..\Classes\tests\TestAnimation.h" />
+    <ClInclude Include="..\Classes\tests\TestLayer.h" />
     <ClInclude Include="..\Classes\tests\TestMapLocation.h" />
     <ClInclude Include="..\Classes\Tower\Archer.h" />
     <ClInclude Include="..\Classes\Tower\Barrack.h" />
     <ClInclude Include="..\Classes\Tower\Shooter.h" />
     <ClInclude Include="..\Classes\Tower\Tower.h" />
-    <ClInclude Include="..\Classes\Tower\TowerSlot.h" />
+    <ClInclude Include="..\Classes\Tower\TowerFactory.h" />
     <ClInclude Include="..\Resources\EnemyHalloweenAbomination.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

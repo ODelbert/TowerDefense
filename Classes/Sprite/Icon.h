@@ -23,6 +23,8 @@ public:
     static UpgradeIcon* create(TowerID id, bool enabled = true);
     virtual bool init(TowerID id, bool enabled = true);
     void onTouchEvent();
+
+    CC_SYNTHESIZE(TowerID, m_id, Id)
     
 private:
     Sprite* m_selectedImage;

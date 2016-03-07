@@ -16,7 +16,7 @@ USING_NS_CC;
 class StartLayer : public Layer
 {
 public:
-    CREATE_FUNC(StartLayer);
+    CREATE_FUNC(StartLayer)
     bool init();
     
 private:

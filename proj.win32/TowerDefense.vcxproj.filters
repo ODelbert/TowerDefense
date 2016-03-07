@@ -15,9 +15,6 @@
     <ClCompile Include="main.cpp">
       <Filter>win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\AppDelegate.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Animation\AnimationManager.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -81,7 +78,28 @@
     <ClCompile Include="..\Classes\Scene\GameScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Sprite\Assembly.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\Sprite\Icon.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Sprite\RangeCircle.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Sprite\TouchNode.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Sprite\TowerSlot.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Sprite\WaveFalg.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\tests\TestAnimation.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\tests\TestLayer.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\tests\TestMapLocation.cpp">
@@ -99,7 +117,10 @@
     <ClCompile Include="..\Classes\Tower\Tower.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Tower\TowerSlot.cpp">
+    <ClCompile Include="..\Classes\Tower\TowerFactory.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -107,14 +128,8 @@
     <ClInclude Include="main.h">
       <Filter>win32</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\AppDelegate.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CommonDef.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ResourceId.h">
-      <Filter>src</Filter>
+    <ClInclude Include="..\Resources\EnemyHalloweenAbomination.h">
+      <Filter>resource</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Animation\AnimationManager.h">
       <Filter>src</Filter>
@@ -185,7 +200,28 @@
     <ClInclude Include="..\Classes\Scene\GameScene.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Sprite\Assembly.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\Sprite\Icon.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Sprite\RangeCircle.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Sprite\TouchNode.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Sprite\TowerSlot.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Sprite\WaveFalg.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\tests\TestAnimation.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\tests\TestLayer.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\tests\TestMapLocation.h">
@@ -203,11 +239,17 @@
     <ClInclude Include="..\Classes\Tower\Tower.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Tower\TowerSlot.h">
+    <ClInclude Include="..\Classes\Tower\TowerFactory.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Resources\EnemyHalloweenAbomination.h">
-      <Filter>resource</Filter>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CommonDef.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ResourceId.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
