@@ -37,6 +37,7 @@ public:
     CC_SYNTHESIZE(WeaponType, m_weapon, Weapon)
 
     CC_SYNTHESIZE(uint, m_costGold, CostGold)
+    CC_SYNTHESIZE(uint, m_UpgradeGold, UpgradeGold)
     CC_SYNTHESIZE(uint, m_t1Gold, T1Gold)
     CC_SYNTHESIZE(uint, m_t2Gold, T2Gold)
     CC_SYNTHESIZE(uint, m_t3Gold, T3Gold)

@@ -33,6 +33,10 @@ public:
     void addTower(Tower* enemy);
     void removeTower(Tower* tower);
     
+    virtual bool onTouchBegan(Touch* touch, Event* event);
+    void onTouchEnded(Touch* touch, Event* event);
+    void onTouchMoved(Touch* touch, Event* event);
+
 protected:
     explicit BattleField();
 

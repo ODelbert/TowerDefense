@@ -8,7 +8,7 @@ USING_NS_CC;
 class AllyFlag : public Node
 {
 public:
-    CREATE_FUNC(AllyFlag);
+    CREATE_FUNC(AllyFlag)
     virtual bool init();
 
     void setFlagAt(Vec2 pos);
@@ -20,6 +20,7 @@ class Assembly : public TouchNode
 {
 public:
     static Assembly* create(int slotId);
+    virtual bool init(int slotId);
     virtual bool onTouchBegan(Touch* touch, Event* event);
     virtual void onTouchMoved(Touch* touch, Event* event);
     virtual void onTouchEnded(Touch* touch, Event* event);

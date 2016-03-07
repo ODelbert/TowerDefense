@@ -1,8 +1,19 @@
-#include "GatherFlag.h"
+#include "Assembly.h"
 
-bool Assembly::init()
+Assembly* Assembly::create(int slotId)
 {
+    Assembly* ret = new Assembly;
+    if (ret && ret->init(slotId)) {
+        ret->autorelease();
+        return ret;
+    }
+    
+    CC_SAFE_DELETE(ret);
+    return nullptr;
+}
 
+bool Assembly::init(int slotId)
+{
     return true;
 }
 

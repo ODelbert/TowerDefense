@@ -2,7 +2,7 @@
 #include "Tower/Tower.h"
 #include "Base/Event.h"
 #include "Sprite/TowerSlot.h"
-
+#include "Base/GameManager.h"
 
 #define ICON_UPGRADE "main_icons_0005.png"
 #define ICON_DISABLED_UPGRADE "main_icons_disabled_0005.png"
@@ -338,7 +338,7 @@ void UpgradeIcon::onTouchEvent()
                     GM->dispatchEvent(&evt);
                     
                     // sound
-                    GM->setGold(GM->getGold() + t->getUpgradeGold());
+                    GM->setGold(GM->getGold() + 0);
                     // add new tower
                     
                     t->removeFromParent();
@@ -351,4 +351,38 @@ void UpgradeIcon::onTouchEvent()
         {}
         break;
     }
+}
+
+SellIcon* SellIcon::create()
+{
+    SellIcon* ret = new SellIcon;
+    if (ret && ret->init()) {
+        ret->autorelease();
+        return ret;
+    }
+    
+    CC_SAFE_DELETE(ret);
+    return nullptr;
+}
+
+bool SellIcon::init()
+{
+    return true;
+}
+
+TechnologyIcon* TechnologyIcon::create(TowerID id, int tid, bool enabled)
+{
+    TechnologyIcon* ret = new TechnologyIcon;
+    if (ret && ret->init(id, tid)) {
+        ret->autorelease();
+        return ret;
+    }
+    
+    CC_SAFE_DELETE(ret);
+    return nullptr;
+}
+
+bool TechnologyIcon::init(TowerID id, int tid, bool enabled)
+{
+    return true;
 }

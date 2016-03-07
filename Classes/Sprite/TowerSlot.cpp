@@ -8,10 +8,10 @@
 
 #include "TowerSlot.h"
 #include "Sprite/Icon.h"
-#include "Sprite/GatherFlag.h"
+#include "Sprite/Assembly.h"
+#include "Base/GameManager.h"
 
 #define ALERT_CREEP "creepAlert.png"
-
 #define LBL_REBOREN_CD "icon_0001.png"
 #define LBL_MOVESPEED "icon_0002.png"
 #define LBL_COSTFOOD "icon_0003.png"
@@ -76,9 +76,6 @@ public:
     static SlotRing* create(TowerSlot* owner);
     bool init(TowerSlot* owner);
     void onTouch();
-    
-private:
-    std::vector<std::string> getIcons();
 
 private:
     TowerSlot* m_owner;
@@ -106,111 +103,6 @@ bool SlotRing::init(TowerSlot *owner)
     return true;
 }
 
-std::vector<IconEntry> SlotRing::getIcons()
-{
-    std::vector<IconEntry> ret;
-    Tower* tower = m_owner->getTower();
-    if (!tower) {
-        ret.push_back(IconEntry(ICON_ARCHER, ICON_DISABLED_ARCHER));
-        ret.push_back(IconEntry(ICON_BARRACKS, ICON_DISABLED_BARRACKS));
-        ret.push_back(IconEntry(ICON_MAGE, ICON_DISABLED_));
-        ret.push_back(IconEntry(ICON_ARTILLERY, ICON_DISABLED_));
-        return ret;
-    }
-    
-    if (tower->getLevel() >= TowerLevel_3) {
-        switch (tower->getId()) {
-            case TowerID_Archer:
-            {
-                ret.push_back(IconEntry(ICON_ARCANE, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_SILVER, ICON_DISABLED_));
-            }
-                break;
-            case TowerID_Barrack:
-            {
-                ret.push_back(IconEntry(ICON_BLADESINGER, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_FORESTKEEPER, ICON_DISABLED_));
-            }
-                break;
-            case TowerID_Mage:
-            {
-                ret.push_back(IconEntry(ICON_WILD, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_HIGHELF, ICON_DISABLED_));
-            }
-                break;
-            case TowerID_Artillery:
-            {
-                ret.push_back(IconEntry(ICON_HENGE, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_TREE, ICON_DISABLED_));
-            }
-                break;
-
-            // level4 towers updrage icons
-            case TowerID_Archer_Arcane:
-            {
-                ret.push_back(IconEntry(ICON_ARCANE_1, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_ARCANE_2, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_ARCANE_3, ICON_DISABLED_));
-            }
-                break;
-            case TowerID_Archer_Silver:
-            {
-                ret.push_back(IconEntry(ICON_SILVER_1, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_SILVER_2, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_SILVER_3, ICON_DISABLED_));
-            }
-                break;
-            case TowerID_BladeSinger:
-            {
-                ret.push_back(IconEntry(ICON_BLADESINGER_1, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_BLADESINGER_2, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_BLADESINGER_3, ICON_DISABLED_));
-            }
-                break;
-            case TowerID_ForestKeeper:
-            {
-                ret.push_back(IconEntry(ICON_FORESTKEEPER_1, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_FORESTKEEPER_2, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_FORESTKEEPER_3, ICON_DISABLED_));
-            }
-                break;
-            case TowerID_Mage_Wild:
-            {
-                ret.push_back(IconEntry(ICON_WILD_1, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_WILD_2, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_WILD_3, ICON_DISABLED_));
-            }
-                break;
-            case TowerID_Mage_HighElven:
-            {
-                ret.push_back(IconEntry(ICON_HIGHELF_1, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_HIGHELF_2, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_HIGHELF_3, ICON_DISABLED_));
-            }
-                break;
-            case TowerID_Artillery_Henge:
-            {
-                ret.push_back(IconEntry(ICON_HENGE_1, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_HENGE_2, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_HENGE_3, ICON_DISABLED_));
-            }
-                break;
-            case TowerID_Artillery_Tree:
-            {
-                ret.push_back(IconEntry(ICON_TREE_1, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_TREE_2, ICON_DISABLED_));
-                ret.push_back(IconEntry(ICON_TREE_3, ICON_DISABLED_));
-            }
-                break;
-            default:
-                break;
-        }
-    }
-    else {
-        ret.push_back(ICON_UPGRADE);
-    }
-}
-
 void SlotRing::onTouch()
 {
     m_texture->removeAllChildrenWithCleanup(true);
@@ -220,28 +112,28 @@ void SlotRing::onTouch()
         if (tower) {
             if (tower->getLevel() < TowerLevel_3) {
                 // upgrade & sell ----> 2
-                auto upgrader = UpgradeIcon::create(TowerID_, GM->enoughGold(tower->getLevel() + 1));
+                auto upgrader = UpgradeIcon::create(TowerID_Invaild,GM->enoughGold(tower->getUpgradeGold()));
                 icons.push_back(upgrader);
             }
             else if (3 == tower->getLevel()) {
-                auto u1 = NULL;
-                auto u2 = NULL;
+                Node* u1 = NULL;
+                Node* u2 = NULL;
                 switch (tower->getId()) {
                 case TowerID_Archer:
-                    u1 = UpgradeIcon::create(TowerID_Archer_Arcane, GM->enoughGold(TowerID_Archer_Arcane));
-                    u2 = UpgradeIcon::create(TowerID_Archer_Silver, GM->enoughGold(TowerID_Archer_Silver));
+                    u1 = UpgradeIcon::create(TowerID_Archer_Arcane, GM->enoughGold(tower->getUpgradeGold()));
+                    u2 = UpgradeIcon::create(TowerID_Archer_Silver, GM->enoughGold(tower->getUpgradeGold()));
                     break;
                 case TowerID_Barrack:
-                    u1 = UpgradeIcon::create(TowerID_BladeSinger, GM->enoughGold(TowerID_BladeSinger));
-                    u2 = UpgradeIcon::create(TowerID_ForestKeeper, GM->enoughGold(TowerID_ForestKeeper));
+                    u1 = UpgradeIcon::create(TowerID_BladeSinger, GM->enoughGold(tower->getUpgradeGold()));
+                    u2 = UpgradeIcon::create(TowerID_ForestKeeper, GM->enoughGold(tower->getUpgradeGold()));
                     break;
                 case TowerID_Mage:
-                    u1 = UpgradeIcon::create(TowerID_Mage_Wild, GM->enoughGold(TowerID_Mage_Wild));
-                    u2 = UpgradeIcon::create(TowerID_Mage_HighElven, GM->enoughGold(TowerID_Mage_HighElven));
+                    u1 = UpgradeIcon::create(TowerID_Mage_Wild, GM->enoughGold(tower->getUpgradeGold()));
+                    u2 = UpgradeIcon::create(TowerID_Mage_HighElven, GM->enoughGold(tower->getUpgradeGold()));
                     break;
                 case TowerID_Artillery:
-                    u1 = UpgradeIcon::create(TowerID_Artillery_Henge, GM->enoughGold(TowerID_Artillery_Henge));
-                    u2 = UpgradeIcon::create(TowerID_Artillery_Tree, GM->enoughGold(TowerID_Artillery_Tree));
+                    u1 = UpgradeIcon::create(TowerID_Artillery_Henge, GM->enoughGold(tower->getUpgradeGold()));
+                    u2 = UpgradeIcon::create(TowerID_Artillery_Tree, GM->enoughGold(tower->getUpgradeGold()));
                 default:
                     break;
                 }
@@ -251,9 +143,9 @@ void SlotRing::onTouch()
             }
             else {
                 // technology & sell ----> 3
-                auto t1 = TechnologyIcon::create(tower->getId(), 0, GM->enoughGold(tower->getId(), 0));
-                auto t2 = TechnologyIcon::create(tower->getId(), 1, GM->enoughGold(tower->getId(), 1));
-                auto t3 = TechnologyIcon::create(tower->getId(), 2, GM->enoughGold(tower->getId(), 2));
+                auto t1 = TechnologyIcon::create(tower->getId(), 0, GM->enoughGold(tower->getT1Gold()));
+                auto t2 = TechnologyIcon::create(tower->getId(), 1, GM->enoughGold(tower->getT2Gold()));
+                auto t3 = TechnologyIcon::create(tower->getId(), 2, GM->enoughGold(tower->getT3Gold()));
                 icons.push_back(t1);
                 icons.push_back(t2);
                 icons.push_back(t3);
@@ -261,11 +153,11 @@ void SlotRing::onTouch()
 
             if (TowerID_Barrack == tower->getId() ||
                     TowerID_BladeSinger == tower->getId() ||
-                    TowerID_ForestKeeper == towre->getId() ||
-                    TowerID_Artillery_Henge == toer->getId()) {
-                auto gather = GatherFlag::create(m_owner->getSlotId());
-                addChild(gather);
-                gather->setPosition(0.5 * m_texture->getContentSize().width / 2, -0.866 * m_texture->getContentSize().height / 2);
+                    TowerID_ForestKeeper == tower->getId() ||
+                    TowerID_Artillery_Henge == tower->getId()) {
+                auto assembly = Assembly::create(m_owner->getSlotId());
+                addChild(assembly);
+                assembly->setPosition(0.5 * m_texture->getContentSize().width / 2, -0.866 * m_texture->getContentSize().height / 2);
             }
 
             auto seller = SellIcon::create();

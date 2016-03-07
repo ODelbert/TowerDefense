@@ -7,6 +7,7 @@
 //
 
 #include "TouchNode.h"
+#include "Base/GameManager.h"
 
 TouchNode* TouchNode::create(const std::string& name)
 {

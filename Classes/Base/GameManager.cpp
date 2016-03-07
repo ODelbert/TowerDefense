@@ -31,9 +31,9 @@ void GameManager::addEventListenerWithSceneGraphPriority(EventListener* listener
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, node);
 }
 
-bool GameManager::enoughGold(TowerID id, int tid)
+bool GameManager::enoughGold(int gold)
 {
-    return true;
+    return m_gold >= gold;
 }
 
 

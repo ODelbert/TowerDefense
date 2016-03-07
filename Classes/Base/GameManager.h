@@ -10,6 +10,7 @@
 #include "cocos2d.h"
 #include "Singleton.h"
 #include "Event.h"
+#include "CommonDef.h"
 
 USING_NS_CC;
 
@@ -25,7 +26,7 @@ public:
     void addEventListenerWithSceneGraphPriority(EventListener* listener, Node* node);
     CC_SYNTHESIZE(int, m_gold, Gold);
 
-    bool enoughGold(TowerID id, int tid = -1);
+    bool enoughGold(int gold);
 };
 
 #define GM GameManager::getInstance()
