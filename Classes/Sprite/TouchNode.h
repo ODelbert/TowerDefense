@@ -33,8 +33,8 @@ public:
     void setTouchCallback(TouchCallBack callBack);
     bool inTouchRegion(Touch* touch);
 
-    CC_SYNTHESIZE(State, m_state, State);
-    
+    CC_SYNTHESIZE(State, m_state, State)
+    CC_SYNTHESIZE(bool, m_forceLock, ForceLock) // designed for GatherFlag
 protected:
     TouchNode();
 	virtual bool onTouchBegan(Touch* touch, Event* event);

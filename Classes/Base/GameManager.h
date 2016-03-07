@@ -24,6 +24,8 @@ public:
     void addEventListenerWithFixedPriority(EventListener* listener, int priority);
     void addEventListenerWithSceneGraphPriority(EventListener* listener, Node* node);
     CC_SYNTHESIZE(int, m_gold, Gold);
+
+    bool enoughGold(TowerID id, int tid = -1);
 };
 
 #define GM GameManager::getInstance()

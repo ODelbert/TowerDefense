@@ -78,9 +78,9 @@ public:
 
 public:
     TowerEvent(int slotId, Command cmd);
-    CC_SYNTHESIZE(int, m_slotId, SlotId);
-    CC_SYNTHESIZE(int, m_technologyId, TechnologyId);
-    CC_SYNTHESIZE(Command, m_command, Command);
+    CC_SYNTHESIZE(int, m_slotId, SlotId)
+    CC_SYNTHESIZE(int, m_technologyId, TechnologyId)
+    CC_SYNTHESIZE(Command, m_command, Command)
 
 };
 

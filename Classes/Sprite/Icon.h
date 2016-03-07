@@ -20,8 +20,8 @@ USING_NS_CC;
 class UpgradeIcon : public TouchNode
 {
 public:
-    static UpgradeIcon* create(TowerType type);
-    virtual bool init(TowerType type);
+    static UpgradeIcon* create(TowerID id, bool enabled = true);
+    virtual bool init(TowerID id, bool enabled = true);
     void onTouchEvent();
     
 private:
@@ -32,11 +32,11 @@ private:
 class TechnologyIcon : public TouchNode
 {
 public:
-    static TechnologyIcon* create(TowerType type, int tid);
-    virtual bool init(TowerType type, int tid);
+    static TechnologyIcon* create(TowerID id, int tid, bool enabled = true);
+    virtual bool init(TowerID id, int tid, bool enabled = true);
     void onTouchEvent();
     
-    CC_SYNTHESIZE_READONLY(int, m_tid, Tid);
+    CC_SYNTHESIZE_READONLY(int, m_tid, Tid)
     
 private:
     Sprite* m_selectedImage;
@@ -49,7 +49,7 @@ public:
     static SellIcon* create();
     virtual bool init();
     void onTouchEvent();
-    
+
 private:
     Sprite* m_selectedImage;
 };

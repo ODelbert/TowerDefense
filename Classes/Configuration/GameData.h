@@ -82,9 +82,4 @@ static EnemyInfo s_enemiesInfo[] = {
 };
 
 #endif
-
-
-
-
-
 #endif /* defined(__TowerDefense__GameData__) */

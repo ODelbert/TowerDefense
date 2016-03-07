@@ -39,7 +39,8 @@ bool TouchNode::init(const std::string& name)
 
 TouchNode::TouchNode()
     : m_texture(nullptr),
-    m_isTouchBegan(false)
+    m_isTouchBegan(false),
+    m_forceLock(false)
 {}
 
 

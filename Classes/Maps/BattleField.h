@@ -27,11 +27,7 @@ public:
 
     const std::vector<Enemy*> getEnemies();
     const std::vector<Tower*> getTowers();
-    
-    virtual bool onTouchBegan(Touch* touch, Event* event) override;
-    virtual void onTouchEnded(Touch* touch, Event* event) override;
-    virtual void onTouchMoved(Touch* touch, Event* event) override;
-    
+
     void addEnemy(Enemy* enemy);
     void removeEnemy(Enemy* enemy);
     void addTower(Tower* enemy);

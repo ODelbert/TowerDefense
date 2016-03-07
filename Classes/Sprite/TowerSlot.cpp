@@ -8,6 +8,7 @@
 
 #include "TowerSlot.h"
 #include "Sprite/Icon.h"
+#include "Sprite/GatherFlag.h"
 
 #define ALERT_CREEP "creepAlert.png"
 
@@ -212,6 +213,88 @@ std::vector<IconEntry> SlotRing::getIcons()
 
 void SlotRing::onTouch()
 {
+    m_texture->removeAllChildrenWithCleanup(true);
+    if (m_owner) {
+        std::vector<Node*> icons;
+        Tower* tower = m_owner->getTower();
+        if (tower) {
+            if (tower->getLevel() < TowerLevel_3) {
+                // upgrade & sell ----> 2
+                auto upgrader = UpgradeIcon::create(TowerID_, GM->enoughGold(tower->getLevel() + 1));
+                icons.push_back(upgrader);
+            }
+            else if (3 == tower->getLevel()) {
+                auto u1 = NULL;
+                auto u2 = NULL;
+                switch (tower->getId()) {
+                case TowerID_Archer:
+                    u1 = UpgradeIcon::create(TowerID_Archer_Arcane, GM->enoughGold(TowerID_Archer_Arcane));
+                    u2 = UpgradeIcon::create(TowerID_Archer_Silver, GM->enoughGold(TowerID_Archer_Silver));
+                    break;
+                case TowerID_Barrack:
+                    u1 = UpgradeIcon::create(TowerID_BladeSinger, GM->enoughGold(TowerID_BladeSinger));
+                    u2 = UpgradeIcon::create(TowerID_ForestKeeper, GM->enoughGold(TowerID_ForestKeeper));
+                    break;
+                case TowerID_Mage:
+                    u1 = UpgradeIcon::create(TowerID_Mage_Wild, GM->enoughGold(TowerID_Mage_Wild));
+                    u2 = UpgradeIcon::create(TowerID_Mage_HighElven, GM->enoughGold(TowerID_Mage_HighElven));
+                    break;
+                case TowerID_Artillery:
+                    u1 = UpgradeIcon::create(TowerID_Artillery_Henge, GM->enoughGold(TowerID_Artillery_Henge));
+                    u2 = UpgradeIcon::create(TowerID_Artillery_Tree, GM->enoughGold(TowerID_Artillery_Tree));
+                default:
+                    break;
+                }
+
+                icons.push_back(u1);
+                icons.push_back(u2);
+            }
+            else {
+                // technology & sell ----> 3
+                auto t1 = TechnologyIcon::create(tower->getId(), 0, GM->enoughGold(tower->getId(), 0));
+                auto t2 = TechnologyIcon::create(tower->getId(), 1, GM->enoughGold(tower->getId(), 1));
+                auto t3 = TechnologyIcon::create(tower->getId(), 2, GM->enoughGold(tower->getId(), 2));
+                icons.push_back(t1);
+                icons.push_back(t2);
+                icons.push_back(t3);
+            }
+
+            if (TowerID_Barrack == tower->getId() ||
+                    TowerID_BladeSinger == tower->getId() ||
+                    TowerID_ForestKeeper == towre->getId() ||
+                    TowerID_Artillery_Henge == toer->getId()) {
+                auto gather = GatherFlag::create(m_owner->getSlotId());
+                addChild(gather);
+                gather->setPosition(0.5 * m_texture->getContentSize().width / 2, -0.866 * m_texture->getContentSize().height / 2);
+            }
+
+            auto seller = SellIcon::create();
+            addChild(seller);
+            seller->setPosition(m_texture->getContentSize().width / 2, -1 * m_texture->getContentSize().height / 2);
+        }
+        else {
+            // 4 basic icon  ----> 4
+            auto u1 = UpgradeIcon::create(TowerID_Archer_Arcane, GM->enoughGold(TowerID_Archer_Arcane));
+            auto u2 = UpgradeIcon::create(TowerID_Barrack, GM->enoughGold(TowerID_Barrack));
+            auto u3 = UpgradeIcon::create(TowerID_Mage, GM->enoughGold(TowerID_Mage));
+            auto u4 = UpgradeIcon::create(TowerID_Artillery, GM->enoughGold(TowerID_Artillery));
+            icons.push_back(u1);
+            icons.push_back(u2);
+            icons.push_back(u3);
+            icons.push_back(u4);
+        }
+
+        for (int i = 0; i < icons.size(); ++i) {
+            Node* icon = icons.at(i);
+            if (!icon) continue;
+            addChild(icon);
+            Location locate = icons.size() == 1 ? s_location_1[i]: icons.size() == 2 ? s_location_2[i] : icons.size() == 3 ? s_location_3[i] : icons.size() == 4 ? s_location_4[i] : Location();
+            icon->setPosition(locate.x * m_texture->getContentSize().width / 2, locate.y * m_texture->getContentSize().height / 2);
+        }
+    }
+
+
+    /*
     std::vector<std::string> icons = getIcons();
     m_texture->removeAllChildrenWithCleanup(true);
     for (int i = 0; i < icons.size(); ++i) {
@@ -223,6 +306,7 @@ void SlotRing::onTouch()
         towerFrame->setPosition(locate.x * m_texture->getContentSize().width / 2, locate.y * m_texture->getContentSize().height / 2);
         towerIcon->setPosition(locate.x * m_texture->getContentSize().width / 2, locate.y * m_texture->getContentSize().height / 2);
     }
+    */
 }
 
 bool TowerSlot::init()

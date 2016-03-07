@@ -18,15 +18,15 @@ USING_NS_CC;
 class SlotRing;
 class TowerSlot : public TouchNode
 {
-    friend SlotRing;
+    friend class SlotRing;
 public:
     CREATE_FUNC(TowerSlot);
     virtual bool init();
 
     virtual void onTouchEvent();
-    CC_SYNTHESIZE(int, m_slotId, SlotId);
+    CC_SYNTHESIZE(int, m_slotId, SlotId)
     
-    CC_SYNTHESIZE_READONLY(Tower*, m_tower, Tower);
+    CC_SYNTHESIZE_READONLY(Tower*, m_tower, Tower)
     CC_SYNTHESIZE_READONLY(SlotRing*, m_ring, ring)
 };
 

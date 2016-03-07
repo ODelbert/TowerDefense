@@ -295,10 +295,10 @@ static std::string GetUpgradeIcon(TowerID id, bool enabled)
     return "";
 }
 
-UpgradeIcon* UpgradeIcon::create(TowerType type)
+UpgradeIcon* UpgradeIcon::create(TowerID id, bool enabled)
 {
-    UpgradeIcon* ret = new UpgradeIcon(tid);
-    if (ret && ret->init(name)) {
+    UpgradeIcon* ret = new UpgradeIcon();
+    if (ret && ret->init(id, enabled)) {
         return ret;
     }
     
@@ -306,8 +306,9 @@ UpgradeIcon* UpgradeIcon::create(TowerType type)
     return nullptr;
 }
 
-bool UpgradeIcon::init(const std::string &name)
+bool UpgradeIcon::init(TowerID id, bool enabled)
 {
+    std::string name = GetUpgradeIcon(id, enabled);
     TouchNode::init(name);
     setTouchCallback(CC_CALLBACK_0(UpgradeIcon::onTouchEvent, this));
     return true;
@@ -332,6 +333,7 @@ void UpgradeIcon::onTouchEvent()
                 if (tower) {
                     Tower* t = static_cast<Tower*>(tower);
                     TowerEvent evt(towerSlot->getSlotId(), TowerEvent::Command::Upgrade);
+
                     GM->dispatchEvent(&evt);
                     
                     // sound

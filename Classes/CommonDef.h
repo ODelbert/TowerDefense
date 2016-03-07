@@ -77,6 +77,7 @@ enum SpeedType {
 };
 
 enum TowerID {
+    TowerID_Invaild = -1,
     TowerID_Archer_Arcane = 0,
     TowerID_Archer_Silver = 1,
     TowerID_Artillery_Henge = 2,
