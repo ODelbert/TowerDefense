@@ -27,7 +27,14 @@ bool TouchNode::init(const std::string& name)
     if (!m_texture) return false;
 
     addChild(m_texture);
-    initTouchListeners();
+    auto touchlistener = EventListenerTouchOneByOne::create();
+    if (!touchlistener) return false;
+    
+    touchlistener->onTouchBegan = CC_CALLBACK_2(TouchNode::onTouchBegan, this);
+    touchlistener->onTouchMoved = CC_CALLBACK_2(TouchNode::onTouchMoved, this);
+    touchlistener->onTouchEnded = CC_CALLBACK_2(TouchNode::onTouchEnded, this);
+    touchlistener->setSwallowTouches(true);
+    GM->addEventListenerWithSceneGraphPriority(touchlistener, this);
     return true;
 }
 
@@ -36,19 +43,6 @@ TouchNode::TouchNode()
     m_isTouchBegan(false),
     m_forceLock(false)
 {}
-
-
-void TouchNode::initTouchListeners()
-{
-    auto touchlistener = EventListenerTouchOneByOne::create();
-    if (!touchlistener) return;
-
-    touchlistener->onTouchBegan = CC_CALLBACK_2(TouchNode::onTouchBegan, this);
-    touchlistener->onTouchMoved = CC_CALLBACK_2(TouchNode::onTouchMoved, this);
-    touchlistener->onTouchEnded = CC_CALLBACK_2(TouchNode::onTouchEnded, this);
-    touchlistener->setSwallowTouches(true);
-    GM->addEventListenerWithSceneGraphPriority(touchlistener, this);
-}
 
 bool TouchNode::onTouchBegan(Touch* touch, Event* event)
 {

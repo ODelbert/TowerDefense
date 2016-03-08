@@ -239,7 +239,7 @@ bool UpgradeIcon::init(TowerID id, bool enabled)
 {
     m_id = id;
     m_enabled = enabled;
-
+    TouchNode::init("main_icons_over.png");
     switch (id) {
     case TowerID_Archer_Lv1:
     {
@@ -326,10 +326,7 @@ bool UpgradeIcon::init(TowerID id, bool enabled)
         return false;
     }
 
-    initTouchListeners();
     setTouchCallback(CC_CALLBACK_0(UpgradeIcon::onTouchEvent, this));
-    auto towerFrame = Sprite::createWithSpriteFrameName("main_icons_over.png");
-    addChild(towerFrame);
     addChild(m_confrimImage);
     addChild(m_disabledConfrimImage);
     addChild(m_enabledImage);
@@ -351,22 +348,16 @@ void UpgradeIcon::onTouchEvent()
         break;
     case Selected:
         {
+            m_state = Enabled;
             if (!getParent() || !getParent()->getParent()) return;
             TowerSlot* towerSlot = static_cast<TowerSlot*>(getParent()->getParent());
             if (towerSlot != nullptr) {
+                TowerEvent evt(TowerEvent::Command::UpgradeTower, towerSlot->getSlotId(), m_id);
+                GM->dispatchEvent(&evt);
+                GM->setGold(GM->getGold() - GM->getUpgradeFund(m_id));
                 auto tower = towerSlot->getTower();
-                if (tower) {
-                    Tower* t = static_cast<Tower*>(tower);
-                    TowerEvent evt(TowerEvent::Command::UpgradeTower, towerSlot->getSlotId(), tower->getId(), tower->getLevel());
-
-                    // add new tower in next frame
-                    GM->dispatchEvent(&evt);
-                    GM->setGold(GM->getGold() - GM->getUpgradeFund(m_id));
-                    t->removeFromParent();
-                }
-                else {
-                    
-                }
+                if (tower)
+                    tower->removeFromParent();
             }
         }
         break;

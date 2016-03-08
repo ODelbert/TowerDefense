@@ -58,6 +58,7 @@ void EventHandler::onWaveEvent(WaveEvent* waveEvent)
 
 void EventHandler::onTowerEvent(TowerEvent* event)
 {
+    log("on tower event !! ");
 }
 
 void EventHandler::onBulletEvent(BulletEvent* event)
