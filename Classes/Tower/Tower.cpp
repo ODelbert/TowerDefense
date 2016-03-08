@@ -5,11 +5,14 @@
 void Tower::initWithTowerId(TowerID id, TowerLevel level)
 {
     // TODO:: fix config
+    m_id = id;
+    m_level = level;
     m_name = "baseTower";
     m_damageMin = 0;
     m_damageMax = 0;
     m_fireRate = 0;
     m_range = 0;
+
     m_weapon = WeaponType_Invalid;
     
     

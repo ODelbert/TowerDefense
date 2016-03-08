@@ -42,7 +42,7 @@ class TDEvent : public EventCustom
 {
 public:
     TDEvent(TDEventType type = TDEventType_Invaild);
-    CC_SYNTHESIZE_READONLY(TDEventType, m_eventType, EventType);
+    CC_SYNTHESIZE_READONLY(TDEventType, m_eventType, EventType)
 };
 
 class WaveEvent : public TDEvent
@@ -66,22 +66,23 @@ public:
     enum Command
     {
         Invaild,
-        Build,
-        Upgrade,
-        Sell,
-        Disabled,
-        Flag,
-        Assemble,
-        Technology,
-        Demonstrate
+        Build, // slot, towerId
+        UpgradeTower, // slot, towerId, level
+        Sell, // slot, towerId, level
+        Disabled, // slot
+        Assemble, // slot
+        UpgradeTechnology, // slot, towerId, tid
+        Hint, // slot, towerId
+        Demonstrate // slot, towerId
     };
 
 public:
-    TowerEvent(int slotId, Command cmd);
+    TowerEvent(Command cmd = Invaild, int slotId = -1, TowerID id = TowerID_Invaild, TowerLevel level = TowerLevel_1, int tid = -1);
+    CC_SYNTHESIZE(TowerID, m_towerId, TowerId)
     CC_SYNTHESIZE(int, m_slotId, SlotId)
+    CC_SYNTHESIZE(TowerLevel, m_level, Level)
     CC_SYNTHESIZE(int, m_technologyId, TechnologyId)
     CC_SYNTHESIZE(Command, m_command, Command)
-
 };
 
 class BulletEvent : public TDEvent

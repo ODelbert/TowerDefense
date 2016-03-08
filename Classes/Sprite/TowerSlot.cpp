@@ -25,19 +25,6 @@
 #define LBL_BOWDAMAGE "icon_00011.png"
 #define LBL_GUNDAMAGE "icon_00012.png"
 
-// 默认图标/禁用图标
-struct IconEntry
-{
-    IconEntry(const std::string& nor, const std::string& dis)
-    {
-        normal = nor;
-        disabled = dis;
-    }
-    
-    std::string normal;
-    std::string disabled;
-};
-
 struct Location
 {
     float x;
@@ -143,6 +130,7 @@ void SlotRing::onTouch()
             }
             else {
                 // technology & sell ----> 3
+                // FIXME:: price Icon
                 auto t1 = TechnologyIcon::create(tower->getId(), 0, GM->enoughGold(tower->getT1Gold()));
                 auto t2 = TechnologyIcon::create(tower->getId(), 1, GM->enoughGold(tower->getT2Gold()));
                 auto t3 = TechnologyIcon::create(tower->getId(), 2, GM->enoughGold(tower->getT3Gold()));
@@ -184,21 +172,6 @@ void SlotRing::onTouch()
             icon->setPosition(locate.x * m_texture->getContentSize().width / 2, locate.y * m_texture->getContentSize().height / 2);
         }
     }
-
-
-    /*
-    std::vector<std::string> icons = getIcons();
-    m_texture->removeAllChildrenWithCleanup(true);
-    for (int i = 0; i < icons.size(); ++i) {
-        auto towerFrame = Sprite::createWithSpriteFrameName("main_icons_over.png");
-        auto towerIcon = UpgradeIcon::create(icons[i]);
-        addChild(towerFrame);
-        addChild(towerIcon);
-        Location locate = icons.size() == 1 ? s_location_1[i]: icons.size() == 2 ? s_location_2[i] : icons.size() == 3 ? s_location_3[i] : icons.size() == 4 ? s_location_4[i] : Location();
-        towerFrame->setPosition(locate.x * m_texture->getContentSize().width / 2, locate.y * m_texture->getContentSize().height / 2);
-        towerIcon->setPosition(locate.x * m_texture->getContentSize().width / 2, locate.y * m_texture->getContentSize().height / 2);
-    }
-    */
 }
 
 bool TowerSlot::init()

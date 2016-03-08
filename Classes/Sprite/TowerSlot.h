@@ -20,7 +20,7 @@ class TowerSlot : public TouchNode
 {
     friend class SlotRing;
 public:
-    CREATE_FUNC(TowerSlot);
+    CREATE_FUNC(TowerSlot)
     virtual bool init();
 
     virtual void onTouchEvent();

@@ -32,9 +32,14 @@ void WaveEvent::setWaveData(int eId, int path, int subpath)
     m_subPath = subpath;
 }
 
-TowerEvent::TowerEvent(int slotId, Command cmd)
+TowerEvent::TowerEvent(Command cmd = Invaild, int slotId = -1, TowerID id = TowerID_Invaild, TowerLevel level = TowerLevel_1, int tid = -1)
    : TDEvent(TDEventType_Tower),
-    m_slotId(slotId) {}
+    m_command(cmd),
+    m_slotId(slotId),
+    m_towerId(id),
+    m_level(level),
+    m_technologyId(tid)
+{}
 
 BulletEvent::BulletEvent(Bullet* bullet, TDEventType action)
     : TDEvent(action),

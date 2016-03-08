@@ -17,7 +17,7 @@ USING_NS_CC;
 class Shooter : public Node
 {
 public:
-    explicit Shooter(TowerID id, TowerLevel level);
+    explicit Shooter(TowerID id);
     virtual ~Shooter();
     
     virtual void shoot();
@@ -26,7 +26,6 @@ public:
     
 protected:
     TowerID m_id;
-    TowerLevel m_level;
     Direction m_oriention;
     Sprite* m_texture;
 };

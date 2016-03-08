@@ -9,7 +9,7 @@ USING_NS_CC;
 class ArcherShooter : public Shooter
 {
 public:
-    CREATE_FUNC(ArcherShooter);
+    CREATE_FUNC(ArcherShooter)
     virtual bool init();
     virtual void shoot();
 
@@ -24,14 +24,12 @@ public:
     virtual bool init(TowerLevel level);
     
     virtual void shoot();
-    virtual void choose();
-    virtual void upgrade(int tId = -1);
 };
 
 class ArcaneShooter : public Shooter
 {
 public:
-    CREATE_FUNC(ArcaneShooter);
+    CREATE_FUNC(ArcaneShooter)
 	virtual bool init();
     virtual void shoot();
 
@@ -46,8 +44,6 @@ public:
     virtual bool init();
 
     virtual void shoot();
-    virtual void choose();
-    virtual void upgrade(int tId);
     virtual void updateState();
 };
 
@@ -57,8 +53,6 @@ public:
     static SliverShooter* create();
 	virtual bool init();
 	virtual void shoot();
-    virtual void choose();
-    virtual void upgrade(int tId);
     virtual void updateState();
 
 protected:
@@ -68,9 +62,8 @@ protected:
 class SliverTower : public Tower
 {
 public:
-    CREATE_FUNC(SliverTower);
+    CREATE_FUNC(SliverTower)
     virtual bool init();
-    
     virtual void updateState();
 };
 

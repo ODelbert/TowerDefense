@@ -1066,3 +1066,5 @@ Classes/Sprite/WaveFalg.h
 Classes/Sprite/WaveFalg.cpp
 Classes/Sprite/LifeBar.h
 Classes/Sprite/LifeBar.cpp
+Classes/Sprite/PriceIcon.h
+Classes/Sprite/PriceIcon.cpp

@@ -224,7 +224,6 @@ static std::string GetTechnologyIcon(TowerID id, bool enabled, int tid)
     return "";
 }
 
-
 static std::string GetUpgradeIcon(TowerID id, bool enabled)
 {
     switch (id) {
@@ -306,10 +305,107 @@ UpgradeIcon* UpgradeIcon::create(TowerID id, bool enabled)
     return nullptr;
 }
 
-bool UpgradeIcon::init(TowerID id, bool enabled)
+bool UpgradeIcon::init(TowerID id, TowerLevel level)
 {
     m_id = id;
     m_enabled = enabled;
+
+    switch (id) {
+    case TowerID_Archer_Lv1:
+    {
+        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_ARCHER);
+        m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_ARCHER);
+    }
+        break;
+    case TowerID_Barrack_Lv1:
+    {
+        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_ARCHER);
+        m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_ARCHER);
+    }
+        break;
+    case TowerID_Mage_Lv1:
+    {
+        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_MAGE);
+        m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_MAGE);
+    }
+        break;
+    case TowerID_Artillery_Lv1:
+    {
+        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_ARTILLERY);
+        m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_ARTILLERY);
+    }
+        break;
+        {
+            // costs,
+            m_enabledImage = Sprite::createWithSpriteFrameName(ICON_ARCHER);
+            m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_ARCHER);
+            m_confrimImage = Sprite::createWithSpriteFrameName(ICON_CONFRIM);
+            m_disabledConfrimImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_CONFRIM);
+        }
+            break;
+        case TowerID_Barrack:
+        {
+            m_enabledImage = Sprite::createWithSpriteFrameName(ICON_ARCHER);
+            m_disabledImage = Sprite::createWithSpriteFrameName(ICON_ARCHER);
+            m_selectedImage = Sprite::createWithSpriteFrameName(ICON_CONFRIM);
+            m_disabledConfrimImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_CONFRIM);
+            return enabled ? ICON_BARRACKS : ICON_ARCHER;
+        }
+            break;
+        case TowerID_Mage:
+        {
+            return enabled ? ICON_MAGE : ICON_DISABLED_MAGE;
+        }
+            break;
+        case TowerID_Artillery:
+        {
+            return enabled ? ICON_ARTILLERY : ICON_DISABLED_ARTILLERY;
+        }
+            break;
+        case TowerID_Archer_Arcane:
+        {
+            return enabled ? ICON_ARCANE : ICON_DISABLED_ARCANE;
+        }
+            break;
+        case TowerID_Archer_Silver:
+        {
+            return enabled ? ICON_SILVER : ICON_DISABLED_SILVER;
+        }
+            break;
+        case TowerID_BladeSinger:
+        {
+            return enabled ? ICON_BLADESINGER : ICON_DISABLED_BLADESINGER;
+        }
+            break;
+        case TowerID_ForestKeeper:
+        {
+            return enabled ? ICON_FORESTKEEPER : ICON_DISABLED_FORESTKEEPER;
+        }
+            break;
+        case TowerID_Mage_Wild:
+        {
+            return enabled ? ICON_WILD : ICON_DISABLED_WILD;
+        }
+            break;
+        case TowerID_Mage_HighElven:
+        {
+            return enabled ? ICON_HIGHELF : ICON_DISABLED_HIGHELF;
+        }
+            break;
+        case TowerID_Artillery_Henge:
+        {
+            return enabled ? ICON_HENGE : ICON_DISABLED_HENGE;
+        }
+            break;
+        case TowerID_Artillery_Tree:
+        {
+            return enabled ? ICON_TREE : ICON_DISABLED_TREE;
+        }
+            break;
+        default:
+            break;
+    }
+
     std::string name = GetUpgradeIcon(id, enabled);
     TouchNode::init(name);
     setTouchCallback(CC_CALLBACK_0(UpgradeIcon::onTouchEvent, this));
@@ -324,7 +420,9 @@ void UpgradeIcon::onTouchEvent()
     case Enabled:
         {
             m_state = Selected;
-            m_texture->setTexture(SpriteFrameCache::getInstance()->getSpriteFrameByName("main_icons_0019.png")->getTexture());
+            m_disabledImage->setVisible(false);
+            m_texture->setVisible(false);
+            m_selectedImage->setVisible(true);
             // sound
         }
         break;
@@ -336,14 +434,13 @@ void UpgradeIcon::onTouchEvent()
                 auto tower = towerSlot->getTower();
                 if (tower) {
                     Tower* t = static_cast<Tower*>(tower);
-                    TowerEvent evt(towerSlot->getSlotId(), TowerEvent::Command::Upgrade);
+                    TowerEvent evt(TowerEvent::Command::UpgradeTower, towerSlot->getSlotId(), tower->getId(), tower->getLevel());
 
+                    // add new tower in next frame
                     GM->dispatchEvent(&evt);
-                    
                     // sound
                     GM->setGold(GM->getGold() + 0);
-                    // add new tower
-                    
+
                     t->removeFromParent();
                 }
                 else {

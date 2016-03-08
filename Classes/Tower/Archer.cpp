@@ -3,7 +3,7 @@
 #include "ResourceId.h"
 
 ArcherShooter::ArcherShooter()
-: Shooter(TowerID_Archer, TowerLevel_1)
+: Shooter(TowerID_Archer_Lv1, TowerLevel_1)
 {
 }
 
@@ -30,7 +30,20 @@ Archer* Archer::create(TowerLevel level)
 
 bool Archer::init(TowerLevel level)
 {
-	initWithTowerId(TowerID_Archer, level);
+    switch (level) {
+    case TowerLevel_1:
+        initWithTowerId(TowerID_Archer_Lv1, level);
+        break;
+    case TowerLevel_2:
+        initWithTowerId(TowerID_Archer_Lv2, level);
+        break;
+    case TowerLevel_3:
+        initWithTowerId(TowerID_Archer_Lv3, level);
+        break;
+    default:
+        break;
+    }
+
 	return true;
 }
 
@@ -40,37 +53,3 @@ void Archer::shoot()
 		m_shooters[i]->shoot();
 	}
 }
-
-void Archer::choose()
-{
-	switch (m_level) {
-		case TowerLevel_1:
-		case TowerLevel_2:
-			{}
-			break;
-        case TowerLevel_3:
-			{}
-			break;
-	}
-}
-
-void Archer::upgrade(int tId)
-{
-
-	// TODO::
-	// remove from parent
-	// event
-
-	if (TowerLevel_4 == m_level) {
-		// upgrade technology
-		// change cost for tower slot
-
-
-	}
-
-//    if (m_level < 4)
-//        m_level++;
-}
-
-
-
