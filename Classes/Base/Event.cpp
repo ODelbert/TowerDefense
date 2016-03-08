@@ -32,7 +32,7 @@ void WaveEvent::setWaveData(int eId, int path, int subpath)
     m_subPath = subpath;
 }
 
-TowerEvent::TowerEvent(Command cmd = Invaild, int slotId = -1, TowerID id = TowerID_Invaild, TowerLevel level = TowerLevel_1, int tid = -1)
+TowerEvent::TowerEvent(Command cmd, int slotId, TowerID id, TowerLevel level, int tid)
    : TDEvent(TDEventType_Tower),
     m_command(cmd),
     m_slotId(slotId),

@@ -36,7 +36,8 @@ bool GameManager::enoughGold(int gold)
     return true;
 }
 
-
-
-
+uint GameManager::getUpgradeFund(TowerID id, int tid)
+{
+    return 0;
+}
 

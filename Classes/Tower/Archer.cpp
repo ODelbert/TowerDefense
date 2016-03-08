@@ -3,7 +3,7 @@
 #include "ResourceId.h"
 
 ArcherShooter::ArcherShooter()
-: Shooter(TowerID_Archer_Lv1, TowerLevel_1)
+: Shooter(TowerID_Archer_Lv1)
 {
 }
 

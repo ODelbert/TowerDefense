@@ -224,76 +224,6 @@ static std::string GetTechnologyIcon(TowerID id, bool enabled, int tid)
     return "";
 }
 
-static std::string GetUpgradeIcon(TowerID id, bool enabled)
-{
-    switch (id) {
-        case TowerID_Archer:
-        {
-            return enabled ? ICON_ARCHER : ICON_DISABLED_ARCHER;
-        }
-            break;
-        case TowerID_Barrack:
-        {
-            return enabled ? ICON_BARRACKS : ICON_DISABLED_BARRACKS;
-        }
-            break;
-        case TowerID_Mage:
-        {
-            return enabled ? ICON_MAGE : ICON_DISABLED_MAGE;
-        }
-            break;
-        case TowerID_Artillery:
-        {
-            return enabled ? ICON_ARTILLERY : ICON_DISABLED_ARTILLERY;
-        }
-            break;
-        case TowerID_Archer_Arcane:
-        {
-            return enabled ? ICON_ARCANE : ICON_DISABLED_ARCANE;
-        }
-            break;
-        case TowerID_Archer_Silver:
-        {
-            return enabled ? ICON_SILVER : ICON_DISABLED_SILVER;
-        }
-            break;
-        case TowerID_BladeSinger:
-        {
-            return enabled ? ICON_BLADESINGER : ICON_DISABLED_BLADESINGER;
-        }
-            break;
-        case TowerID_ForestKeeper:
-        {
-            return enabled ? ICON_FORESTKEEPER : ICON_DISABLED_FORESTKEEPER;
-        }
-            break;
-        case TowerID_Mage_Wild:
-        {
-            return enabled ? ICON_WILD : ICON_DISABLED_WILD;
-        }
-            break;
-        case TowerID_Mage_HighElven:
-        {
-            return enabled ? ICON_HIGHELF : ICON_DISABLED_HIGHELF;
-        }
-            break;
-        case TowerID_Artillery_Henge:
-        {
-            return enabled ? ICON_HENGE : ICON_DISABLED_HENGE;
-        }
-            break;
-        case TowerID_Artillery_Tree:
-        {
-            return enabled ? ICON_TREE : ICON_DISABLED_TREE;
-        }
-            break;
-        default:
-            break;
-    }
-    
-    return "";
-}
-
 UpgradeIcon* UpgradeIcon::create(TowerID id, bool enabled)
 {
     UpgradeIcon* ret = new UpgradeIcon();
@@ -305,7 +235,7 @@ UpgradeIcon* UpgradeIcon::create(TowerID id, bool enabled)
     return nullptr;
 }
 
-bool UpgradeIcon::init(TowerID id, TowerLevel level)
+bool UpgradeIcon::init(TowerID id, bool enabled)
 {
     m_id = id;
     m_enabled = enabled;
@@ -335,82 +265,78 @@ bool UpgradeIcon::init(TowerID id, TowerLevel level)
         m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_ARTILLERY);
     }
         break;
-        {
-            // costs,
-            m_enabledImage = Sprite::createWithSpriteFrameName(ICON_ARCHER);
-            m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_ARCHER);
-            m_confrimImage = Sprite::createWithSpriteFrameName(ICON_CONFRIM);
-            m_disabledConfrimImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_CONFRIM);
-        }
-            break;
-        case TowerID_Barrack:
-        {
-            m_enabledImage = Sprite::createWithSpriteFrameName(ICON_ARCHER);
-            m_disabledImage = Sprite::createWithSpriteFrameName(ICON_ARCHER);
-            m_selectedImage = Sprite::createWithSpriteFrameName(ICON_CONFRIM);
-            m_disabledConfrimImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_CONFRIM);
-            return enabled ? ICON_BARRACKS : ICON_ARCHER;
-        }
-            break;
-        case TowerID_Mage:
-        {
-            return enabled ? ICON_MAGE : ICON_DISABLED_MAGE;
-        }
-            break;
-        case TowerID_Artillery:
-        {
-            return enabled ? ICON_ARTILLERY : ICON_DISABLED_ARTILLERY;
-        }
-            break;
-        case TowerID_Archer_Arcane:
-        {
-            return enabled ? ICON_ARCANE : ICON_DISABLED_ARCANE;
-        }
-            break;
-        case TowerID_Archer_Silver:
-        {
-            return enabled ? ICON_SILVER : ICON_DISABLED_SILVER;
-        }
-            break;
-        case TowerID_BladeSinger:
-        {
-            return enabled ? ICON_BLADESINGER : ICON_DISABLED_BLADESINGER;
-        }
-            break;
-        case TowerID_ForestKeeper:
-        {
-            return enabled ? ICON_FORESTKEEPER : ICON_DISABLED_FORESTKEEPER;
-        }
-            break;
-        case TowerID_Mage_Wild:
-        {
-            return enabled ? ICON_WILD : ICON_DISABLED_WILD;
-        }
-            break;
-        case TowerID_Mage_HighElven:
-        {
-            return enabled ? ICON_HIGHELF : ICON_DISABLED_HIGHELF;
-        }
-            break;
-        case TowerID_Artillery_Henge:
-        {
-            return enabled ? ICON_HENGE : ICON_DISABLED_HENGE;
-        }
-            break;
-        case TowerID_Artillery_Tree:
-        {
-            return enabled ? ICON_TREE : ICON_DISABLED_TREE;
-        }
-            break;
-        default:
-            break;
+    case TowerID_Archer_Arcane:
+    {
+        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_ARTILLERY);
+        m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_ARTILLERY);
+        return enabled ? ICON_ARCANE : ICON_DISABLED_ARCANE;
+    }
+        break;
+    case TowerID_Archer_Silver:
+    {
+        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_ARTILLERY);
+        m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_ARTILLERY);
+        return enabled ? ICON_SILVER : ICON_DISABLED_SILVER;
+    }
+        break;
+    case TowerID_BladeSinger:
+    {
+        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_BLADESINGER);
+        m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_BLADESINGER);
+    }
+        break;
+    case TowerID_ForestKeeper:
+    {
+        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_FORESTKEEPER);
+        m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_FORESTKEEPER);
+    }
+        break;
+    case TowerID_Mage_Wild:
+    {
+        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_WILD);
+        m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_WILD);
+    }
+        break;
+    case TowerID_Mage_HighElven:
+    {
+        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_HIGHELF);
+        m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_HIGHELF);
+    }
+        break;
+    case TowerID_Artillery_Henge:
+    {
+        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_HENGE);
+        m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_HENGE);
+    }
+        break;
+    case TowerID_Artillery_Tree:
+    {
+        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_TREE);
+        m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_TREE);
+        return enabled ? ICON_TREE : ICON_DISABLED_TREE;
+    }
+        break;
+    default:
+        break;
     }
 
-    std::string name = GetUpgradeIcon(id, enabled);
-    TouchNode::init(name);
+    m_confrimImage = Sprite::createWithSpriteFrameName(ICON_CONFRIM);
+    m_disabledConfrimImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_CONFRIM);
+    if (!m_enabledImage || !m_disabledImage || !m_confrimImage || !m_disabledConfrimImage) {
+        return false;
+    }
+
+    initTouchListeners();
     setTouchCallback(CC_CALLBACK_0(UpgradeIcon::onTouchEvent, this));
     auto towerFrame = Sprite::createWithSpriteFrameName("main_icons_over.png");
     addChild(towerFrame);
+    addChild(m_confrimImage);
+    addChild(m_disabledConfrimImage);
+    addChild(m_enabledImage);
+    addChild(m_disabledImage);
+    
+    lightenIcon(enabled ? m_enabledImage : m_disabledImage);
+
     return true;
 }
 
@@ -420,10 +346,7 @@ void UpgradeIcon::onTouchEvent()
     case Enabled:
         {
             m_state = Selected;
-            m_disabledImage->setVisible(false);
-            m_texture->setVisible(false);
-            m_selectedImage->setVisible(true);
-            // sound
+            lightenIcon(GM->enoughGold(GM->getUpgradeFund(m_id)) ? m_confrimImage : m_disabledConfrimImage);
         }
         break;
     case Selected:
@@ -438,9 +361,7 @@ void UpgradeIcon::onTouchEvent()
 
                     // add new tower in next frame
                     GM->dispatchEvent(&evt);
-                    // sound
-                    GM->setGold(GM->getGold() + 0);
-
+                    GM->setGold(GM->getGold() - GM->getUpgradeFund(m_id));
                     t->removeFromParent();
                 }
                 else {
@@ -453,6 +374,21 @@ void UpgradeIcon::onTouchEvent()
     default:
         {}
         break;
+    }
+}
+
+void UpgradeIcon::lightenIcon(Sprite* sprite)
+{
+    if (!m_enabledImage || !m_disabledImage || !m_confrimImage || !m_disabledConfrimImage) {
+        return;
+    }
+    m_confrimImage->setVisible(false);
+    m_disabledConfrimImage->setVisible(false);
+    m_enabledImage->setVisible(false);
+    m_disabledImage->setVisible(false);
+
+    if (sprite) {
+        sprite->setVisible(true);
     }
 }
 
@@ -473,7 +409,7 @@ bool SellIcon::init()
     return true;
 }
 
-TechnologyIcon* TechnologyIcon::create(TowerID id, int tid, bool enabled)
+TechnologyIcon* TechnologyIcon::create(TowerID id, int tid)
 {
     TechnologyIcon* ret = new TechnologyIcon;
     if (ret && ret->init(id, tid)) {
@@ -485,7 +421,7 @@ TechnologyIcon* TechnologyIcon::create(TowerID id, int tid, bool enabled)
     return nullptr;
 }
 
-bool TechnologyIcon::init(TowerID id, int tid, bool enabled)
+bool TechnologyIcon::init(TowerID id, int tid)
 {
     return true;
 }

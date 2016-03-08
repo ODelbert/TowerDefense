@@ -17,8 +17,10 @@ void Tower::initWithTowerId(TowerID id, TowerLevel level)
     
     
     switch (id) {
-    case TowerID_Archer:
-        m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("archer_towers_000%d.png", static_cast<int>(m_level))->getCString());
+    case TowerID_Archer_Lv1:
+    case TowerID_Archer_Lv2:
+    case TowerID_Archer_Lv3:
+        m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("archer_towers_000%d.png", static_cast<int>(id - TowerID_Archer_Lv1 + 1))->getCString());
         break;
     case TowerID_Archer_Arcane:
         m_texture = Sprite::createWithSpriteFrameName("archer_towers_0004.png");
@@ -26,10 +28,12 @@ void Tower::initWithTowerId(TowerID id, TowerLevel level)
     case TowerID_Archer_Silver:
         m_texture = Sprite::createWithSpriteFrameName("archer_towers_0005.png");
         break;
-    case TowerID_Mage:
+    case TowerID_Mage_Lv1:
+    case TowerID_Mage_Lv2:
+    case TowerID_Mage_Lv3:
         {
-            auto ornaments = Sprite::createWithSpriteFrameName(String::createWithFormat("mage_towers_layer1_00%2d.png", static_cast<int>(m_level * 32 + 1))->getCString());
-            m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("mage_towers_layer2_00%2d.png", static_cast<int>(m_level * 32 + 1))->getCString());
+            auto ornaments = Sprite::createWithSpriteFrameName(String::createWithFormat("mage_towers_layer1_00%2d.png", static_cast<int>((id - TowerID_Mage_Lv1) * 32 + 1))->getCString());
+            m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("mage_towers_layer2_00%2d.png", static_cast<int>((id - TowerID_Mage_Lv1) * 32 + 1))->getCString());
             m_texture->addChild(ornaments);
         }
         break;
@@ -44,8 +48,10 @@ void Tower::initWithTowerId(TowerID id, TowerLevel level)
             m_texture = Sprite::createWithSpriteFrameName("mage_towers_layer1_0098.png");
         }
         break;
-    case TowerID_Artillery:
-        m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("artillery_base_000%d.png", static_cast<int>(m_level))->getCString());
+    case TowerID_Artillery_Lv1:
+    case TowerID_Artillery_Lv2:
+    case TowerID_Artillery_Lv3:
+        m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("artillery_base_000%d.png", static_cast<int>(id - TowerID_Artillery_Lv1 + 1))->getCString());
         break;
     case TowerID_Artillery_Henge:
         m_texture = Sprite::createWithSpriteFrameName("archer_towers_0005.png");

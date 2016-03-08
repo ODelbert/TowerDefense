@@ -24,8 +24,9 @@ public:
     void dispatchEvent(TDEvent* event);
     void addEventListenerWithFixedPriority(EventListener* listener, int priority);
     void addEventListenerWithSceneGraphPriority(EventListener* listener, Node* node);
-    CC_SYNTHESIZE(int, m_gold, Gold);
+    CC_SYNTHESIZE(int, m_gold, Gold)
 
+    uint getUpgradeFund(TowerID id, int tid = -1);
     bool enoughGold(int gold);
 };
 

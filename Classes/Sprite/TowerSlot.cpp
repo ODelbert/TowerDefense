@@ -106,19 +106,19 @@ void SlotRing::onTouch()
                 Node* u1 = NULL;
                 Node* u2 = NULL;
                 switch (tower->getId()) {
-                case TowerID_Archer:
+                case TowerID_Archer_Lv3:
                     u1 = UpgradeIcon::create(TowerID_Archer_Arcane, GM->enoughGold(tower->getUpgradeGold()));
                     u2 = UpgradeIcon::create(TowerID_Archer_Silver, GM->enoughGold(tower->getUpgradeGold()));
                     break;
-                case TowerID_Barrack:
+                case TowerID_Barrack_Lv3:
                     u1 = UpgradeIcon::create(TowerID_BladeSinger, GM->enoughGold(tower->getUpgradeGold()));
                     u2 = UpgradeIcon::create(TowerID_ForestKeeper, GM->enoughGold(tower->getUpgradeGold()));
                     break;
-                case TowerID_Mage:
+                case TowerID_Mage_Lv3:
                     u1 = UpgradeIcon::create(TowerID_Mage_Wild, GM->enoughGold(tower->getUpgradeGold()));
                     u2 = UpgradeIcon::create(TowerID_Mage_HighElven, GM->enoughGold(tower->getUpgradeGold()));
                     break;
-                case TowerID_Artillery:
+                case TowerID_Artillery_Lv3:
                     u1 = UpgradeIcon::create(TowerID_Artillery_Henge, GM->enoughGold(tower->getUpgradeGold()));
                     u2 = UpgradeIcon::create(TowerID_Artillery_Tree, GM->enoughGold(tower->getUpgradeGold()));
                 default:
@@ -131,15 +131,17 @@ void SlotRing::onTouch()
             else {
                 // technology & sell ----> 3
                 // FIXME:: price Icon
-                auto t1 = TechnologyIcon::create(tower->getId(), 0, GM->enoughGold(tower->getT1Gold()));
-                auto t2 = TechnologyIcon::create(tower->getId(), 1, GM->enoughGold(tower->getT2Gold()));
-                auto t3 = TechnologyIcon::create(tower->getId(), 2, GM->enoughGold(tower->getT3Gold()));
+                auto t1 = TechnologyIcon::create(tower->getId(), 0);
+                auto t2 = TechnologyIcon::create(tower->getId(), 1);
+                auto t3 = TechnologyIcon::create(tower->getId(), 2);
                 icons.push_back(t1);
                 icons.push_back(t2);
                 icons.push_back(t3);
             }
 
-            if (TowerID_Barrack == tower->getId() ||
+            if (TowerID_Barrack_Lv1 == tower->getId() ||
+                TowerID_Barrack_Lv2 == tower->getId() ||
+                TowerID_Barrack_Lv3 == tower->getId() ||
                     TowerID_BladeSinger == tower->getId() ||
                     TowerID_ForestKeeper == tower->getId() ||
                     TowerID_Artillery_Henge == tower->getId()) {
@@ -154,10 +156,10 @@ void SlotRing::onTouch()
         }
         else {
             // 4 basic icon  ----> 4
-            auto u1 = UpgradeIcon::create(TowerID_Archer, GM->enoughGold(TowerID_Archer_Arcane));
-            auto u2 = UpgradeIcon::create(TowerID_Barrack, GM->enoughGold(TowerID_Barrack));
-            auto u3 = UpgradeIcon::create(TowerID_Mage, GM->enoughGold(TowerID_Mage));
-            auto u4 = UpgradeIcon::create(TowerID_Artillery, GM->enoughGold(TowerID_Artillery));
+            auto u1 = UpgradeIcon::create(TowerID_Archer_Lv1);
+            auto u2 = UpgradeIcon::create(TowerID_Barrack_Lv1);
+            auto u3 = UpgradeIcon::create(TowerID_Mage_Lv1);
+            auto u4 = UpgradeIcon::create(TowerID_Artillery_Lv1);
             icons.push_back(u1);
             icons.push_back(u2);
             icons.push_back(u3);
