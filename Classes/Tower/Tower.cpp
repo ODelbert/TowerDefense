@@ -2,20 +2,21 @@
 #include "Maps/BattleField.h"
 #include "Shooter.h"
 
+Tower::Tower()
+    : m_id(TowerID_Invaild),
+      m_level(TowerLevel_1),
+      m_name("baseTower"),
+      m_damageMax(0),
+      m_damageMin(0),
+      m_range(0),
+      m_technologyMask(0),
+      m_weapon(WeaponType_Invalid)
+{
+}
+
 void Tower::initWithTowerId(TowerID id, TowerLevel level)
 {
     // TODO:: fix config
-    m_id = id;
-    m_level = level;
-    m_name = "baseTower";
-    m_damageMin = 0;
-    m_damageMax = 0;
-    m_fireRate = 0;
-    m_range = 0;
-
-    m_weapon = WeaponType_Invalid;
-    
-    
     switch (id) {
     case TowerID_Archer_Lv1:
     case TowerID_Archer_Lv2:
@@ -89,16 +90,6 @@ void Tower::initWithTowerId(TowerID id, TowerLevel level)
     }
 }
 
-void Tower::showTowerInfo()
-{
-    // TODO:: UI
-}
-
-int Tower::sell()
-{
-    return 0.7 * m_costGold;
-}
-
 void Tower::detectNearBy()
 {
     BattleField* map = static_cast<BattleField*>(this->getParent());
@@ -127,4 +118,16 @@ void Tower::detectNearBy()
 			}
 		}
     }
+}
+
+void Tower::upgradeTechnology(int tid)
+{
+    log("Tower::upgradeTechnology old mask 0x%x", m_technologyMask);
+    m_technologyMask = m_technologyMask & ~(0xf<<tid) | ((m_technologyMask & (0xf<<tid)) + 1);
+    log("Tower::upgradeTechnology new mask 0x%x", m_technologyMask);
+}
+
+int Tower::getTechnologyRank(int tid)
+{
+    return (m_technologyMask & (0xf<<tid)) >> tid;
 }

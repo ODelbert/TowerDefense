@@ -53,3 +53,25 @@ void Archer::shoot()
 		m_shooters[i]->shoot();
 	}
 }
+
+bool ArcaneShooter::init()
+{
+    return true;
+}
+
+bool ArcaneTower::init()
+{
+    Tower::initWithTowerId(TowerID_Archer_Arcane, TowerLevel_4);
+    return true;
+}
+
+bool SliverShooter::init()
+{
+    return true;
+}
+
+bool SliverTower::init()
+{
+    Tower::initWithTowerId(TowerID_Archer_Silver, TowerLevel_4);
+    return true;
+}

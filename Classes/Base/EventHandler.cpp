@@ -8,6 +8,7 @@
 
 #include "EventHandler.h"
 #include "Enemy/EnemyFactory.h"
+#include "Tower/TowerFactory.h"
 #include "Maps/BattleField.h"
 #include "Base/WaveManager.h"
 
@@ -62,7 +63,10 @@ void EventHandler::onTowerEvent(TowerEvent* event)
     switch (event->getCommand()) {
     case TowerEvent::Command::UpgradeTower:
     {
-        m_map->
+        auto tower = TowerFactory::create(event->getTowerId());
+        if (tower) {
+            m_map->addTower(tower);
+        }
     }
         break;
     case TowerEvent::Command::UpgradeTechnology:

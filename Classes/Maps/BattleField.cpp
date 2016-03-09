@@ -14,6 +14,7 @@
 #include "PListReader.h"
 #include "Base/EventHandler.h"
 #include "Animation/AnimationManager.h"
+#include "Sprite/TowerSlot.h"
 
 BattleField::BattleField()
 : m_eventHandler(nullptr)
@@ -139,11 +140,11 @@ void BattleField::UpdateAllies()
 }
 
 
-void BattleField::bulidTower(int slotId, TowerId id)
+void BattleField::bulidTower(int slotId, TowerID id)
 {
     Animation* ani = AnimationManager::getInstance()->getAnimation(-1);
 
-    auto actions = Sequence::create(Animate::create(ani), CC_CALLBACK_0)
+    // auto actions = Sequence::create(Animate::create(ani), CallFuncN::create(CC_CALLBACK_2(BattleField::bulidTower, this, slotId, id)), nullptr);
 }
 
 void BattleField::addTower(int slotId, TowerID id)
@@ -158,13 +159,13 @@ void BattleField::addTower(int slotId, TowerID id)
 
     if (!slot) return;
 
-    autot tower = TowerFactory::create(id);
+    auto tower = TowerFactory::create(id);
     if (tower) {
         slot->addChild(tower);
     }
 }
 
-void BattleField::upgradeTechnology(int slotId, towerId id, int tid)
+void BattleField::upgradeTechnology(int slotId, TowerID id, int tid)
 {
     log("BattleField::upgradeTechnology slotId %d towrId id %d tid %d", slotId, id, tid);
     TowerSlot* slot = NULL;

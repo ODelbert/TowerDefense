@@ -48,6 +48,8 @@
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		9A06DA391C82DDE10017B1D5 /* EventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A06DA371C82DDE10017B1D5 /* EventHandler.cpp */; };
 		9A06DA3A1C85E3660017B1D5 /* EventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A06DA371C82DDE10017B1D5 /* EventHandler.cpp */; };
+		9A5E98A61C9081DC00D07173 /* TowerFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E98A41C9081DC00D07173 /* TowerFactory.cpp */; };
+		9A5E98A71C9081DC00D07173 /* TowerFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E98A41C9081DC00D07173 /* TowerFactory.cpp */; };
 		9A737B021C8DD969000DB2E7 /* Assembly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A737AF31C8DD969000DB2E7 /* Assembly.cpp */; };
 		9A737B031C8DD969000DB2E7 /* Assembly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A737AF31C8DD969000DB2E7 /* Assembly.cpp */; };
 		9A737B041C8DD969000DB2E7 /* Icon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A737AF51C8DD969000DB2E7 /* Icon.cpp */; };
@@ -3012,6 +3014,8 @@
 		9A06DA371C82DDE10017B1D5 /* EventHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventHandler.cpp; sourceTree = "<group>"; };
 		9A06DA381C82DDE10017B1D5 /* EventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventHandler.h; sourceTree = "<group>"; };
 		9A06DA3B1C85F4B80017B1D5 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		9A5E98A41C9081DC00D07173 /* TowerFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TowerFactory.cpp; sourceTree = "<group>"; };
+		9A5E98A51C9081DC00D07173 /* TowerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerFactory.h; sourceTree = "<group>"; };
 		9A737AF31C8DD969000DB2E7 /* Assembly.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Assembly.cpp; sourceTree = "<group>"; };
 		9A737AF41C8DD969000DB2E7 /* Assembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assembly.h; sourceTree = "<group>"; };
 		9A737AF51C8DD969000DB2E7 /* Icon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Icon.cpp; sourceTree = "<group>"; };
@@ -6229,6 +6233,8 @@
 		9ACEE6FB1C7F489C005AEF3F /* Tower */ = {
 			isa = PBXGroup;
 			children = (
+				9A5E98A41C9081DC00D07173 /* TowerFactory.cpp */,
+				9A5E98A51C9081DC00D07173 /* TowerFactory.h */,
 				9ACEE6FC1C7F489C005AEF3F /* Archer.cpp */,
 				9ACEE6FD1C7F489C005AEF3F /* Archer.h */,
 				9ACEE6FE1C7F489C005AEF3F /* Barrack.cpp */,
@@ -9222,6 +9228,7 @@
 				9ACEE7161C7F489C005AEF3F /* GameConfig.cpp in Sources */,
 				9A737B0A1C8DD969000DB2E7 /* RangeCircle.cpp in Sources */,
 				9ACEE7061C7F489C005AEF3F /* Event.cpp in Sources */,
+				9A5E98A61C9081DC00D07173 /* TowerFactory.cpp in Sources */,
 				9A737B0E1C8DD969000DB2E7 /* TowerSlot.cpp in Sources */,
 				9ACEE7341C7F489C005AEF3F /* TestAnimation.cpp in Sources */,
 				9ACEE71E1C7F489C005AEF3F /* FlyingEnemy.cpp in Sources */,
@@ -9284,6 +9291,7 @@
 				9ACEE72F1C7F489C005AEF3F /* PListReader.cpp in Sources */,
 				9ACEE7271C7F489C005AEF3F /* StartLayer.cpp in Sources */,
 				9ACEE7331C7F489C005AEF3F /* GameScene.cpp in Sources */,
+				9A5E98A71C9081DC00D07173 /* TowerFactory.cpp in Sources */,
 				9ACEE7411C7F489C005AEF3F /* Tower.cpp in Sources */,
 				9A737B031C8DD969000DB2E7 /* Assembly.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,

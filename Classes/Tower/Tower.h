@@ -48,10 +48,16 @@ public:
     virtual void detectNearBy();
 
     void initWithTowerId(TowerID id, TowerLevel level);
+    int getTechnologyRank(int tid);
+    void upgradeTechnology(int tid);
+
+protected:
+    Tower();
 
 protected:
     Sprite* m_texture;
     std::vector<Shooter*> m_shooters;
+    uint m_technologyMask;
 };
 
 #endif

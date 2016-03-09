@@ -15,6 +15,7 @@
 
 USING_NS_CC;
 
+class TowerSlot;
 class EventHandler;
 class BattleField : public Layer
 {
@@ -37,9 +38,9 @@ public:
     void onTouchEnded(Touch* touch, Event* event);
     void onTouchMoved(Touch* touch, Event* event);
 
-    void bulidTower(int slotId, TowerId id);
+    void bulidTower(int slotId, TowerID id);
     void addTower(int slotId, TowerID id);
-    void upgradTechnology(int slotId, towerId id, int tid);
+    void upgradeTechnology(int slotId, TowerID id, int tid);
 
 
 
