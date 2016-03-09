@@ -59,6 +59,17 @@ void EventHandler::onWaveEvent(WaveEvent* waveEvent)
 void EventHandler::onTowerEvent(TowerEvent* event)
 {
     log("on tower event !! ");
+    switch (event->getCommand()) {
+    case TowerEvent::Command::UpgradeTower:
+    {
+        m_map->
+    }
+        break;
+    case TowerEvent::Command::UpgradeTechnology:
+        break;
+    default:
+        break;
+    }
 }
 
 void EventHandler::onBulletEvent(BulletEvent* event)

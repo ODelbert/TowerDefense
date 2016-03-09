@@ -26,6 +26,17 @@ void AnimationManager::removeAnimation(uint key)
     m_key2Animate.erase(key);
 }
 
+Animation* AnimationManager::getAnimation(uint hash)
+{
+    std::map<uint, std::string>::const_iterator iter = m_key2Animate.find(hash);
+    if (iter != m_key2Animate.end()) {
+        std::string name = iter->second;
+        return AnimationCache::getInstance()->getAnimation(name);
+    }
+
+    return nullptr;
+}
+
 void AnimationManager::runAction(Sprite* target, uint hash, bool repeatForever)
 {
     std::map<uint, std::string>::const_iterator iter = m_key2Animate.find(hash);

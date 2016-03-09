@@ -179,7 +179,6 @@ void SlotRing::onTouch()
 bool TowerSlot::init()
 {
     TouchNode::init("build_terrain_0001.png");
-    
     m_ring = SlotRing::create(this);
     if (!m_ring) return false;
     m_ring->setPosition(0, 0);

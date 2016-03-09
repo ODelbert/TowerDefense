@@ -44,10 +44,7 @@ public:
     CC_SYNTHESIZE(TowerLevel, m_limitLevel, LimitLevel)
 
     virtual void shoot() {}
-    virtual void upgrade(int tid = -1) {}
     virtual void updateState() {}
-    virtual int sell();
-    virtual void showTowerInfo();
     virtual void detectNearBy();
 
     void initWithTowerId(TowerID id, TowerLevel level);

@@ -37,6 +37,12 @@ public:
     void onTouchEnded(Touch* touch, Event* event);
     void onTouchMoved(Touch* touch, Event* event);
 
+    void bulidTower(int slotId, TowerId id);
+    void addTower(int slotId, TowerID id);
+    void upgradTechnology(int slotId, towerId id, int tid);
+
+
+
 protected:
     explicit BattleField();
 

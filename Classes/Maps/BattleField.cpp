@@ -10,8 +10,10 @@
 #include "CommonDef.h"
 #include "Base/WaveManager.h"
 #include "Enemy/EnemyFactory.h"
+#include "Tower/TowerFactory.h"
 #include "PListReader.h"
 #include "Base/EventHandler.h"
+#include "Animation/AnimationManager.h"
 
 BattleField::BattleField()
 : m_eventHandler(nullptr)
@@ -136,4 +138,47 @@ void BattleField::UpdateAllies()
 {
 }
 
+
+void BattleField::bulidTower(int slotId, TowerId id)
+{
+    Animation* ani = AnimationManager::getInstance()->getAnimation(-1);
+
+    auto actions = Sequence::create(Animate::create(ani), CC_CALLBACK_0)
+}
+
+void BattleField::addTower(int slotId, TowerID id)
+{
+    TowerSlot* slot = NULL;
+    for (int i = 0; i < m_towerSlots.size(); ++i) {
+        if (m_towerSlots[i]->getSlotId() == slotId) {
+            slot = m_towerSlots[i];
+            break;
+        }
+    }
+
+    if (!slot) return;
+
+    autot tower = TowerFactory::create(id);
+    if (tower) {
+        slot->addChild(tower);
+    }
+}
+
+void BattleField::upgradeTechnology(int slotId, towerId id, int tid)
+{
+    log("BattleField::upgradeTechnology slotId %d towrId id %d tid %d", slotId, id, tid);
+    TowerSlot* slot = NULL;
+    for (int i = 0; i < m_towerSlots.size(); ++i) {
+        if (m_towerSlots[i]->getSlotId() == slotId) {
+            slot = m_towerSlots[i];
+            break;
+        }
+    }
+
+    if (!slot) return;
+    auto tower = slot->getTower();
+    if (tower) {
+        tower->upgradeTechnology(tid);
+    }
+}
 
