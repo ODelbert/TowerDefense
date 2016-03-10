@@ -24,4 +24,5 @@ void Stage1::addTowerSlots()
     TowerSlot* slot = TowerSlot::create();
     slot->setPosition(400, 300);
     addChild(slot);
+    m_towerSlots.push_back(slot);
 }

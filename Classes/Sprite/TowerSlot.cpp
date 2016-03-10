@@ -183,6 +183,7 @@ bool TowerSlot::init()
     if (!m_ring) return false;
     m_ring->setPosition(0, 0);
     addChild(m_ring);
+    m_ring->setVisible(false);
     
     setTouchCallback(CC_CALLBACK_0(TowerSlot::onTouchEvent, this));
     return true;

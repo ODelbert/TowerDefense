@@ -84,12 +84,6 @@ void BattleField::removeEnemy(Enemy* enemy)
     m_mapSprite->removeChild(enemy, false);
 }
 
-void BattleField::addTower(Tower* tower)
-{
-    // TODO:: GameManager adds
-    m_mapSprite->addChild(tower);
-}
-
 void BattleField::removeTower(Tower* tower)
 {
     // TODO:: GameManager removes
@@ -139,12 +133,24 @@ void BattleField::UpdateAllies()
 {
 }
 
-
 void BattleField::bulidTower(int slotId, TowerID id)
 {
     Animation* ani = AnimationManager::getInstance()->getAnimation(-1);
+    if (!ani) {
+        return;
+    }
+    
+    TowerSlot* slot = NULL;
+    for (int i = 0; i < m_towerSlots.size(); ++i) {
+        if (m_towerSlots[i]->getSlotId() == slotId) {
+            slot = m_towerSlots[i];
+            break;
+        }
+    }
+    
+    if (!slot) return;
 
-    // auto actions = Sequence::create(Animate::create(ani), CallFuncN::create(CC_CALLBACK_2(BattleField::bulidTower, this, slotId, id)), nullptr);
+    slot->runAction(Sequence::create(Animate::create(ani), CallFuncN::create(CC_CALLBACK_0(BattleField::addTower, this, slotId, id)), nullptr));
 }
 
 void BattleField::addTower(int slotId, TowerID id)

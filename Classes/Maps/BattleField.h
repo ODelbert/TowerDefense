@@ -31,8 +31,7 @@ public:
 
     void addEnemy(Enemy* enemy);
     void removeEnemy(Enemy* enemy);
-    void addTower(Tower* enemy);
-    void removeTower(Tower* tower);
+    
     
     virtual bool onTouchBegan(Touch* touch, Event* event);
     void onTouchEnded(Touch* touch, Event* event);
@@ -40,6 +39,7 @@ public:
 
     void bulidTower(int slotId, TowerID id);
     void addTower(int slotId, TowerID id);
+    void removeTower(Tower* tower);
     void upgradeTechnology(int slotId, TowerID id, int tid);
 
 

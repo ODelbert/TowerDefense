@@ -40,7 +40,9 @@ static const std::string BigImagePlist[] =
     "metropolis_content-hd.plist",
     "metropolis_content_2-hd.plist",
     "woods_content-hd.plist",
-    "ingame_gui-hd.plist"
+    "ingame_gui-hd.plist",    "elves_towers-hd.plist",
+    "elves_towers_2-hd.plist"
+    
 };
 
 static const std::string ImageAnimationPlist[] =
@@ -314,12 +316,14 @@ bool ResourceManager::initialize()
         SpriteFrameCache::getInstance()->addSpriteFramesWithFile(BigImagePlist[i]);
     }
     
-#ifndef TD_TEST
-    PListReader::getInstance()->extractAnimationFromResource();
-    
     for (int i = 0; i < sizeof(ImageAnimationPlist)/sizeof(ImageAnimationPlist[0]); ++i) {
         SpriteFrameCache::getInstance()->addSpriteFramesWithFile(ImageAnimationPlist[i]);
     }
+    
+#ifndef TD_TEST
+    PListReader::getInstance()->extractAnimationFromResource();
+    
+
     
     for (int i = 0; i < sizeof(AnimationNamePlist)/sizeof(AnimationNamePlist[0]); ++i) {
         PListReader::getInstance()->createAnimationWithPlist(AnimationNamePlist[i]);

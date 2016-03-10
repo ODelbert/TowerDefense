@@ -60,13 +60,12 @@ void EventHandler::onWaveEvent(WaveEvent* waveEvent)
 void EventHandler::onTowerEvent(TowerEvent* event)
 {
     log("on tower event !! ");
+    if (!m_map) return;
     switch (event->getCommand()) {
+    
     case TowerEvent::Command::UpgradeTower:
     {
-        auto tower = TowerFactory::create(event->getTowerId());
-        if (tower) {
-            m_map->addTower(tower);
-        }
+        m_map->addTower(event->getSlotId(), event->getTowerId());
     }
         break;
     case TowerEvent::Command::UpgradeTechnology:
