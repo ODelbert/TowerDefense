@@ -106,7 +106,7 @@ void BattleField::loadLevel(int stage, int difficult)
 
 void BattleField::start(float dt)
 {
-    WaveManager::getInstance()->start();
+    // WaveManager::getInstance()->start();
 }
 
 const std::vector<Enemy*> BattleField::getEnemies()
@@ -155,6 +155,7 @@ void BattleField::bulidTower(int slotId, TowerID id)
 
 void BattleField::addTower(int slotId, TowerID id)
 {
+    log("BattleField::addTower slotId %d towerId %d", slotId, id);
     TowerSlot* slot = NULL;
     for (int i = 0; i < m_towerSlots.size(); ++i) {
         if (m_towerSlots[i]->getSlotId() == slotId) {
@@ -166,8 +167,9 @@ void BattleField::addTower(int slotId, TowerID id)
     if (!slot) return;
 
     auto tower = TowerFactory::create(id);
+    assert(tower != NULL);
     if (tower) {
-        slot->addChild(tower);
+        slot->addTower(tower);
     }
 }
 

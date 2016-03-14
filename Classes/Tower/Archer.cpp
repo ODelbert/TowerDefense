@@ -21,6 +21,7 @@ Archer* Archer::create(TowerLevel level)
 {
 	Archer* ret = new Archer;
 	if (ret && ret->init(level)) {
+        ret->autorelease();
 		return ret;
 	}
 

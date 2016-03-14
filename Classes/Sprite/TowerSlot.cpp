@@ -85,14 +85,20 @@ bool SlotRing::init(TowerSlot *owner)
 {
     m_owner = owner;
     m_texture = Sprite::createWithSpriteFrameName("gui_ring.png");
-
+    m_texture->setTag(0x8888);
     addChild(m_texture);
     return true;
 }
 
 void SlotRing::onTouch()
 {
-    m_texture->removeAllChildrenWithCleanup(true);
+    Vector<Node*> childs = getChildren();
+    for (int i = 0; i < childs.size(); ++i) {
+        if (0x8888 != childs.at(i)->getTag()) {
+            childs.at(i)->removeFromParent();
+        }
+    }
+
     if (m_owner) {
         std::vector<Node*> icons;
         Tower* tower = m_owner->getTower();
@@ -152,7 +158,7 @@ void SlotRing::onTouch()
 
             auto seller = SellIcon::create();
             addChild(seller);
-            seller->setPosition(m_texture->getContentSize().width / 2, -1 * m_texture->getContentSize().height / 2);
+            seller->setPosition(0, -1 * m_texture->getContentSize().height / 2);
         }
         else {
             // 4 basic icon  ----> 4
@@ -200,3 +206,8 @@ void TowerSlot::onTouchEvent()
         m_ring->setVisible(false);
 }
 
+void TowerSlot::addTower(Tower* tower)
+{
+    m_tower = tower;
+    addChild(tower);
+}

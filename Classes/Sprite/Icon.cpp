@@ -241,6 +241,12 @@ bool UpgradeIcon::init(TowerID id, bool enabled)
     m_enabled = enabled;
     TouchNode::init("main_icons_over.png");
     switch (id) {
+    case TowerID_Invaild:
+    {
+        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_UPGRADE);
+        m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_UPGRADE);
+    }
+        break;
     case TowerID_Archer_Lv1:
     {
         m_enabledImage = Sprite::createWithSpriteFrameName(ICON_ARCHER);
@@ -269,14 +275,12 @@ bool UpgradeIcon::init(TowerID id, bool enabled)
     {
         m_enabledImage = Sprite::createWithSpriteFrameName(ICON_ARTILLERY);
         m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_ARTILLERY);
-        return enabled ? ICON_ARCANE : ICON_DISABLED_ARCANE;
     }
         break;
     case TowerID_Archer_Silver:
     {
         m_enabledImage = Sprite::createWithSpriteFrameName(ICON_ARTILLERY);
         m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_ARTILLERY);
-        return enabled ? ICON_SILVER : ICON_DISABLED_SILVER;
     }
         break;
     case TowerID_BladeSinger:
@@ -313,7 +317,6 @@ bool UpgradeIcon::init(TowerID id, bool enabled)
     {
         m_enabledImage = Sprite::createWithSpriteFrameName(ICON_TREE);
         m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_TREE);
-        return enabled ? ICON_TREE : ICON_DISABLED_TREE;
     }
         break;
     default:
@@ -351,13 +354,19 @@ void UpgradeIcon::onTouchEvent()
             m_state = Enabled;
             if (!getParent() || !getParent()->getParent()) return;
             TowerSlot* towerSlot = static_cast<TowerSlot*>(getParent()->getParent());
+            
             if (towerSlot != nullptr) {
+                auto tower = towerSlot->getTower();
+                if (tower) {
+                    m_id = (TowerID)(tower->getId() + 1);
+                    tower->removeFromParent();
+                }
+                
                 TowerEvent evt(TowerEvent::Command::UpgradeTower, towerSlot->getSlotId(), m_id);
                 GM->dispatchEvent(&evt);
                 GM->setGold(GM->getGold() - GM->getUpgradeFund(m_id));
-                auto tower = towerSlot->getTower();
-                if (tower)
-                    tower->removeFromParent();
+                // set Ring into un visible
+                getParent()->setVisible(false);
             }
         }
         break;
@@ -397,7 +406,14 @@ SellIcon* SellIcon::create()
 
 bool SellIcon::init()
 {
-    return true;
+    TouchNode::init("main_icons_over.png");
+    m_selectedImage = Sprite::createWithSpriteFrameName(ICON_SELL);
+    m_enabledImage = Sprite::createWithSpriteFrameName(ICON_SELL_CONFIRM);
+    if (m_selectedImage && m_enabledImage) {
+        return true;
+    }
+    
+    return false;
 }
 
 TechnologyIcon* TechnologyIcon::create(TowerID id, int tid)

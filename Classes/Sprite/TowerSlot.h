@@ -24,6 +24,8 @@ public:
     virtual bool init();
 
     virtual void onTouchEvent();
+    
+    void addTower(Tower* tower);
     CC_SYNTHESIZE(int, m_slotId, SlotId)
     
     CC_SYNTHESIZE_READONLY(Tower*, m_tower, Tower)

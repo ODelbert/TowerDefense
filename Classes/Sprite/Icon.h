@@ -65,6 +65,7 @@ public:
     void onTouchEvent();
 
 private:
+    Sprite* m_enabledImage;
     Sprite* m_selectedImage;
 };
 
