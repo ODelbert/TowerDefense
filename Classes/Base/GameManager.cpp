@@ -41,3 +41,8 @@ uint GameManager::getUpgradeFund(TowerID id, int tid)
     return 0;
 }
 
+uint GameManager::getTechnologyFund(TowerID id, int tid, int level)
+{
+    return 0;
+}
+

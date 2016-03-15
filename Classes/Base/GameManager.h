@@ -27,6 +27,7 @@ public:
     CC_SYNTHESIZE(int, m_gold, Gold)
 
     uint getUpgradeFund(TowerID id, int tid = -1);
+    uint getTechnologyFund(TowerID id, int tid, int level);
     bool enoughGold(int gold);
 };
 

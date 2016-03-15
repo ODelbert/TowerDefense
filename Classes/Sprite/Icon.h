@@ -24,8 +24,8 @@ public:
     virtual bool init(TowerID id, bool enabled = true);
     void onTouchEvent();
 
-    CC_SYNTHESIZE(TowerID, m_id, Id)
     TD_SYNTHESIZE_CHECK(bool, m_enabled, Enabled)
+    CC_SYNTHESIZE(TowerID, m_id, Id)
 
 private:
     void lightenIcon(Sprite* sprite);
@@ -40,12 +40,13 @@ private:
 class TechnologyIcon : public TouchNode
 {
 public:
-    static TechnologyIcon* create(TowerID id, int tid);
-    virtual bool init(TowerID id, int tid);
+    static TechnologyIcon* create(TowerID id, int tid, bool enabled = true);
+    virtual bool init(TowerID id, int tid, bool enabled = true);
     void onTouchEvent();
     
+    TD_SYNTHESIZE_CHECK(bool, m_enabled, Enabled)
     CC_SYNTHESIZE_READONLY(int, m_tid, Tid)
-    CC_SYNTHESIZE(int, m_visibleFlag, VisibleFlag)
+    CC_SYNTHESIZE(int, m_rank, Rank)
 
 private:
     void lightenIcon(Sprite* sprite);

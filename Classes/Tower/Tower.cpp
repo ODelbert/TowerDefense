@@ -16,6 +16,8 @@ Tower::Tower()
 
 void Tower::initWithTowerId(TowerID id, TowerLevel level)
 {
+    m_id = id;
+    m_level = level;
     // TODO:: fix config
     switch (id) {
     case TowerID_Archer_Lv1:

@@ -43,6 +43,7 @@
 
 #define ICON_WEAPON_MAGIC "toptip_icons_0010.png"
 
+#define ICON_TECH "special_icons_bg.png"
 #define ICON_ARCANE_1 "special_icons_0101.png"
 #define ICON_DISABLED_ARCANE_1 "special_icons_disabled_0101.png"
 #define ICON_ARCANE_2 "special_icons_0100.png"
@@ -78,7 +79,7 @@
 #define ICON_HENGE_3 "xxx.png"
 #define ICON_DISABLED_HENGE_3 "xxx.png"
 
-#define ICON_TREE_1 "special_icons_0113.png"
+#define ICON_TREE_1 "special_icons_011.png"
 #define ICON_DISABLED_TREE_1 "special_icons_disabled_0113.png"
 #define ICON_TREE_2 "special_icons_0114.png"
 #define ICON_DISABLED_TREE_2 "special_icons_disabled_0114.png"
@@ -99,7 +100,6 @@
 #define ICON_HIGHELF_3 "xxx.png"
 #define ICON_DISABLED_HIGHELF_3 "xxx.png"
 
-#define ICON_CONFRIM "main_icons_0111.png"
 
 static std::string GetTechnologyIcon(TowerID id, bool enabled, int tid)
 {
@@ -358,7 +358,10 @@ void UpgradeIcon::onTouchEvent()
             if (towerSlot != nullptr) {
                 auto tower = towerSlot->getTower();
                 if (tower) {
-                    m_id = (TowerID)(tower->getId() + 1);
+                    if (tower->getLevel() < TowerLevel_3) {
+                        m_id = (TowerID)(tower->getId() + 1);
+                    }
+
                     tower->removeFromParent();
                 }
                 
@@ -416,10 +419,10 @@ bool SellIcon::init()
     return false;
 }
 
-TechnologyIcon* TechnologyIcon::create(TowerID id, int tid)
+TechnologyIcon* TechnologyIcon::create(TowerID id, int tid, bool enabled)
 {
     TechnologyIcon* ret = new TechnologyIcon;
-    if (ret && ret->init(id, tid)) {
+    if (ret && ret->init(id, tid, enabled)) {
         ret->autorelease();
         return ret;
     }
@@ -428,7 +431,79 @@ TechnologyIcon* TechnologyIcon::create(TowerID id, int tid)
     return nullptr;
 }
 
-bool TechnologyIcon::init(TowerID id, int tid)
+bool TechnologyIcon::init(TowerID id, int tid, bool enabled)
 {
+    TouchNode::init(ICON_TECH);
+    m_enabled = enabled;
+    m_tid = tid;
+    m_rank = 0;
+    m_enabledImage = Sprite::createWithSpriteFrameName(GetTechnologyIcon(id, true, tid));
+    m_disabledImage = Sprite::createWithSpriteFrameName(GetTechnologyIcon(id, false, tid));
+    m_confrimImage = Sprite::createWithSpriteFrameName(ICON_CONFRIM);
+    m_disabledConfrimImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_CONFRIM);
+
+    setTouchCallback(CC_CALLBACK_0(TechnologyIcon::onTouchEvent, this));
+    addChild(m_confrimImage);
+    addChild(m_disabledConfrimImage);
+    addChild(m_enabledImage);
+    addChild(m_disabledImage);
+    
+    lightenIcon(enabled ? m_enabledImage : m_disabledImage);
+    
     return true;
 }
+
+void TechnologyIcon::lightenIcon(Sprite* sprite)
+{
+    if (!m_enabledImage || !m_disabledImage || !m_confrimImage || !m_disabledConfrimImage) {
+        return;
+    }
+    m_confrimImage->setVisible(false);
+    m_disabledConfrimImage->setVisible(false);
+    m_enabledImage->setVisible(false);
+    m_disabledImage->setVisible(false);
+    
+    if (sprite) {
+        sprite->setVisible(true);
+    }
+}
+
+void TechnologyIcon::onTouchEvent()
+{
+    if (!getParent() || !getParent()->getParent()) return;
+    TowerSlot* towerSlot = static_cast<TowerSlot*>(getParent()->getParent());
+    if (!towerSlot) return;
+    auto tower = towerSlot->getTower();
+    if (!tower) return;
+
+
+    switch (m_state) {
+        case Enabled:
+        {
+            if (tower->getTechnologyRank(m_tid) >= 3) {
+                return;
+            }
+            
+            m_state = Selected;
+            // FIXME::hints
+            lightenIcon(GM->enoughGold(GM->getTechnologyFund(tower->getId(), m_tid, tower->getTechnologyRank(m_tid) + 1)) ? m_confrimImage : m_disabledConfrimImage);
+        }
+            break;
+        case Selected:
+        {
+            m_state = Enabled;
+            TowerEvent evt(TowerEvent::Command::UpgradeTechnology, towerSlot->getSlotId(), tower->getId(), tower->getTechnologyRank(m_tid) + 1);
+            GM->dispatchEvent(&evt);
+            GM->setGold(GM->getGold() - GM->getTechnologyFund(tower->getId(), m_tid, tower->getTechnologyRank(m_tid) + 1));
+            // set Ring into un visible
+            getParent()->setVisible(false);
+            
+        }
+            break;
+        case Disabled:
+        default:
+        {}
+            break;
+    }
+}
+

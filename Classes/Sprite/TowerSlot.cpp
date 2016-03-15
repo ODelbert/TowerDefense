@@ -139,10 +139,13 @@ void SlotRing::onTouch()
                 // FIXME:: price Icon
                 auto t1 = TechnologyIcon::create(tower->getId(), 0);
                 auto t2 = TechnologyIcon::create(tower->getId(), 1);
-                auto t3 = TechnologyIcon::create(tower->getId(), 2);
                 icons.push_back(t1);
                 icons.push_back(t2);
-                icons.push_back(t3);
+                if (TowerID_ForestKeeper == tower->getId() ||
+                    TowerID_BladeSinger == tower->getId()) {
+                    auto t3 = TechnologyIcon::create(tower->getId(), 2);
+                    icons.push_back(t3);
+                }
             }
 
             if (TowerID_Barrack_Lv1 == tower->getId() ||

@@ -68,7 +68,7 @@ public:
         Invaild,
         Build, // slot, towerId
         UpgradeTower, // slot, towerId, level
-        Sell, // slot, towerId, level
+        Sell, // slot, towerId, level2
         Disabled, // slot
         Assemble, // slot
         UpgradeTechnology, // slot, towerId, tid
@@ -77,10 +77,9 @@ public:
     };
 
 public:
-    TowerEvent(Command cmd = Invaild, int slotId = -1, TowerID id = TowerID_Invaild, TowerLevel level = TowerLevel_1, int tid = -1);
+    TowerEvent(Command cmd = Invaild, int slotId = -1, TowerID id = TowerID_Invaild, int tid = -1);
     CC_SYNTHESIZE(TowerID, m_towerId, TowerId)
     CC_SYNTHESIZE(int, m_slotId, SlotId)
-    CC_SYNTHESIZE(TowerLevel, m_level, Level)
     CC_SYNTHESIZE(int, m_technologyId, TechnologyId)
     CC_SYNTHESIZE(Command, m_command, Command)
 };
