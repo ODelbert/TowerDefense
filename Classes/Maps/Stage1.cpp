@@ -23,6 +23,14 @@ void Stage1::addTowerSlots()
 {
     TowerSlot* slot = TowerSlot::create();
     slot->setPosition(400, 300);
+    slot->setSlotId(0);
     addChild(slot);
     m_towerSlots.push_back(slot);
+    
+    
+    TowerSlot* slot1 = TowerSlot::create();
+    slot1->setPosition(600, 300);
+    slot1->setSlotId(1);
+    addChild(slot1);
+    m_towerSlots.push_back(slot1);
 }

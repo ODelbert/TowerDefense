@@ -41,13 +41,17 @@ bool TouchNode::init(const std::string& name)
 TouchNode::TouchNode()
     : m_texture(nullptr),
     m_isTouchBegan(false),
-    m_forceLock(false)
+    m_forceLock(false),
+    m_state(Enabled)
 {}
 
 bool TouchNode::onTouchBegan(Touch* touch, Event* event)
 {
     if (!inTouchRegion(touch)) {
         m_isTouchBegan = false;
+        if (m_outRangeCallBack) {
+            m_outRangeCallBack();
+        }
         return false;
     }
 
@@ -59,11 +63,12 @@ void TouchNode::onTouchMoved(Touch* touch, Event* event)
 {
     if (!inTouchRegion(touch)) {
         m_isTouchBegan = false;
-    }
-    else {
         if (m_outRangeCallBack) {
             m_outRangeCallBack();
         }
+    }
+    else {
+
     }
 }
 
@@ -83,9 +88,8 @@ void TouchNode::setTouchCallback(TouchCallBack callBack)
 
 void TouchNode::setOutRangeCallback(TouchCallBack callBack)
 {
-    m_callback = callBack;
+    m_outRangeCallBack = callBack;
 }
-
 
 bool TouchNode::inTouchRegion(Touch* touch)
 {

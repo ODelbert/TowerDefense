@@ -43,7 +43,9 @@
 
 #define ICON_WEAPON_MAGIC "toptip_icons_0010.png"
 
-#define ICON_TECH "special_icons_bg.png"
+#define ICON_TECH_BG "special_icons_bg.png"
+#define ICON_TECH_CONFRIM "special_icons_0020.png"
+#define ICON_TECH_CONFRIM_DISABLE "special_icons_0021.png"
 #define ICON_ARCANE_1 "special_icons_0101.png"
 #define ICON_DISABLED_ARCANE_1 "special_icons_disabled_0101.png"
 #define ICON_ARCANE_2 "special_icons_0100.png"
@@ -99,6 +101,7 @@
 #define ICON_DISABLED_HIGHELF_2 "special_icons_disabled_0118.png"
 #define ICON_HIGHELF_3 "xxx.png"
 #define ICON_DISABLED_HIGHELF_3 "xxx.png"
+
 
 
 static std::string GetTechnologyIcon(TowerID id, bool enabled, int tid)
@@ -329,12 +332,12 @@ bool UpgradeIcon::init(TowerID id, bool enabled)
         return false;
     }
 
-    auto outRangeFunc = [&]() {
+    auto outRangeCallback = [&]() {
         lightenIcon(m_enabled ? m_enabledImage : m_disabledImage);
     };
-
+    
     setTouchCallback(CC_CALLBACK_0(UpgradeIcon::onTouchEvent, this));
-    setOutRangeCallback(outRangeFunc);
+    setOutRangeCallback(outRangeCallback);
     addChild(m_confrimImage);
     addChild(m_disabledConfrimImage);
     addChild(m_enabledImage);
@@ -438,14 +441,14 @@ TechnologyIcon* TechnologyIcon::create(TowerID id, int tid, bool enabled)
 
 bool TechnologyIcon::init(TowerID id, int tid, bool enabled)
 {
-    TouchNode::init(ICON_TECH);
+    TouchNode::init(ICON_TECH_BG);
     m_enabled = enabled;
     m_tid = tid;
     m_rank = 0;
     m_enabledImage = Sprite::createWithSpriteFrameName(GetTechnologyIcon(id, true, tid));
     m_disabledImage = Sprite::createWithSpriteFrameName(GetTechnologyIcon(id, false, tid));
-    m_confrimImage = Sprite::createWithSpriteFrameName(ICON_CONFRIM);
-    m_disabledConfrimImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_CONFRIM);
+    m_confrimImage = Sprite::createWithSpriteFrameName(ICON_TECH_CONFRIM);
+    m_disabledConfrimImage = Sprite::createWithSpriteFrameName(ICON_TECH_CONFRIM_DISABLE);
 
     setTouchCallback(CC_CALLBACK_0(TechnologyIcon::onTouchEvent, this));
     addChild(m_confrimImage);
@@ -480,7 +483,6 @@ void TechnologyIcon::onTouchEvent()
     if (!towerSlot) return;
     auto tower = towerSlot->getTower();
     if (!tower) return;
-
 
     switch (m_state) {
         case Enabled:

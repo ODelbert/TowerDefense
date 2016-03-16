@@ -194,7 +194,23 @@ bool TowerSlot::init()
     addChild(m_ring);
     m_ring->setVisible(false);
     
+    auto outRangeCallBack = [&]() {
+        if (m_ring->isVisible()) {
+            Vector<Node*> childs = m_ring->getChildren();
+            for (int i = 0; i < childs.size(); ++i) {
+                TouchNode* tn = static_cast<TouchNode*>(childs.at(i));
+                if (TouchNode::State::Selected == tn->getState()) {
+                    // do not hide
+                    return;
+                }
+            }
+            
+            m_ring->setVisible(false);
+        }
+    };
+    
     setTouchCallback(CC_CALLBACK_0(TowerSlot::onTouchEvent, this));
+    setOutRangeCallback(outRangeCallBack);
     return true;
 }
 
