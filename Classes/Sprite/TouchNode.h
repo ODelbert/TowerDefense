@@ -31,6 +31,7 @@ public:
     virtual bool init(const std::string& name);
 
     void setTouchCallback(TouchCallBack callBack);
+    void setOutRangeCallback(TouchCallBack callBack);
     bool inTouchRegion(Touch* touch);
 
     CC_SYNTHESIZE(State, m_state, State)
@@ -46,6 +47,7 @@ protected:
 	Sprite* m_texture;
     bool m_isTouchBegan;
     TouchCallBack m_callback;
+    TouchCallBack m_outRangeCallBack;
 };
 
 #endif /* TouchNode_hpp */

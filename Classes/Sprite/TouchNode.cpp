@@ -60,6 +60,11 @@ void TouchNode::onTouchMoved(Touch* touch, Event* event)
     if (!inTouchRegion(touch)) {
         m_isTouchBegan = false;
     }
+    else {
+        if (m_outRangeCallBack) {
+            m_outRangeCallBack();
+        }
+    }
 }
 
 void TouchNode::onTouchEnded(Touch* touch, Event* event)
@@ -75,6 +80,12 @@ void TouchNode::setTouchCallback(TouchCallBack callBack)
 {
     m_callback = callBack;
 }
+
+void TouchNode::setOutRangeCallback(TouchCallBack callBack)
+{
+    m_callback = callBack;
+}
+
 
 bool TouchNode::inTouchRegion(Touch* touch)
 {

@@ -329,7 +329,12 @@ bool UpgradeIcon::init(TowerID id, bool enabled)
         return false;
     }
 
+    auto outRangeFunc = [&]() {
+        lightenIcon(m_enabled ? m_enabledImage : m_disabledImage);
+    };
+
     setTouchCallback(CC_CALLBACK_0(UpgradeIcon::onTouchEvent, this));
+    setOutRangeCallback(outRangeFunc);
     addChild(m_confrimImage);
     addChild(m_disabledConfrimImage);
     addChild(m_enabledImage);

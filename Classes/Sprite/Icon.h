@@ -23,11 +23,12 @@ public:
     static UpgradeIcon* create(TowerID id, bool enabled = true);
     virtual bool init(TowerID id, bool enabled = true);
     void onTouchEvent();
-
+    void onOutRangeEvent();
     TD_SYNTHESIZE_CHECK(bool, m_enabled, Enabled)
     CC_SYNTHESIZE(TowerID, m_id, Id)
 
 private:
+
     void lightenIcon(Sprite* sprite);
 
 private:

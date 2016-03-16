@@ -478,8 +478,7 @@ void PListReader::extractAnimationFromResource()
         }
         
     };
-    
-    
+
 #if (CC_PLATFORM_MAC == CC_TARGET_PLATFORM || CC_PLATFORM_IOS == CC_TARGET_PLATFORM || CC_PLATFORM_LINUX == CC_TARGET_PLATFORM)
     DIR *dir;
     struct dirent *ptr;
