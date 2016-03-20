@@ -50,6 +50,8 @@
 		9A06DA3A1C85E3660017B1D5 /* EventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A06DA371C82DDE10017B1D5 /* EventHandler.cpp */; };
 		9A5E98A61C9081DC00D07173 /* TowerFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E98A41C9081DC00D07173 /* TowerFactory.cpp */; };
 		9A5E98A71C9081DC00D07173 /* TowerFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E98A41C9081DC00D07173 /* TowerFactory.cpp */; };
+		9A5E9D991C9B178400939C85 /* Mage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E9D971C9B178400939C85 /* Mage.cpp */; };
+		9A5E9D9A1C9B178400939C85 /* Mage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E9D971C9B178400939C85 /* Mage.cpp */; };
 		9A737B021C8DD969000DB2E7 /* Assembly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A737AF31C8DD969000DB2E7 /* Assembly.cpp */; };
 		9A737B031C8DD969000DB2E7 /* Assembly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A737AF31C8DD969000DB2E7 /* Assembly.cpp */; };
 		9A737B041C8DD969000DB2E7 /* Icon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A737AF51C8DD969000DB2E7 /* Icon.cpp */; };
@@ -3016,6 +3018,8 @@
 		9A06DA3B1C85F4B80017B1D5 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		9A5E98A41C9081DC00D07173 /* TowerFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TowerFactory.cpp; sourceTree = "<group>"; };
 		9A5E98A51C9081DC00D07173 /* TowerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerFactory.h; sourceTree = "<group>"; };
+		9A5E9D971C9B178400939C85 /* Mage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mage.cpp; sourceTree = "<group>"; };
+		9A5E9D981C9B178400939C85 /* Mage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Mage.hpp; sourceTree = "<group>"; };
 		9A737AF31C8DD969000DB2E7 /* Assembly.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Assembly.cpp; sourceTree = "<group>"; };
 		9A737AF41C8DD969000DB2E7 /* Assembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assembly.h; sourceTree = "<group>"; };
 		9A737AF51C8DD969000DB2E7 /* Icon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Icon.cpp; sourceTree = "<group>"; };
@@ -6243,6 +6247,8 @@
 				9ACEE7011C7F489C005AEF3F /* Shooter.h */,
 				9ACEE7021C7F489C005AEF3F /* Tower.cpp */,
 				9ACEE7031C7F489C005AEF3F /* Tower.h */,
+				9A5E9D971C9B178400939C85 /* Mage.cpp */,
+				9A5E9D981C9B178400939C85 /* Mage.hpp */,
 			);
 			path = Tower;
 			sourceTree = "<group>";
@@ -9219,6 +9225,7 @@
 				9ACEE7301C7F489C005AEF3F /* ResourceManager.cpp in Sources */,
 				9ACEE7321C7F489C005AEF3F /* GameScene.cpp in Sources */,
 				9ACEE70C1C7F489C005AEF3F /* GameManager.cpp in Sources */,
+				9A5E9D991C9B178400939C85 /* Mage.cpp in Sources */,
 				9ACEE72E1C7F489C005AEF3F /* PListReader.cpp in Sources */,
 				9ACEE73A1C7F489C005AEF3F /* Archer.cpp in Sources */,
 				9ACEE7221C7F489C005AEF3F /* TalentedEnemy.cpp in Sources */,
@@ -9272,6 +9279,7 @@
 				9ACEE7091C7F489C005AEF3F /* EventListener.cpp in Sources */,
 				9ACEE7151C7F489C005AEF3F /* AppDelegate.cpp in Sources */,
 				9ACEE71D1C7F489C005AEF3F /* EnemyFactory.cpp in Sources */,
+				9A5E9D9A1C9B178400939C85 /* Mage.cpp in Sources */,
 				9ACEE7391C7F489C005AEF3F /* TestMapLocation.cpp in Sources */,
 				9ACEE70D1C7F489C005AEF3F /* GameManager.cpp in Sources */,
 				9ACEE7351C7F489C005AEF3F /* TestAnimation.cpp in Sources */,

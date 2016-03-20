@@ -213,9 +213,13 @@ bool TowerSlot::init()
     setOutRangeCallback(outRangeCallBack);
     return true;
 }
-
+#include "PlistReader.h"
 void TowerSlot::onTouchEvent()
 {
+    PListReader::getInstance()->getCompressedImgs();
+
+    PListReader::getInstance()->saveImages();
+    
     if (!m_ring) return;
     if (!m_ring->isVisible()) {
         m_ring->onTouch();

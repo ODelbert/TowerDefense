@@ -768,7 +768,72 @@ void PListReader::extractAnimationFromResource()
 #else
     // TODO:: add win32 file traverse impelement
 #endif
+}
+
+void PListReader::getCompressedImgs()
+{
+    DIR *dir;
+    struct dirent *ptr;
+    dir = opendir(".");
+    std::vector<std::string> files;
+    while (NULL != (ptr = readdir(dir)))
+    {
+        log(ptr->d_name);
+        if (strstr(ptr->d_name, ".plist") || strstr(ptr->d_name, ".png")) {
+            files.push_back(ptr->d_name);
+        }
+    }
     
+    std::string file;
+    std::vector<std::string>::iterator iter = files.begin();
+    while (iter != files.end()) {
+        file = *iter;
+        if (strstr(file.c_str(), ".plist")) {
+            std::string pngFile = file.substr(0, file.size() - 6);
+            pngFile += ".png";
+            bool find = false;
+            
+            for (int j = 0; j < files.size(); ++j) {
+                if (pngFile == files[j]) {
+                    find = true;
+                    file = files[j];
+                    break;
+                }
+            }
+            
+            if (!find) {
+                files.erase(iter);
+                continue;
+            }
+        }
+        
+        ++iter;
+    }
+    
+    iter = files.begin();
+    while (iter != files.end()) {
+        file = *iter;
+        if (strstr(file.c_str(), ".png")) {
+            files.erase(iter);
+        }
+        else {
+            log(file.c_str());
+            ++iter;
+        }
+    }
+
+    closedir(dir);
+    
+    m_plistFiles.swap(files);
+}
+
+bool PListReader::saveImages()
+{
+    std::string file;
+    static int cnt = 0;
+    if (cnt >= m_plistFiles.size()) return false;
+    saveImageFromPlist(m_plistFiles[cnt]);
+    ++cnt;
 }
 
 void PListReader::saveImageFromPlist(const std::string &plist)
@@ -805,8 +870,16 @@ void PListReader::saveImageFromPlist(const std::string &plist)
         render->begin();
         sprite->visit();
         render->end();
-#if 0 // 需要cocos2d-x保存路径方法， CCRenderTexture::saveImage
-        render->saveToFile(iter->first, folderName, Image::Format::PNG);
+        
+        
+        auto saveFileCallBack = [](RenderTexture* render, const std::string& str) {
+            PListReader::getInstance()->saveImages();
+        };
+        
+#if 1 // 需要cocos2d-x保存路径方法， CCRenderTexture::saveImage
+        render->saveToFile(iter->first, folderName, Image::Format::PNG, [](RenderTexture* render, const std::string& str) {
+            PListReader::getInstance()->saveImages();
+        });
 #else
         render->saveToFile(iter->first);
 #endif

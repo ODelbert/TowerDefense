@@ -42,8 +42,8 @@ public:
     void removeTower(Tower* tower);
     void upgradeTechnology(int slotId, TowerID id, int tid);
 
-
-
+    void update(float dt);
+    
 protected:
     explicit BattleField();
 

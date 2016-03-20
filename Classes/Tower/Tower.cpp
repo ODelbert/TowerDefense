@@ -10,7 +10,8 @@ Tower::Tower()
       m_damageMin(0),
       m_range(0),
       m_technologyMask(0),
-      m_weapon(WeaponType_Invalid)
+      m_weapon(WeaponType_Invalid),
+      m_texture(nullptr)
 {
 }
 
@@ -29,6 +30,17 @@ void Tower::initWithTowerId(TowerID id, TowerLevel level)
         m_texture = Sprite::createWithSpriteFrameName("archer_towers_0004.png");
         break;
     case TowerID_Archer_Silver:
+        m_texture = Sprite::createWithSpriteFrameName("archer_towers_0005.png");
+        break;
+    case TowerID_Barrack_Lv1:
+    case TowerID_Barrack_Lv2:
+    case TowerID_Barrack_Lv3:
+        m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("archer_towers_000%d.png", static_cast<int>(id - TowerID_Archer_Lv1 + 1))->getCString());
+        break;
+    case TowerID_ForestKeeper:
+        m_texture = Sprite::createWithSpriteFrameName("archer_towers_0004.png");
+        break;
+    case TowerID_BladeSinger:
         m_texture = Sprite::createWithSpriteFrameName("archer_towers_0005.png");
         break;
     case TowerID_Mage_Lv1:

@@ -4,6 +4,7 @@
 #include "CommonDef.h"
 #include "cocos2d.h"
 #include <vector>
+#include <string>
 #include "Enemy/Enemy.h"
 #include "Base/Singleton.h"
 
@@ -29,10 +30,16 @@ public:
     std::vector<std::vector<std::vector<cocos2d::Vec2> > > readPathPlist(int level);
     
     void extractAnimationFromResource();
+    bool saveImages();
+    void getCompressedImgs();
+private:
     void saveImageFromPlist(const std::string &plist);
+    
     
 private:
     static PListReader* s_instance;
+    std::vector<std::string> m_plistFiles;
+    std::function<void (RenderTexture*, const std::string&)> m_saveFileCallback;
 };
 
 

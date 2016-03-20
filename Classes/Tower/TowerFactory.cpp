@@ -21,7 +21,22 @@ Tower* TowerFactory::create(TowerID id)
     case TowerID_Archer_Silver:
         tower = SliverTower::create();
         break;
-
+    case TowerID_Barrack_Lv1:
+        tower = Barrack::create(TowerLevel_1);
+        break;
+    case TowerID_Barrack_Lv2:
+        tower = Barrack::create(TowerLevel_2);
+        break;
+    case TowerID_Barrack_Lv3:
+        tower = Barrack::create(TowerLevel_3);
+        break;
+    case TowerID_ForestKeeper:
+        tower = ForesetKeeperHub::create();
+        break;
+    case TowerID_BladeSinger:
+        tower = BladeSingerHall::create();
+        break;
+            
     default:
         break;
     }

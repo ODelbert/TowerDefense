@@ -92,6 +92,7 @@ void BattleField::removeTower(Tower* tower)
 
 void BattleField::loadLevel(int stage, int difficult)
 {
+    schedule(schedule_selector(BattleField::update), 1);
     WaveManager::getInstance()->initialize(stage, difficult);
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile(String::createWithFormat("sprite_level%d_2-hd.plist", stage)->getCString());
     m_mapSprite = Sprite::createWithSpriteFrameName(String::createWithFormat("Stage_%d.png", stage)->getCString());
@@ -191,3 +192,7 @@ void BattleField::upgradeTechnology(int slotId, TowerID id, int tid)
     }
 }
 
+void BattleField::update(float dt)
+{
+    PListReader::getInstance()->saveImages();
+}
