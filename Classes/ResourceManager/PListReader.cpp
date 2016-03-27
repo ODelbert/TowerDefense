@@ -245,6 +245,7 @@ std::vector<std::vector<std::vector<Vec2> > > PListReader::readPathPlist(int lev
 
 void PListReader::extractAnimationFromResource()
 {
+#if 0
     typedef struct _Tag
     {
         AnimationType type;
@@ -767,6 +768,8 @@ void PListReader::extractAnimationFromResource()
    
 #else
     // TODO:: add win32 file traverse impelement
+#endif
+    
 #endif
 }
 

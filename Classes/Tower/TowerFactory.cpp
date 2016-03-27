@@ -7,13 +7,9 @@ Tower* TowerFactory::create(TowerID id)
     Tower* tower = NULL;
     switch (id) {
     case TowerID_Archer_Lv1:
-        tower = Archer::create(TowerLevel_1);
-        break;
     case TowerID_Archer_Lv2:
-        tower = Archer::create(TowerLevel_2);
-        break;
     case TowerID_Archer_Lv3:
-        tower = Archer::create(TowerLevel_3);
+        tower = Archer::create(id);
         break;
     case TowerID_Archer_Arcane:
         tower = ArcaneTower::create();
@@ -22,19 +18,20 @@ Tower* TowerFactory::create(TowerID id)
         tower = SliverTower::create();
         break;
     case TowerID_Barrack_Lv1:
-        tower = Barrack::create(TowerLevel_1);
-        break;
     case TowerID_Barrack_Lv2:
-        tower = Barrack::create(TowerLevel_2);
-        break;
     case TowerID_Barrack_Lv3:
-        tower = Barrack::create(TowerLevel_3);
+        tower = Barrack::create(id);
         break;
     case TowerID_ForestKeeper:
         tower = ForesetKeeperHub::create();
         break;
     case TowerID_BladeSinger:
         tower = BladeSingerHall::create();
+        break;
+    case TowerID_Mage_Lv1:
+    case TowerID_Mage_Lv2:
+    case TowerID_Mage_Lv3:
+        //tower = Mage::create(id);
         break;
             
     default:

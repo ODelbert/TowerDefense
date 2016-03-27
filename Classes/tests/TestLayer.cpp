@@ -191,7 +191,7 @@ bool TestLayer::init()
 //    }
     
 //    attacker->runAction(actionAttack);
-    AnimationManager::getInstance()->runAction(attacker, 2, 1);
+    AnimationManager::getInstance()->runAction(attacker, "", 1);
     attacker->setPosition(Vec2(200, 200));
     m_bkg->addChild(attacker);
     m_bkg->addChild(m_runningEnemy);
@@ -277,7 +277,7 @@ void TestLayer::testEnemyAnimation()
             auto sp = Sprite::createWithSpriteFrameName("redcap_0001.png");
             addChild(sp);
             sp->setPosition(pos.x + (i-s) * 60, pos.y - j * 60);
-            AnimationManager::getInstance()->runAction(sp, i, j);
+            AnimationManager::getInstance()->runAction(sp, "", j);
         }
     }
 }

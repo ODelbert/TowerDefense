@@ -20,8 +20,8 @@ protected:
 class Archer : public Tower
 {
 public:
-    static Archer* create(TowerLevel level);
-    virtual bool init(TowerLevel level);
+    static Archer* create(TowerID level);
+    virtual bool init(TowerID level);
     
     virtual void shoot();
 };

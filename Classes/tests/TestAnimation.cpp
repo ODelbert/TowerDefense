@@ -10,6 +10,7 @@
 #include "Animation/AnimationManager.h"
 #include "ResourceId.h"
 
+#if 0
 typedef struct _Tag2Name
 {
     uint tag;
@@ -1200,3 +1201,5 @@ void TestAnimation::demonstrateTower(const _Tag2Name* tags, int len)
     }
 }
 
+
+#endif

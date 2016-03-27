@@ -67,21 +67,21 @@ void Shooter::shoot()
     case TowerID_Archer_Lv1:
     case TowerID_Archer_Lv2:
     case TowerID_Archer_Lv3:
-        AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? AnimationTower_Archer_Shooter_Up : AnimationTower_Archer_Shooter_Down);
+        AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? AID_TOWER_ARCHER_SHOOTER_UP : AID_TOWER_ARCHER_SHOOTER_DOWN);
         break;
     case TowerID_Mage_Lv1:
     case TowerID_Mage_Lv2:
     case TowerID_Mage_Lv3:
-        AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? AnimationTower_Mage_Tower_Shooter_ShootUp : AnimationTower_Mage_Tower_Shooter_ShootDown);
+        AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? AID_TOWER_MAGE_TOWER_SHOOTER_SHOOTUP : AID_TOWER_MAGE_TOWER_SHOOTER_SHOOTDOWN);
         break;
     case TowerID_Artillery_Lv1:
-        AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? AnimationTower_Artillery_Thrower_ShootUp : AnimationTower_Artillery_Thrower_ShootDown);
+        AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? AID_TOWER_ARTILLERY_THROWER_SHOOTUP : AID_TOWER_ARTILLERY_THROWER_SHOOTDOWN);
         break;
     case TowerID_Artillery_Lv2:
-        AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? AnimationTower_Artillery_Thrower_Lvl2_ShootUp : AnimationTower_Artillery_Thrower_Lvl2_ShootDown);
+        AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? AID_TOWER_ARTILLERY_THROWER_LVL2_SHOOTUP : AID_TOWER_ARTILLERY_THROWER_LVL2_SHOOTDOWN);
         break;
     case TowerID_Artillery_Lv3:
-        AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? AnimationTower_Artillery_Thrower_Lvl3_ShootUp : AnimationTower_Artillery_Thrower_Lvl3_ShootDown);
+        AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? AID_TOWER_ARTILLERY_THROWER_LVL3_SHOOTUP : AID_TOWER_ARTILLERY_THROWER_LVL3_SHOOTDOWN);
         break;
     default:
         break;

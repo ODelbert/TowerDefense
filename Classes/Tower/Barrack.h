@@ -6,12 +6,17 @@
 
 USING_NS_CC;
 
+class AssembleFlag;
+class Solider;
 class Barrack : public Tower
 {
 public:
-    static Barrack* create(TowerLevel level);
-    virtual bool init(TowerLevel level);
+    static Barrack* create(TowerID towerId);
+    virtual bool init(TowerID towerId);
 
+private:
+    Sprite* m_door;
+    std::vector<Solider*> m_soliders;
 };
 
 class ForesetKeeperHub : public Barrack

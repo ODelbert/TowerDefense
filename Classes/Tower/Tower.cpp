@@ -15,93 +15,97 @@ Tower::Tower()
 {
 }
 
-void Tower::initWithTowerId(TowerID id, TowerLevel level)
+void Tower::initWithTowerId(TowerID id)
 {
     m_id = id;
-    m_level = level;
     // TODO:: fix config
-    switch (id) {
-    case TowerID_Archer_Lv1:
-    case TowerID_Archer_Lv2:
-    case TowerID_Archer_Lv3:
-        m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("archer_towers_000%d.png", static_cast<int>(id - TowerID_Archer_Lv1 + 1))->getCString());
-        break;
-    case TowerID_Archer_Arcane:
-        m_texture = Sprite::createWithSpriteFrameName("archer_towers_0004.png");
-        break;
-    case TowerID_Archer_Silver:
-        m_texture = Sprite::createWithSpriteFrameName("archer_towers_0005.png");
-        break;
-    case TowerID_Barrack_Lv1:
-    case TowerID_Barrack_Lv2:
-    case TowerID_Barrack_Lv3:
-        m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("archer_towers_000%d.png", static_cast<int>(id - TowerID_Archer_Lv1 + 1))->getCString());
-        break;
-    case TowerID_ForestKeeper:
-        m_texture = Sprite::createWithSpriteFrameName("archer_towers_0004.png");
-        break;
-    case TowerID_BladeSinger:
-        m_texture = Sprite::createWithSpriteFrameName("archer_towers_0005.png");
-        break;
-    case TowerID_Mage_Lv1:
-    case TowerID_Mage_Lv2:
-    case TowerID_Mage_Lv3:
-        {
-            auto ornaments = Sprite::createWithSpriteFrameName(String::createWithFormat("mage_towers_layer1_00%2d.png", static_cast<int>((id - TowerID_Mage_Lv1) * 32 + 1))->getCString());
-            m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("mage_towers_layer2_00%2d.png", static_cast<int>((id - TowerID_Mage_Lv1) * 32 + 1))->getCString());
-            m_texture->addChild(ornaments);
-        }
-        break;
-    case TowerID_Mage_Wild:
-        {
-            m_texture = Sprite::createWithSpriteFrameName("mage_towers_layer1_0097.png");
-            // mage_wild_stones_0001.png -> mage_wild_stones_00010.png 悬浮石子
-        }
-        break;
-    case TowerID_Mage_HighElven:
-        {
-            m_texture = Sprite::createWithSpriteFrameName("mage_towers_layer1_0098.png");
-        }
-        break;
-    case TowerID_Artillery_Lv1:
-    case TowerID_Artillery_Lv2:
-    case TowerID_Artillery_Lv3:
-        m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("artillery_base_000%d.png", static_cast<int>(id - TowerID_Artillery_Lv1 + 1))->getCString());
-        break;
-    case TowerID_Artillery_Henge:
-        m_texture = Sprite::createWithSpriteFrameName("archer_towers_0005.png");
-        break;
-    case TowerID_Artillery_Tree:
-        // m_texture = Sprite::createWithSpriteFrameName("archer_towers_0005.png");
-        break;
-    default:
-        break;
-    }
+//    switch (id) {
+//    case TowerID_Archer_Lv1:
+//    case TowerID_Archer_Lv2:
+//    case TowerID_Archer_Lv3:
+//        m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("archer_towers_000%d.png", static_cast<int>(id - TowerID_Archer_Lv1 + 1))->getCString());
+//        break;
+//    case TowerID_Archer_Arcane:
+//        m_texture = Sprite::createWithSpriteFrameName("archer_towers_0004.png");
+//        break;
+//    case TowerID_Archer_Silver:
+//        m_texture = Sprite::createWithSpriteFrameName("archer_towers_0005.png");
+//        break;
+//    case TowerID_Barrack_Lv1:
+//    case TowerID_Barrack_Lv2:
+//    case TowerID_Barrack_Lv3:
+//    case TowerID_BladeSinger:
+//    case TowerID_ForestKeeper:
+//    {
+//        // Layer1: sprite Layer2:door,init in barrack!
+//        int imgIndex = 1 + (m_id - TowerID_Barrack_Lv1) * 25;
+//        char* format = imgIndex < 10 ? "barracks_towers_layer1_000%d.png" : imgIndex < 100 ? "barracks_towers_layer1_00%2d" : "barracks_towers_layer1_03d";
+//        m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat(format, imgIndex)->getCString());
+//    }
+//    break;
 
-    if (m_texture) {
-        addChild(m_texture);
+//    case TowerID_Mage_Lv1:
+//    case TowerID_Mage_Lv2:
+//    case TowerID_Mage_Lv3:
+//    {
+//        int imgIndex = 1 + static_cast<int>(m_id - TowerID_Mage_Lv1) * 32;
+//        char* format = imgIndex < 10 ? "barracks_towers_layer1_000%d.png" : "mage_towers_layer1_002d.png";
+//        m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat(format, imgIndex)->getCString());
+//        auto ornaments = Sprite::createWithSpriteFrameName(String::createWithFormat("mage_towers_layer1_00%2d.png", static_cast<int>((id - TowerID_Mage_Lv1) * 32 + 1))->getCString());
+//        m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("mage_towers_layer2_00%2d.png", static_cast<int>((id - TowerID_Mage_Lv1) * 32 + 1))->getCString());
+//        m_texture->addChild(ornaments);
+//    }
+//    break;
+//    case TowerID_Mage_Wild:
+//        {
+//            m_texture = Sprite::createWithSpriteFrameName("mage_towers_layer1_0097.png");
+//            // mage_wild_stones_0001.png -> mage_wild_stones_00010.png 悬浮石子
+//        }
+//        break;
+//    case TowerID_Mage_HighElven:
+//        {
+//            m_texture = Sprite::createWithSpriteFrameName("mage_towers_layer1_0098.png");
+//        }
+//        break;
+//    case TowerID_Artillery_Lv1:
+//    case TowerID_Artillery_Lv2:
+//    case TowerID_Artillery_Lv3:
+//        m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("artillery_base_000%d.png", static_cast<int>(id - TowerID_Artillery_Lv1 + 1))->getCString());
+//        break;
+//    case TowerID_Artillery_Henge:
+//        m_texture = Sprite::createWithSpriteFrameName("archer_towers_0005.png");
+//        break;
+//    case TowerID_Artillery_Tree:
+//        // m_texture = Sprite::createWithSpriteFrameName("archer_towers_0005.png");
+//        break;
+//    default:
+//        break;
+//    }
 
-            //TODO: mage
+//    if (m_texture) {
+//        addChild(m_texture);
 
-            // mage_towers_layer1_0001.png lv1外围碎石子
-            // mage_towers_layer1_0033.png lv2外围碎石子
-            // mage_towers_layer1_0065.png lv3外围碎石子
-            // mage_towers_layer2_0001.png LV1 魔法塔
-            // mage_towers_layer2_0033.png LV2 魔法塔
-            // mage_towers_layer2_0065.png LV3 魔法塔
+//            //TODO: mage
+
+//            // mage_towers_layer1_0001.png lv1外围碎石子
+//            // mage_towers_layer1_0033.png lv2外围碎石子
+//            // mage_towers_layer1_0065.png lv3外围碎石子
+//            // mage_towers_layer2_0001.png LV1 魔法塔
+//            // mage_towers_layer2_0033.png LV2 魔法塔
+//            // mage_towers_layer2_0065.png LV3 魔法塔
             
-            // mage_towers_layer1_0098.png 高阶精灵塔
-            // mage_towers_layer2_0097.png 野性魔塔
-            // mage_wild_stones_0001.png -> mage_wild_stones_00010.png 悬浮石子
+//            // mage_towers_layer1_0098.png 高阶精灵塔
+//            // mage_towers_layer2_0097.png 野性魔塔
+//            // mage_wild_stones_0001.png -> mage_wild_stones_00010.png 悬浮石子
             
-            // TODO: artillery
+//            // TODO: artillery
             
-            // artillery_base_0001.png LV1
-            // artillery_base_0001.png LV2
-            // artillery_base_0001.png LV3
-            // artillery_base_0005.png 德鲁伊石塔
+//            // artillery_base_0001.png LV1
+//            // artillery_base_0001.png LV2
+//            // artillery_base_0001.png LV3
+//            // artillery_base_0005.png 德鲁伊石塔
 
-    }
+//    }
 }
 
 void Tower::detectNearBy()

@@ -1,7 +1,7 @@
 #ifndef COMMONDEF_H
 #define COMMONDEF_H
 
-
+#include "ResourceId.h"
 #define TD_TEST
 //#define TD_DEBUG
 

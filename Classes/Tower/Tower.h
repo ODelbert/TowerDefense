@@ -47,7 +47,7 @@ public:
     virtual void updateState() {}
     virtual void detectNearBy();
 
-    void initWithTowerId(TowerID id, TowerLevel level);
+    void initWithTowerId(TowerID id);
     int getTechnologyRank(int tid);
     void upgradeTechnology(int tid);
 

@@ -113,79 +113,79 @@ float Enemy::fulfilledPercent() const
 
 void Enemy::idle()
 {
-    AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Idle);
+    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Idle);
 }
 
 void Enemy::walkingLeft()
 {
     m_texture->setFlippedX(true);
-    AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingRightLeft);
+    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingRightLeft);
 }
 
 void Enemy::walkingRight()
 {
-    AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingRightLeft);
+    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingRightLeft);
 }
 
 void Enemy::walkingDown()
 {
-    AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingDown);
+    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingDown);
 }
 
 void Enemy::walkingUp()
 {
-    AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingUp);
+    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingUp);
 }
 
 void Enemy::runningLeft()
 {
     m_texture->setFlippedX(true);
-    AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningRightLeft);
+    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningRightLeft);
 }
 
 void Enemy::runningRight()
 {
-    AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningRightLeft);
+    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningRightLeft);
 }
 
 void Enemy::runningDown()
 {
-    AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningDown);
+    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningDown);
 }
 
 void Enemy::runningUp()
 {
-    AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningUp);
+    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningUp);
 }
 
 void Enemy::death()
 {
-    AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Death);
+    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Death);
 }
 
 void Enemy::spawn()
 {
-    AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Spawn);
+    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Spawn);
 }
 
 void Enemy::respawn()
 {
-    AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Respawn);
+    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Respawn);
 }
 
 void Enemy::shoot()
 {
-    AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Shoot);
+    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Shoot);
 }
 
 void Enemy::cast()
 {
-    AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Cast);
+    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Cast);
 }
 
 void Enemy::speicialAttack()
 {
-    AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Special);
+    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Special);
 }
 
 void Enemy::updateState(float dt)

@@ -371,12 +371,16 @@ void UpgradeIcon::onTouchEvent()
                     }
 
                     tower->removeFromParent();
+                    TowerEvent evt(TowerEvent::Command::UpgradeTower, towerSlot->getSlotId(), m_id);
+                    GM->dispatchEvent(&evt);
+                    GM->setGold(GM->getGold() - GM->getUpgradeFund(m_id));
+                }
+                else {
+                   TowerEvent evt(TowerEvent::Command::Build, towerSlot->getSlotId(), m_id);
+                   GM->dispatchEvent(&evt);
+                   GM->setGold(GM->getGold() - GM->getUpgradeFund(m_id));
                 }
                 
-                TowerEvent evt(TowerEvent::Command::UpgradeTower, towerSlot->getSlotId(), m_id);
-                GM->dispatchEvent(&evt);
-                GM->setGold(GM->getGold() - GM->getUpgradeFund(m_id));
-                // set Ring into un visible
                 getParent()->setVisible(false);
             }
         }

@@ -62,16 +62,20 @@ void EventHandler::onTowerEvent(TowerEvent* event)
     log("on tower event !! ");
     if (!m_map) return;
     switch (event->getCommand()) {
-    
+    case TowerEvent::Command::Build:
+    {
+        m_map->bulidTower(event->getSlotId(), event->getTowerId());
+    }
+    break;
     case TowerEvent::Command::UpgradeTower:
     {
         m_map->addTower(event->getSlotId(), event->getTowerId());
     }
-        break;
+    break;
     case TowerEvent::Command::UpgradeTechnology:
-        break;
+    break;
     default:
-        break;
+    break;
     }
 }
 

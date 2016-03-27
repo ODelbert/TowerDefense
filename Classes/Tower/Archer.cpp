@@ -14,13 +14,13 @@ bool ArcherShooter::init()
 
 void ArcherShooter::shoot()
 {
-    AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? AnimationTower_Archer_Shooter_Up : AnimationTower_Archer_Shooter_Down);
+    AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? "":"");//AID_TOWER_ARCHER_SHOOTER_UP : AID_TOWER_ARCHER_SHOOTER_DOWN);
 }
 
-Archer* Archer::create(TowerLevel level)
+Archer* Archer::create(TowerID towerId)
 {
 	Archer* ret = new Archer;
-	if (ret && ret->init(level)) {
+	if (ret && ret->init(towerId)) {
         ret->autorelease();
 		return ret;
 	}
@@ -29,22 +29,10 @@ Archer* Archer::create(TowerLevel level)
 	return nullptr;
 }
 
-bool Archer::init(TowerLevel level)
+bool Archer::init(TowerID towerId)
 {
-    switch (level) {
-    case TowerLevel_1:
-        initWithTowerId(TowerID_Archer_Lv1, level);
-        break;
-    case TowerLevel_2:
-        initWithTowerId(TowerID_Archer_Lv2, level);
-        break;
-    case TowerLevel_3:
-        initWithTowerId(TowerID_Archer_Lv3, level);
-        break;
-    default:
-        break;
-    }
-
+    Tower::initWithTowerId(towerId);
+    m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("archer_towers_000%d.png", static_cast<int>(towerId - TowerID_Archer_Lv1 + 1))->getCString());
 	return true;
 }
 
@@ -62,7 +50,8 @@ bool ArcaneShooter::init()
 
 bool ArcaneTower::init()
 {
-    Tower::initWithTowerId(TowerID_Archer_Arcane, TowerLevel_4);
+    Tower::initWithTowerId(TowerID_Archer_Arcane);
+    m_texture = Sprite::createWithSpriteFrameName("archer_towers_0004.png");
     return true;
 }
 
@@ -73,6 +62,7 @@ bool SliverShooter::init()
 
 bool SliverTower::init()
 {
-    Tower::initWithTowerId(TowerID_Archer_Silver, TowerLevel_4);
+    Tower::initWithTowerId(TowerID_Archer_Silver);
+    m_texture = Sprite::createWithSpriteFrameName("archer_towers_0005.png");
     return true;
 }
