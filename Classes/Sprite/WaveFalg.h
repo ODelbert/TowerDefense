@@ -2,14 +2,21 @@
 #define WAVEFALG_H
 
 #include "cocos2d.h"
+#include "TouchNode.h"
 
 USING_NS_CC;
 
-class WaveFalg : public Node
+class WaveFalg : public TouchNode
 {
+    enum State { enabled, selected };
+
 public:
-    static WaveFalg* create();
+    static WaveFlag* create(float duration);
     virtual bool init();
+    void onTouchEvent();
+
+private:
+    ProgressTimer* m_circle;
 };
 
 #endif // WAVEFALG_H

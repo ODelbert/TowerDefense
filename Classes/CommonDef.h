@@ -27,6 +27,20 @@ protected: varType varName;\
 public: virtual varType is##funName(void) const { return varName; }\
 public: virtual void set##funName(varType var){ varName = var; }
 
+RangeCircle* RangeCircle::create(RangeRank rank, RangeType type)
+{
+    RangeCircle* ret = new RangeCircle;
+    if (ret && ret->init(rank, type)) {
+         ret->autorelease();
+         return ret;
+    }
+
+    CC_SAFE_DELETE(ret);
+    return nullptr;
+}
+
+
+
 typedef unsigned int uint;
 //#define SINGLETON_IMPL(class) \
 //class* class::s_instance = nullptr; \
