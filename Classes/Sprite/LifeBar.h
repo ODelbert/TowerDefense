@@ -11,9 +11,12 @@ class LifeBar : public Node
 {
 public:
     static LifeBar* create(Sprite* owner = 0);
-    virtual bool init(Sprite* parent);
+    virtual bool init();
     void setPercentage(float precent);
 
+private:
+    LifeBar(Sprite* owner);
+    
 private:
     Sprite* m_owner;
     ProgressTimer* m_bar;

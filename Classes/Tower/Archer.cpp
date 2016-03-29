@@ -33,6 +33,11 @@ bool Archer::init(TowerID towerId)
 {
     Tower::initWithTowerId(towerId);
     m_texture = Sprite::createWithSpriteFrameName(String::createWithFormat("archer_towers_000%d.png", static_cast<int>(towerId - TowerID_Archer_Lv1 + 1))->getCString());
+    if (!m_texture) {
+        return false;
+    }
+    
+    addChild(m_texture);
 	return true;
 }
 
@@ -52,6 +57,11 @@ bool ArcaneTower::init()
 {
     Tower::initWithTowerId(TowerID_Archer_Arcane);
     m_texture = Sprite::createWithSpriteFrameName("archer_towers_0004.png");
+    if (!m_texture) {
+        return false;
+    }
+
+    addChild(m_texture);
     return true;
 }
 
@@ -64,5 +74,10 @@ bool SliverTower::init()
 {
     Tower::initWithTowerId(TowerID_Archer_Silver);
     m_texture = Sprite::createWithSpriteFrameName("archer_towers_0005.png");
+    if (!m_texture) {
+        return false;
+    }
+
+    addChild(m_texture);
     return true;
 }

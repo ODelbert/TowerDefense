@@ -14,21 +14,24 @@
 #include "Tower/Tower.h"
 
 static TowerInfo s_towersInfo[] = {
-    { 1, TowerID_Archer_Lv1, 1, "ArcherLevel1", 0, 0, 0, 0, 0 },
-    { 2, TowerID_Archer_Lv2, 2, "Archerevel2", 0, 0, 0, 0, 0 },
-    { 3, TowerID_Archer_Lv3, 3, "ArcherLevel3", 0, 0, 0, 0, 0 },
-    { 4, TowerID_Mage_Lv1, 1, "MageLevel1", 0, 0, 0, 0, 0 },
-    { 5, TowerID_Mage_Lv2, 2, "MageLevel2", 0, 0, 0, 0, 0 },
-    { 6, TowerID_Mage_Lv3, 3, "MageLevel3", 0, 0, 0, 0, 0 },
-    { 7, TowerID_Artillery_Lv1, 1, "ArtilleryLevel1", 0, 0, 0, 0, 0 },
-    { 8, TowerID_Artillery_Lv2, 2, "ArtilleryLevel2", 0, 0, 0, 0, 0 },
-    { 9, TowerID_Artillery_Lv3, 3, "ArtilleryLevel3", 0, 0, 0, 0, 0 },
-    { 10, TowerID_Archer_Arcane, 4, "ArcherArcane", 0, 0, 0, 0, 0 },
-    { 11, TowerID_Archer_Silver, 4, "ArcherSilver", 0, 0, 0, 0, 0 },
-    { 12, TowerID_Mage_Wild, 4, "MageWild", 0, 0, 0, 0, 0 },
-    { 13, TowerID_Mage_HighElven, 4, "MageHighElven", 0, 0, 0, 0, 0 },
-    { 14, TowerID_Artillery_Henge, 4, "ArtilleryHenge", 0, 0, 0, 0, 0 },
-    { 15, TowerID_Artillery_Tree, 4, "ArtilleryTree", 0, 0, 0, 0, 0 }
+    { TowerID_Archer_Lv1, 1, "ArcherLevel1", 0, 0, 0, 0, 0 },
+    { TowerID_Archer_Lv2, 2, "Archerevel2", 0, 0, 0, 0, 0 },
+    { TowerID_Archer_Lv3, 3, "ArcherLevel3", 0, 0, 0, 0, 0 },
+    { TowerID_Barrack_Lv1, 1, "BarrackLevel1", 0, 0, 0, 0, 0 },
+    { TowerID_Barrack_Lv2, 2, "BarrackLevel2", 0, 0, 0, 0, 0 },
+    { TowerID_Barrack_Lv3, 3, "BarrackLevel3", 0, 0, 0, 0, 0 },
+    { TowerID_Mage_Lv1, 1, "MageLevel1", 0, 0, 0, 0, 0 },
+    { TowerID_Mage_Lv2, 2, "MageLevel2", 0, 0, 0, 0, 0 },
+    { TowerID_Mage_Lv3, 3, "MageLevel3", 0, 0, 0, 0, 0 },
+    { TowerID_Artillery_Lv1, 1, "ArtilleryLevel1", 0, 0, 0, 0, 0 },
+    { TowerID_Artillery_Lv2, 2, "ArtilleryLevel2", 0, 0, 0, 0, 0 },
+    { TowerID_Artillery_Lv3, 3, "ArtilleryLevel3", 0, 0, 0, 0, 0 },
+    { TowerID_Archer_Arcane, 4, "ArcherArcane", 0, 0, 0, 0, 0 },
+    { TowerID_Archer_Silver, 4, "ArcherSilver", 0, 0, 0, 0, 0 },
+    { TowerID_Mage_Wild, 4, "MageWild", 0, 0, 0, 0, 0 },
+    { TowerID_Mage_HighElven, 4, "MageHighElven", 0, 0, 0, 0, 0 },
+    { TowerID_Artillery_Henge, 4, "ArtilleryHenge", 0, 0, 0, 0, 0 },
+    { TowerID_Artillery_Tree, 4, "ArtilleryTree", 0, 0, 0, 0, 0 }
 };
 
 static EnemyInfo s_enemiesInfo[] = {

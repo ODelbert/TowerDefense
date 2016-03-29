@@ -10,6 +10,8 @@
 #include "CommonDef.h"
 #include "tinyxml2/tinyxml2.h"
 
+using namespace tinyxml2;
+
 AnimationManager::AnimationManager()
 {}
 
@@ -19,91 +21,74 @@ AnimationManager::~AnimationManager()
 
 void AnimationManager::initialize()
 {
-//    std::string path = FileUtils::getInstance()->getWritablePath();
-//    std::string file = "animation.xml";
-//    path += file;
-//    tinyxml2::XMLDocument *pDoc = new tinyxml2::XMLDocument;
-//    XMLError errorId = pDoc->LoadFile(path.c_str());
-//    
-//    if (errorId != 0) {
-//        return;
-//    }
-//    
-//    XMLElement *rootEle = pDoc->RootElement();
-//    for (XMLElement* chd = rootEle->FirstChildElement(); chd; chd = chd->NextSiblingElement()) {
-//        if (0 == strcmp(chd->Name(), "animations")){
-//            XMLElement *ele = chd->FirstChildElement("animation");
-//            while (ele) {
-//                std::string prefix = ele->Attribute(const char *name)
-//                ele = ele->NextSiblingElement();
-//            }
-//            
-//            if (0 == strcmp(chd->Name(), "cash")) {
-//                m_cash = atoi(chd->GetText());
-//            }
-//            else if (0 == strcmp(chd->Name(), "wave")){
-//                WaveInfo waveInfo;
-//                XMLElement *ele = chd->FirstChildElement("interval");
-//                while (ele) {
-//                    if (0 == strcmp(ele->Value(), "interval")) {
-//                        waveInfo.setWaveInterval(atoi(ele->GetText()));
-//                    }
-//                    else if (0 == strcmp(ele->Value(), "path_index")) {
-//                        waveInfo.setPathIndex(atoi(ele->GetText()));
-//                    }
-//                    else if (0 == strcmp(ele->Value(), "spawns")) {
-//                        
-//                        XMLElement* spawn = ele->FirstChildElement("spawn");
-//                        while (spawn) {
-//                            SpawnInfo si;
-//                            XMLElement *ee = spawn->FirstChildElement("creep");
-//                            while (ee) {
-//                                if (0 == strcmp(ee->Value(), "creep")) {
-//                                    strncpy(si.id, ee->GetText(), 24);
-//                                }
-//                                else if (0 == strcmp(ee->Value(), "max_same")) {
-//                                    si.maxSame = atoi(ee->GetText());
-//                                }
-//                                else if (0 == strcmp(ee->Value(), "max")) {
-//                                    char maxStr[10];
-//                                    strncpy(maxStr, ee->GetText(), 10);
-//                                    si.max = atoi(maxStr);
-//                                }
-//                                else if (0 == strcmp(ee->Value(), "interval")) {
-//                                    si.interval = atoi(ee->GetText());
-//                                }
-//                                else if (0 == strcmp(ee->Value(), "interval_next")) {
-//                                    si.intervalNext = atoi(ee->GetText());
-//                                }
-//                                else if (0 == strcmp(ee->Value(), "path")) {
-//                                    si.path = atoi(ee->GetText());
-//                                }
-//                                else {
-//                                    
-//                                }
-//                                ee = ee->NextSiblingElement();
-//                            }
-//                            
-//                            if (si.max >= 2 && si.interval > 0) {
-//                                for (int i  = 0; i < si.max; ++i) {
-//                                    waveInfo.addSpawn(si);
-//                                }
-//                            }
-//                            waveInfo.addSpawn(si);
-//                            spawn = spawn->NextSiblingElement();
-//                        }
-//                    }
-//                    else {
-//                        
-//                    }
-//                    
-//                    ele = ele->NextSiblingElement();
+    std::string path = FileUtils::getInstance()->getWritablePath();
+    std::string file = "animation.xml";
+    path += file;
+    XMLDocument *pDoc = new XMLDocument;
+    XMLError errorId = pDoc->LoadFile(path.c_str());
 
+    if (errorId != 0) {
+        return;
+    }
+    
+    XMLElement *rootEle = pDoc->RootElement();
+    for (XMLElement* animation = rootEle->FirstChildElement(); animation; animation = animation->NextSiblingElement()) {
+        int toIndex = -1;
+        int fromIndex = -1;
+        std::string descript;
+        std::string prefix;
+        for (XMLElement* child = animation->FirstChildElement(); child; child = child->NextSiblingElement()) {
+            log("chd name =%s", child->Name());
+                        if (0 == strcmp(child->Name(), "fromIndex")) {
+                fromIndex = atoi(child->GetText());
+            }
+            else if (0 == strcmp(child->Name(), "toIndex")){
+                toIndex = atoi(child->GetText());
+            }
+            else if (0 == strcmp(child->Name(), "prefix")){
+
+                prefix = child->GetText();
+            }
+            else if (0 == strcmp(child->Name(), "descript")){
+                descript = child->GetText();
+            }
+            else {
+                
+            }
+        }
+        
+        log("desc %s prefix %s  fromInex %d toIndex %d", descript.c_str(), prefix.c_str(), fromIndex, toIndex);
+        addAnimation(descript, prefix, toIndex, fromIndex);
+    }
 }
 
-void AnimationManager::addAnimation(const std::string& name, const std::string& prefix, int toIndex, int formIndex)
+void AnimationManager::addAnimation(const std::string& descript, const std::string& prefix, int toIndex, int fromIndex)
 {
-    
+    if (fromIndex < 0 || toIndex < 0 || fromIndex > toIndex) return;
+    Vector<SpriteFrame*> animFrames;
+    for (int i = fromIndex; i <= toIndex; ++i) {
+        std::string format = prefix;
+        if (100 > i) {
+            format += "_00%02d.png";
+        }
+        else {
+            format += "_0%03d.png";
+        }
+
+        auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(String::createWithFormat(format.c_str(),i)->getCString());
+        if (frame) {
+            animFrames.pushBack(frame);
+        }
+    }
+
+    if (animFrames.empty()) {
+        CCLOG("AnimationManager::addAnimation animation %s, frame not load!", descript.c_str());
+        return;
+    }
+
+    // FIXME::tune parameter
+    float animateRate = 0.002f * animFrames.size() < 0.05f ? 0.05f : 0.002f * animFrames.size();
+    AnimationCache::getInstance()->addAnimation(Animation::createWithSpriteFrames(animFrames, animateRate) , descript);
 }
 
 void AnimationManager::removeAnimation(const std::string& name)

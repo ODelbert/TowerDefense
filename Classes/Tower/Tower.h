@@ -10,7 +10,6 @@ class Shooter;
 
 struct TowerInfo
 {
-    int seq;
     int id;
     int level;
     char name[24];

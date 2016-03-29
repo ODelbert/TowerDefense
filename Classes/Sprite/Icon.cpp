@@ -258,7 +258,7 @@ bool UpgradeIcon::init(TowerID id, bool enabled)
         break;
     case TowerID_Barrack_Lv1:
     {
-        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_ARCHER);
+        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_BARRACKS);
         m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_ARCHER);
     }
         break;

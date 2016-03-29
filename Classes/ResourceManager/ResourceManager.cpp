@@ -9,6 +9,7 @@
 #include "ResourceManager.h"
 #include "CommonDef.h"
 #include "PListReader.h"
+#include "AnimationManager.h"
 
 static const std::string BigImagePlist[] =
 {
@@ -329,6 +330,8 @@ bool ResourceManager::initialize()
         PListReader::getInstance()->createAnimationWithPlist(AnimationNamePlist[i]);
     }
 #endif
+    
+    AM->initialize();
     
     return true;
 }

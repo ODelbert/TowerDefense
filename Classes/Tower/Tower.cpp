@@ -1,6 +1,7 @@
 #include "Tower.h"
 #include "Maps/BattleField.h"
 #include "Shooter.h"
+#include "Configuration/GameData.h"
 
 Tower::Tower()
     : m_id(TowerID_Invaild),
@@ -18,6 +19,17 @@ Tower::Tower()
 void Tower::initWithTowerId(TowerID id)
 {
     m_id = id;
+    TowerInfo info = s_towersInfo[id];
+    m_level = static_cast<TowerLevel>(info.level);
+    m_type = TowerType_Invalid; // fix later
+    m_name = info.name;
+    m_damageMax = info.dmgMax;
+    m_damageMin = info.dmgMin;
+    m_fireRate = info.fireRate;
+    m_range = info.range;
+    m_weapon = static_cast<WeaponType>(info.weapon);
+
+
     // TODO:: fix config
 //    switch (id) {
 //    case TowerID_Archer_Lv1:
