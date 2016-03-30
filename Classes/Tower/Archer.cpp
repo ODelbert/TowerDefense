@@ -1,5 +1,6 @@
 #include "Archer.h"
 #include "Animation/AnimationManager.h"
+#include "Base/GameManager.h"
 #include "ResourceId.h"
 
 ArcherShooter::ArcherShooter()
@@ -14,7 +15,15 @@ bool ArcherShooter::init()
 
 void ArcherShooter::shoot()
 {
-    AnimationManager::getInstance()->runAction(m_texture, Direction_Up == m_oriention ? "":"");//AID_TOWER_ARCHER_SHOOTER_UP : AID_TOWER_ARCHER_SHOOTER_DOWN);
+    auto shitBullet = [&]()
+    {
+        Bullet* arrow = Arrow::create();
+        BulletEvent be;
+        GM->dispatchEvent();
+    };
+    Animation* shootAnim = AnimationCache::getInstance()->getAnimation(Direction_Up == m_oriention ? AID_TOWER_ARCHER_SHOOTER_UP, AID_TOWER_ARCHER_SHOOTER_DOWN);
+
+
 }
 
 Archer* Archer::create(TowerID towerId)

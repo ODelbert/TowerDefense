@@ -16,17 +16,20 @@ USING_NS_CC;
 
 class Shooter : public Node
 {
+    enum State { Idel, Attack };
 public:
     explicit Shooter(TowerID id);
     virtual ~Shooter();
     
-    virtual void shoot();
-    Direction getOriention();
-    void setOriention(Direction dir);
-    
+    CC_SYNTHESIZE_READONLY(TowerID, m_towerId, TowerId)
+    CC_SYNTHESIZE(Direction, m_oriention, Oriention)
+    CC_SYNTHESIZE(State, m_state, State)
+    virtual void shoot() = 0;
+
 protected:
-    TowerID m_id;
+    TowerID m_towerId;
     Direction m_oriention;
+    State m_state;
     Sprite* m_texture;
 };
 

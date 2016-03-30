@@ -120,7 +120,7 @@ void Tower::initWithTowerId(TowerID id)
 //    }
 }
 
-void Tower::detectNearBy()
+void Tower::scout()
 {
     BattleField* map = static_cast<BattleField*>(this->getParent());
     if (map) {

@@ -12,9 +12,11 @@
 #include "ResourceId.h"
 
 Shooter::Shooter(TowerID id)
-    : m_id(id)
+    : m_towerId(id),
+      m_oriention(Direction_Down),
+      m_state(Idel)
 {
-    switch (id) {
+    switch (m_towerId) {
     case TowerID_Archer_Lv1:
     case TowerID_Archer_Lv2:
     case TowerID_Archer_Lv3:
@@ -53,8 +55,9 @@ Shooter::Shooter(TowerID id)
         break;
     }
 
-    if (!m_texture) return;
-    addChild(m_texture);
+    if (m_texture) {
+        addChild(m_texture);
+    }
 }
 
 Shooter::~Shooter()

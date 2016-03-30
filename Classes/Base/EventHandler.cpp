@@ -59,7 +59,6 @@ void EventHandler::onWaveEvent(WaveEvent* waveEvent)
 
 void EventHandler::onTowerEvent(TowerEvent* event)
 {
-    log("on tower event !! ");
     if (!m_map) return;
     switch (event->getCommand()) {
     case TowerEvent::Command::Build:

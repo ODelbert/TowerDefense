@@ -50,6 +50,9 @@ public:
     int getTechnologyRank(int tid);
     void upgradeTechnology(int tid);
 
+    virtual void scout();  // archer,mage,stone
+    virtual void patrol() {} // barrack, bear
+
 protected:
     Tower();
 
