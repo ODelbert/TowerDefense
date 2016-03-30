@@ -27,9 +27,6 @@ public:
     virtual void shoot() = 0;
 
 protected:
-    TowerID m_towerId;
-    Direction m_oriention;
-    State m_state;
     Sprite* m_texture;
 };
 
