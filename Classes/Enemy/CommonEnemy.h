@@ -59,6 +59,4 @@ DECLARE_ENEMY(Arachnomancer)
 DECLARE_ENEMY(Arachnomancer_Mini)
 DECLARE_ENEMY(Arachnomancer_Spider)
 
-
-
 #endif /* defined(__TowerDefense__NormalEnemy__) */

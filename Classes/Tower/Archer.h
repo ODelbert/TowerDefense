@@ -31,6 +31,7 @@ class ArcaneShooter : public Shooter
 public:
     CREATE_FUNC(ArcaneShooter)
 	virtual bool init();
+    virtual void shoot();
 
 protected:
 	explicit ArcaneShooter();		
@@ -48,6 +49,7 @@ class SliverShooter : public Shooter
 public:
     CREATE_FUNC(SliverShooter)
 	virtual bool init();
+    virtual void shoot();
 
 protected:
 	explicit SliverShooter();

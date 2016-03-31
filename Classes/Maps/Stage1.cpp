@@ -10,7 +10,8 @@
 #include "CommonDef.h"
 #include "Base/WaveManager.h"
 #include "Sprite/TowerSlot.h"
-
+#include "Sprite/WaveFalg.h"
+#include "Sprite/RangeCircle.h"
 
 bool Stage1::init()
 {
@@ -22,6 +23,7 @@ bool Stage1::init()
 
 void Stage1::addTowerSlots()
 {
+    // Test!!
     TowerSlot* slot = TowerSlot::create();
     slot->setPosition(400, 300);
     slot->setSlotId(0);
@@ -30,16 +32,17 @@ void Stage1::addTowerSlots()
     
     
     TowerSlot* slot1 = TowerSlot::create();
-    slot1->setPosition(800, 300);
+    slot1->setPosition(600, 300);
     slot1->setSlotId(1);
     addChild(slot1);
     m_towerSlots.push_back(slot1);
 
 
+    WaveFlag* wf = WaveFlag::create(WaveFlag::Normal, 10);
+    wf->setPosition(100, 400);
+    addChild(wf);
 
-    TowerSlot* slot3 = TowerSlot::create();
-    slot3->setPosition(800, 300);
-    slot3->setSlotId(2);
-    addChild(slot3);
-    m_towerSlots.push_back(slot3);
+    RangeCircle* cir = RangeCircle::create(RangeCircle::Normal, RangeCircle::Attack);
+    cir->setPosition(100, 300);
+    addChild(cir);
 }

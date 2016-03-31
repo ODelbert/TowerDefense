@@ -7,20 +7,21 @@
 
 USING_NS_CC;
 
-class WaveFalg : public TouchNode
+class WaveFlag : public TouchNode
 {
-    enum State { enabled, selected };
-    enum Type { normal, flying };
+public:
+    enum Type { Normal, Flying };
 
 public:
-    static WaveFlag* create(Type type = normal, float duration);
-    virtual bool init(Type type = normal, float duration);
+    static WaveFlag* create(Type type, float duration);
+    virtual bool init(Type type, float duration);
     void onTouchEvent();
-
+    void onTimeout();
+    
 private:
     ProgressTimer* m_circle;
     Sprite* m_breathLed;
-    State m_state;
+    Sprite* m_selectedRing;
 };
 
 #endif // WAVEFALG_H
