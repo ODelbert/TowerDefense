@@ -23,6 +23,8 @@ public:
     static Archer* create(TowerID level);
     virtual bool init(TowerID level);
     
+
+
     virtual void shoot();
 };
 

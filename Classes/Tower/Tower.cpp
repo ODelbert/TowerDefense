@@ -120,7 +120,7 @@ void Tower::initWithTowerId(TowerID id)
 //    }
 }
 
-void Tower::scout()
+void Tower::detectNearBy()
 {
     BattleField* map = static_cast<BattleField*>(this->getParent());
     if (map) {
@@ -136,6 +136,7 @@ void Tower::scout()
         }
 
 		for (int i = 0; i < m_shooters.size(); ++i) {
+            if (m_shooters[i]->getState() == )
 			if (enmeies[index]->getPosition().y > m_shooters[i]->getPosition().y &&
 				Direction_Down == m_shooters[i]->getOriention()) {
 				m_shooters[i]->setOriention(Direction_Up);

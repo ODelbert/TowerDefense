@@ -9,46 +9,38 @@ USING_NS_CC;
 // Canon/Stone -----> artilley
 // MagicBall ----> mage
 
-/*
- *
- *
- * startAngle 【float】
-endAngle 【float】
-speed 【float】
-weight [float 阻力系数]
-target [sprite]
-startpos [vec]
-
-     def create(target, startAngle, endAngle, speed, weight, startPos):
-          s_distance = distance(target->getPosition(), startPos)
-          m_angle = angle
-
-
-
-
-     def update(float dt):
-          distance = distance(target->getPosition(), startPos)
-          precent = distance / s_distance
-          angle = startAngle + (endAngle - startAngle) * precent
-          rotateAngle = angle - m_angle
-          // FIXME: set rotation !!
-          m_angle = angle
-
-
- * /
-
-class BulletAction : public ActionInterval
+class ParabalicTrace : public ActionInterval
 {
 public:
-    enum ActionType
-    {
-        ray, // xray
-        track, // trackable
-        curve, // para-curve
-    };
+    static ParabalicTrace* create(float duration, Vec2 start, Vec2 end, float height);
+    virtual bool init(float duration, Vec2 start, Vec2 end, float height);
+    virtual void update(float dt);
 
+private:
+    Vec2 m_startPos;
+    Vec2 m_endPos;
+    float m_duration;
+    float m_height;
+};
 
+class ArrowTrace : public ActionInterval
+{
+public:
+    static ArrowTrace* create(Sprite* arrow, Sprite* enenmy, float sa, float ea, float speed);
+    virtual bool init(Sprite* arrow, Sprite* enenmy, float sa, float ea, float speed);
+    virtual void update(float dt);
+    void targetLost();
 
+private:
+    float m_startAngle;
+    float m_endAngle;
+    float m_angle;
+    float m_speed;
+    Sprite* m_enemy;
+
+    float m_xDelta;
+    bool m_isLost;
+    Vec2 m_lostPos;
 };
 
 class Bullet : public Node
