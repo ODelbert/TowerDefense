@@ -15,15 +15,16 @@ bool ArcherShooter::init()
 
 void ArcherShooter::shoot()
 {
-    auto shitBullet = [&]()
-    {
-        Bullet* arrow = Arrow::create();
-        BulletEvent be;
-        GM->dispatchEvent();
-    };
-    Animation* shootAnim = AnimationCache::getInstance()->getAnimation(Direction_Up == m_oriention ? AID_TOWER_ARCHER_SHOOTER_UP, AID_TOWER_ARCHER_SHOOTER_DOWN);
-
-
+//    auto shitBullet = [&]()
+//    {
+//        Bullet* arrow = Arrow::create();
+//        BulletEvent be;
+//        GM->dispatchEvent();
+//    };
+    Animation* shootAnim = AnimationCache::getInstance()->getAnimation(Direction_Up == m_oriention ? AID_TOWER_ARCHER_SHOOTER_UP : AID_TOWER_ARCHER_SHOOTER_DOWN);
+    if (m_texture) {
+        m_texture->runAction(Animate::create(shootAnim));
+    }
 }
 
 Archer* Archer::create(TowerID towerId)
@@ -62,6 +63,16 @@ bool ArcaneShooter::init()
     return true;
 }
 
+void ArcaneShooter::shoot()
+{
+    // AID_TOWER_ARCHER_ARCANE_SHOOTER_SPECIALDOWN
+    //
+    Animation* shootAnim = AnimationCache::getInstance()->getAnimation(Direction_Up == m_oriention ? AID_TOWER_ARCHER_ARCANE_SHOOTER_SHOOTUP : AID_TOWER_ARCHER_ARCANE_SHOOTER_SHOOTDOWN);
+    if (m_texture) {
+        m_texture->runAction(Animate::create(shootAnim));
+    }
+}
+
 bool ArcaneTower::init()
 {
     Tower::initWithTowerId(TowerID_Archer_Arcane);
@@ -77,6 +88,10 @@ bool ArcaneTower::init()
 bool SliverShooter::init()
 {
     return true;
+}
+
+void SliverShooter::shoot()
+{
 }
 
 bool SliverTower::init()
