@@ -66,8 +66,12 @@ public:
     void onTouchEvent();
 
 private:
+    void lightenIcon(Sprite* sprite);
+
+private:
     Sprite* m_enabledImage;
     Sprite* m_selectedImage;
+    Sprite* m_disableImgage;
 };
 
 #endif

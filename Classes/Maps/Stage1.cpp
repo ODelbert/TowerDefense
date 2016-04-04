@@ -18,6 +18,12 @@ bool Stage1::init()
     BattleField::init();
     loadLevel(1, 1);
     addTowerSlots();
+
+
+    auto sp = Sprite::createWithSpriteFrameName("ico_sell_0002.png");
+    sp->runAction(RepeatForever::create( Animate::create(AnimationCache::getInstance()->getAnimation(AID_ENEMY_ARACHNOMANCER_ATTACK))));
+    addChild(sp);
+    sp->setPosition(100, 100);
     return true;
 }
 

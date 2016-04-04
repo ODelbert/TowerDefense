@@ -10,6 +10,8 @@
 #include "CommonDef.h"
 #include "Enemy.h"
 #include "Animation/AnimationManager.h"
+#include "Configuration/GameData.h"
+
 
 USING_NS_CC;
 
@@ -74,7 +76,9 @@ float WayPoints::fulfilledPercent() const
 
 bool Enemy::initWithEnemyId(EnemyID id)
 {
-    EnemyInfo info ;//= EnemyData::getInstance()->qurey(id);
+    EnemyInfo info = s_enemiesInfo[static_cast<int>(id - EnemyID_Gnoll_Reaver)];
+    log("---->%d", id);
+    EnemyInfo info1 = s_enemiesInfo[0];
     m_id = id;
     m_name = info.name;
     m_damageMin = info.dmgMin;
@@ -113,53 +117,62 @@ float Enemy::fulfilledPercent() const
 
 void Enemy::idle()
 {
+    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_idle"))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Idle);
 }
 
 void Enemy::walkingLeft()
 {
     m_texture->setFlippedX(true);
+    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_walkingRightLeft"))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingRightLeft);
 }
 
 void Enemy::walkingRight()
 {
+    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_walkingRightLeft"))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingRightLeft);
 }
 
 void Enemy::walkingDown()
 {
+    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_walkingDown"))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingDown);
 }
 
 void Enemy::walkingUp()
 {
+    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_walkingUp"))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingUp);
 }
 
 void Enemy::runningLeft()
 {
     m_texture->setFlippedX(true);
+    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_runningRightLeft"))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningRightLeft);
 }
 
 void Enemy::runningRight()
 {
+    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_runningRightLeft"))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningRightLeft);
 }
 
 void Enemy::runningDown()
 {
+    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_runningDown"))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningDown);
 }
 
 void Enemy::runningUp()
-{
+{m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_runningUp"))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningUp);
 }
 
 void Enemy::death()
 {
+    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_death"))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Death);
 }
 
@@ -175,6 +188,7 @@ void Enemy::respawn()
 
 void Enemy::shoot()
 {
+    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_shoot"))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Shoot);
 }
 

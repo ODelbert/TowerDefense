@@ -85,12 +85,6 @@ void BattleField::removeEnemy(Enemy* enemy)
     m_mapSprite->removeChild(enemy, false);
 }
 
-void BattleField::removeTower(Tower* tower)
-{
-    // TODO:: GameManager removes
-    m_mapSprite->removeChild(tower, false);
-}
-
 void BattleField::loadLevel(int stage, int difficult)
 {
     schedule(schedule_selector(BattleField::update), 1);
@@ -108,7 +102,7 @@ void BattleField::loadLevel(int stage, int difficult)
 
 void BattleField::start(float dt)
 {
-    // WaveManager::getInstance()->start();
+     WaveManager::getInstance()->start();
 }
 
 const std::vector<Enemy*> BattleField::getEnemies()
@@ -169,6 +163,21 @@ void BattleField::addTower(int slotId, TowerID id)
     if (tower) {
         slot->addTower(tower);
     }
+}
+
+void BattleField::removeTower(int slotId)
+{
+    log("BattleField::removeTower slotId %d towerId %d", slotId);
+    TowerSlot* slot = NULL;
+    for (int i = 0; i < m_towerSlots.size(); ++i) {
+        if (m_towerSlots[i]->getSlotId() == slotId) {
+            slot = m_towerSlots[i];
+            break;
+        }
+    }
+
+    if (!slot) return;
+    slot->removeTower();
 }
 
 void BattleField::upgradeTechnology(int slotId, TowerID id, int tid)

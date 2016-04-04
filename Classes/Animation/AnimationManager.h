@@ -32,7 +32,7 @@ class AnimationManager : public Ref, public Singleton<AnimationManager>
     friend class PListReader;
 public:
     void initialize();
-    Animation* getAnimation(uint hash);
+    Animation* getAnimation(const std::string& name);
     void addAnimation(const std::string& name, const std::string& prefix, int toIndex, int formIndex);
     void removeAnimation(const std::string& name);
     void runAction(Sprite* target, const std::string& name, bool repeatForever = true);
