@@ -9,24 +9,10 @@
 #include "TouchNode.h"
 #include "Base/GameManager.h"
 
-TouchNode* TouchNode::create(const std::string& name)
+bool TouchNode::initWithTouchReceiver(Sprite* touchReceiver)
 {
-    auto ret = new TouchNode;
-    if (ret && ret->init(name)) {
-        ret->autorelease();
-        return ret;
-    }
-    
-    CC_SAFE_DELETE(ret);
-    return nullptr;
-}
-
-bool TouchNode::init(const std::string& name)
-{
-    m_texture = Sprite::createWithSpriteFrameName(name);
-    if (!m_texture) return false;
-
-    addChild(m_texture);
+    if (!touchReceiver) return false;
+    m_touchReceiver = touchReceiver;
     auto touchlistener = EventListenerTouchOneByOne::create();
     if (!touchlistener) return false;
     
@@ -39,7 +25,7 @@ bool TouchNode::init(const std::string& name)
 }
 
 TouchNode::TouchNode()
-    : m_texture(nullptr),
+    : m_touchReceiver(nullptr),
     m_isTouchBegan(false),
     m_forceLock(false),
     m_state(Enabled)
@@ -48,12 +34,15 @@ TouchNode::TouchNode()
 bool TouchNode::onTouchBegan(Touch* touch, Event* event)
 {
     if (!inTouchRegion(touch)) {
+        log("TouchNode::onTouchBegan not in touch region!");
         m_isTouchBegan = false;
         if (m_outRangeCallBack) {
             m_outRangeCallBack();
         }
         return false;
     }
+
+    log("TouchNode::onTouchBegan pos [%f %f, nodeSpace %f %f] in touch region!", touch->getLocation().x, touch->getLocation().y, convertToNodeSpace(touch->getLocation()).x, convertToNodeSpace(touch->getLocation()).y);
 
     m_isTouchBegan = true;
     return true;
@@ -93,11 +82,11 @@ void TouchNode::setOutRangeCallback(TouchCallBack callBack)
 
 bool TouchNode::inTouchRegion(Touch* touch)
 {
-    if (touch && isVisible() && m_texture)
+    if (touch && isVisible() && m_touchReceiver)
     {
         Vec2 touchLocation = touch->getLocation();
-        Size contentSize = m_texture->getContentSize();
-        Vec2 anchorPoint = m_texture->getAnchorPoint();
+        Size contentSize = m_touchReceiver->getContentSize();
+        Vec2 anchorPoint = m_touchReceiver->getAnchorPoint();
         Vec2 position = Vec2::ZERO;
         Vec2 local = convertToNodeSpace(touchLocation);
         Rect r(position.x - contentSize.width * anchorPoint.x,

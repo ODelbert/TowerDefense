@@ -1,6 +1,7 @@
 #include "TowerFactory.h"
 #include "Tower/Archer.h"
 #include "Tower/Barrack.h"
+#include "Tower/Mage.hpp"
 
 Tower* TowerFactory::create(TowerID id)
 {
@@ -31,7 +32,7 @@ Tower* TowerFactory::create(TowerID id)
     case TowerID_Mage_Lv1:
     case TowerID_Mage_Lv2:
     case TowerID_Mage_Lv3:
-        //tower = Mage::create(id);
+        tower = Mage::create(id);
         break;
             
     default:

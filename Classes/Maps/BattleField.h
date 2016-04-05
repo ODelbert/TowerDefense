@@ -39,7 +39,7 @@ public:
 
     void bulidTower(int slotId, TowerID id);
     void addTower(int slotId, TowerID id);
-    void removeTower(Tower* tower);
+    void removeTower(int slotId);
     void upgradeTechnology(int slotId, TowerID id, int tid);
 
     void update(float dt);

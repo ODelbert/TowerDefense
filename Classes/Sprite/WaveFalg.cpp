@@ -1,7 +1,6 @@
-
 #include "WaveFalg.h"
 
-static WaveFlag* create(Type type, float duration)
+WaveFlag* WaveFlag::create(WaveFlag::Type type, float duration)
 {
     WaveFlag* ret = new WaveFlag;
     if (ret && ret->init(type, duration)) {
@@ -13,24 +12,38 @@ static WaveFlag* create(Type type, float duration)
     return nullptr;
 }
 
-bool WaveFalg::init(Type type, float duration)
+bool WaveFlag::init(Type type, float duration)
 {
-    m_circle = ProgressTimer::create(Sprite::create("TODO.png"));
-    m_breathLed = Sprite::createWithSpriteFrameName("TODO.png")
+    m_circle = ProgressTimer::create(Sprite::createWithSpriteFrameName("waveFlag_0003.png"));
+    m_circle->setType(ProgressTimer::Type::RADIAL);
+    
+    m_breathLed = Sprite::createWithSpriteFrameName(String::createWithFormat("waveFlag_000%d.png", static_cast<int>(type + 1))->getCString());
+    m_selectedRing = Sprite::createWithSpriteFrameName("waveFlag_selected.png");
+    m_selectedRing->setVisible(false);
     addChild(m_circle);
     addChild(m_breathLed);
-
-    m_circle->runAction(Sequence::create(ProgressTo(duration, 100), CallFunc::create(CC_CALLBACK_0(WaveFalg::onTouchEvent, this))));
+    addChild(m_selectedRing);
+    
+    auto scaleAction = RepeatForever::create(Sequence::create(ScaleBy::create(1.0, 1.25), ScaleBy::create(1.0, 0.8), nullptr));
+    m_breathLed->runAction(scaleAction);
+    m_circle->runAction(Spawn::createWithTwoActions(scaleAction->clone(), Sequence::create(ProgressTo::create(duration, 100), CallFunc::create(CC_CALLBACK_0(WaveFlag::onTimeout, this)), nullptr)));
+    
     return true;
 }
 
-void WaveFalg::onTouchEvent()
+void WaveFlag::onTimeout()
 {
+    removeFromParent();
+    // TODO:: fix waves
+}
 
-    if (state == State::enabled) {
+void WaveFlag::onTouchEvent()
+{
+    if (TouchNode::Enabled == m_state) {
         // TODO:: show wave info
+        m_selectedRing->setVisible(true);
     }
-    else if (state == State::selected) {
+    else if (TouchNode::Selected == m_state) {
         // TODO:: start a wave
         // TODO:: gold bonus
         removeFromParent();

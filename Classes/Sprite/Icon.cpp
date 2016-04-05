@@ -242,7 +242,9 @@ bool UpgradeIcon::init(TowerID id, bool enabled)
 {
     m_id = id;
     m_enabled = enabled;
-    TouchNode::init("main_icons_over.png");
+    auto towerFrame = Sprite::createWithSpriteFrameName("main_icons_over.png");
+    initWithTouchReceiver(towerFrame);
+    addChild(towerFrame);
     switch (id) {
     case TowerID_Invaild:
     {
@@ -421,14 +423,67 @@ SellIcon* SellIcon::create()
 
 bool SellIcon::init()
 {
-    TouchNode::init("main_icons_over.png");
-    m_selectedImage = Sprite::createWithSpriteFrameName(ICON_SELL);
-    m_enabledImage = Sprite::createWithSpriteFrameName(ICON_SELL_CONFIRM);
-    if (m_selectedImage && m_enabledImage) {
+    m_enabledImage = Sprite::createWithSpriteFrameName(ICON_SELL);
+    addChild(m_enabledImage);
+    TouchNode::initWithTouchReceiver(m_enabledImage);
+    m_selectedImage = Sprite::createWithSpriteFrameName(ICON_SELL_CONFIRM);
+    m_disableImgage = Sprite::createWithSpriteFrameName(ICON_CANNOT_SELL);
+    addChild(m_selectedImage);
+    m_selectedImage->setVisible(false);
+    addChild(m_disableImgage);
+    m_disableImgage->setVisible(false);
+
+    setTouchCallback(CC_CALLBACK_0(SellIcon::onTouchEvent, this));
+    auto outRangeCallBack = []() {
+    };
+
+    setOutRangeCallback(outRangeCallBack);
+    if (m_selectedImage && m_enabledImage && m_disableImgage) {
         return true;
     }
     
     return false;
+}
+
+void SellIcon::lightenIcon(Sprite* sprite)
+{
+    m_enabledImage->setVisible(false);
+    m_selectedImage->setVisible(false);
+    sprite->setVisible(true);
+}
+
+void SellIcon::onTouchEvent()
+{
+    if (!getParent() || !getParent()->getParent()) return;
+    TowerSlot* towerSlot = static_cast<TowerSlot*>(getParent()->getParent());
+    if (!towerSlot) return;
+    auto tower = towerSlot->getTower();
+    if (!tower) return;
+
+    switch (m_state) {
+        case Enabled:
+        {
+            m_state = Selected;
+            // FIXME::hints
+            lightenIcon(m_selectedImage);
+        }
+            break;
+        case Selected:
+        {
+            m_state = Enabled;
+            TowerEvent evt(TowerEvent::Command::Sell, towerSlot->getSlotId());
+            GM->dispatchEvent(&evt);
+            // fix fund
+            //GM->setGold(GM->getGold() + 100);
+            // set Ring into un visible
+            getParent()->setVisible(false);
+        }
+            break;
+        case Disabled:
+        default:
+        {}
+            break;
+    }
 }
 
 TechnologyIcon* TechnologyIcon::create(TowerID id, int tid, bool enabled)
@@ -445,7 +500,9 @@ TechnologyIcon* TechnologyIcon::create(TowerID id, int tid, bool enabled)
 
 bool TechnologyIcon::init(TowerID id, int tid, bool enabled)
 {
-    TouchNode::init(ICON_TECH_BG);
+    auto towerFrame = Sprite::createWithSpriteFrameName(ICON_TECH_BG);
+    initWithTouchReceiver(towerFrame);
+    addChild(towerFrame);
     m_enabled = enabled;
     m_tid = tid;
     m_rank = 0;

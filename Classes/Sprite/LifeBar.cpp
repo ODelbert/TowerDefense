@@ -53,4 +53,3 @@ void LifeBar::setPercentage(float precent)
     m_bar->setPercentage(precent);
 }
 
-

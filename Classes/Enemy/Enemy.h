@@ -18,7 +18,6 @@ USING_NS_CC;
 
 struct EnemyInfo
 {
-	int seq;
     int id;
     char name[32];
     int dmgMin;

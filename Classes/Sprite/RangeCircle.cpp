@@ -1,5 +1,7 @@
 #include "RangeCircle.h"
 
+// rally_circle.png
+
 RangeCircle* RangeCircle::create(RangeRank rank, RangeType type)
 {
     RangeCircle* ret = new RangeCircle;

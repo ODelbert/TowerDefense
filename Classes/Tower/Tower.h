@@ -44,7 +44,6 @@ public:
 
     virtual void shoot() {}
     virtual void updateState() {}
-    virtual void detectNearBy();
 
     void initWithTowerId(TowerID id);
     int getTechnologyRank(int tid);

@@ -37,7 +37,7 @@ bool Barrack::init(TowerID towerId)
                 // 四个开门动画, 1->4, 26->29 ...
                 const char* format2 = imgIndex < 10 ? "barracks_towers_layer2_000%d.png" : imgIndex < 100 ? "barracks_towers_layer2_00%2d.png" : "barracks_towers_layer2_0%3d.png";
                 m_door = Sprite::createWithSpriteFrameName(String::createWithFormat(format2, imgIndex)->getCString());
-                //addChild(m_door);
+                addChild(m_door);
                 return true;
             }
         }

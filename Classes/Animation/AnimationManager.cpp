@@ -38,8 +38,7 @@ void AnimationManager::initialize()
         std::string descript;
         std::string prefix;
         for (XMLElement* child = animation->FirstChildElement(); child; child = child->NextSiblingElement()) {
-            log("chd name =%s", child->Name());
-                        if (0 == strcmp(child->Name(), "fromIndex")) {
+            if (0 == strcmp(child->Name(), "fromIndex")) {
                 fromIndex = atoi(child->GetText());
             }
             else if (0 == strcmp(child->Name(), "toIndex")){
@@ -60,6 +59,11 @@ void AnimationManager::initialize()
         log("desc %s prefix %s  fromInex %d toIndex %d", descript.c_str(), prefix.c_str(), fromIndex, toIndex);
         addAnimation(descript, prefix, toIndex, fromIndex);
     }
+}
+
+Animation* AnimationManager::getAnimation(const std::string& name)
+{
+    return AnimationCache::getInstance()->getAnimation(name);
 }
 
 void AnimationManager::addAnimation(const std::string& descript, const std::string& prefix, int toIndex, int fromIndex)

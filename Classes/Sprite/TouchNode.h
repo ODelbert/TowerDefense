@@ -25,11 +25,9 @@ public:
         Selected,
         Disabled
     };
-    
-public:
-    static TouchNode* create(const std::string& name);
-    virtual bool init(const std::string& name);
 
+public:
+    bool initWithTouchReceiver(Sprite* touchReceiver);
     void setTouchCallback(TouchCallBack callBack);
     void setOutRangeCallback(TouchCallBack callBack);
     bool inTouchRegion(Touch* touch);
@@ -44,7 +42,7 @@ protected:
     virtual void onTouchEnded(Touch* touch, Event* event);
 
 protected:
-	Sprite* m_texture;
+    Sprite* m_touchReceiver;
     bool m_isTouchBegan;
     TouchCallBack m_callback;
     TouchCallBack m_outRangeCallBack;

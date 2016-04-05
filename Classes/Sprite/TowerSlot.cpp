@@ -187,7 +187,10 @@ void SlotRing::onTouch()
 
 bool TowerSlot::init()
 {
-    TouchNode::init("build_terrain_0001.png");
+    auto touchReceiver = Sprite::createWithSpriteFrameName("build_terrain_0001.png");
+    addChild(touchReceiver);
+    initWithTouchReceiver(touchReceiver);
+
     m_ring = SlotRing::create(this);
     if (!m_ring) return false;
     m_ring->setPosition(0, 0);
@@ -228,4 +231,11 @@ void TowerSlot::addTower(Tower* tower)
 {
     m_tower = tower;
     addChild(tower);
+}
+
+void TowerSlot::removeTower()
+{
+    if (!m_tower) return;
+    removeChild(m_tower);
+    m_tower = nullptr;
 }

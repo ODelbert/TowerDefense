@@ -22,12 +22,15 @@ public:
     virtual ~Shooter();
     
     CC_SYNTHESIZE_READONLY(TowerID, m_towerId, TowerId)
-    CC_SYNTHESIZE(Direction, m_oriention, Oriention)
     CC_SYNTHESIZE(State, m_state, State)
+    
+    Direction getOriention();
+    void setOriention(Direction dir);
     virtual void shoot() = 0;
 
 protected:
     Sprite* m_texture;
+    Direction m_oriention;
 };
 
 #endif /* defined(__TowerDefense__Shooter__) */

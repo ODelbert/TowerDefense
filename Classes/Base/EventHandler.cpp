@@ -73,6 +73,11 @@ void EventHandler::onTowerEvent(TowerEvent* event)
     break;
     case TowerEvent::Command::UpgradeTechnology:
     break;
+    case TowerEvent::Command::Sell:
+    {
+        m_map->removeTower(event->getSlotId());
+    }
+    break;
     default:
     break;
     }
