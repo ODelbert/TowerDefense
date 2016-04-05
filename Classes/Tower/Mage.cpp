@@ -82,3 +82,15 @@ void Mage::shoot()
         m_shooters[i]->shoot();
     }
 }
+
+bool MageWild::init()
+{
+    Mage::init(TowerID_Mage_Wild);
+    return true;
+}
+
+bool MageHighElf::init()
+{
+    Mage::init(TowerID_Mage_HighElven);
+    return true;
+}

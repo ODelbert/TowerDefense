@@ -34,5 +34,20 @@ protected:
     explicit MageShooter();
 };
 
+class MageWild : public Mage
+{
+public:
+    CREATE_FUNC(MageWild)
+    virtual bool init();
+
+};
+
+class MageHighElf : public Mage
+{
+public:
+    CREATE_FUNC(MageHighElf)
+    virtual bool init();
+};
+
 
 #endif /* Mage_hpp */

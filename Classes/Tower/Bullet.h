@@ -1,4 +1,4 @@
-#ifndef BULLET_H
+﻿#ifndef BULLET_H
 #define BULLET_H
 
 #include "cocos2d.h"
@@ -8,6 +8,7 @@ USING_NS_CC;
 // Gun/Xray    -----> archer sliver instanst kill
 // Canon/Stone -----> artilley
 // MagicBall ----> mage
+
 
 class ParabalicTrace : public ActionInterval
 {
