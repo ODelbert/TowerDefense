@@ -49,10 +49,12 @@ class Bullet : public Node
 public:
     Bullet();
 
+    void setDestination(const Vec2& pos);
     void setTarget(Sprite* target);
 
 private:
-    Sprite* m_texture;
+    Sprite* m_enemey;
+
 };
 
 #endif // BULLET_H

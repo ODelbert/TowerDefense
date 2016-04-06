@@ -9,11 +9,33 @@
 
 
 #include "GameManager.h"
+#include "Enemy/Enemy.h"
+#include "Tower/Tower.h"
+#include "Tower/Bullet.h"
 
 GameManager::GameManager()
 : m_gold(0)
 {
     
+}
+
+void GameManager::addEnemy(Enemy* enemy)
+{
+    m_enemies.push_back(enemy);
+}
+
+void GameManager::removeEnemy(Enemy* enmey)
+{
+    std::vector<Enemy>::iterator iter = m_enemies.begin();
+    while (iter != m_enemies.end()) {
+        if (*iter = enmey) {
+            m_enemies.erase(iter);
+            --iter;
+            return;
+        }
+
+        ++iter;
+    }
 }
 
 void GameManager::dispatchEvent(TDEvent* event)

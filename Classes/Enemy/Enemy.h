@@ -14,7 +14,11 @@
 #include "cocos2d.h"
 #include "CommonDef.h"
 
+
+
 USING_NS_CC;
+
+class LifeBar;
 
 struct EnemyInfo
 {
@@ -127,6 +131,8 @@ public:
     virtual void cast();
     virtual void speicialAttack();
 
+    virtual void getHurt();
+
     void sendToBattle(const std::vector<Vec2>& waypoints);
     void moveToNext();
     float fulfilledPercent() const;
@@ -157,6 +163,7 @@ protected:
 
     WayPoints m_wayPoints;
     Sprite* m_texture;
+    LifeBar* m_lifeBar;
     CC_DISALLOW_COPY_AND_ASSIGN(Enemy)
 };
 
