@@ -10,8 +10,11 @@ USING_NS_CC;
 class LifeBar : public Node
 {
 public:
-    static LifeBar* create(Sprite* owner = 0);
-    virtual bool init();
+    enum Scale { Small = 0, Med, MedBig, Big  };
+
+public:
+    static LifeBar* create(Sprite* owner = 0, Scale scale = Small);
+    virtual bool init(Scale scale);
     void setPercentage(float precent);
 
 private:
@@ -23,3 +26,5 @@ private:
 };
 
 #endif // LIFEBAR_H
+
+

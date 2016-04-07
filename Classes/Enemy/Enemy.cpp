@@ -78,7 +78,6 @@ bool Enemy::initWithEnemyId(EnemyID id)
 {
     EnemyInfo info = s_enemiesInfo[static_cast<int>(id - EnemyID_Gnoll_Reaver)];
     log("---->%d", id);
-    EnemyInfo info1 = s_enemiesInfo[0];
     m_id = id;
     m_name = info.name;
     m_damageMin = info.dmgMin;
@@ -93,9 +92,10 @@ bool Enemy::initWithEnemyId(EnemyID id)
     m_buffs = 0;
     m_debuffs = 0;
     m_direction = Direction_Invalid;
-    m_texture = Sprite::createWithSpriteFrameName("creepAlert.png");
+    m_texture = Sprite::createWithSpriteFrameName(m_name + "_0001.png");
     addChild(m_texture);
-    m_lifeBar = LifeBar::create(this);
+    m_lifeBar = LifeBar::create(m_texture);
+
     return true;
 }
 
@@ -105,7 +105,6 @@ void Enemy::sendToBattle(const std::vector<Vec2> &waypoints)
         return;
     }
     
-    GM->addEnemy(this);
     m_state = EnemyState_WalkNext;
     m_wayPoints.setPoints(waypoints);
     setPosition(m_wayPoints.getcurPoint());
@@ -168,14 +167,15 @@ void Enemy::runningDown()
 }
 
 void Enemy::runningUp()
-{m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_runningUp"))));
+{
+    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_runningUp"))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningUp);
 }
 
 void Enemy::death()
 {
     m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_death"))));
-    GM->removeEnemy(this);
+    //GM->removeEnemy(this);
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Death);
 }
 
@@ -263,7 +263,7 @@ void Enemy::moveToNext()
 			return;
 		}
 
-		runAction(Sequence::create(MoveTo::create(pos.getDistance(m_wayPoints.getcurPoint()) / SPEED_RATE(m_speed), m_wayPoints.getcurPoint())
+        runAction(Sequence::create(MoveTo::create(0.025 *(SpeedType_VeryFast - m_speed + 1), m_wayPoints.getcurPoint())
 								   , CallFuncN::create(CC_CALLBACK_0(Enemy::moveToNext, this))
 								   , NULL));
 

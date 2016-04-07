@@ -16,6 +16,7 @@ USING_NS_CC;
 
 class Shooter : public Node
 {
+public:
     enum State { Idel, Attack };
 public:
     explicit Shooter(TowerID id);

@@ -26,7 +26,7 @@ void GameManager::addEnemy(Enemy* enemy)
 
 void GameManager::removeEnemy(Enemy* enmey)
 {
-    std::vector<Enemy>::iterator iter = m_enemies.begin();
+    std::vector<Enemy*>::iterator iter = m_enemies.begin();
     while (iter != m_enemies.end()) {
         if (*iter = enmey) {
             m_enemies.erase(iter);

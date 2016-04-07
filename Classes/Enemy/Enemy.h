@@ -109,6 +109,8 @@ private:
     Direction m_dir;
 };
 
+
+class LifeBar;
 class Enemy : public Node
 {
 public:
@@ -131,7 +133,7 @@ public:
     virtual void cast();
     virtual void speicialAttack();
 
-    virtual void getHurt();
+    virtual void getHurt(int dmg);
 
     void sendToBattle(const std::vector<Vec2>& waypoints);
     void moveToNext();

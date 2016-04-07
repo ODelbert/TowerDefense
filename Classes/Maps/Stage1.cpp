@@ -12,13 +12,13 @@
 #include "Sprite/TowerSlot.h"
 #include "Sprite/WaveFalg.h"
 #include "Sprite/RangeCircle.h"
+#include "Enemy/EnemyFactory.h"
 
 bool Stage1::init()
 {
     BattleField::init();
     loadLevel(1, 1);
     addTowerSlots();
-
 
     auto sp = Sprite::createWithSpriteFrameName("ico_sell_0002.png");
     sp->runAction(RepeatForever::create( Animate::create(AnimationCache::getInstance()->getAnimation(AID_ENEMY_ARACHNOMANCER_ATTACK))));
@@ -51,4 +51,15 @@ void Stage1::addTowerSlots()
     RangeCircle* cir = RangeCircle::create(RangeCircle::Normal, RangeCircle::Attack);
     cir->setPosition(100, 300);
     addChild(cir);
+
+    // Test speed
+#if 0
+    for (int i = 0; i < SpeedType_VeryFast; ++i) {
+        auto monster = EnemyFactory::create(EnemyID_Redcap);
+        monster->setSpeed(static_cast<SpeedType>(i));
+        m_mapSprite->addChild(monster);
+
+        monster->sendToBattle(WaveManager::getInstance()->getPath(0, 1));
+    }
+#endif
 }

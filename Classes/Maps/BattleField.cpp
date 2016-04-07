@@ -97,7 +97,8 @@ void BattleField::loadLevel(int stage, int difficult)
         addChild(m_mapSprite);
     }
     
-    schedule(schedule_selector(BattleField::start), 0.0f, 1, 1.0f);
+    WaveManager::getInstance()->start();
+    // schedule(schedule_selector(BattleField::start), 0.0f, 1, 1.0f);
 }
 
 void BattleField::start(float dt)

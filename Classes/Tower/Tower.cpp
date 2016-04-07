@@ -28,7 +28,7 @@ void Tower::initWithTowerId(TowerID id)
     m_fireRate = info.fireRate;
     m_range = info.range;
     m_weapon = static_cast<WeaponType>(info.weapon);
-    schedule(schedule_selector(Tower::detectNearBy), 0.1f);
+    schedule(schedule_selector(Tower::scout), 0.1f);
 
     // TODO:: fix config
 //    switch (id) {
@@ -120,7 +120,7 @@ void Tower::initWithTowerId(TowerID id)
 //    }
 }
 
-void Tower::detectNearBy(float dt)
+void Tower::scout(float dt)
 {
     BattleField* map = static_cast<BattleField*>(this->getParent());
     if (map) {
@@ -140,7 +140,7 @@ void Tower::detectNearBy(float dt)
 			if (enmeies[index]->getPosition().y > m_shooters[i]->getPosition().y &&
 				Direction_Down == m_shooters[i]->getOriention()) {
 				m_shooters[i]->setOriention(Direction_Up);
-                m_shooters->shoot();
+                // m_shooters->shoot();
 			}
 			else if (enmeies[index]->getPosition().y < m_shooters[i]->getPosition().y &&
 				Direction_Up == m_shooters[i]->getOriention()) {
