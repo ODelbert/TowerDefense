@@ -1,7 +1,34 @@
 #include "Bullet.h"
+#include "Base/GameManager.h"
+#include "Enemy/Enemy.h"
 
 Bullet::Bullet()
 {
+}
+
+bool BallBullet::init(float duration, Vec2 startPos, Vec2 endPos)
+{
+    m_texture = Sprite::createWithSpriteFrameName("catapult_proy.png");
+    if (m_texture) {
+        addChild(m_texture);
+        auto move = Sequence::create(MoveBy::create(duration, startPos - endPos), CallFunc::create(CC_CALLBACK_0(BallBullet::strike, this)), nullptr);
+        m_texture->runAction(move);
+        m_destination = endPos;
+        return true;
+    }
+
+    return false;
+}
+
+void BallBullet::strike()
+{
+    const std::vector<Enemy*> enemies = GM->getEnemies();
+    for (int i = 0; i < enemies.size(); ++i) {
+        if (enemies[i]->getPosition().distance(m_destination) < 5) {
+            enemies[i]->getHurt();
+            return;
+        }
+    }
 }
 
 ParabalicTrace* ParabalicTrace::create(float duration, Vec2 start, Vec2 end, float height)

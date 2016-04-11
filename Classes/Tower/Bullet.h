@@ -47,14 +47,28 @@ private:
 class Bullet : public Node
 {
 public:
-    Bullet();
-
     void setDestination(const Vec2& pos);
     void setTarget(Sprite* target);
+    virtual void strike();
+
+protected:
+    Bullet();
 
 private:
-    Sprite* m_enemey;
-
+    float m_speed;
+    float m_angle;
+    Sprite* m_texture;
 };
+
+class BallBullet : public Bullet
+{
+public:
+    CREATE_FUNC(BallBullet)
+    virtual bool init(float duration, Vec2 delta);
+
+private:
+    Vec2 m_destination;
+};
+
 
 #endif // BULLET_H
