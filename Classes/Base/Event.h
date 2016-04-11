@@ -84,6 +84,21 @@ public:
     CC_SYNTHESIZE(Command, m_command, Command)
 };
 
+class EnemyEvent : public TDEvent
+{
+public:
+    enum Command
+    {
+        Invaild,
+        Appear,
+        Disppear,
+        Death,
+        Demonstrate
+    };
+
+   // EnemyEvent(Command cmd = Invaild, EnemyID id = EnemyID_Invalid);
+};
+
 class BulletEvent : public TDEvent
 {
 public:

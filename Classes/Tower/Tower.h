@@ -31,8 +31,8 @@ public:
     CC_SYNTHESIZE(std::string, m_name, Name)
     CC_SYNTHESIZE(int, m_damageMin, DamageMin)
     CC_SYNTHESIZE(int, m_damageMax, DamageMax)
-    CC_SYNTHESIZE(int, m_fireRate, FireRate)
-    CC_SYNTHESIZE(int, m_range, Range)
+    CC_SYNTHESIZE(FireRateType, m_fireRate, FireRate)
+    CC_SYNTHESIZE(RangeType, m_range, Range)
     CC_SYNTHESIZE(WeaponType, m_weapon, Weapon)
 
     CC_SYNTHESIZE(uint, m_costGold, CostGold)

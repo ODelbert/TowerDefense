@@ -11,6 +11,7 @@
 #include "Tower/TowerFactory.h"
 #include "Maps/BattleField.h"
 #include "Base/WaveManager.h"
+#include "Base/GameManager.h"
 
 EventHandler* EventHandler::create(BattleField *map)
 {
@@ -52,9 +53,17 @@ void EventHandler::onEvent(TDEvent* event)
 
 void EventHandler::onWaveEvent(WaveEvent* waveEvent)
 {
-    auto enmey = EnemyFactory::create(static_cast<EnemyID>(waveEvent->getEnemyId()));
-    enmey->sendToBattle(WaveManager::getInstance()->getPath(waveEvent->getPathIndex(), waveEvent->getSubPathIndex()));
-    m_map->addEnemy(enmey);
+    Enemy* enemy = EnemyFactory::create(static_cast<EnemyID>(waveEvent->getEnemyId()));
+    
+    if (enemy) {
+        if (enemy->getId() == EnemyID_Gnoll_Burner) {
+            bool comeHere = 0;
+        }
+        
+        GM->addEnemy(enemy);
+        enemy->sendToBattle(WaveManager::getInstance()->getPath(waveEvent->getPathIndex(), waveEvent->getSubPathIndex()));
+        m_map->addEnemy(enemy);
+    }
 }
 
 void EventHandler::onTowerEvent(TowerEvent* event)

@@ -16,6 +16,7 @@
 #include "Animation/AnimationManager.h"
 #include "Sprite/TowerSlot.h"
 #include "Sprite/BuildBar.h"
+#include "Base/GameManager.h"
 
 BattleField::BattleField()
 : m_eventHandler(nullptr)

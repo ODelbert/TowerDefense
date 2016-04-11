@@ -53,12 +53,30 @@ enum TowerType {
     TowerType_Cannon = 3
 };
 
+enum FireRateType {
+    FireRate_Invalid = -1,
+    FireRate_VerySlow,
+    FireRate_Slow,
+    FireRate_Normal,
+    FireRate_Fast,
+    FireRate_VeryFast,
+};
+
+enum RangeType {
+    Range_Invalid = -1,
+    Range_Short,
+    Range_Average,
+    Range_Long,
+    Range_Great,
+    Range_Extreme,
+};
+
 enum WeaponType {
     WeaponType_Invalid = -1,
     WeaponType_Normal = 0,
     WeaponType_Archer = 1,
     WeaponType_Mage = 2,
-    WeaponType_Bomb = 3,
+    WeaponType_Artillery = 3,
 };
 
 enum ArmorType {

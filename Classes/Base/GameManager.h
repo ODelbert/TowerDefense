@@ -28,6 +28,8 @@ public:
 
 //    void addTower(Tower* tower);
 //    void removeTower(Tower* tower);
+    inline std::vector<Enemy*> getEnemies() const { return m_enemies; }
+    inline std::vector<Tower*> getTowers() const { return m_towers; }
     void addEnemy(Enemy* enemy);
     void removeEnemy(Enemy* enmey);
     void dispatchEvent(TDEvent* event);

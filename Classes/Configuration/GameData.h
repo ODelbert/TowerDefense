@@ -13,25 +13,40 @@
 #include "Enemy/Enemy.h"
 #include "Tower/Tower.h"
 
+/*
+ struct TowerInfo
+ {
+ int id;
+ int level;
+ char name[24];
+ int dmgMin;
+ int dmgMax;
+ int range; // pix
+ int fireRate; // attack rate pre second
+ int weapon;
+ int gold;
+ int upgradeGold;
+ };
+ */
 static TowerInfo s_towersInfo[] = {
-    { TowerID_Archer_Lv1, 1, "ArcherLevel1", 0, 0, 0, 0, 0 },
-    { TowerID_Archer_Lv2, 2, "Archerevel2", 0, 0, 0, 0, 0 },
-    { TowerID_Archer_Lv3, 3, "ArcherLevel3", 0, 0, 0, 0, 0 },
+    { TowerID_Archer_Lv1, 1, "ArcherLevel1", 2, 5, Range_Average, FireRate_Fast, WeaponType_Archer },
+    { TowerID_Archer_Lv2, 2, "Archerevel2", 4, 9, Range_Long, FireRate_Fast, WeaponType_Archer },
+    { TowerID_Archer_Lv3, 3, "ArcherLevel3", 5, 11, Range_Great, FireRate_VeryFast, WeaponType_Archer },
     { TowerID_Barrack_Lv1, 1, "BarrackLevel1", 0, 0, 0, 0, 0 },
     { TowerID_Barrack_Lv2, 2, "BarrackLevel2", 0, 0, 0, 0, 0 },
     { TowerID_Barrack_Lv3, 3, "BarrackLevel3", 0, 0, 0, 0, 0 },
-    { TowerID_Mage_Lv1, 1, "MageLevel1", 0, 0, 0, 0, 0 },
-    { TowerID_Mage_Lv2, 2, "MageLevel2", 0, 0, 0, 0, 0 },
-    { TowerID_Mage_Lv3, 3, "MageLevel3", 0, 0, 0, 0, 0 },
-    { TowerID_Artillery_Lv1, 1, "ArtilleryLevel1", 0, 0, 0, 0, 0 },
-    { TowerID_Artillery_Lv2, 2, "ArtilleryLevel2", 0, 0, 0, 0, 0 },
-    { TowerID_Artillery_Lv3, 3, "ArtilleryLevel3", 0, 0, 0, 0, 0 },
-    { TowerID_Archer_Arcane, 4, "ArcherArcane", 0, 0, 0, 0, 0 },
-    { TowerID_Archer_Silver, 4, "ArcherSilver", 0, 0, 0, 0, 0 },
-    { TowerID_Mage_Wild, 4, "MageWild", 0, 0, 0, 0, 0 },
-    { TowerID_Mage_HighElven, 4, "MageHighElven", 0, 0, 0, 0, 0 },
-    { TowerID_Artillery_Henge, 4, "ArtilleryHenge", 0, 0, 0, 0, 0 },
-    { TowerID_Artillery_Tree, 4, "ArtilleryTree", 0, 0, 0, 0, 0 }
+    { TowerID_Mage_Lv1, 1, "MageLevel1", 8, 12, Range_Short, FireRate_Slow, WeaponType_Mage },
+    { TowerID_Mage_Lv2, 2, "MageLevel2", 18, 30, Range_Average, FireRate_Slow, WeaponType_Mage },
+    { TowerID_Mage_Lv3, 3, "MageLevel3", 34, 56, Range_Long, FireRate_Slow, WeaponType_Mage },
+    { TowerID_Artillery_Lv1, 1, "ArtilleryLevel1", 7, 12, Range_Short, FireRate_VerySlow, WeaponType_Artillery },
+    { TowerID_Artillery_Lv2, 2, "ArtilleryLevel2", 18, 30, Range_Average, FireRate_VerySlow, WeaponType_Artillery },
+    { TowerID_Artillery_Lv3, 3, "ArtilleryLevel3", 30, 50, Range_Long, FireRate_VerySlow, WeaponType_Artillery },
+    { TowerID_Archer_Arcane, 4, "ArcherArcane", 22, 36, Range_Great, FireRate_Normal, WeaponType_Archer },
+    { TowerID_Archer_Silver, 4, "ArcherSilver", 45, 60, Range_Extreme, FireRate_Slow, WeaponType_Archer },
+    { TowerID_Mage_Wild, 4, "MageWild", 8, 16, Range_Long, FireRate_VeryFast,  WeaponType_Mage},
+    { TowerID_Mage_HighElven, 4, "MageHighElven", 41, 74, Range_Long, FireRate_Slow, WeaponType_Mage },
+    { TowerID_Artillery_Henge, 4, "ArtilleryHenge", 30, 50, Range_Long, FireRate_Fast, WeaponType_Artillery },
+    { TowerID_Artillery_Tree, 4, "ArtilleryTree", 62, 106, Range_Great, FireRate_VerySlow, WeaponType_Artillery }
 };
 
 //'arachnomancer_spider', \

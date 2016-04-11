@@ -2,6 +2,7 @@
 #include "Maps/BattleField.h"
 #include "Shooter.h"
 #include "Configuration/GameData.h"
+#include "Base/GameManager.h"
 
 Tower::Tower()
     : m_id(TowerID_Invaild),
@@ -9,7 +10,8 @@ Tower::Tower()
       m_name("baseTower"),
       m_damageMax(0),
       m_damageMin(0),
-      m_range(0),
+      m_fireRate(FireRate_Invalid),
+      m_range(Range_Invalid),
       m_technologyMask(0),
       m_weapon(WeaponType_Invalid),
       m_texture(nullptr)
@@ -25,8 +27,8 @@ void Tower::initWithTowerId(TowerID id)
     m_name = info.name;
     m_damageMax = info.dmgMax;
     m_damageMin = info.dmgMin;
-    m_fireRate = info.fireRate;
-    m_range = info.range;
+    m_fireRate = static_cast<FireRateType>(info.fireRate);
+    m_range = static_cast<RangeType>(info.range);
     m_weapon = static_cast<WeaponType>(info.weapon);
     schedule(schedule_selector(Tower::scout), 0.1f);
 
@@ -122,33 +124,36 @@ void Tower::initWithTowerId(TowerID id)
 
 void Tower::scout(float dt)
 {
-    BattleField* map = static_cast<BattleField*>(this->getParent());
-    if (map) {
-        int min = -1;
-        int index = -1;
-        const std::vector<Enemy*> enmeies = map->getEnemies();
-        for (int i = 0;i < enmeies.size(); ++i) {
-            if (getPosition().distance(enmeies[i]->getPosition()) > m_range) continue;
-            if (enmeies[i]->fulfilledPercent() > min) {
-                min = enmeies[i]->fulfilledPercent();
-                index = i;
-            }
+    int min = -1;
+    int index = -1;
+    std::vector<Enemy*> enmeies = GM->getEnemies();
+    
+    for (int i = 0;i < enmeies.size(); ++i) {
+        Vec2 towerPos = convertToWorldSpace(getPosition());
+        log("enemy [%f %f] [%f %f] [%d] distance [%f] towerPos【%f %f】", getPosition().x, getPosition().y, enmeies[i]->getPosition().x, enmeies[i]->getPosition().y , i , getPosition().distance(enmeies[i]->getPosition()),
+            towerPos.x, towerPos.y);
+        if (towerPos.distance(enmeies[i]->getPosition()) > 160 + 20 * (m_range - Range_Average)) continue;
+        if (enmeies[i]->fulfilledPercent() > min) {
+            min = enmeies[i]->fulfilledPercent();
+            index = i;
         }
+    }
+    
+    if (-1 == index) return;
 
-		for (int i = 0; i < m_shooters.size(); ++i) {
-            if ( Shooter::State::Attack == m_shooters[i]->getState()) continue;
-			if (enmeies[index]->getPosition().y > m_shooters[i]->getPosition().y &&
-				Direction_Down == m_shooters[i]->getOriention()) {
-				m_shooters[i]->setOriention(Direction_Up);
-                // m_shooters->shoot();
-			}
-			else if (enmeies[index]->getPosition().y < m_shooters[i]->getPosition().y &&
-				Direction_Up == m_shooters[i]->getOriention()) {
-				m_shooters[i]->setOriention(Direction_Down);
-			}
-			else {
-			}
-		}
+    for (int i = 0; i < m_shooters.size(); ++i) {
+        if ( Shooter::State::Attack == m_shooters[i]->getState()) continue;
+        if (enmeies[index]->getPosition().y > m_shooters[i]->getPosition().y &&
+            Direction_Down == m_shooters[i]->getOriention()) {
+            m_shooters[i]->setOriention(Direction_Up);
+            m_shooters[i]->shoot();
+        }
+        else if (enmeies[index]->getPosition().y < m_shooters[i]->getPosition().y &&
+            Direction_Up == m_shooters[i]->getOriention()) {
+            m_shooters[i]->setOriention(Direction_Down);
+        }
+        else {
+        }
     }
 }
 

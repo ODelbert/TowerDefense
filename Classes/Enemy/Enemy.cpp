@@ -12,6 +12,7 @@
 #include "Animation/AnimationManager.h"
 #include "Configuration/GameData.h"
 #include "Sprite/LifeBar.h"
+#include "Base/GameManager.h"
 
 USING_NS_CC;
 
@@ -259,6 +260,7 @@ void Enemy::moveToNext()
 		Direction dir = m_wayPoints.getDirection();
 		Vec2 pos = m_wayPoints.getcurPoint();
 		if (!m_wayPoints.moveToNextPoint()) {
+            GM->removeEnemy(this);
 			getParent()->removeChild(this);
 			return;
 		}

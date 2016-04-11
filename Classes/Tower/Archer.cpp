@@ -95,8 +95,9 @@ bool Archer::init(TowerID towerId)
     switch (towerId) {
     case TowerID_Archer_Lv1:
     {
-        auto* shooter = PositionAdpater::create();
+        auto* shooter = ArcherShooter::create();
         m_texture->addChild(shooter, 1);
+        m_shooters.push_back(shooter);
         shooter->setPosition(m_texture->getPosition().x + m_texture->getContentSize().width / 2, m_texture->getPosition().y + m_texture->getContentSize().height / 2);
     }
         break;

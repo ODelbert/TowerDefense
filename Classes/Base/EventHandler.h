@@ -31,6 +31,7 @@ private:
     void onWaveEvent(WaveEvent* event);
     void onTowerEvent(TowerEvent* event);
     void onBulletEvent(BulletEvent* event);
+    void onEnemyEvent(EnemyEvent* event);
     
 private:
     EventHandler(BattleField* map);

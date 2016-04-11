@@ -20,6 +20,7 @@ bool RangeCircle::init(RangeRank rank, RangeType type)
     auto c2 = Sprite::createWithSpriteFrameName("range_circle.png");
     auto c3 = Sprite::createWithSpriteFrameName("range_circle.png");
     auto c4 = Sprite::createWithSpriteFrameName("range_circle.png");
+    log("size rang = %f %f", c1->getContentSize().width, c1->getContentSize().height);
     c1->setAnchorPoint(Point(1,0));
     c2->setFlippedX(true);
     c2->setAnchorPoint(Point(0,0));
