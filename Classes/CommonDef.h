@@ -1,6 +1,6 @@
 #ifndef COMMONDEF_H
 #define COMMONDEF_H
-
+#include<random>
 #include "ResourceId.h"
 #define TD_TEST
 //#define TD_DEBUG
@@ -26,6 +26,20 @@
 protected: varType varName;\
 public: virtual varType is##funName(void) const { return varName; }\
 public: virtual void set##funName(varType var){ varName = var; }
+
+static float RAND_FLOAT(float min, float max)
+{
+    std::default_random_engine random(time(NULL));
+    std::uniform_real_distribution<double> dis(min, max);
+    return dis(random);
+}
+
+static int RAND_INT(int min, int max)
+{
+    std::default_random_engine random(time(NULL));
+    std::uniform_int_distribution<int> dis(min, max);
+    return dis(random);
+}
 
 typedef unsigned int uint;
 //#define SINGLETON_IMPL(class) \

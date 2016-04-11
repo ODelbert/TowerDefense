@@ -11,6 +11,7 @@
 #include "Sprite/Assembly.h"
 #include "Base/GameManager.h"
 
+
 #define ALERT_CREEP "creepAlert.png"
 #define LBL_REBOREN_CD "icon_0001.png"
 #define LBL_MOVESPEED "icon_0002.png"
@@ -67,6 +68,8 @@ public:
 private:
     TowerSlot* m_owner;
     Sprite* m_texture;
+    RangeCircle* m_rangeCircle;
+
 };
 
 SlotRing* SlotRing::create(TowerSlot* owner)
@@ -87,6 +90,7 @@ bool SlotRing::init(TowerSlot *owner)
     m_texture = Sprite::createWithSpriteFrameName("gui_ring.png");
     m_texture->setTag(0x8888);
     addChild(m_texture);
+
     return true;
 }
 
@@ -103,6 +107,8 @@ void SlotRing::onTouch()
         std::vector<Node*> icons;
         Tower* tower = m_owner->getTower();
         if (tower) {
+            m_rangeCircle =  RangeCircle::create(tower->getRange(), tower->getType());
+            addChild(m_rangeCircle);
             if (tower->getLevel() < TowerLevel_3) {
                 // upgrade & sell ----> 2
                 auto upgrader = UpgradeIcon::create(TowerID_Invaild, GM->enoughGold(tower->getUpgradeGold()));
@@ -188,6 +194,7 @@ void SlotRing::onTouch()
 bool TowerSlot::init()
 {
     auto touchReceiver = Sprite::createWithSpriteFrameName("build_terrain_0001.png");
+    TD_SIZE(touchReceiver);
     addChild(touchReceiver);
     initWithTouchReceiver(touchReceiver);
 
@@ -200,6 +207,7 @@ bool TowerSlot::init()
     auto outRangeCallBack = [&]() {
         if (m_ring->isVisible()) {
             Vector<Node*> childs = m_ring->getChildren();
+#if 0
             for (int i = 0; i < childs.size(); ++i) {
                 TouchNode* tn = static_cast<TouchNode*>(childs.at(i));
                 if (TouchNode::State::Selected == tn->getState()) {
@@ -207,6 +215,7 @@ bool TowerSlot::init()
                     return;
                 }
             }
+#endif
             
             m_ring->setVisible(false);
         }

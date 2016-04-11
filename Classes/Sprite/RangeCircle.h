@@ -2,6 +2,8 @@
 #define RANGECIRCLE_H
 
 #include "cocos2d.h"
+#include "commonDef.h"
+
 USING_NS_CC;
 
 class RangeCircle : public Node
@@ -13,19 +15,13 @@ public:
         Short = 40,
         Normal = 60,
         Long = 80,
-        VeryLong = 100,
+        Great = 100,
         Extreme = 120
     };
 
-    enum RangeType
-    {
-        Attack = 0,
-        Defense
-    };
-
 public:
-    static RangeCircle* create(RangeRank rank, RangeType type);
-    virtual bool init(RangeRank rank, RangeType type);
+    static RangeCircle* create(RangeType rangeType, TowerType towerType);
+    virtual bool init(RangeType rangeType, TowerType towerType);
 
 };
 

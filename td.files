@@ -84,3 +84,4 @@ Classes/CommonDef.h
 Classes/ResourceId.h
 Classes/Tower/Bullet.h
 Classes/Tower/Bullet.cpp
+Classes/Base/Random.h

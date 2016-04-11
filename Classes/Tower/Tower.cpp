@@ -3,6 +3,8 @@
 #include "Shooter.h"
 #include "Configuration/GameData.h"
 #include "Base/GameManager.h"
+#include "Enemy/Enemy.h"
+#include "Bullet.h"
 
 Tower::Tower()
     : m_id(TowerID_Invaild),
@@ -14,7 +16,8 @@ Tower::Tower()
       m_range(Range_Invalid),
       m_technologyMask(0),
       m_weapon(WeaponType_Invalid),
-      m_texture(nullptr)
+      m_texture(nullptr),
+      m_target(nullptr)
 {
 }
 
@@ -127,9 +130,10 @@ void Tower::scout(float dt)
     int min = -1;
     int index = -1;
     std::vector<Enemy*> enmeies = GM->getEnemies();
-    
+
     for (int i = 0;i < enmeies.size(); ++i) {
         Vec2 towerPos = convertToWorldSpace(getPosition());
+
         log("enemy [%f %f] [%f %f] [%d] distance [%f] towerPos【%f %f】", getPosition().x, getPosition().y, enmeies[i]->getPosition().x, enmeies[i]->getPosition().y , i , getPosition().distance(enmeies[i]->getPosition()),
             towerPos.x, towerPos.y);
         if (towerPos.distance(enmeies[i]->getPosition()) > 160 + 20 * (m_range - Range_Average)) continue;
@@ -138,15 +142,16 @@ void Tower::scout(float dt)
             index = i;
         }
     }
-    
-    if (-1 == index) return;
 
+    if (-1 == index) return;
+    setTarget(enmeies[index]);
     for (int i = 0; i < m_shooters.size(); ++i) {
         if ( Shooter::State::Attack == m_shooters[i]->getState()) continue;
         if (enmeies[index]->getPosition().y > m_shooters[i]->getPosition().y &&
             Direction_Down == m_shooters[i]->getOriention()) {
             m_shooters[i]->setOriention(Direction_Up);
             m_shooters[i]->shoot();
+
         }
         else if (enmeies[index]->getPosition().y < m_shooters[i]->getPosition().y &&
             Direction_Up == m_shooters[i]->getOriention()) {
@@ -154,6 +159,9 @@ void Tower::scout(float dt)
         }
         else {
         }
+
+        BallBullet* ball = BallBullet::create(this);
+        addChild(ball);
     }
 }
 
@@ -167,4 +175,9 @@ void Tower::upgradeTechnology(int tid)
 int Tower::getTechnologyRank(int tid)
 {
     return (m_technologyMask & (0xf<<tid)) >> tid;
+}
+
+Vec2 Tower::getLocation()
+{
+    return convertToWorldSpace(getPosition());
 }

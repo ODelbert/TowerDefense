@@ -48,10 +48,6 @@ void Stage1::addTowerSlots()
     wf->setPosition(100, 400);
     addChild(wf);
 
-    RangeCircle* cir = RangeCircle::create(RangeCircle::Normal, RangeCircle::Attack);
-    cir->setPosition(100, 300);
-    addChild(cir);
-
     // Test speed
 #if 0
     for (int i = 0; i < SpeedType_VeryFast; ++i) {

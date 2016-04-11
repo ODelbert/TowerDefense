@@ -48,6 +48,8 @@
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		9A06DA391C82DDE10017B1D5 /* EventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A06DA371C82DDE10017B1D5 /* EventHandler.cpp */; };
 		9A06DA3A1C85E3660017B1D5 /* EventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A06DA371C82DDE10017B1D5 /* EventHandler.cpp */; };
+		9A5BE4261CBBD91900D70548 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5BE4241CBBD91900D70548 /* Bullet.cpp */; };
+		9A5BE4271CBBD91900D70548 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5BE4241CBBD91900D70548 /* Bullet.cpp */; };
 		9A5E98A61C9081DC00D07173 /* TowerFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E98A41C9081DC00D07173 /* TowerFactory.cpp */; };
 		9A5E98A71C9081DC00D07173 /* TowerFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E98A41C9081DC00D07173 /* TowerFactory.cpp */; };
 		9A5E9D991C9B178400939C85 /* Mage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E9D971C9B178400939C85 /* Mage.cpp */; };
@@ -3018,6 +3020,8 @@
 		9A06DA371C82DDE10017B1D5 /* EventHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventHandler.cpp; sourceTree = "<group>"; };
 		9A06DA381C82DDE10017B1D5 /* EventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventHandler.h; sourceTree = "<group>"; };
 		9A06DA3B1C85F4B80017B1D5 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		9A5BE4241CBBD91900D70548 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bullet.cpp; path = Tower/Bullet.cpp; sourceTree = "<group>"; };
+		9A5BE4251CBBD91900D70548 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bullet.h; path = Tower/Bullet.h; sourceTree = "<group>"; };
 		9A5E98A41C9081DC00D07173 /* TowerFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TowerFactory.cpp; sourceTree = "<group>"; };
 		9A5E98A51C9081DC00D07173 /* TowerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerFactory.h; sourceTree = "<group>"; };
 		9A5E9D971C9B178400939C85 /* Mage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mage.cpp; sourceTree = "<group>"; };
@@ -5981,6 +5985,8 @@
 		08D5D9D91C0FB5B900674B54 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9A5BE4241CBBD91900D70548 /* Bullet.cpp */,
+				9A5BE4251CBBD91900D70548 /* Bullet.h */,
 				9ACEE6BA1C7F489C005AEF3F /* Base */,
 				9ACEE6C51C7F489C005AEF3F /* Sprite */,
 				9ACEE6CB1C7F489C005AEF3F /* AppDelegate.cpp */,
@@ -9246,6 +9252,7 @@
 				9ACEE72C1C7F489C005AEF3F /* Stage1.cpp in Sources */,
 				9ACEE70E1C7F489C005AEF3F /* WaveManager.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				9A5BE4261CBBD91900D70548 /* Bullet.cpp in Sources */,
 				9ACEE7361C7F489C005AEF3F /* TestLayer.cpp in Sources */,
 				9A737B021C8DD969000DB2E7 /* Assembly.cpp in Sources */,
 			);
@@ -9257,6 +9264,7 @@
 			files = (
 				9A06DA3A1C85E3660017B1D5 /* EventHandler.cpp in Sources */,
 				9ACEE73B1C7F489C005AEF3F /* Archer.cpp in Sources */,
+				9A5BE4271CBBD91900D70548 /* Bullet.cpp in Sources */,
 				9A737B051C8DD969000DB2E7 /* Icon.cpp in Sources */,
 				9ACEE71B1C7F489C005AEF3F /* Enemy.cpp in Sources */,
 				9ACEE7371C7F489C005AEF3F /* TestLayer.cpp in Sources */,

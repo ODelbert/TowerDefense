@@ -3,6 +3,7 @@
 #include "Base/GameManager.h"
 #include "ResourceId.h"
 #include "Sprite/TouchNode.h"
+#include "Tower/Bullet.h"
 
 class PositionAdpater : public TouchNode
 {

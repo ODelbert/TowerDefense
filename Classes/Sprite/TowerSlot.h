@@ -12,10 +12,12 @@
 #include "cocos2d.h"
 #include "Tower.h"
 #include "TouchNode.h"
+#include "RangeCircle.h"
 
 USING_NS_CC;
 
 class SlotRing;
+
 class TowerSlot : public TouchNode
 {
     friend class SlotRing;

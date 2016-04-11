@@ -7,7 +7,7 @@ USING_NS_CC;
 
 class TowerSlot;
 class Shooter;
-
+class Enemy;
 struct TowerInfo
 {
     int id;
@@ -41,6 +41,7 @@ public:
     CC_SYNTHESIZE(uint, m_t2Gold, T2Gold)
     CC_SYNTHESIZE(uint, m_t3Gold, T3Gold)
     CC_SYNTHESIZE(TowerLevel, m_limitLevel, LimitLevel)
+    CC_SYNTHESIZE(Enemy*, m_target, Target)
 
     virtual void shoot() {}
     virtual void updateState() {}
@@ -51,6 +52,8 @@ public:
 
     virtual void scout(float dt);  // archer,mage,stone
     virtual void patrol(float dt) {} // barrack, bear
+
+    Vec2 getLocation(); // get tower world position
 
 protected:
     Tower();
