@@ -95,3 +95,24 @@ void EventHandler::onTowerEvent(TowerEvent* event)
 void EventHandler::onBulletEvent(BulletEvent* event)
 {
 }
+
+void EventHandler::onEnemyEvent(EnemyEvent* event)
+{
+    switch (event->getCommand()) {
+    case EnemyEvent::Command::Appear:
+        break;
+    case EnemyEvent::Command::Death:
+        break;
+    case EnemyEvent::Command::Disppear:
+        break;
+    case EnemyEvent::Command::Death:
+    {
+        // m_map->removeChild();
+    }
+        break;
+    case EnemyEvent::Command::Demonstrate:
+        break;
+    default:
+        break;
+    }
+}

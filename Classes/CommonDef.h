@@ -41,23 +41,14 @@ static int RAND_INT(int min, int max)
     return dis(random);
 }
 
+unsigned long TIME_STRAMP()
+{
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    return (tv.tv_sec * 1000000 + tv.tv_usec);
+}
+
 typedef unsigned int uint;
-//#define SINGLETON_IMPL(class) \
-//class* class::s_instance = nullptr; \
-//class* class::getInstance() \
-//{ \
-//    if (!s_instance) { \
-//        s_instance = new class; \
-//    } \
-//    return s_instance; \
-//} \
-//void class::destroy() \
-//{ \
-//    if (s_instance) { \
-//        delete s_instance; \
-//        s_instance = nullptr; \
-//    } \
-//} \
 
 enum TowerType {
     TowerType_Invalid = -1,

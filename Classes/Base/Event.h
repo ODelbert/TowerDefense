@@ -52,10 +52,12 @@ public:
     int getEnemyId() const;
     int getPathIndex() const;
     int getSubPathIndex() const;
-    void setWaveData(int id, int path, int subpath);
+    int waveCount() const;
+    void setWaveData(int id, int path, int subpath, int waveCount);
 
 private:
     int m_eId;
+    int m_waveCount;
     int m_path;
     int m_subPath;
 };
@@ -96,7 +98,10 @@ public:
         Demonstrate
     };
 
-   // EnemyEvent(Command cmd = Invaild, EnemyID id = EnemyID_Invalid);
+    CC_SYNTHESIZE(EnemyID, m_id, Id)
+    CC_SYNTHESIZE(Command, m_command, Command)
+
+    EnemyEvent(Command cmd = Invaild, EnemyID id = EnemyID_Invalid);
 };
 
 class BulletEvent : public TDEvent

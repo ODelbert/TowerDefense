@@ -175,9 +175,10 @@ void Enemy::runningUp()
 
 void Enemy::death()
 {
-    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_death"))));
-    //GM->removeEnemy(this);
-    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Death);
+    m_texture->runAction(Sequence::create(Animate::create(AM->getAnimation((m_name + "_death"))), CallFunc::create([&]() {
+        EnemyEvent evt(EnemyEvent::Death, getWaveIndex());
+        GM->dispatchEvent(&evt);
+    })));
 }
 
 void Enemy::spawn()

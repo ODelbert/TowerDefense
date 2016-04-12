@@ -69,7 +69,6 @@ private:
     TowerSlot* m_owner;
     Sprite* m_texture;
     RangeCircle* m_rangeCircle;
-
 };
 
 SlotRing* SlotRing::create(TowerSlot* owner)

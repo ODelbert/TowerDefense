@@ -150,11 +150,13 @@ private:
     CC_SYNTHESIZE(WeaponType, m_weapon, Weapon)
     CC_SYNTHESIZE(ArmorType, m_armor, Armor)
     CC_SYNTHESIZE(SpeedType, m_speed, Speed)
+    CC_SYNTHESIZE(int, m_waveIdx, WaveIdx)
 
     CC_SYNTHESIZE_READONLY(uint, m_buffs, Buffs)
     CC_SYNTHESIZE_READONLY(uint, m_debuffs, Debuffs)
     CC_SYNTHESIZE_READONLY(EnemyState, m_state, State)
     CC_SYNTHESIZE_READONLY(Direction, m_direction, Direction)
+
 
 protected:
     bool initWithEnemyId(EnemyID id);

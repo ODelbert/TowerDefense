@@ -11,12 +11,12 @@ class RangeCircle : public Node
 public:
     enum RangeRank
     {
-        VeryShort = 20,
-        Short = 40,
-        Normal = 60,
-        Long = 80,
-        Great = 100,
-        Extreme = 120
+        VeryShort = 120,
+        Short = 140,
+        Normal = 160,
+        Long = 180,
+        Great = 210,
+        Extreme = 260
     };
 
 public:
