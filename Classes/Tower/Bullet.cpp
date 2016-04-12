@@ -29,13 +29,13 @@ bool BallBullet::init()
 {
     if (!m_owner) return false;
     float duration = 1.0f;
-    Vec2 destination = m_owner->getTarget()->getPosition();
+    m_destination = m_owner->getTarget()->getPosition();
     Vec2 towerPos = m_owner->getLocation();
 
     m_texture = Sprite::createWithSpriteFrameName("catapult_proy.png");
     if (m_texture) {
         addChild(m_texture);
-        auto move = Sequence::create(MoveBy::create(duration, towerPos - destination), CallFunc::create(CC_CALLBACK_0(BallBullet::strike, this)), nullptr);
+        auto move = Sequence::create(MoveBy::create(duration, towerPos - m_destination), CallFunc::create(CC_CALLBACK_0(BallBullet::strike, this)), nullptr);
         m_texture->runAction(move);
         return true;
     }
@@ -48,7 +48,7 @@ void BallBullet::strike()
     if (m_owner && m_owner->getTarget()) {
         const std::vector<Enemy*> enemies = GM->getEnemies();
         for (int i = 0; i < enemies.size(); ++i) {
-            if (enemies[i]->getPosition().distance(m_destination) < 5) {
+            if (enemies[i]->getPosition().distance(m_destination) < 50) {
                 enemies[i]->getHurt(RAND_INT(m_owner->getDamageMin(), m_owner->getDamageMax()));
                 return;
             }

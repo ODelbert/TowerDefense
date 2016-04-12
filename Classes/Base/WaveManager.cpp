@@ -101,7 +101,7 @@ void WaveManager::initialize(int level, int difficulty)
         if (0 == strcmp(chd->Name(), "cash")) {
             m_cash = atoi(chd->GetText());
         }
-        else if (0 == strcmp(chd->Name(), "wave")){
+        else if (0 == strcmp(chd->Name(), "wave")) {
             WaveInfo waveInfo;
             XMLElement *ele = chd->FirstChildElement("interval");
             while (ele) {
@@ -112,7 +112,6 @@ void WaveManager::initialize(int level, int difficulty)
                     waveInfo.setPathIndex(atoi(ele->GetText()));
                 }
                 else if (0 == strcmp(ele->Value(), "spawns")) {
-                    
                     XMLElement* spawn = ele->FirstChildElement("spawn");
                     while (spawn) {
                         SpawnInfo si;
@@ -182,7 +181,6 @@ void WaveManager::start()
 // FIXME:: 定时触发
 void WaveManager::nextEnemy(float dt)
 {
-//    if (xxx)　return;
     if (m_waveIndex >= m_waves.size()) {
         Director::getInstance()->getScheduler()->unschedule(schedule_selector(WaveManager::nextEnemy), this);
         return;
@@ -197,7 +195,7 @@ void WaveManager::nextEnemy(float dt)
         m_waves[m_waveIndex].spwans()[m_spawnIndex].maxSame);
 
     WaveEvent event;
-    event.setWaveData(name2Id(m_waves[m_waveIndex].spwans()[m_spawnIndex].id), m_waves[m_waveIndex].getPathIndex(), m_waves[m_waveIndex].spwans()[m_spawnIndex].path);
+    event.setWaveData(name2Id(m_waves[m_waveIndex].spwans()[m_spawnIndex].id), m_waves[m_waveIndex].getPathIndex(), m_waves[m_waveIndex].spwans()[m_spawnIndex].path, m_waveIndex << 16 | m_spawnIndex);
 
     Director::getInstance()->getEventDispatcher()->dispatchEvent(&event);
     if (m_spawnIndex < m_waves[m_waveIndex].spwans().size() - 1) {

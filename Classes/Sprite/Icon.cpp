@@ -278,14 +278,14 @@ bool UpgradeIcon::init(TowerID id, bool enabled)
         break;
     case TowerID_Archer_Arcane:
     {
-        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_ARTILLERY);
-        m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_ARTILLERY);
+        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_ARCANE);
+        m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_ARCANE);
     }
         break;
     case TowerID_Archer_Silver:
     {
-        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_ARTILLERY);
-        m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_ARTILLERY);
+        m_enabledImage = Sprite::createWithSpriteFrameName(ICON_SILVER);
+        m_disabledImage = Sprite::createWithSpriteFrameName(ICON_DISABLED_SILVER);
     }
         break;
     case TowerID_BladeSinger:

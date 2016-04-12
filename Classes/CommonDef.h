@@ -2,6 +2,8 @@
 #define COMMONDEF_H
 #include<random>
 #include "ResourceId.h"
+#include <sys/time.h>
+
 #define TD_TEST
 //#define TD_DEBUG
 
@@ -41,12 +43,14 @@ static int RAND_INT(int min, int max)
     return dis(random);
 }
 
-unsigned long TIME_STRAMP()
+#if 0 // why crash ?
+static unsigned long TIME_STRAMP()
 {
     struct timeval tv;
     gettimeofday(&tv, NULL);
     return (tv.tv_sec * 1000000 + tv.tv_usec);
 }
+#endif
 
 typedef unsigned int uint;
 

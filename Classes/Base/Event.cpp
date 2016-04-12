@@ -25,17 +25,18 @@ int WaveEvent::getSubPathIndex() const
     return m_subPath;
 }
 
-int WaveEvent::waveCount() const
+int WaveEvent::getIndex() const
 {
-    return m_waveCount;
+    return m_index;
 }
 
-void WaveEvent::setWaveData(int eId, int path, int subpath, int waveCount)
+void WaveEvent::setWaveData(int eId, int path, int subpath, int waveCount, int index)
 {
     m_eId = eId;
     m_path = path;
     m_subPath = subpath;
     m_waveCount = waveCount;
+    m_index = index;
 }
 
 TowerEvent::TowerEvent(Command cmd, int slotId, TowerID id, int tid)
@@ -51,8 +52,9 @@ BulletEvent::BulletEvent(Bullet* bullet, TDEventType action)
     m_bullet(bullet)
 {}
 
-EnemyEvent::EnemyEvent(Command cmd, EnemyID id)
+EnemyEvent::EnemyEvent(Command cmd, EnemyID id, int tag)
     : TDEvent(TDEventType_Enemy),
       m_command(cmd),
-      m_id(id)
+      m_id(id),
+      m_tag(tag)
 {}

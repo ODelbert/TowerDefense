@@ -176,9 +176,9 @@ void Enemy::runningUp()
 void Enemy::death()
 {
     m_texture->runAction(Sequence::create(Animate::create(AM->getAnimation((m_name + "_death"))), CallFunc::create([&]() {
-        EnemyEvent evt(EnemyEvent::Death, getWaveIndex());
+        EnemyEvent evt(EnemyEvent::Death, getId(), getTag());
         GM->dispatchEvent(&evt);
-    })));
+    }), nullptr));
 }
 
 void Enemy::spawn()
@@ -210,10 +210,10 @@ void Enemy::speicialAttack()
 void Enemy::getHurt(int dmg)
 {
     m_life -= dmg;
-    if (m_life <= 0) {
-        death();
-    }
-
+//    if (m_life <= 0) {
+//        death();
+//    }
+    death();
     m_lifeBar->setPercentage(m_life / m_maxLife);
 }
 

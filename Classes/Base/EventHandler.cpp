@@ -61,6 +61,7 @@ void EventHandler::onWaveEvent(WaveEvent* waveEvent)
         }
         
         GM->addEnemy(enemy);
+        enemy->setTag(waveEvent->getIndex());
         enemy->sendToBattle(WaveManager::getInstance()->getPath(waveEvent->getPathIndex(), waveEvent->getSubPathIndex()));
         m_map->addEnemy(enemy);
     }
@@ -100,8 +101,6 @@ void EventHandler::onEnemyEvent(EnemyEvent* event)
 {
     switch (event->getCommand()) {
     case EnemyEvent::Command::Appear:
-        break;
-    case EnemyEvent::Command::Death:
         break;
     case EnemyEvent::Command::Disppear:
         break;

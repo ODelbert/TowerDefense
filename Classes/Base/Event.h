@@ -52,14 +52,16 @@ public:
     int getEnemyId() const;
     int getPathIndex() const;
     int getSubPathIndex() const;
-    int waveCount() const;
-    void setWaveData(int id, int path, int subpath, int waveCount);
+    int getWaveCount() const;
+    int getIndex() const;
+    void setWaveData(int id, int path, int subpath, int waveCount, int index = 0);
 
 private:
     int m_eId;
     int m_waveCount;
     int m_path;
     int m_subPath;
+    int m_index;
 };
 
 class TowerEvent : public TDEvent
@@ -99,9 +101,10 @@ public:
     };
 
     CC_SYNTHESIZE(EnemyID, m_id, Id)
+    CC_SYNTHESIZE(int, m_tag, Tag)
     CC_SYNTHESIZE(Command, m_command, Command)
 
-    EnemyEvent(Command cmd = Invaild, EnemyID id = EnemyID_Invalid);
+    EnemyEvent(Command cmd = Invaild, EnemyID id = EnemyID_Invalid, int tag = -1);
 };
 
 class BulletEvent : public TDEvent

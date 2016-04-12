@@ -55,8 +55,7 @@ public:
     
 private:
     void nextEnemy(float dt);
-    
-    
+
 private:
     std::vector<WaveInfo> m_waves;
     std::vector<std::vector<std::vector<Vec2> > > m_paths;
