@@ -89,12 +89,24 @@ void EventHandler::onTowerEvent(TowerEvent* event)
     }
     break;
     default:
+        // never goes here
+        assert("invalid tower event type!!!");
     break;
     }
 }
 
 void EventHandler::onBulletEvent(BulletEvent* event)
 {
+    switch (event->getCommand()) {
+    case BulletEvent::Command::Shoot:
+        break;
+    case BulletEvent::Command::Strike:
+        break;
+    default:
+        // never goes here
+        assert("invalid bullet event type!!!");
+        break;
+    }
 }
 
 void EventHandler::onEnemyEvent(EnemyEvent* event)
@@ -112,6 +124,8 @@ void EventHandler::onEnemyEvent(EnemyEvent* event)
     case EnemyEvent::Command::Demonstrate:
         break;
     default:
+        // never goes here
+        assert("invalid enemy event type!!!");
         break;
     }
 }

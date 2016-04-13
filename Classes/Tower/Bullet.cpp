@@ -35,8 +35,8 @@ bool BallBullet::init()
     m_texture = Sprite::createWithSpriteFrameName("catapult_proy.png");
     if (m_texture) {
         addChild(m_texture);
-        auto move = Sequence::create(MoveBy::create(duration, towerPos - m_destination), CallFunc::create(CC_CALLBACK_0(BallBullet::strike, this)), nullptr);
-        m_texture->runAction(move);
+        auto move = Sequence::create(Moveto::create(duration, m_destination), CallFunc::create(CC_CALLBACK_0(BallBullet::strike, this)), nullptr);
+        runAction(move);
         return true;
     }
 

@@ -47,14 +47,15 @@ TowerEvent::TowerEvent(Command cmd, int slotId, TowerID id, int tid)
     m_technologyId(tid)
 {}
 
-BulletEvent::BulletEvent(Bullet* bullet, TDEventType action)
-    : TDEvent(action),
-    m_bullet(bullet)
-{}
-
 EnemyEvent::EnemyEvent(Command cmd, EnemyID id, int tag)
     : TDEvent(TDEventType_Enemy),
       m_command(cmd),
       m_id(id),
       m_tag(tag)
+{}
+
+BulletEvent::BulletEvent(Command cmd, int slotId)
+    : TDEvent(TDEventType_Bullet),
+      m_command(cmd),
+      m_slotId(slotId)
 {}

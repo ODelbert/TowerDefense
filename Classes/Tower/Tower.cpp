@@ -160,6 +160,7 @@ void Tower::scout(float dt)
         else {
         }
 
+        BulletEvent event()
         BallBullet* ball = BallBullet::create(this);
         addChild(ball);
     }

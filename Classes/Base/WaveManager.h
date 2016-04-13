@@ -51,6 +51,7 @@ public:
     void initialize(int level, int difficulty);
     std::vector<Vec2> getPath(int path, int subPath);
     int getPathCount();
+
     CC_SYNTHESIZE(uint, m_cash, Cash)
     
 private:

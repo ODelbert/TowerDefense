@@ -109,13 +109,17 @@ public:
 
 class BulletEvent : public TDEvent
 {
+    enum Command
+    {
+        Invalid,
+        Shoot,
+        Strike,
+    };
+
 public:
-    BulletEvent(Bullet* bullet, TDEventType action);
-    //CC_SYNTHESIZE(Node*, m_sender, Sender);
-    //CC_SYNTHESIZE(Node*, m_receiver, Receiver);
-    
-private:
-    Bullet* m_bullet;
+    BulletEvent(Command cmd, int slotId);
+    CC_SYNTHESIZE(int, m_slotId, SlotId)
+    CC_SYNTHESIZE(Command, m_command, Command)
 };
 
 #endif
