@@ -160,9 +160,10 @@ void Tower::scout(float dt)
         else {
         }
 
-        BulletEvent event()
-        BallBullet* ball = BallBullet::create(this);
-        addChild(ball);
+        BulletEvent event(BulletEvent::Command::Lanuch, 0);
+        GM->dispatchEvent(&event);
+//        BallBullet* ball = BallBullet::create(this);
+//        addChild(ball);
     }
 }
 

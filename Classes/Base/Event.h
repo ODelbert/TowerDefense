@@ -109,17 +109,19 @@ public:
 
 class BulletEvent : public TDEvent
 {
+public:
     enum Command
     {
         Invalid,
-        Shoot,
+        Lanuch,
         Strike,
     };
 
 public:
-    BulletEvent(Command cmd, int slotId);
+    BulletEvent(Command cmd, int slotId, Vec2 destination = Vec2());
     CC_SYNTHESIZE(int, m_slotId, SlotId)
     CC_SYNTHESIZE(Command, m_command, Command)
+    CC_SYNTHESIZE(Vec2, m_destination, Destination)
 };
 
 #endif

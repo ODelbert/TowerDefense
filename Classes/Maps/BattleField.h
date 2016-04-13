@@ -37,10 +37,16 @@ public:
     void onTouchEnded(Touch* touch, Event* event);
     void onTouchMoved(Touch* touch, Event* event);
 
+    //  Tower actions
     void bulidTower(int slotId, TowerID id);
     void addTower(int slotId, TowerID id);
     void removeTower(int slotId);
     void upgradeTechnology(int slotId, TowerID id, int tid);
+
+    // Bullet actions
+    void emitBullet(int slotId);
+    void bulletStrike(int slotId, Vec2 destination);
+
 
     void update(float dt);
     

@@ -98,9 +98,11 @@ void EventHandler::onTowerEvent(TowerEvent* event)
 void EventHandler::onBulletEvent(BulletEvent* event)
 {
     switch (event->getCommand()) {
-    case BulletEvent::Command::Shoot:
+        case BulletEvent::Command::Lanuch:
+        m_map->emitBullet(event->getSlotId());
         break;
     case BulletEvent::Command::Strike:
+        m_map->bulletStrike(event->getSlotId(), event->getDestination());
         break;
     default:
         // never goes here

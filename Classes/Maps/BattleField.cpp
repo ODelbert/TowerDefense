@@ -17,6 +17,7 @@
 #include "Sprite/TowerSlot.h"
 #include "Sprite/BuildBar.h"
 #include "Base/GameManager.h"
+#include "Tower/Bullet.h"
 
 BattleField::BattleField()
 : m_eventHandler(nullptr)
@@ -197,6 +198,77 @@ void BattleField::upgradeTechnology(int slotId, TowerID id, int tid)
     auto tower = slot->getTower();
     if (tower) {
         tower->upgradeTechnology(tid);
+    }
+}
+
+void BattleField::emitBullet(int slotId)
+{
+    for (int i = 0; i < m_towerSlots.size(); ++i) {
+        if (m_towerSlots[i]->getSlotId() == slotId) {
+            Tower* tower = m_towerSlots[i]->getTower();
+            Enemy* enemy;
+            if (!tower) {
+                return;
+            }
+
+            enemy = tower->getTarget();
+            if (!enemy) {
+                return;
+            }
+
+            // TODO:: caculate the future position of enemies
+            Vec2 destination = enemy->getPosition();
+
+            switch (tower->getId()) {
+            case TowerID_Archer_Lv1:
+            case TowerID_Archer_Lv2:
+            case TowerID_Archer_Lv3:
+            {
+                // TODO:: shooter position
+                Vec2 shooterPos = m_towerSlots[i]->getPosition();
+                auto ball = BallBullet::create();
+                ball->setPosition(shooterPos);
+                ball->setDestination(destination);
+                ball->launch(slotId);
+                addChild(ball);
+            }
+                break;
+            case TowerID_Barrack_Lv1:
+            case TowerID_Barrack_Lv2:
+            case TowerID_Barrack_Lv3:
+                break;
+            case TowerID_Mage_Lv1:
+            case TowerID_Mage_Lv2:
+            case TowerID_Mage_Lv3:
+                break;
+            case TowerID_Artillery_Lv1:
+            case TowerID_Artillery_Lv2:
+            case TowerID_Artillery_Lv3:
+                break;
+            }
+
+            break;
+        }
+    }
+}
+
+void BattleField::bulletStrike(int slotId, Vec2 destination)
+{
+    for (int i = 0; i < m_towerSlots.size(); ++i) {
+        if (m_towerSlots[i]->getSlotId() == slotId) {
+            Tower* tower = m_towerSlots[i]->getTower();
+            if (!tower) {
+                return;
+            }
+
+            const std::vector<Enemy*> enemies = GM->getEnemies();
+            for (int i = 0; i < enemies.size(); ++i) {
+                if (enemies[i]->getPosition().distance(destination) < 50  /* tower->getRange() */) {
+                    enemies[i]->getHurt(RAND_INT(tower->getDamageMin(), tower->getDamageMax()));
+                    return;
+                }
+            }
+        }
     }
 }
 

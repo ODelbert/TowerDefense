@@ -3,19 +3,13 @@
 #include "Enemy/Enemy.h"
 #include "Tower/Tower.h"
 
-Bullet::Bullet(Tower* owner)
-    : m_owner(owner)
+Bullet::Bullet()
 {
 }
 
-BallBullet::BallBullet(Tower* owner)
-    : Bullet(owner)
+BallBullet* BallBullet::create()
 {
-}
-
-BallBullet* BallBullet::create(Tower* owner)
-{
-    BallBullet* ret = new BallBullet(owner);
+    BallBullet* ret = new BallBullet();
     if (ret && ret->init()) {
         ret->autorelease();
         return ret;
@@ -27,34 +21,46 @@ BallBullet* BallBullet::create(Tower* owner)
 
 bool BallBullet::init()
 {
-    if (!m_owner) return false;
-    float duration = 1.0f;
-    m_destination = m_owner->getTarget()->getPosition();
-    Vec2 towerPos = m_owner->getLocation();
-
     m_texture = Sprite::createWithSpriteFrameName("catapult_proy.png");
     if (m_texture) {
         addChild(m_texture);
-        auto move = Sequence::create(Moveto::create(duration, m_destination), CallFunc::create(CC_CALLBACK_0(BallBullet::strike, this)), nullptr);
-        runAction(move);
+//        auto move = Sequence::create(MoveTo::create(duration, m_destination), CallFunc::create(CC_CALLBACK_0(BallBullet::strike, this)), nullptr);
+//        runAction(move);
         return true;
     }
 
     return false;
 }
 
-void BallBullet::strike()
+void BallBullet::launch(int slotId)
 {
-    if (m_owner && m_owner->getTarget()) {
-        const std::vector<Enemy*> enemies = GM->getEnemies();
-        for (int i = 0; i < enemies.size(); ++i) {
-            if (enemies[i]->getPosition().distance(m_destination) < 50) {
-                enemies[i]->getHurt(RAND_INT(m_owner->getDamageMin(), m_owner->getDamageMax()));
-                return;
-            }
-        }
-    }
+    // TODO:: fix speed!
+    auto move = Sequence::create(MoveTo::create(1.0, m_destination), CallFunc::create([&]() {
+        BulletEvent event(BulletEvent::Command::Strike, slotId, m_destination);
+        GM->dispatchEvent(&event);
+    }), nullptr);
+    runAction(move);
 }
+
+//void BallBullet::strike()
+//{
+//    auto move = Sequence::create(MoveTo::create(1.0, m_destination), CallFunc::create([&]() {
+//        BulletEvent event(BulletEvent::Command::Strike, slotId);
+//        GM->dispatchEvent(&event);
+//    }), nullptr);
+//    runAction(move);
+
+
+//    if (m_owner && m_owner->getTarget()) {
+//        const std::vector<Enemy*> enemies = GM->getEnemies();
+//        for (int i = 0; i < enemies.size(); ++i) {
+//            if (enemies[i]->getPosition().distance(m_destination) < 50) {
+//                enemies[i]->getHurt(RAND_INT(m_owner->getDamageMin(), m_owner->getDamageMax()));
+//                return;
+//            }
+//        }
+//    }
+//}
 //
 //ParabalicTrace* ParabalicTrace::create(float duration, Vec2 start, Vec2 end, float height)
 //{

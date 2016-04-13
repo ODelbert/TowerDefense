@@ -2,7 +2,7 @@
 #define BULLET_H
 
 #include "cocos2d.h"
-
+#include "CommonDef.h"
 USING_NS_CC;
 
 // Arrow   -----> archer
@@ -49,26 +49,26 @@ class Tower;
 class Bullet : public Node
 {
 public:
-    virtual void strike() {}
     CC_SYNTHESIZE(Vec2, m_destination, Destination)
+    CC_SYNTHESIZE(int, m_damage, Damage)
+    CC_SYNTHESIZE(WeaponType, m_weapon, Weapon)
+
+    virtual void launch(int slotId) {}
+    virtual void strike() {}
     
 protected:
-    Bullet(Tower* owner);
+    explicit Bullet();
 
 protected:
-    Tower* m_owner;
     Sprite* m_texture;
 };
 
 class BallBullet : public Bullet
 {
 public:
-    static BallBullet* create(Tower* owner);
+    static BallBullet* create();
     virtual bool init();
-    virtual void strike();
-
-protected:
-    BallBullet(Tower* owner);
+    virtual void launch(int slotId);
 };
 
 #endif // BULLET_H

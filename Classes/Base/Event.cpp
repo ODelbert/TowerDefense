@@ -54,8 +54,9 @@ EnemyEvent::EnemyEvent(Command cmd, EnemyID id, int tag)
       m_tag(tag)
 {}
 
-BulletEvent::BulletEvent(Command cmd, int slotId)
+BulletEvent::BulletEvent(Command cmd, int slotId, Vec2 destination)
     : TDEvent(TDEventType_Bullet),
       m_command(cmd),
-      m_slotId(slotId)
+      m_slotId(slotId),
+      m_destination(destination)
 {}
