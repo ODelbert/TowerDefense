@@ -33,6 +33,11 @@ bool BattleField::init()
     touchlistener->onTouchMoved = CC_CALLBACK_2(BattleField::onTouchMoved, this);
     touchlistener->setSwallowTouches(true);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(touchlistener, this);
+    
+    auto keyboardEventListener = EventListenerKeyboard::create();
+    keyboardEventListener->onKeyPressed = CC_CALLBACK_2(BattleField::onKeyPressed, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardEventListener, this);
+    
     m_eventHandler = EventHandler::create(this);
     m_eventHandler->retain();
     return true;
@@ -312,4 +317,35 @@ void BattleField::bulletStrike(int slotId, Vec2 destination)
 void BattleField::update(float dt)
 {
     // PListReader::getInstance()->saveImages();
+}
+
+void BattleField::pause()
+{
+
+}
+
+void BattleField::resume()
+{
+
+}
+
+void BattleField::restart()
+{
+    start(0);
+}
+
+void BattleField::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+{
+    switch (keyCode) {
+    case EventKeyboard::KeyCode::KEY_F2:
+    {
+        restart();
+    }
+        break;
+    case EventKeyboard::KeyCode::KEY_SPACE:
+    {
+        pause();
+    }
+        break;
+    }
 }

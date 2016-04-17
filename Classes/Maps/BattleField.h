@@ -37,8 +37,9 @@ public:
     
     
     virtual bool onTouchBegan(Touch* touch, Event* event);
-    void onTouchEnded(Touch* touch, Event* event);
-    void onTouchMoved(Touch* touch, Event* event);
+    virtual void onTouchEnded(Touch* touch, Event* event);
+    virtual void onTouchMoved(Touch* touch, Event* event);
+    virtual void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
     //  Tower actions
     void bulidTower(int slotId, TowerID id);
@@ -54,7 +55,10 @@ public:
     void bulletStrike(int slotId, Vec2 destination);
 
 
-
+    // user control IF
+    void pause();
+    void resume();
+    void restart();
 
     void update(float dt);
     
