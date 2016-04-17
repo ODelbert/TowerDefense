@@ -46,6 +46,13 @@ void EventHandler::onEvent(TDEvent* event)
             break;
         case TDEventType_Tower:
             onTowerEvent(static_cast<TowerEvent*>(event));
+            break;
+        case TDEventType_Bullet:
+            onBulletEvent(static_cast<BulletEvent*>(event));
+            break;
+        case TDEventType_Enemy:
+            onEnemyEvent(static_cast<EnemyEvent*>(event));
+            break;
         default:
             break;
     }
@@ -55,11 +62,7 @@ void EventHandler::onWaveEvent(WaveEvent* waveEvent)
 {
     Enemy* enemy = EnemyFactory::create(static_cast<EnemyID>(waveEvent->getEnemyId()));
     
-    if (enemy) {
-        if (enemy->getId() == EnemyID_Gnoll_Burner) {
-            bool comeHere = 0;
-        }
-        
+    if (enemy) {       
         GM->addEnemy(enemy);
         enemy->setTag(waveEvent->getIndex());
         enemy->sendToBattle(WaveManager::getInstance()->getPath(waveEvent->getPathIndex(), waveEvent->getSubPathIndex()));
@@ -117,6 +120,9 @@ void EventHandler::onEnemyEvent(EnemyEvent* event)
     case EnemyEvent::Command::Appear:
         break;
     case EnemyEvent::Command::Disppear:
+    {
+        m_map->missTarget(event->getWaveIdx());
+    }
         break;
     case EnemyEvent::Command::Death:
     {

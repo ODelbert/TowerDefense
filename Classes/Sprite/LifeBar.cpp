@@ -25,14 +25,9 @@ static const std::string s_surfixs[] =
     "big.png",
 };
 
-LifeBar::LifeBar(Sprite* owner)
-    : m_owner(owner) {
-
-}
-
-LifeBar* LifeBar::create(Sprite *owner, Scale scale)
+LifeBar* LifeBar::create(Scale scale)
 {
-    LifeBar* ret = new LifeBar(owner);
+    LifeBar* ret = new LifeBar;
     if (ret && ret->init(scale)) {
         ret->autorelease();
         return ret;
@@ -53,15 +48,10 @@ bool LifeBar::init(Scale scale)
     bkg->addChild(m_bar);
     addChild(bkg);
     m_bar->setType(ProgressTimer::Type::BAR);
+    m_bar->setPercentage(100.0);
     m_bar->setPosition(bkg->getContentSize().width / 2, bkg->getContentSize().height / 2);
 
-    if (m_owner) {
-        m_owner->addChild(this);
-        return true;
-    }
-    else {
-        return false;
-    }
+    return true;
 }
 
 void LifeBar::setPercentage(float precent)

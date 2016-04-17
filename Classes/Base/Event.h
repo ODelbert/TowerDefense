@@ -71,13 +71,14 @@ public:
     {
         Invaild,
         Build, // slot, towerId
+        Destroy, // slot
         UpgradeTower, // slot, towerId, level
         Sell, // slot, towerId, level2
         Disabled, // slot
         Assemble, // slot
         UpgradeTechnology, // slot, towerId, tid
         Hint, // slot, towerId
-        Demonstrate // slot, towerId
+        Demonstrate, // slot, towerId
     };
 
 public:
@@ -97,14 +98,15 @@ public:
         Appear,
         Disppear,
         Death,
-        Demonstrate
+        Demonstrate,
     };
 
     CC_SYNTHESIZE(EnemyID, m_id, Id)
     CC_SYNTHESIZE(int, m_tag, Tag)
     CC_SYNTHESIZE(Command, m_command, Command)
+    CC_SYNTHESIZE(int, m_waveIdx, WaveIdx)
 
-    EnemyEvent(Command cmd = Invaild, EnemyID id = EnemyID_Invalid, int tag = -1);
+    EnemyEvent(Command cmd = Invaild, EnemyID id = EnemyID_Invalid, int tag = -1, int waveIdx);
 };
 
 class BulletEvent : public TDEvent

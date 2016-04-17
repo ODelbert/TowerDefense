@@ -29,6 +29,9 @@ public:
     const std::vector<Enemy*> getEnemies();
     const std::vector<Tower*> getTowers();
 
+    void addTowerSlot(int slotId, Vec2 pos);
+    void removeTowerSlot(int slotId);
+
     void addEnemy(Enemy* enemy);
     void removeEnemy(Enemy* enemy);
     
@@ -43,9 +46,14 @@ public:
     void removeTower(int slotId);
     void upgradeTechnology(int slotId, TowerID id, int tid);
 
+    // Enemy actions
+    void missTarget(int waveIdx);
+
     // Bullet actions
     void emitBullet(int slotId);
     void bulletStrike(int slotId, Vec2 destination);
+
+
 
 
     void update(float dt);

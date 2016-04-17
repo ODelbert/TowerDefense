@@ -130,12 +130,9 @@ void Tower::scout(float dt)
     int min = -1;
     int index = -1;
     std::vector<Enemy*> enmeies = GM->getEnemies();
-
     for (int i = 0;i < enmeies.size(); ++i) {
         Vec2 towerPos = convertToWorldSpace(getPosition());
-
-        log("enemy [%f %f] [%f %f] [%d] distance [%f] towerPos【%f %f】", getPosition().x, getPosition().y, enmeies[i]->getPosition().x, enmeies[i]->getPosition().y , i , getPosition().distance(enmeies[i]->getPosition()),
-            towerPos.x, towerPos.y);
+        log("tower [%f %f] enemy [%f %f] [%d] distance [%f] ", towerPos.x, towerPos.y, enmeies[i]->getPosition().x, enmeies[i]->getPosition().y , i , towerPos.distance(enmeies[i]->getPosition()));
         if (towerPos.distance(enmeies[i]->getPosition()) > 160 + 20 * (m_range - Range_Average)) continue;
         if (enmeies[i]->fulfilledPercent() > min) {
             min = enmeies[i]->fulfilledPercent();

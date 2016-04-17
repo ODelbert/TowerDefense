@@ -190,8 +190,22 @@ void SlotRing::onTouch()
     }
 }
 
-bool TowerSlot::init()
+TowerSlot* TowerSlot::create(int slotId)
 {
+    TowerSlot* ts = new TowerSlot;
+    if (ts && ts->init(slotId)) {
+        ts->autorelease();
+        return ts;
+    }
+
+    CC_SAFE_DELETE(ts);
+    return nullptr;
+}
+
+bool TowerSlot::init(int slotId)
+{
+    m_slotId = slotId;
+    m_tower = nullptr;
     auto touchReceiver = Sprite::createWithSpriteFrameName("build_terrain_0001.png");
     TD_SIZE(touchReceiver);
     addChild(touchReceiver);

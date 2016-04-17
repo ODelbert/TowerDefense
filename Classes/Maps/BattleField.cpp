@@ -146,7 +146,31 @@ void BattleField::bulidTower(int slotId, TowerID id)
     BuildBar* bar = BuildBar::create();
     bar->setPosition(slot->getPosition());
     bar->build(slotId, id);
-    addChild(bar);
+    m_mapSprite->addChild(bar);
+}
+
+void BattleField::addTowerSlot(int slotId, Vec2 pos)
+{
+    TowerSlot* slot = TowerSlot::create(slotId);
+    if (slot) {
+        m_towerSlots.push_back(slot);
+        m_mapSprite->addChild(slot);
+        slot->setPosition(pos);
+    }
+}
+
+void BattleField::removeTowerSlot(int slotId)
+{
+//    std::vector<TowerSlot*>::iterator iter = m_towerSlots.begin();
+//    for (; iter < m_towerSlots.end(); ++iter) {
+//        if (slotId == iter->getSlotId()) {
+//            // TODO:: GM remove tower
+//            m_towerSlots.erase(iter);
+//            m_mapSprite->removeChild(*iter, false);
+//            --iter;
+//            return;
+//        }
+//    }
 }
 
 void BattleField::addTower(int slotId, TowerID id)
@@ -201,6 +225,19 @@ void BattleField::upgradeTechnology(int slotId, TowerID id, int tid)
     }
 }
 
+void BattleField::missTarget(int waveIdx)
+{
+    for (int i = 0; i < m_towerSlots.size(); ++i) {
+        Tower* tower = m_towerSlots[i]->getTower();
+        if (!tower) {
+            Enemy* target = tower->getTarget();
+            if (target->getTag() == waveIdx) {
+                tower->setTarget(nullptr);
+            }
+        }
+    }
+}
+
 void BattleField::emitBullet(int slotId)
 {
     for (int i = 0; i < m_towerSlots.size(); ++i) {
@@ -208,12 +245,12 @@ void BattleField::emitBullet(int slotId)
             Tower* tower = m_towerSlots[i]->getTower();
             Enemy* enemy;
             if (!tower) {
-                return;
+                continue;;
             }
 
             enemy = tower->getTarget();
             if (!enemy) {
-                return;
+                continue;
             }
 
             // TODO:: caculate the future position of enemies

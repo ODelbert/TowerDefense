@@ -24,26 +24,21 @@ bool Stage1::init()
     sp->runAction(RepeatForever::create( Animate::create(AnimationCache::getInstance()->getAnimation(AID_ENEMY_ARACHNOMANCER_ATTACK))));
     addChild(sp);
     sp->setPosition(100, 100);
+
+    auto obj = EnemyFactory::create(EnemyID_Redcap);
+    obj->setPosition(400, 300);
+    addChild(obj);
+    obj->runAction(MoveTo::create(1.0, Vec2(400, 400)));
+
     return true;
 }
 
 void Stage1::addTowerSlots()
 {
     // Test!!
-    TowerSlot* slot = TowerSlot::create();
-    slot->setPosition(400, 300);
-    slot->setSlotId(0);
-    addChild(slot);
-    m_towerSlots.push_back(slot);
+    addTowerSlot(0, Vec2(400, 300));
+    addTowerSlot(1, Vec2(600, 300));
     
-    
-    TowerSlot* slot1 = TowerSlot::create();
-    slot1->setPosition(600, 300);
-    slot1->setSlotId(1);
-    addChild(slot1);
-    m_towerSlots.push_back(slot1);
-
-
     WaveFlag* wf = WaveFlag::create(WaveFlag::Normal, 10);
     wf->setPosition(100, 400);
     addChild(wf);

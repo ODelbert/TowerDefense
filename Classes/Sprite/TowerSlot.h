@@ -22,13 +22,13 @@ class TowerSlot : public TouchNode
 {
     friend class SlotRing;
 public:
-    CREATE_FUNC(TowerSlot)
-    virtual bool init();
+    static TowerSlot* create(int slotId);
+    virtual bool init(int slotId);
 
     virtual void onTouchEvent();
     void addTower(Tower* tower);
     void removeTower();
-    CC_SYNTHESIZE(int, m_slotId, SlotId)
+    CC_SYNTHESIZE_READONLY(int, m_slotId, SlotId)
     
     CC_SYNTHESIZE_READONLY(Tower*, m_tower, Tower)
     CC_SYNTHESIZE_READONLY(SlotRing*, m_ring, ring)

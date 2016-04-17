@@ -95,7 +95,10 @@ bool Enemy::initWithEnemyId(EnemyID id)
     m_direction = Direction_Invalid;
     m_texture = Sprite::createWithSpriteFrameName(m_name + "_0001.png");
     addChild(m_texture);
-    m_lifeBar = LifeBar::create(m_texture);
+    m_lifeBar = LifeBar::create();
+    addChild(m_lifeBar);
+    m_lifeBar->setPosition(0, 30);
+
 
     return true;
 }
