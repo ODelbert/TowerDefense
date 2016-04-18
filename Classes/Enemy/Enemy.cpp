@@ -218,7 +218,7 @@ void Enemy::getHurt(int dmg)
         death();
     }
 
-    m_lifeBar->setPercentage(m_life / m_maxLife);
+    m_lifeBar->setPercentage(m_life / m_maxLife * 100);
 }
 
 void Enemy::updateState(float dt)

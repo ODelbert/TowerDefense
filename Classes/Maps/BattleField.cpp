@@ -253,19 +253,17 @@ void BattleField::emitBullet(int slotId)
     for (int i = 0; i < m_towerSlots.size(); ++i) {
         if (m_towerSlots[i]->getSlotId() == slotId) {
             Tower* tower = m_towerSlots[i]->getTower();
-            Enemy* enemy;
             if (!tower) {
                 continue;;
             }
 
-            enemy = tower->getTarget();
+            Enemy* enemy = tower->getTarget();
             if (!enemy) {
                 continue;
             }
 
             // TODO:: caculate the future position of enemies
             Vec2 destination = enemy->getPosition();
-
             switch (tower->getId()) {
             case TowerID_Archer_Lv1:
             case TowerID_Archer_Lv2:

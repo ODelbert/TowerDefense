@@ -121,12 +121,13 @@ void EventHandler::onEnemyEvent(EnemyEvent* event)
         break;
     case EnemyEvent::Command::Disppear:
     {
+        // TODO:: penalty
         m_map->missTarget(event->getWaveIdx());
     }
         break;
     case EnemyEvent::Command::Death:
     {
-
+        // TODO:: rewards
         m_map->removeEnemy(event->getWaveIdx());
     }
         break;
