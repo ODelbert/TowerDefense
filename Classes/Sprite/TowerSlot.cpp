@@ -159,7 +159,7 @@ void SlotRing::onTouch()
                     TowerID_BladeSinger == tower->getId() ||
                     TowerID_ForestKeeper == tower->getId() ||
                     TowerID_Artillery_Henge == tower->getId()) {
-                auto assembly = Assembly::create(m_owner->getSlotId());
+                auto assembly = GatherFlag::create(m_owner->getSlotId());
                 addChild(assembly);
                 assembly->setPosition(0.5 * m_texture->getContentSize().width / 2, -0.866 * m_texture->getContentSize().height / 2);
             }

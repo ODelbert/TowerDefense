@@ -4,6 +4,7 @@
 #include "Configuration/GameData.h"
 #include "Base/GameManager.h"
 #include "Enemy/Enemy.h"
+#include "TowerSlot.h"
 #include "Bullet.h"
 
 Tower::Tower()

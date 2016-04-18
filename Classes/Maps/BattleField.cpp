@@ -32,11 +32,11 @@ bool BattleField::init()
     touchlistener->onTouchEnded = CC_CALLBACK_2(BattleField::onTouchEnded, this);
     touchlistener->onTouchMoved = CC_CALLBACK_2(BattleField::onTouchMoved, this);
     touchlistener->setSwallowTouches(true);
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchlistener, this);
+    GM->addEventListenerWithSceneGraphPriority(touchlistener, this);
     
-    auto keyboardEventListener = EventListenerKeyboard::create();
-    keyboardEventListener->onKeyPressed = CC_CALLBACK_2(BattleField::onKeyPressed, this);
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardEventListener, this);
+//    auto keyboardEventListener = EventListenerKeyboard::create();
+//    keyboardEventListener->onKeyPressed = CC_CALLBACK_2(BattleField::onKeyPressed, this);
+//    _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardEventListener, this);
     
     m_eventHandler = EventHandler::create(this);
     m_eventHandler->retain();
@@ -115,7 +115,7 @@ void BattleField::loadLevel(int stage, int difficult)
 
 void BattleField::start(float dt)
 {
-     WaveManager::getInstance()->start();
+    // WaveManager::getInstance()->start();
 }
 
 const std::vector<Enemy*> BattleField::getEnemies()

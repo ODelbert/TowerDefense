@@ -37,11 +37,11 @@ void Stage1::addTowerSlots()
 {
     // Test!!
     addTowerSlot(0, Vec2(400, 300));
-    addTowerSlot(1, Vec2(600, 300));
-    
-    WaveFlag* wf = WaveFlag::create(WaveFlag::Normal, 10);
-    wf->setPosition(100, 400);
-    addChild(wf);
+//    addTowerSlot(1, Vec2(600, 300));
+//    
+//    WaveFlag* wf = WaveFlag::create(WaveFlag::Normal, 10);
+//    wf->setPosition(100, 400);
+//    addChild(wf);
 
     // Test speed
 #if 0

@@ -9,10 +9,10 @@ Bullet::Bullet()
 
 void Bullet::decay()
 {
-    runAction(Sequence::create(DelayTime::create(0.8f), CallFunc::create([]() {
+    runAction(Sequence::create(DelayTime::create(0.8f), CallFunc::create([&]() {
         // FIXME:: if GM holds the bullet, release it.
         removeFromParent();
-    })));
+    }), nullptr));
 }
 
 BallBullet* BallBullet::create()
@@ -34,7 +34,7 @@ bool BallBullet::init()
         addChild(m_texture);
         return true;
     }
-`
+
     return false;
 }
 

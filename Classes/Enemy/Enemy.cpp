@@ -208,44 +208,44 @@ void Enemy::getHurt(int dmg)
 
     m_lifeBar->setPercentage(m_life / m_maxLife * 100);
 }
-
-void Enemy::updateState(float dt)
-{
-	switch (m_state) {
-	case EnemyState_Appear:
-		spawn();
-	break;
-	case EnemyState_WalkNext:
-	case EnemyState_RunningNext:
-		moveToNext();
-	break;
-	case EnemyState_Dead:
-		death();
-	break;
-	case EnemyState_AttackLeft:
-		m_texture->setFlippedX(true);
-	case EnemyState_AttackRight:
-		attack();
-	break;
-	case EnemyState_CastSpellLeft:
-		m_texture->setFlippedX(true);
-	case EnemyState_CastSpellRight:
-		cast();
-	break;
-	case EnemyState_SpeicalAttackLeft: {
-		m_texture->setFlippedX(true);
-		speicialAttack();
-	}
-	break;
-	case EnemyState_SpeicalAttackRight:
-		speicialAttack();
-	break;
-	case EnmeyState_Num:
-	break;
-	default:
-		break;
-	}
-}
+//
+//void Enemy::updateState(float dt)
+//{
+//	switch (m_state) {
+//	case EnemyState_Appear:
+//		spawn();
+//	break;
+//	case EnemyState_WalkNext:
+//	case EnemyState_RunningNext:
+//		moveToNext();
+//	break;
+//	case EnemyState_Dead:
+//		death();
+//	break;
+//	case EnemyState_AttackLeft:
+//		m_texture->setFlippedX(true);
+//	case EnemyState_AttackRight:
+//		attack();
+//	break;
+//	case EnemyState_CastSpellLeft:
+//		m_texture->setFlippedX(true);
+//	case EnemyState_CastSpellRight:
+//		cast();
+//	break;
+//	case EnemyState_SpeicalAttackLeft: {
+//		m_texture->setFlippedX(true);
+//		speicialAttack();
+//	}
+//	break;
+//	case EnemyState_SpeicalAttackRight:
+//		speicialAttack();
+//	break;
+//	case EnmeyState_Num:
+//	break;
+//	default:
+//		break;
+//	}
+//}
 
 void Enemy::moveToNext()
 {

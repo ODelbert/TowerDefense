@@ -34,7 +34,7 @@ public:
 
     void addEnemy(Enemy* enemy);
     void removeEnemy(Enemy* enemy);
-    
+    void removeEnemy(int waveIdx);
     
     virtual bool onTouchBegan(Touch* touch, Event* event);
     virtual void onTouchEnded(Touch* touch, Event* event);

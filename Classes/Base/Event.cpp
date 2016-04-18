@@ -51,7 +51,6 @@ EnemyEvent::EnemyEvent(Command cmd, EnemyID id, int tag, int waveIdx)
     : TDEvent(TDEventType_Enemy),
       m_command(cmd),
       m_id(id),
-      m_tag(tag),
       m_waveIdx(waveIdx)
 {}
 
