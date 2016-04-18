@@ -129,55 +129,56 @@ void Enemy::idle()
 void Enemy::walkingLeft()
 {
     m_texture->setFlippedX(true);
-    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_walkingRightLeft"))));
+    m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_walkingRightLeft")))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingRightLeft);
 }
 
 void Enemy::walkingRight()
 {
-    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_walkingRightLeft"))));
+    m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_walkingRightLeft")))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingRightLeft);
 }
 
 void Enemy::walkingDown()
 {
-    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_walkingDown"))));
+    m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_walkingDown")))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingDown);
 }
 
 void Enemy::walkingUp()
 {
-    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_walkingUp"))));
+    m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_walkingUp")))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingUp);
 }
 
 void Enemy::runningLeft()
 {
     m_texture->setFlippedX(true);
-    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_runningRightLeft"))));
+    m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_runningRightLeft")))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningRightLeft);
 }
 
 void Enemy::runningRight()
 {
-    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_runningRightLeft"))));
+    m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_runningRightLeft")))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningRightLeft);
 }
 
 void Enemy::runningDown()
 {
-    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_runningDown"))));
+    m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_runningDown")))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningDown);
 }
 
 void Enemy::runningUp()
 {
-    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_runningUp"))));
+    m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_runningUp")))));
     //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningUp);
 }
 
 void Enemy::death()
 {
+    setState(EnemyState_Dead);
     m_texture->runAction(Sequence::create(Animate::create(AM->getAnimation((m_name + "_death"))), CallFunc::create([&]() {
         EnemyEvent evt(EnemyEvent::Death, getId(), getTag());
         GM->dispatchEvent(&evt);
@@ -213,10 +214,10 @@ void Enemy::speicialAttack()
 void Enemy::getHurt(int dmg)
 {
     m_life -= dmg;
-//    if (m_life <= 0) {
-//        death();
-//    }
-    death();
+    if (m_life <= 0) {
+        death();
+    }
+
     m_lifeBar->setPercentage(m_life / m_maxLife);
 }
 

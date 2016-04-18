@@ -126,7 +126,8 @@ void EventHandler::onEnemyEvent(EnemyEvent* event)
         break;
     case EnemyEvent::Command::Death:
     {
-        // m_map->removeChild();
+
+        m_map->removeEnemy(event->getWaveIdx());
     }
         break;
     case EnemyEvent::Command::Demonstrate:

@@ -86,10 +86,15 @@ void BattleField::addEnemy(Enemy* enemy)
     m_mapSprite->addChild(enemy);
 }
 
-void BattleField::removeEnemy(Enemy* enemy)
+void BattleField::removeEnemy(int waveIdx)
 {
     // TODO:: GameManager removes
-    m_mapSprite->removeChild(enemy, false);
+    missTarget(waveIdx);
+    auto child = getChildByTag(waveIdx);
+    Enemy* enemy = static_cast<Enemy*>(child);
+    if (!enemy) return;
+    GM->removeEnemy(enemy);
+    enemy->removeFromParent();
 }
 
 void BattleField::loadLevel(int stage, int difficult)

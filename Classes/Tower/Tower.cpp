@@ -131,12 +131,16 @@ void Tower::scout(float dt)
     int index = -1;
     std::vector<Enemy*> enmeies = GM->getEnemies();
     for (int i = 0;i < enmeies.size(); ++i) {
-        Vec2 towerPos = convertToWorldSpace(getPosition());
-        log("tower [%f %f] enemy [%f %f] [%d] distance [%f] ", towerPos.x, towerPos.y, enmeies[i]->getPosition().x, enmeies[i]->getPosition().y , i , towerPos.distance(enmeies[i]->getPosition()));
-        if (towerPos.distance(enmeies[i]->getPosition()) > 160 + 20 * (m_range - Range_Average)) continue;
-        if (enmeies[i]->fulfilledPercent() > min) {
-            min = enmeies[i]->fulfilledPercent();
-            index = i;
+        //Vec2 towerPos = convertToWorldSpace(getPosition());
+        TowerSlot* slot = static_cast<TowerSlot*>(getParent());
+        if (slot) {
+            Vec2 towerPos = slot->getPosition();
+            log("tower [%f %f] enemy [%f %f] [%d] distance [%f] ", towerPos.x, towerPos.y, enmeies[i]->getPosition().x, enmeies[i]->getPosition().y , i , towerPos.distance(enmeies[i]->getPosition()));
+            if (towerPos.distance(enmeies[i]->getPosition()) > 160 + 20 * (m_range - Range_Average)) continue;
+            if (enmeies[i]->fulfilledPercent() > min) {
+                min = enmeies[i]->fulfilledPercent();
+                index = i;
+            }
         }
     }
 
@@ -147,8 +151,6 @@ void Tower::scout(float dt)
         if (enmeies[index]->getPosition().y > m_shooters[i]->getPosition().y &&
             Direction_Down == m_shooters[i]->getOriention()) {
             m_shooters[i]->setOriention(Direction_Up);
-            m_shooters[i]->shoot();
-
         }
         else if (enmeies[index]->getPosition().y < m_shooters[i]->getPosition().y &&
             Direction_Up == m_shooters[i]->getOriention()) {
@@ -157,6 +159,7 @@ void Tower::scout(float dt)
         else {
         }
 
+        m_shooters[i]->shoot();
         BulletEvent event(BulletEvent::Command::Lanuch, 0);
         GM->dispatchEvent(&event);
 //        BallBullet* ball = BallBullet::create(this);

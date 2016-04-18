@@ -57,6 +57,7 @@ enum EnemyState
 {
     EnemyState_Invalid = -1,
 	EnemyState_Appear,
+    EnemyState_Disappear,
 	EnemyState_WalkNext,
     EnemyState_RunningNext,
 	EnemyState_Dead,
