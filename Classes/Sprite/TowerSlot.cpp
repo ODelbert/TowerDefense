@@ -8,7 +8,7 @@
 
 #include "TowerSlot.h"
 #include "Sprite/Icon.h"
-#include "Sprite/Assembly.h"
+#include "Sprite/GatherFlag.h"
 #include "Base/GameManager.h"
 
 

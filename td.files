@@ -42,8 +42,8 @@ Classes/ResourceManager/ResourceManager.cpp
 Classes/ResourceManager/ResourceManager.h
 Classes/Scene/GameScene.cpp
 Classes/Scene/GameScene.h
-Classes/Sprite/Assembly.cpp
-Classes/Sprite/Assembly.h
+Classes/Sprite/GatherFlag.cpp
+Classes/Sprite/GatherFlag.h
 Classes/Sprite/BuildBar.cpp
 Classes/Sprite/BuildBar.h
 Classes/Sprite/Icon.cpp

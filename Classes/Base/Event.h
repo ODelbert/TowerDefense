@@ -102,7 +102,6 @@ public:
     };
 
     CC_SYNTHESIZE(EnemyID, m_id, Id)
-    CC_SYNTHESIZE(int, m_tag, Tag)
     CC_SYNTHESIZE(Command, m_command, Command)
     CC_SYNTHESIZE(int, m_waveIdx, WaveIdx)
 

@@ -54,7 +54,7 @@ public:
     CC_SYNTHESIZE(WeaponType, m_weapon, Weapon)
 
     virtual void launch(int slotId) {}
-    virtual void strike() {}
+    virtual void decay();
     
 protected:
     explicit Bullet();

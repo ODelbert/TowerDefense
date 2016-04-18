@@ -13,11 +13,7 @@ class TDEventListener : public EventListener
 public:
     static TDEventListener* create(const std::function<void(TDEvent*)>& callback);
     
-public:
-    std::function<void(WaveEvent*)> onWaveEvent;
-    std::function<void(TowerEvent*)> onTowerEvent;
-    std::function<void(BulletEvent*)> onBulletEvent;
-    
+public:  
     virtual bool checkAvailable();
     virtual EventListener* clone();
 

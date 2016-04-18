@@ -1,8 +1,8 @@
-#include "Assembly.h"
+#include "GatherFlag.h"
 
-Assembly* Assembly::create(int slotId)
+GatherFlag* GatherFlag::create(int slotId)
 {
-    Assembly* ret = new Assembly;
+    GatherFlag* ret = new GatherFlag;
     if (ret && ret->init(slotId)) {
         ret->autorelease();
         return ret;
@@ -12,12 +12,12 @@ Assembly* Assembly::create(int slotId)
     return nullptr;
 }
 
-bool Assembly::init(int slotId)
+bool GatherFlag::init(int slotId)
 {
     return true;
 }
 
-bool Assembly::onTouchBegan(Touch* touch, Event* event)
+bool GatherFlag::onTouchBegan(Touch* touch, Event* event)
 {
     if (!inTouchRegion(touch)) {
         m_isTouchBegan = false;
@@ -28,14 +28,14 @@ bool Assembly::onTouchBegan(Touch* touch, Event* event)
     return true;
 }
 
-void Assembly::onTouchMoved(Touch* touch, Event* event)
+void GatherFlag::onTouchMoved(Touch* touch, Event* event)
 {
     if (!inTouchRegion(touch)) {
         m_isTouchBegan = false;
     }
 }
 
-void Assembly::onTouchEnded(Touch* touch, Event* event)
+void GatherFlag::onTouchEnded(Touch* touch, Event* event)
 {
     if (m_isTouchBegan) {
         if (m_callback) {

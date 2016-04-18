@@ -142,7 +142,6 @@ bool ArcaneShooter::init()
 void ArcaneShooter::shoot()
 {
     // AID_TOWER_ARCHER_ARCANE_SHOOTER_SPECIALDOWN
-    //
     Animation* shootAnim = AnimationCache::getInstance()->getAnimation(Direction_Up == m_oriention ? AID_TOWER_ARCHER_ARCANE_SHOOTER_SHOOTUP : AID_TOWER_ARCHER_ARCANE_SHOOTER_SHOOTDOWN);
     if (m_texture) {
         m_texture->runAction(Animate::create(shootAnim));

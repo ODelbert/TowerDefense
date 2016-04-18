@@ -130,50 +130,42 @@ void Enemy::walkingLeft()
 {
     m_texture->setFlippedX(true);
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_walkingRightLeft")))));
-    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingRightLeft);
 }
 
 void Enemy::walkingRight()
 {
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_walkingRightLeft")))));
-    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingRightLeft);
 }
 
 void Enemy::walkingDown()
 {
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_walkingDown")))));
-    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingDown);
 }
 
 void Enemy::walkingUp()
 {
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_walkingUp")))));
-    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_WalkingUp);
 }
 
 void Enemy::runningLeft()
 {
     m_texture->setFlippedX(true);
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_runningRightLeft")))));
-    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningRightLeft);
 }
 
 void Enemy::runningRight()
 {
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_runningRightLeft")))));
-    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningRightLeft);
 }
 
 void Enemy::runningDown()
 {
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_runningDown")))));
-    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningDown);
 }
 
 void Enemy::runningUp()
 {
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_runningUp")))));
-    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_RunningUp);
 }
 
 void Enemy::death()
@@ -187,28 +179,24 @@ void Enemy::death()
 
 void Enemy::spawn()
 {
-    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Spawn);
 }
 
 void Enemy::respawn()
 {
-    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Respawn);
 }
 
 void Enemy::shoot()
 {
-    m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_shoot"))));
-    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Shoot);
+    m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_shoot")))));
 }
 
 void Enemy::cast()
 {
-    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Cast);
+    m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_cast")))));
 }
 
 void Enemy::speicialAttack()
 {
-    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Special);
 }
 
 void Enemy::getHurt(int dmg)

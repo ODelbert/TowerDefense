@@ -16,10 +16,10 @@ private:
     Sprite* m_texture;
 };
 
-class Assembly : public TouchNode
+class GatherFlag : public TouchNode
 {
 public:
-    static Assembly* create(int slotId);
+    static GatherFlag* create(int slotId);
     virtual bool init(int slotId);
     virtual bool onTouchBegan(Touch* touch, Event* event);
     virtual void onTouchMoved(Touch* touch, Event* event);

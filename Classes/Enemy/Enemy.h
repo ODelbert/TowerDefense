@@ -115,8 +115,6 @@ class LifeBar;
 class Enemy : public Node
 {
 public:
-    virtual void updateState(float dt);
-
     virtual void attack() {}
     virtual void idle();
     virtual void walkingLeft();

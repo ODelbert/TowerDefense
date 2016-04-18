@@ -22,6 +22,11 @@ struct TowerInfo
     int upgradeGold;
 };
 
+enum TowerState {
+    TowerState_Disabled = -1,
+    TowerState_Enabled
+};
+
 class Tower : public Node
 {
 public:
@@ -42,9 +47,7 @@ public:
     CC_SYNTHESIZE(uint, m_t3Gold, T3Gold)
     CC_SYNTHESIZE(TowerLevel, m_limitLevel, LimitLevel)
     CC_SYNTHESIZE(Enemy*, m_target, Target)
-
-    virtual void shoot() {}
-    virtual void updateState() {}
+    CC_SYNTHESIZE(TowerState, m_state, State)
 
     void initWithTowerId(TowerID id);
     int getTechnologyRank(int tid);

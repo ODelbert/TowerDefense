@@ -35,9 +35,6 @@ bool TDEventListener::init(const ListenerID& listenerId, const std::function<voi
 }
 
 TDEventListener::TDEventListener()
-    : onWaveEvent(nullptr),
-    onTowerEvent(nullptr),
-    onBulletEvent(nullptr)
 {}
 
 bool TDEventListener::checkAvailable()

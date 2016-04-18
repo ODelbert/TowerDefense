@@ -7,6 +7,14 @@ Bullet::Bullet()
 {
 }
 
+void Bullet::decay()
+{
+    runAction(Sequence::create(DelayTime::create(0.8f), CallFunc::create([]() {
+        // FIXME:: if GM holds the bullet, release it.
+        removeFromParent();
+    })));
+}
+
 BallBullet* BallBullet::create()
 {
     BallBullet* ret = new BallBullet();
@@ -24,22 +32,22 @@ bool BallBullet::init()
     m_texture = Sprite::createWithSpriteFrameName("catapult_proy.png");
     if (m_texture) {
         addChild(m_texture);
-//        auto move = Sequence::create(MoveTo::create(duration, m_destination), CallFunc::create(CC_CALLBACK_0(BallBullet::strike, this)), nullptr);
-//        runAction(move);
         return true;
     }
-
+`
     return false;
 }
 
 void BallBullet::launch(int slotId)
 {
     // TODO:: fix speed!
-    auto move = Sequence::create(MoveTo::create(1.0, m_destination), CallFunc::create([&]() {
+    auto launchAction = Sequence::create(MoveTo::create(1.0, m_destination), CallFunc::create([&]() {
         BulletEvent event(BulletEvent::Command::Strike, slotId, m_destination);
         GM->dispatchEvent(&event);
+        decay();
     }), nullptr);
-    runAction(move);
+
+    runAction(launchAction);
 }
 
 //void BallBullet::strike()
