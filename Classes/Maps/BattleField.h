@@ -37,8 +37,8 @@ public:
     void removeEnemy(int waveIdx);
     
     virtual bool onTouchBegan(Touch* touch, Event* event);
-    virtual void onTouchEnded(Touch* touch, Event* event);
-    virtual void onTouchMoved(Touch* touch, Event* event);
+    void onTouchEnded(Touch* touch, Event* event);
+    void onTouchMoved(Touch* touch, Event* event);
     virtual void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
     //  Tower actions
@@ -56,8 +56,6 @@ public:
 
 
     // user control IF
-    void pause();
-    void resume();
     void restart();
 
     void update(float dt);
