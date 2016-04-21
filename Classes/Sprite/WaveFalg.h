@@ -13,10 +13,10 @@ public:
     enum Type { Normal, Flying };
 
 public:
-    static WaveFlag* create(Type type, float duration);
-    virtual bool init(Type type, float duration);
+    static WaveFlag* create(Type type, float duration, bool fristWave = false);
+    virtual bool init(Type type, float duration, bool fristWave = false);
     void onTouchEvent();
-    void onTimeout();
+    void onTimeout(bool fristWave);
     
 private:
     ProgressTimer* m_circle;

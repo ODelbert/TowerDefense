@@ -201,12 +201,13 @@ void Enemy::speicialAttack()
 
 void Enemy::getHurt(int dmg)
 {
-    m_life -= dmg;
+    m_life -= 10*dmg;
     if (m_life <= 0) {
         death();
     }
-
-    m_lifeBar->setPercentage(m_life / m_maxLife * 100);
+  
+    assert(m_maxLife > 0);
+    m_lifeBar->setPercentage(m_life / (float)m_maxLife * 100);
 }
 //
 //void Enemy::updateState(float dt)
@@ -268,22 +269,22 @@ void Enemy::moveToNext()
 		switch (m_wayPoints.getDirection()) {
 			case Direction_Down:
 			{
-				EnemyState_WalkNext == m_state ? walkingDown() : runningDown();
+                EnemyState_WalkNext == m_state ? walkingDown() : runningDown();
 			}
 			break;
 			case Direction_Up:
 			{
-				EnemyState_WalkNext == m_state ? walkingUp() : runningUp();
+                EnemyState_WalkNext == m_state ? walkingUp() : runningUp();
 			}
 			break;
 			case Direction_Left:
 			{
-				EnemyState_WalkNext == m_state ? walkingLeft() : runningLeft();
+                EnemyState_WalkNext == m_state ? walkingLeft() : runningLeft();
 			}
-			break;
+            break;
 			case Direction_Right:
 			{
-				EnemyState_WalkNext == m_state ? walkingRight() : runningRight();
+                EnemyState_WalkNext == m_state ? walkingRight() : runningRight();
 			}
 			break;
 			default:

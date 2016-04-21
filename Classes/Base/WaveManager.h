@@ -65,4 +65,6 @@ private:
     Sprite* m_runningEnemy;
 };
 
+#define WM WaveManager::getInstance()
+
 #endif /* defined(__TowerDefense__WaveManager__) */

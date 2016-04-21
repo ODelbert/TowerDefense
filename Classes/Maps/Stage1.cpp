@@ -20,15 +20,20 @@ bool Stage1::init()
     loadLevel(1, 1);
     addTowerSlots();
 
+
+    // test action
     auto sp = Sprite::createWithSpriteFrameName("ico_sell_0002.png");
-    sp->runAction(RepeatForever::create( Animate::create(AnimationCache::getInstance()->getAnimation(AID_ENEMY_ARACHNOMANCER_ATTACK))));
+    sp->runAction(RepeatForever::create( Animate::create(AnimationCache::getInstance()->getAnimation(AID_ENEMY_ARACHNOMANCER_SPIDER_WALKINGDOWN))));
     addChild(sp);
     sp->setPosition(100, 100);
 
+
     auto obj = EnemyFactory::create(EnemyID_Redcap);
     obj->setPosition(400, 300);
-    addChild(obj);
-    obj->runAction(MoveTo::create(1.0, Vec2(400, 400)));
+    m_mapSprite->addChild(obj);
+    auto moveTo = MoveTo::create(1.0, Vec2(400, 400));
+    obj->runAction(RepeatForever::create(Sequence::create(MoveTo::create(1.0, Vec2(400, 400)), MoveTo::create(1.0, Vec2(100, 100)), nullptr)));
+    obj->walkingDown();
 
     return true;
 }
@@ -37,11 +42,11 @@ void Stage1::addTowerSlots()
 {
     // Test!!
     addTowerSlot(0, Vec2(400, 300));
-//    addTowerSlot(1, Vec2(600, 300));
-//    
-//    WaveFlag* wf = WaveFlag::create(WaveFlag::Normal, 10);
-//    wf->setPosition(100, 400);
-//    addChild(wf);
+    addTowerSlot(1, Vec2(600, 300));
+
+    WaveFlag* wf = WaveFlag::create(WaveFlag::Normal, 10, true);
+    wf->setPosition(100, 400);
+    addChild(wf);
 
     // Test speed
 #if 0
@@ -53,4 +58,8 @@ void Stage1::addTowerSlots()
         monster->sendToBattle(WaveManager::getInstance()->getPath(0, 1));
     }
 #endif
+
+    auto monster = EnemyFactory::create(EnemyID_Redcap);
+    m_mapSprite->addChild(monster);
+    monster->sendToBattle(WaveManager::getInstance()->getPath(0, 1));
 }

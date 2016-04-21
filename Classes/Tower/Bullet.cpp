@@ -3,10 +3,6 @@
 #include "Enemy/Enemy.h"
 #include "Tower/Tower.h"
 
-Bullet::Bullet()
-{
-}
-
 void Bullet::decay()
 {
     runAction(Sequence::create(DelayTime::create(0.8f), CallFunc::create([&]() {
@@ -38,11 +34,10 @@ bool BallBullet::init()
     return false;
 }
 
-void BallBullet::launch(int slotId)
+void BallBullet::launch()
 {
-    // TODO:: fix speed!
     auto launchAction = Sequence::create(MoveTo::create(1.0, m_destination), CallFunc::create([&]() {
-        BulletEvent event(BulletEvent::Command::Strike, slotId, m_destination);
+        BulletEvent event(BulletEvent::Command::Strike, m_slotId, m_destination);
         GM->dispatchEvent(&event);
         decay();
     }), nullptr);

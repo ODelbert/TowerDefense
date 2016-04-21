@@ -274,8 +274,9 @@ void BattleField::emitBullet(int slotId)
                 auto ball = BallBullet::create();
                 ball->setPosition(shooterPos);
                 ball->setDestination(destination);
-                ball->launch(slotId);
-                addChild(ball);
+                ball->setSlotId(slotId);
+                ball->launch();
+                m_mapSprite->addChild(ball);
             }
                 break;
             case TowerID_Barrack_Lv1:

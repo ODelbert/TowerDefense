@@ -52,12 +52,12 @@ public:
     CC_SYNTHESIZE(Vec2, m_destination, Destination)
     CC_SYNTHESIZE(int, m_damage, Damage)
     CC_SYNTHESIZE(WeaponType, m_weapon, Weapon)
+    CC_SYNTHESIZE(int, m_range, Range)
+    CC_SYNTHESIZE(Sprite*, m_target, Target)
+    CC_SYNTHESIZE(int, m_slotId, SlotId)
 
-    virtual void launch(int slotId) {}
+    virtual void launch() {}
     virtual void decay();
-    
-protected:
-    explicit Bullet();
 
 protected:
     Sprite* m_texture;
@@ -68,7 +68,7 @@ class BallBullet : public Bullet
 public:
     static BallBullet* create();
     virtual bool init();
-    virtual void launch(int slotId);
+    virtual void launch();
 };
 
 #endif // BULLET_H
