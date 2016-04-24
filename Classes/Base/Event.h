@@ -105,7 +105,7 @@ public:
     CC_SYNTHESIZE(Command, m_command, Command)
     CC_SYNTHESIZE(int, m_waveIdx, WaveIdx)
 
-    EnemyEvent(Command cmd = Invaild, EnemyID id = EnemyID_Invalid, int tag = -1, int waveIdx = -1);
+    EnemyEvent(Command cmd = Invaild, EnemyID id = EnemyID_Invalid, int waveIdx = -1);
 };
 
 class BulletEvent : public TDEvent

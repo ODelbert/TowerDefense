@@ -63,7 +63,7 @@ void ArcherShooter::shoot()
     Animation* shootAnim = AnimationCache::getInstance()->getAnimation(Direction_Up == m_oriention ? AID_TOWER_ARCHER_SHOOTER_UP : AID_TOWER_ARCHER_SHOOTER_DOWN);
     if (m_texture) {
         setState(Shooter::State::Attack);
-        m_texture->runAction(Sequence::create(Animate::create(shootAnim), DelayTime::create(1), CallFunc::create([&]() {
+        m_texture->runAction(Sequence::create(Animate::create(shootAnim), /*DelayTime::create(0.01)*/ CallFunc::create([&]() {
             setState(Shooter::State::Idel);
         }), nullptr));
     }

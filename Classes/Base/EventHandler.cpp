@@ -60,10 +60,13 @@ void EventHandler::onEvent(TDEvent* event)
 
 void EventHandler::onWaveEvent(WaveEvent* waveEvent)
 {
+    if (!waveEvent || -1 == waveEvent->getIndex()) {
+        return;
+    }
+    
     Enemy* enemy = EnemyFactory::create(static_cast<EnemyID>(waveEvent->getEnemyId()));
     
     if (enemy) {       
-        GM->addEnemy(enemy);
         enemy->setTag(waveEvent->getIndex());
         enemy->sendToBattle(WaveManager::getInstance()->getPath(waveEvent->getPathIndex(), waveEvent->getSubPathIndex()));
         m_map->addEnemy(enemy);

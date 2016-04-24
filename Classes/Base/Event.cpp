@@ -47,7 +47,7 @@ TowerEvent::TowerEvent(Command cmd, int slotId, TowerID id, int tid)
     m_technologyId(tid)
 {}
 
-EnemyEvent::EnemyEvent(Command cmd, EnemyID id, int tag, int waveIdx)
+EnemyEvent::EnemyEvent(Command cmd, EnemyID id, int waveIdx)
     : TDEvent(TDEventType_Enemy),
       m_command(cmd),
       m_id(id),

@@ -16,6 +16,7 @@ public:
     static LifeBar* create(Scale scale = Small);
     virtual bool init(Scale scale);
     void setPercentage(float precent);
+    float getPercentage();
 
 private:
     ProgressTimer* m_bar;

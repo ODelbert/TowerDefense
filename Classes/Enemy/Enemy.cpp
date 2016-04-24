@@ -122,54 +122,63 @@ float Enemy::fulfilledPercent() const
 
 void Enemy::idle()
 {
+    m_texture->stopAllActions();
     m_texture->runAction(Animate::create(AM->getAnimation((m_name + "_idle"))));
-    //AnimationManager::getInstance()->runAction(m_texture, AnimationType_Enemy, static_cast<int>(m_id), ActionEnemy_Idle);
 }
 
 void Enemy::walkingLeft()
 {
     m_texture->setFlippedX(true);
+    m_texture->stopAllActions();
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_walkingRightLeft")))));
 }
 
 void Enemy::walkingRight()
 {
+    m_texture->stopAllActions();
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_walkingRightLeft")))));
 }
 
 void Enemy::walkingDown()
 {
+    m_texture->stopAllActions();
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_walkingDown")))));
 }
 
 void Enemy::walkingUp()
 {
+    m_texture->stopAllActions();
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_walkingUp")))));
 }
 
 void Enemy::runningLeft()
 {
+    m_texture->stopAllActions();
     m_texture->setFlippedX(true);
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_runningRightLeft")))));
 }
 
 void Enemy::runningRight()
 {
+    m_texture->stopAllActions();
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_runningRightLeft")))));
 }
 
 void Enemy::runningDown()
 {
+    m_texture->stopAllActions();
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_runningDown")))));
 }
 
 void Enemy::runningUp()
 {
+    m_texture->stopAllActions();
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_runningUp")))));
 }
 
 void Enemy::death()
 {
+    m_texture->stopAllActions();
     setState(EnemyState_Dead);
     m_texture->runAction(Sequence::create(Animate::create(AM->getAnimation((m_name + "_death"))), CallFunc::create([&]() {
         EnemyEvent evt(EnemyEvent::Death, getId(), getTag());
@@ -187,11 +196,13 @@ void Enemy::respawn()
 
 void Enemy::shoot()
 {
+    m_texture->stopAllActions();
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_shoot")))));
 }
 
 void Enemy::cast()
 {
+    m_texture->stopAllActions();
     m_texture->runAction(RepeatForever::create(Animate::create(AM->getAnimation((m_name + "_cast")))));
 }
 
@@ -201,7 +212,7 @@ void Enemy::speicialAttack()
 
 void Enemy::getHurt(int dmg)
 {
-    m_life -= 10*dmg;
+    m_life -= dmg;
     if (m_life <= 0) {
         death();
     }
@@ -209,44 +220,6 @@ void Enemy::getHurt(int dmg)
     assert(m_maxLife > 0);
     m_lifeBar->setPercentage(m_life / (float)m_maxLife * 100);
 }
-//
-//void Enemy::updateState(float dt)
-//{
-//	switch (m_state) {
-//	case EnemyState_Appear:
-//		spawn();
-//	break;
-//	case EnemyState_WalkNext:
-//	case EnemyState_RunningNext:
-//		moveToNext();
-//	break;
-//	case EnemyState_Dead:
-//		death();
-//	break;
-//	case EnemyState_AttackLeft:
-//		m_texture->setFlippedX(true);
-//	case EnemyState_AttackRight:
-//		attack();
-//	break;
-//	case EnemyState_CastSpellLeft:
-//		m_texture->setFlippedX(true);
-//	case EnemyState_CastSpellRight:
-//		cast();
-//	break;
-//	case EnemyState_SpeicalAttackLeft: {
-//		m_texture->setFlippedX(true);
-//		speicialAttack();
-//	}
-//	break;
-//	case EnemyState_SpeicalAttackRight:
-//		speicialAttack();
-//	break;
-//	case EnmeyState_Num:
-//	break;
-//	default:
-//		break;
-//	}
-//}
 
 void Enemy::moveToNext()
 {

@@ -186,16 +186,17 @@ void WaveManager::nextEnemy(float dt)
         return;
     }
     
-    log("=========%d=============push enemy with name [%s] to battle, path %d, interval %d intervalNext %d, max %d, max_same %d", m_waveIndex,
-        m_waves[m_waveIndex].spwans()[m_spawnIndex].id,
-        m_waves[m_waveIndex].spwans()[m_spawnIndex].path,
-        m_waves[m_waveIndex].spwans()[m_spawnIndex].interval,
-        m_waves[m_waveIndex].spwans()[m_spawnIndex].intervalNext,
-        m_waves[m_waveIndex].spwans()[m_spawnIndex].max,
-        m_waves[m_waveIndex].spwans()[m_spawnIndex].maxSame);
+//    log("=========%d=============push enemy with name [%s]waveid[%d] to battle, path %d, interval %d intervalNext %d, max %d, max_same %d", m_waveIndex,
+//        m_waves[m_waveIndex].spwans()[m_spawnIndex].id,
+//        m_waveIndex << 16 | m_spawnIndex,
+//        m_waves[m_waveIndex].spwans()[m_spawnIndex].path,
+//        m_waves[m_waveIndex].spwans()[m_spawnIndex].interval,
+//        m_waves[m_waveIndex].spwans()[m_spawnIndex].intervalNext,
+//        m_waves[m_waveIndex].spwans()[m_spawnIndex].max,
+//        m_waves[m_waveIndex].spwans()[m_spawnIndex].maxSame);
 
     WaveEvent event;
-    event.setWaveData(name2Id(m_waves[m_waveIndex].spwans()[m_spawnIndex].id), m_waves[m_waveIndex].getPathIndex(), m_waves[m_waveIndex].spwans()[m_spawnIndex].path, m_waveIndex << 16 | m_spawnIndex);
+    event.setWaveData(name2Id(m_waves[m_waveIndex].spwans()[m_spawnIndex].id), m_waves[m_waveIndex].getPathIndex(), m_waves[m_waveIndex].spwans()[m_spawnIndex].path, m_waveIndex, m_waveIndex << 16 | m_spawnIndex);
 
     Director::getInstance()->getEventDispatcher()->dispatchEvent(&event);
     if (m_spawnIndex < m_waves[m_waveIndex].spwans().size() - 1) {

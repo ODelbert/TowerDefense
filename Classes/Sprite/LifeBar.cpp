@@ -48,7 +48,8 @@ bool LifeBar::init(Scale scale)
     bkg->addChild(m_bar);
     addChild(bkg);
     m_bar->setType(ProgressTimer::Type::BAR);
-    m_bar->setPercentage(100.0);
+    m_bar->setPercentage(100);
+    m_bar->setMidpoint(Vec2(0,0));
     m_bar->setPosition(bkg->getContentSize().width / 2, bkg->getContentSize().height / 2);
 
     return true;
@@ -56,6 +57,13 @@ bool LifeBar::init(Scale scale)
 
 void LifeBar::setPercentage(float precent)
 {
-    m_bar->setPercentage(precent);
+    if (m_bar)
+        m_bar->setPercentage(precent);
+}
+
+float LifeBar::getPercentage()
+{
+    if (m_bar)
+        return m_bar->getPercentage();
 }
 

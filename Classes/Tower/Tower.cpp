@@ -34,7 +34,7 @@ void Tower::initWithTowerId(TowerID id)
     m_fireRate = static_cast<FireRateType>(info.fireRate);
     m_range = static_cast<RangeType>(info.range);
     m_weapon = static_cast<WeaponType>(info.weapon);
-    schedule(schedule_selector(Tower::scout), 0.1f);
+    schedule(schedule_selector(Tower::scout), 0.01f);
 }
 
 void Tower::scout(float dt)
@@ -42,16 +42,15 @@ void Tower::scout(float dt)
     int min = -1;
     int index = -1;
     std::vector<Enemy*> enmeies = GM->getEnemies();
+    TowerSlot* slot = static_cast<TowerSlot*>(getParent());
+    if (!slot) return;
     for (int i = 0;i < enmeies.size(); ++i) {
-        TowerSlot* slot = static_cast<TowerSlot*>(getParent());
-        if (slot) {
-            Vec2 towerPos = slot->getPosition();
-            log("tower [%f %f] enemy [%f %f] [%d] distance [%f] ", towerPos.x, towerPos.y, enmeies[i]->getPosition().x, enmeies[i]->getPosition().y , i , towerPos.distance(enmeies[i]->getPosition()));
-            if (towerPos.distance(enmeies[i]->getPosition()) > 160 + 20 * (m_range - Range_Average)) continue;
-            if (enmeies[i]->fulfilledPercent() > min) {
-                min = enmeies[i]->fulfilledPercent();
-                index = i;
-            }
+        Vec2 towerPos = slot->getPosition();
+//        log("tower [%f %f] enemy [%f %f] [%d] distance [%f] ", towerPos.x, towerPos.y, enmeies[i]->getPosition().x, enmeies[i]->getPosition().y , i , towerPos.distance(enmeies[i]->getPosition()));
+        if (towerPos.distance(enmeies[i]->getPosition()) > 160 + 20 * (m_range - Range_Average)) continue;
+        if (enmeies[i]->fulfilledPercent() > min) {
+            min = enmeies[i]->fulfilledPercent();
+            index = i;
         }
     }
 
@@ -71,7 +70,7 @@ void Tower::scout(float dt)
         }
 
         m_shooters[i]->shoot();
-        BulletEvent event(BulletEvent::Command::Lanuch, 0);
+        BulletEvent event(BulletEvent::Command::Lanuch, slot->getSlotId());
         GM->dispatchEvent(&event);
     }
 }

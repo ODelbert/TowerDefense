@@ -32,6 +32,7 @@ public:
     inline std::vector<Tower*> getTowers() const { return m_towers; }
     void addEnemy(Enemy* enemy);
     void removeEnemy(Enemy* enmey);
+    void removeEnemy(int wid);
     void dispatchEvent(TDEvent* event);
     void addEventListenerWithFixedPriority(EventListener* listener, int priority);
     void addEventListenerWithSceneGraphPriority(EventListener* listener, Node* node);

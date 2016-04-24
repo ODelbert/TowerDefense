@@ -38,6 +38,13 @@ void GameManager::removeEnemy(Enemy* enmey)
     }
 }
 
+void GameManager::removeEnemy(int wid)
+{
+    for (int i = 0; i < m_enemies.size(); ++i) {
+        log("enemy[%d] tag[%d]", i , m_enemies[i]->getTag());
+    }
+}
+
 void GameManager::dispatchEvent(TDEvent* event)
 {
     Director::getInstance()->getEventDispatcher()->dispatchEvent(event);

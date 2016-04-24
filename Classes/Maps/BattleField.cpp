@@ -83,14 +83,19 @@ void BattleField::onTouchMoved(Touch* touch, Event* event)
 void BattleField::addEnemy(Enemy* enemy)
 {
     // TODO:: GameManager adds
+    GM->addEnemy(enemy);
+    log("BattleField::addEnemy enemy with wid %d", enemy->getTag());
+    
     m_mapSprite->addChild(enemy);
 }
 
 void BattleField::removeEnemy(int waveIdx)
 {
+    GM->removeEnemy(waveIdx);
+    log("BattleField::removeEnemy remove enemy with wid %d", waveIdx);
     // TODO:: GameManager removes
     missTarget(waveIdx);
-    auto child = getChildByTag(waveIdx);
+    auto child = m_mapSprite->getChildByTag(waveIdx);
     Enemy* enemy = static_cast<Enemy*>(child);
     if (!enemy) return;
     GM->removeEnemy(enemy);
@@ -109,7 +114,7 @@ void BattleField::loadLevel(int stage, int difficult)
         addChild(m_mapSprite);
     }
     
-    WaveManager::getInstance()->start();
+//    WaveManager::getInstance()->start();
     // schedule(schedule_selector(BattleField::start), 0.0f, 1, 1.0f);
 }
 
@@ -239,9 +244,9 @@ void BattleField::missTarget(int waveIdx)
 {
     for (int i = 0; i < m_towerSlots.size(); ++i) {
         Tower* tower = m_towerSlots[i]->getTower();
-        if (!tower) {
+        if (tower) {
             Enemy* target = tower->getTarget();
-            if (target->getTag() == waveIdx) {
+            if (target && target->getTag() == waveIdx) {
                 tower->setTarget(nullptr);
             }
         }

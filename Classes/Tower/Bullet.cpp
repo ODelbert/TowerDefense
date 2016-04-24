@@ -36,7 +36,7 @@ bool BallBullet::init()
 
 void BallBullet::launch()
 {
-    auto launchAction = Sequence::create(MoveTo::create(1.0, m_destination), CallFunc::create([&]() {
+    auto launchAction = Sequence::create(MoveTo::create(0.2, m_destination), CallFunc::create([&]() {
         BulletEvent event(BulletEvent::Command::Strike, m_slotId, m_destination);
         GM->dispatchEvent(&event);
         decay();
