@@ -25,13 +25,6 @@ struct SpawnInfo
     uint path;
 };
 
-//class WaveEvent : public EventCustom
-//{
-//public:
-//    WaveEvent()
-//    : EventCustom("WaveEvent") {}
-//};
-
 class WaveInfo : public Ref
 {
 public:
@@ -56,6 +49,7 @@ public:
     
 private:
     void nextEnemy(float dt);
+    void nextWave();
 
 private:
     std::vector<WaveInfo> m_waves;
