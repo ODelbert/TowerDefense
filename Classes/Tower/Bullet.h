@@ -71,4 +71,11 @@ public:
     virtual void launch();
 };
 
+class Arrow : public Bullet
+{
+public:
+    CREATE_FUNC(Arrow)
+
+};
+
 #endif // BULLET_H

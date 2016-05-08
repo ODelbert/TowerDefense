@@ -84,19 +84,13 @@ static EnemyID name2Id(const char* str)
     return EnemyID_Invalid;
 }
 
-WaveManager::WaveManager()
-    : m_waveScheduler(new Scheduler)
-{}
-
-WaveManager::~WaveManager()
-{
-    if (m_waveScheduler) {
-        delete m_waveScheduler;
-    }
-}
-
 void WaveManager::initialize(int level, int difficulty)
 {
+    if (!m_waveScheduler) {
+        m_waveScheduler = new Scheduler;
+    }
+
+    m_waveScheduler->unscheduleAll();
     // FIXME:: 难度支持
     std::string path = FileUtils::getInstance()->getWritablePath();
     std::string file = "level1_waves_campaign.xml";
@@ -185,25 +179,24 @@ void WaveManager::start()
     m_waveIndex = 0;
     m_spawnIndex = 0;
 
-    auto scheduleMain = Director::getInstance()->getScheduler();
-    if (m_waveScheduler) {
-        m_waveScheduler->unscheduleAll();
-        scheduleMain->scheduleUpdate(m_waveScheduler, 0, false);
-        nextWave();
-    }
+    //auto scheduleMain = Director::getInstance()->getScheduler();
+//    if (m_waveScheduler) {
+//        m_waveScheduler->unscheduleAll();
+        //m_waveScheduler->schedule(schedule_selector(WaveManager::nextEnemy), this, 0, 1, interval, false);
+        //scheduleMain->scheduleUpdate(m_waveScheduler, 0, false);
+        nextWave(0);
+    //}
 }
 
-void WaveManager::nextWave()
+void WaveManager::nextWave(int interval)
 {
-    int interval = m_waves[m_waveIndex].getWaveInterval();
     if (m_waveScheduler) {
         m_waveScheduler->unscheduleAll();
         m_waveScheduler->schedule(schedule_selector(WaveManager::nextEnemy), this, 0, 1, interval, false);
-        if (interval > 0) {
-            WaveEvent evt(WaveEvent::Command::WaveHint, EnemyID_Invalid,
+            WaveEvent evt(WaveEvent::Command::NextWave, EnemyID_Invalid,
                 m_waves[m_waveIndex].spwans()[m_spawnIndex].path);
             GM->dispatchEvent(&evt);
-        }
+
     }
 }
 
@@ -224,19 +217,25 @@ void WaveManager::nextEnemy(float dt)
         m_waves[m_waveIndex].spwans()[m_spawnIndex].max,
         m_waves[m_waveIndex].spwans()[m_spawnIndex].maxSame);
 
-    WaveEvent event(WaveEvent::AddEnemy,
+    WaveEvent event(WaveEvent::NextEnemy,
         name2Id(m_waves[m_waveIndex].spwans()[m_spawnIndex].id),
         m_waves[m_waveIndex].getPathIndex(), m_waveIndex, m_spawnIndex);
 
     Director::getInstance()->getEventDispatcher()->dispatchEvent(&event);
     if (m_spawnIndex < m_waves[m_waveIndex].spwans().size() - 1) {
-        m_waveScheduler->schedule(schedule_selector(WaveManager::nextEnemy), this, 0, 1, m_waves[m_waveIndex].spwans()[m_spawnIndex].intervalNext(), false);
+        //void schedule(SEL_SCHEDULE selector, Ref *target, float interval, unsigned int repeat, float delay, bool paused);
+
+
+        int intervalNext = m_waves[m_waveIndex].spwans()[m_spawnIndex].max > 1 ? m_waves[m_waveIndex].spwans()[m_spawnIndex].interval :
+            m_waves[m_waveIndex].spwans()[m_spawnIndex].intervalNext;
+
+        m_waveScheduler->schedule(schedule_selector(WaveManager::nextEnemy), this, intervalNext, 1, 0, false);
         ++m_spawnIndex;
     }
     else {
         m_spawnIndex = 0;
         ++m_waveIndex;
-        nextWave();
+        nextWave(m_waves[m_waveIndex].getWaveInterval());
     }
 }
 

@@ -11,7 +11,7 @@ WaveEvent::WaveEvent(Command cmd, int eid, int path, int subpath, int waveIdx, i
     : TDEvent(TDEventType_Wave),
       m_command(cmd),
       m_path(path),
-      m_subPath(subPath),
+      m_subpath(subpath),
       m_waveIdx(waveIdx),
       m_spawnIdx(spawnIdx)
 {}
@@ -24,7 +24,7 @@ TowerEvent::TowerEvent(Command cmd, int slotId, TowerID id, int tid)
     m_technologyId(tid)
 {}
 
-EnemyEvent::EnemyEvent(Command cmd, EnemyID id, int tag, int waveIdx)
+EnemyEvent::EnemyEvent(Command cmd, EnemyID id, int waveIdx)
     : TDEvent(TDEventType_Enemy),
       m_command(cmd),
       m_id(id),

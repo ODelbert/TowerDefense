@@ -46,10 +46,10 @@ public:
     int getPathCount();
 
     CC_SYNTHESIZE(uint, m_cash, Cash)
-    
+   
 private:
     void nextEnemy(float dt);
-    void nextWave();
+    void nextWave(int interval);
 
 private:
     std::vector<WaveInfo> m_waves;
@@ -57,6 +57,7 @@ private:
     int m_waveIndex;
     int m_spawnIndex;
     Sprite* m_runningEnemy;
+    Scheduler* m_waveScheduler;
 };
 
 #define WM WaveManager::getInstance()

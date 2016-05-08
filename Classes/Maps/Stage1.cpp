@@ -107,4 +107,5 @@ void Stage1::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
     }
         break;
+    }
 }

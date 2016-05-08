@@ -60,15 +60,15 @@ void EventHandler::onEvent(TDEvent* event)
 
 void EventHandler::onWaveEvent(WaveEvent* waveEvent)
 {
-    if (!waveEvent || -1 == waveEvent->getIndex()) {
+    if (!waveEvent) {
         return;
     }
     
     Enemy* enemy = EnemyFactory::create(static_cast<EnemyID>(waveEvent->getEnemyId()));
     
     if (enemy) {       
-        enemy->setTag(waveEvent->getIndex());
-        enemy->sendToBattle(WaveManager::getInstance()->getPath(waveEvent->getPathIndex(), waveEvent->getSubPathIndex()));
+        enemy->setTag(waveEvent->getWaveIndex() << 8 | waveEvent->getSpawnIndex());
+        enemy->sendToBattle(WaveManager::getInstance()->getPath(waveEvent->getPath(), waveEvent->getSubpath()));
         m_map->addEnemy(enemy);
     }
 }

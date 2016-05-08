@@ -48,20 +48,21 @@ public:
 class WaveEvent : public TDEvent
 {
 public:
-    WaveEvent();
-    int getEnemyId() const;
-    int getPathIndex() const;
-    int getSubPathIndex() const;
-    int getWaveCount() const;
-    int getIndex() const;
-    void setWaveData(int id, int path, int subpath, int waveCount, int index = 0);
 
-private:
-    int m_eId;
-    int m_waveCount;
-    int m_path;
-    int m_subPath;
-    int m_index;
+    enum Command
+    {
+        Invaild,
+        NextEnemy,
+        NextWave,
+    };
+    
+    WaveEvent(Command cmd = Invaild, int eid = EnemyID_Invalid, int path = -1, int subpath = -1, int waveIdx = -1, int spawnIdx = -1);
+    CC_SYNTHESIZE(Command, m_command, Command)
+    CC_SYNTHESIZE(EnemyID, m_enemyId, EnemyId)
+    CC_SYNTHESIZE(int, m_path, Path)
+    CC_SYNTHESIZE(int, m_subpath, Subpath)
+    CC_SYNTHESIZE(int, m_waveIdx, WaveIndex)
+    CC_SYNTHESIZE(int, m_spawnIdx, SpawnIndex)
 };
 
 class TowerEvent : public TDEvent
